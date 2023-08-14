@@ -1,0 +1,42 @@
+{
+  "title": {
+    "link": "Video link",
+    "history": "Playback record",
+    "star": "Favorites",
+    "setting": "Settings",
+    "play": "Play!",
+    "name": "Name",
+    "host": "From",
+    "date": "Date",
+    "operate": "Operate"
+  },
+  "url": {
+    "input": "Please enter the video link...",
+    "empty": "Link cannot be empty, please check and try again...",
+    "correct": "The link is correct, loading...",
+    "incorrect": "The link is incorrect. Please check and try again..."
+  },
+  "btn": {
+    "open": "Open",
+    "delete": "Delete"
+  },
+  "msg": {
+    "delete-success": "Successfully deleted",
+    "star-add": "Add to Favorites succeeded",
+    "star-remove": "Successfully removed from favorites",
+    "clear-success": "Clear successfully"
+  },
+  "lang": {
+    "select": "Language",
+    "en": "English",
+    "cn": "简体中文",
+    "zh-tw": "繁體中文"
+  },
+  "setting": {
+    "issues": "Issues",
+    "pc": "PC",
+    "mobile": "Mobile",
+    "clear-history": "Clear playback record",
+    "clear-star": "Clear favorites"
+  }
+}

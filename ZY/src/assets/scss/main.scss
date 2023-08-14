@@ -1,0 +1,59 @@
+html,body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+}
+#app{
+  height: 100%;
+  .container{
+    height: 100%;
+    .header{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .language{
+        margin-right: 12px;
+      }
+    }
+    .input-box, .player-box{
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .icon-star{
+      cursor: pointer;
+      margin: 10px auto;
+      path{
+        fill: #adadad;
+      }
+      &.active{
+        path{
+          fill: red;
+        }
+      }
+    }
+  }
+  .setting-body{
+    .logo{
+      text-align: center;
+      img{
+        width: 100px;
+        height: auto;
+      }
+      a{
+        margin: 0 20px;
+        text-decoration: none;
+      }
+      margin-bottom: 30px;
+    }
+    .setting-item{
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+}
