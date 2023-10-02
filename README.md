@@ -3,4 +3,5 @@
 
 zyplayer接口# https://wokaotianshi123.github.io/zyplayer/easyconfig.json
 
-tvbox接口# https://download.kstore.space/download/4562/pglblb/0618.txt
+tvbox接口# https://download.kstore.space/download/4562/pglblb/0618.txt 
+         #  https://wokaotianshi123.github.io/pglblb/0618.txt
