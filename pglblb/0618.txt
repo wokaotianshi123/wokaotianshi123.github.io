@@ -2192,7 +2192,8 @@ https://pastebin.com/raw/AWD6GEux","jar": "https://download.kstore.space/downloa
 //"spider":"https://ghproxy.com/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/公众号吾爱有三日月与卿0712.jar"
 //"spider":"https://ghproxy.com/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/2929.jar"
 //"spider":"https://ghproxy.com/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/神器1029.jar"
-"spider":"https://ghproxy.com/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/panda230222.jar"
+//"spider":"https://ghproxy.com/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/panda230222.jar"
+"spider":"https://ghproxy.com/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/jcsq.jar"
 //"spider":"https://ghproxy.com/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/custom_spider.jar"
 //"spider":"https://ghproxy.com/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/nfy.jar"
 }
