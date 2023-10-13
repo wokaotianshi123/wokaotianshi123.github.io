@@ -14,8 +14,13 @@ zyplayer直播接口
 
 tvbox接口 
 1
+
          https://download.kstore.space/download/4562/pglblb/0618.txt 
+         
  2
+ 
          https://wokaotianshi123.github.io/pglblb/0618.txt
+         
 3
+
          https://ghproxy.com/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/0618.txt
