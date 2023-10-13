@@ -18,8 +18,15 @@
 "分类url":"https://www.kanys2.com/filmshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"   
     }
     },    
-	{"key":"蚂蚁","name":" 🧲蚂蚁4K","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"
-https://pastebin.com/raw/AWD6GEux","jar": "https://download.kstore.space/download/3924/JAR/XBPQ.jar;md5;2045faa2c4337fd863c1b9f02cc69e31"},
+ {
+  "key": "csp_wangju",
+  "name": "网剧(XYQh)",
+  "type": 3,
+  "api": "csp_XYQHiker",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://ghproxy.com/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/wangju.json"}, 	
     {
       "key": "csp_XBPQ_4k",
       "name": "🏄‍♂丨4k丨影视",
