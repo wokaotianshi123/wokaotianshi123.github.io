@@ -3,7 +3,7 @@
         https://wokaotianshi123.github.io/zhongqiutop10.html
 
 zyplayer接口# 
-        https://wokaotianshi123.github.io/zyplayer/easyconfig.json 
+        #https://wokaotianshi123.github.io/zyplayer/easyconfig.json 
 
 zyplayer直播接口# 
         https://wokaotianshi123.github.io/zyplayer/easyconfig.json
