@@ -2199,8 +2199,8 @@
 //"spider":"./pglblb/公众号吾爱有三日月与卿0712.jar"
 //"spider":"./pglblb/2929.jar"
 //"spider":"./pglblb/神器1029.jar"
-//"spider":"./pglblb/panda230222.jar"
-"spider":"./pglblb/jcsq.jar"
+"spider":"./pglblb/panda230222.jar"
+//"spider":"./pglblb/jcsq.jar"
 //"spider":"./pglblb/custom_spider.jar"
 //"spider":"./pglblb/nfy.jar"
 }
