@@ -31,7 +31,7 @@
   "分类数组": "<li id=\"navbar-category-&&</li>",
 "分类标题": ">&&</a",
 "分类ID": "/frim/index&&.html",
-        "分类url": "https://qie88.xyz/frim/index{cateId}-{catePg}.html"
+        "分类url": "https://qie99.xyz/frim/index{cateId}-{catePg}.html"
       }
     },
 
