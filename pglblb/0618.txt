@@ -19,6 +19,28 @@
     }
     },    
  {
+      "key": "csp_XBPQ_qiela",
+      "name": "qiela发布页qie.la",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+ 
+  "数组": "<li class=\"col-6&&</li",
+  "图片": "src=\"&&\"",
+  "标题": "alt=\"&&\"",
+  "链接": "href=\"&&\"",
+  "直接播放":"1",
+  "分类数组": "<li id=\"navbar-category-&&</li>",
+"分类标题": ">&&</a",
+"分类ID": "/frim/index&&.html",
+        "分类url": "https://qie88.xyz/frim/index{cateId}-{catePg}.html"
+      }
+    },
+
+ {
   "key": "csp_wangju",
   "name": "网剧(XYQh)",
   "type": 3,
@@ -771,7 +793,7 @@
   "直接播放":"1",
 "链接":"href=\"&&\"[替换:detail>>play#.html>>/sid/1/nid/1.html]", 
  "嗅探词": ".mp4#.m3u8",
-"分类url":"https://www.lpxsp.monster/index.php/vod/type/id/{cateId}/page/{catePg}.html"}},
+"分类url":"https://www.smgsp.buzz/index.php/vod/type/id/{cateId}/page/{catePg}.html"}},
 	
 
 
@@ -870,7 +892,7 @@
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"https://www.chabeihucupfox.com/h/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBPQ.jar"},   
     
     	
-    		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols.xyz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "播放数组":"<button&&</button>","搜索url":"https://saols11.buzz/lookup/{wd}","数组":"class=\"row col5 clearfix&</div","分类":"热门$8","分类url":"https://saols11.buzz/type/{cateId}/{catePg}" } },	
+    		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols14.buzz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "分类ID":"type/&&\"",  "分类url":"https://saols14.buzz/type/{cateId}/{catePg}" } },	
     
     			  { "key": "csp_XBPQ_laimi", "name": "来米影院","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "简介":"<p&&</p>","分类url":"https://www.laimi.me/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html" } },		
     			  
