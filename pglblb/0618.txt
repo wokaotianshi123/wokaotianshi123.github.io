@@ -1334,7 +1334,7 @@
 {"key":"*狼少年源","name":"狼少资源","type":0,"api":"http://cjmygzy.com/inc/sapi.php?ac=videolist","searchable":0,"quickSearch":0},
 {"key":"*速度资源","name":"速度资源","type":0,"api":"http://www.ggmmzy.com:9999/inc/xml","searchable":0,"quickSearch":0}],
 //"lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=Y2xhbjovL3BnbGJsYi90di90djg4LnR4dA=="]}]}],
-"lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=aHR0cHMlM0EvL2FnaXQuYWkvWW91cnNtaWxlNy9UVkJveC9yYXcvYnJhbmNoL21hc3Rlci9saXZlLnR4dA=="]}]}],
+"lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=aHR0cCUzQS8vYWdpdC5haS9Zb3Vyc21pbGU3L1RWQm94L3Jhdy9icmFuY2gvbWFzdGVyL2xpdmUudHh0"]}]}],
 
 "parses":[
 {"name":"聚合01","type":3,"url":"Demo"},
