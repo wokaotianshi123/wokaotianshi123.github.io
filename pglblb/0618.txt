@@ -892,7 +892,7 @@
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"https://www.chabeihucupfox.com/h/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBPQ.jar"},   
     
     	
-    		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols14.buzz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "分类ID":"type/&&\"",  "分类url":"https://saols14.buzz/type/{cateId}/{catePg}" } },	
+    		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols15.buzz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "分类ID":"type/&&\"",  "分类url":"https://saols15.buzz/type/{cateId}/{catePg}" } },	
     
     			  { "key": "csp_XBPQ_laimi", "name": "来米影院","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "简介":"<p&&</p>","分类url":"https://www.laimi.me/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html" } },		
     			  
