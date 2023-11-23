@@ -219,7 +219,7 @@
 
 	
 
-"key":"csp_XBPQ_在线之家",
+{"key":"csp_XBPQ_在线之家",
 "name":"️在线之家影视 XBPQ https://www.zxzj.site",
 "type":3,
 "api":"csp_XBPQ",
