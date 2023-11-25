@@ -234,6 +234,279 @@
 
 
 {"key": "csp_biubiu_短视频1","name": "️📱短视频","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "分类url:http://www.sharenice.net/{cateId}?page={catePg},分类:抖音,直接播放:1,嗅探词:play/?#?item#qianpailive#.flv#mp4","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
+
+		 
+
+ 
+ 
+
+     
+  {"key":"csp_xBiu_yszj","name": "影视之家(XBiu)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://www.wybg666.com/vodtype/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  
+
+
+  
+  
+ 
+ 
+
+
+
+{"key":"csp_xBPQ_papa","name": "片吧影院(xBPQ)","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "{\"请求头\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\",\"免嗅\":\"1\",\"副标题\":\"<span class=\\\"pic-text text-right\\\">&&</span>\",\"线路数组\": \"class=\\\"stui-vodlist__head&&</div>\",\"线路标题\": \"<span class=\\\"pull-right1\\\">&&</span>\",\"播放标题\":\">&&<\",\"播放数组\":\"class=\\\"stui-content__playlist&&</div>\",\"分类url\":\"https://www.pbpb.tv/class/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html\",\"年份\":\"2000-2022\",\"筛选\":\"1\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
+   
+
+
+  {
+  "key": "csp_xb_淘剧",
+  "name": "淘剧影院(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "http://www.taoju.tv/list/{cateId}_{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  
+  
+ 
+  
+ 
+
+
+	
+  {
+"key":"csp_XBPQ_片吧影视",
+"name":"️片吧影视 XBPQ",
+"type":3,
+"api":"csp_XBPQ",
+"searchable":1,
+"quickSearch":1,
+"filterable":1,
+"ext":"{
+  \"播放数组\":\"class=\\\"stui-content__playlist&&</ul>\",
+ \"线路数组\":\"class=\\\"stui-vodlist__head&&</div>\",
+ \"线路标题\":\"class=\\\"pull-right1\\\">&&</span>\",
+	\"分类url\":\"https://www.pbpb.tv/class/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html\"}","jar": "https://framagit.org/wokaotianshi123/tvmovie/-/raw/master/tvbox/jar/XBPQ1223.jar"
+},
+
+
+{
+"key": "csp_XBPQ_7新",
+"name": "🍹7新影视",                 
+"type": 3,
+"api": "csp_XBPQ",
+"jar":"https://framagit.org/wokaotianshi123/tvmovie/-/raw/master/tvbox/jar/XBPQ1223.jar",
+"searchable": 1,
+"quickSearch": 1,
+"filterable": 0,
+"ext":"{  
+\"分类\":\"电影$dianying#电视剧$dianshiju#国产剧$guocanju#港剧$gangtaiju#综艺$zongyi#动漫$dongman\",
+\"播放链接\":\"href='&&'\",
+\"分类url\":\"http://www.7xdy.com/{cateId}/index{catePg}.html[http://www.7xdy.com/{cateId}/index.html]\"}"},
+
+
+
+
+
+
+{
+"key":"csp_XBPQ_兄弟影视",
+"name":"️兄弟影视 XBPQ",
+"type":3,
+"api":"csp_XBPQ",
+"searchable":1,
+"quickSearch":1,
+"filterable":1,
+"ext":"{
+\"筛选\":\"1\",
+\"简介\": \"show-desc\\\" style=\\\"line-height: 20px;\\\">&&</p>\",
+	\"分类url\":\"https://brovod.com/show/{cateId}-{area}-{by}--{lang}----{catePg}---{year}/\"}","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"
+},
+
+
+
+
+
+   
+ 
+ 
+    {
+  "key": "csp_xb_slyy",
+  "name": "石榴影院(XYQh)",
+  "type": 3,
+  "api": "csp_XYQBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/石榴电影.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},  
+ 
+  
+
+  
+
+
+  
+  
+           {
+      "key": "mv",
+      "name": "妹",
+      "type": 4,
+      "api": "http://120.53.102.254/dsp/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+
+
+  
+
+  
+
+   {
+  "key": "csp_xb_lyys",
+  "name": "凌云影院(XYQh)",
+  "type": 3,
+  "api": "csp_XYQHiker",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/lyys_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
+  
+ 
+  
+  
+ {"key": "csp_xb_wmkkys",
+  "name": "完美看看影视(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://www.wanmeikk.film/category/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  
+
+ 
+  
+
+
+    {
+  "key": "csp_xb_pbys",
+  "name": "片吧影视(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://www.pbpb.tv/class/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+      {
+  "key": "csp_xb_dyys",
+  "name": "段友影视(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://shangjihuoke.com/index.php/vod/show/id/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+       
+      {
+  "key": "csp_xb_ddgys",
+  "name": "达达龟影视(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://www.dadagui.me/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+    
+
+
+        {
+  "key": "csp_xb_lxys",
+  "name": "冷曦影视(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://www.lenxitv.cc/t/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+
+
+       
+          {
+  "key": "csp_xb_nikeys",
+  "name": "Nike影视(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://www.ajeee.com/show/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+          
+
+    {
+  "key": "csp_xb_cokemv",
+  "name": "Cokemv(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://cokemv.co/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+
+   {
+  "key": "csp_xb_libvio",
+  "name": "Libvio(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://www.libvio.com/show/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+
+   
+
+
+
+
+
+
+
+
+    {
+  "key": "csp_xb_939394",
+  "name": "粤正影视(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://939394.xyz/vodlist/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+
+    {
+  "key": "csp_xb_gfysys",
+  "name": "干饭影视(R)",
+  "type": 3,
+  "api": "csp_XBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "http://www.gfysys.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+
+
+
+
+
+
+{"key": "csp_XYQHiker","name":"98km(XYQh)","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/98km_xyqh_.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mix.jar"},
+
+
+
+
+
+
+
+
+
+{"key":"csp_xpath_蚂蚁","name":"蚂蚁🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mayi.json"},
  {
       "key": "csp_XBPQ_qiela",
       "name": "qiela发布页qie.la",
@@ -301,7 +574,17 @@
       "直接播放":"1",
         "分类url": "https://v.lameitv1.com/lmc/{cateId}-{catePg}/;;m"
       }
-    },
+    },  
+{"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
+{
+  "key": "csp_xb_f2daiyy",
+  "name": "富二代影院(XYQ)",
+  "type": 3,
+  "api": "csp_XYQBiu",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filterable": 0,
+  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/f2dys_xyq_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
 
     		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols15.buzz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "分类ID":"type/&&\"",  "分类url":"https://saols15.buzz/type/{cateId}/{catePg}" } },	    
 {"key": "msv ","name": "美少女 ","type": 0,"api": "https://www.msnii.com/api/xml.php ","searchable": 1,"changeable": 1},
@@ -370,897 +653,8 @@
 \"直接播放\":\"1\",
 	\"分类url\":\"https://www.pornlab.fun/vod/show/id/{cateId}/page/{catePg}.html\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 	
-		 
 
- 
- 
- {"key":"csp_xBiu_gongc","name": "工厂影院1(R)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://www.ysgc.vip/vodtype/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
- 
- 
-     {"key":"csp_xBp_gongc","name": "工厂(xBPQ)","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 0,"filterable": 1,"ext": "https://www.ysgc.vip/vodtype/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
-     
-  {"key":"csp_xBiu_yszj","name": "影视之家(XBiu)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://www.wybg666.com/vodtype/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-  
-  
-    {"key":"csp_xBiu_yrzj","name": "伊人(R)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://yrzj.vip/index.php/vod/show/id/{cateId}/page/{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
 
-{"key":"csp_xBPQ_ymzj","name": "映迷(R)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://www.inmi.app/index.php/vod/show/id/{cateId}/page/{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-  
-  
-  
-    {"key":"csp_xBiu_3free","name": "3free(xBPQ)","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 0,"filterable": 1,"ext": "https://www.thefree.vip/vodshow/{cateId}-{area}--{class}-{lang}-------{year}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
- 
-     {"key":"csp_xBiu_choke8","name": "chok8(R)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://www.chok8.com/vodtype/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
- 
-      {"key":"csp_xBiu_xkbys","name": "新恐怖(R)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://www.xinkongbu.com/vodtype/{cateId}-{catePg}.html","jar":"https://raw.iqiq.io/zhanghong1983/TVBOXZY/main/JAR/Yoursmile.jar"},
-
-   {"key":"csp_xBPQ_360","name": "360(xBPQ)","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/360影视(xBPQ).json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
- 
- {"key":"csp_xBPQ_6080",
-"name":"️6080xBPQ",
-"type":3,
-"api":"csp_XBPQ",
-"searchable":1,
-"quickSearch":1,
-"filterable":1,
-"ext":"http://www.zhufangyuan.com/vodshow/{cateId}--------{catePg}---{year}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBPQ.jar"},	
-
- 
-
-{
-"key":"csp_XBPQ_55影视",
-"name":"️55影视 XBPQ",
-"type":3,
-"api":"csp_XBPQ",
-"searchable":1,
-"quickSearch":1,
-"filterable":1,
-"ext":"{
-
-  \"播放数组\":\"class=\\\"module-play-list&&</div>\",
-	\"分类数组\":\"class=\\\"swiper-slide&&</li>\",
-	\"分类标题\": \">&&</span\",
-	\"分类ID\": \"vodtype/&&.html\",
-\"演员\":\"主演：</span>&&</div>\",
-\"简介\":\"<p&&</p>\",
-	\"分类url\":\"https://www.555dyy3.com/vodshow/{cateId}--------{catePg}---.html\"
-	}","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBPQ.jar"
-},
-
-{"key":"csp_xBPQ_papa","name": "片吧影院(xBPQ)","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "{\"请求头\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\",\"免嗅\":\"1\",\"副标题\":\"<span class=\\\"pic-text text-right\\\">&&</span>\",\"线路数组\": \"class=\\\"stui-vodlist__head&&</div>\",\"线路标题\": \"<span class=\\\"pull-right1\\\">&&</span>\",\"播放标题\":\">&&<\",\"播放数组\":\"class=\\\"stui-content__playlist&&</div>\",\"分类url\":\"https://www.pbpb.tv/class/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html\",\"年份\":\"2000-2022\",\"筛选\":\"1\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
-   
-
-{"key":"csp_xBPQ_nongm","name": "农民影院(xBPQ)","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "{\"请求头\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\",\"免嗅\":\"1\",\"副标题\":\"class=\\\"sBottom&&<em>\",\"线路数组\": \"class=\\\"hd&&</ul>\",\"线路标题\": \">&&</a>\",\"播放标题\":\">&&<\",\"播放数组\":\"class=\\\"numList&&</div>\",
-\"分类\":\"电影$1#电视剧$2#综艺$3#动漫$4\",\"分类url\":\"https://v.xiangdao.me/vod-list-id-{cateId}-pg-{catePg}-order--by-{by}-class-0-year-{year}-letter--area-{area}-lang-.html\",\"年份\":\"2000-2022\",\"筛选\":\"1\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
-
-  {
-  "key": "csp_xb_淘剧",
-  "name": "淘剧影院(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "http://www.taoju.tv/list/{cateId}_{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-  
-  
-  {
-  "key": "csp_xb_天空影视",
-  "name": "天空影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.tkys6.com/vodshow/id/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-  
-  {
-"key":"csp_Xbiu_饭团影视",
-"name":"️饭团影视 XBiu",
-"type":3,
-"api":"csp_xBPQ",
-"searchable":1,
-"quickSearch":1,
-"filterable":1,
-"ext":"https://www.fantuanhd.com/type/id-{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"
-},
-
-
-   {"key": "XBPQ_饭团","name": "饭团","type": 3,"api": "csp_XBPQ",
-  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{
-  \"播放数组\":\"class=\\\"stui-play__list&&</ul>\",
-  	\"分类\":\"电影$20#电视剧$21#国产剧$22#港剧$23#综艺$24#动漫$25\",  
-	\"分类url\":\"https://www.fantuanhd.com/show/id-{cateId}/area/{area}/by/{by}/class/{class}/lang/{lang}/page/{catePg}/year/{year}.html\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
-	
-  {
-"key":"csp_XBPQ_片吧影视",
-"name":"️片吧影视 XBPQ",
-"type":3,
-"api":"csp_XBPQ",
-"searchable":1,
-"quickSearch":1,
-"filterable":1,
-"ext":"{
-  \"播放数组\":\"class=\\\"stui-content__playlist&&</ul>\",
- \"线路数组\":\"class=\\\"stui-vodlist__head&&</div>\",
- \"线路标题\":\"class=\\\"pull-right1\\\">&&</span>\",
-	\"分类url\":\"https://www.pbpb.tv/class/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html\"}","jar": "https://framagit.org/wokaotianshi123/tvmovie/-/raw/master/tvbox/jar/XBPQ1223.jar"
-},
-
-
-{
-"key": "csp_XBPQ_7新",
-"name": "🍹7新影视",                 
-"type": 3,
-"api": "csp_XBPQ",
-"jar":"https://framagit.org/wokaotianshi123/tvmovie/-/raw/master/tvbox/jar/XBPQ1223.jar",
-"searchable": 1,
-"quickSearch": 1,
-"filterable": 0,
-"ext":"{  
-\"分类\":\"电影$dianying#电视剧$dianshiju#国产剧$guocanju#港剧$gangtaiju#综艺$zongyi#动漫$dongman\",
-\"播放链接\":\"href='&&'\",
-\"分类url\":\"http://www.7xdy.com/{cateId}/index{catePg}.html[http://www.7xdy.com/{cateId}/index.html]\"}"},
-
-
-
-
-
-
-{
-"key":"csp_XBPQ_兄弟影视",
-"name":"️兄弟影视 XBPQ",
-"type":3,
-"api":"csp_XBPQ",
-"searchable":1,
-"quickSearch":1,
-"filterable":1,
-"ext":"{
-\"筛选\":\"1\",
-\"简介\": \"show-desc\\\" style=\\\"line-height: 20px;\\\">&&</p>\",
-	\"分类url\":\"https://brovod.com/show/{cateId}-{area}-{by}--{lang}----{catePg}---{year}/\"}","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"
-},
-
-{
-"key":"csp_XBPQ_PLY影视",
-"name":"️PLY影视 XBPQ",
-"type":3,
-"api":"csp_XBPQ",
-"searchable":1,
-"quickSearch":1,
-"filterable":1,
-"ext":"{
-	\"分类url\":\"https://plyingshi.com/vodshow/{cateId}-{area}-{by}-{lang}----{catePg}---{year}.html/\"}","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBPQ.jar"
-},
-
-{"key":"4k极客","name":"️4k极客 XBPQ","type":3,"api":"XBPQ","ext":"免嗅:1,分类url:https://www.i8k.cc/index.php/show/{cateId}/area/{area}/by/{by}/class/{class}/lang/{lang}/page/{catePg}year/{year}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBPQ.jar"},
- {
-  "key": "csp_xb_ssyy",
-  "name": "速搜影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/速搜影院.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
-
- {
-  "key": "csp_xb_ssys",
-  "name": "速搜影院(XBPQ)",
-  "type": 3,
-  "api": "csp_XBPQ",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": {
-  "请求头": "手机",
-        "数组":"class=\"list-width&&</li>", 
-        "标题":"title=\"&&\"",
-        "图片":"data-original=\"&&\"",
-  "链接":"href=\"&&\"[替换:project->>v_#.html>>_1_1.html]",
-      "播放数组": "<ul&&</ul>[不包含:list-width]",
-    "播放列表": "<a&&/a>",
-    "播放标题": ">&&<",
-    "播放链接": "href=\"&&\"",
-    "搜索url": "https://www.sstv.fun/so/?wd={wd}",
-            "搜索数组":"class=\"detail-a search-list&&</li>", 
-        "搜索标题":">&&</a",
-        "搜索图片":"data-original=\"&&\"",
-  "搜索链接":"data-url=\"&&\"[替换:project->>v_#.html>>_1_1.html]",
-      "分类": "电影&电视剧&综艺&动漫",
-    "分类值": "1&2&3&4",  
-        "分类url": "https://www.sstv.fun/vodshow-{cateId}/area/{area}/by/{by}/class/{class}/page/{catePg}/year/{year}.html;;amk"}}, 
-        {
-			"key": "速搜",
-			"name": "速搜┃BPQ",
-			"type": 3,
-			"api": "csp_XBPQ",
-			"playerType": "1",
-			"jar": "http://xhww.fun:63/小米/5.jar;md5;c570b052645834a1109b54421c1552f9",
-			"ext": {
-				"数组": "class=\"top&&</li",
-				"嗅探词": ".m3u8#.mp4#download-cdn.123pan.cn",
-				"图片": "data-original=\" &&\"",
-				"链接": "/v_+/project-&&.html+_1_1.html",
-				"线路数组": "class='swiper-slide&&</a>[不包含:lzm3u8#ffm3u8]",
-				"线路标题": "data-from=\"&&\"",
-				"影片类型": "备注：&&</li>",
-				"影片年代": "年份：</b>&&</li>",
-				"影片地区": "地区：&&</li>",
-				"导演": "<h2>&&</h2>",
-				"主演": "演员：&&</li>",
-				"简介": "简介：&&</li>",
-				"播放数组": "<ul class='content-playlist&&</ul",
-				"播放列表": "<a&&/a>",
-				"跳转播放链接": "https://jx.2kj.org/jx.php?url=+link_pre*url\":\"&&\"",
-				"二次跳转播放链接": "Base64(\"url\"*\"&&\"[替换:\\*>>9#->>1#\\&>>5])",
-				"搜索url": "https://www.cupfox.app/s/{wd}",
-				"搜索模式": "1",
-				"搜索二次截取": "type=\"application/json\">&&</script>",
-				"搜索数组": "{\"te&&}[包含:速搜TV]",
-				"搜索图片": "https://s1.ax1x.com/2023/07/13/pChRQaD.jpg",
-				"搜索标题": "xt\":\"&&\"",
-				"搜索副标题": "\"website\":\"&&\"",
-				"搜索链接": "https://www.sstv.fun/v_+\"url\":\"https://www.sstv.fun/project-&&.html\"+_1_1.html",
-				"分类url": "https://www.sstv.fun/vodshow-{cateId}/area/{area}/by/{by}/page/{catePg}/year/{year}.html;;a",
-				"分类": "电影$1#剧集$2#综艺$3#动漫$4#纪录$21"
-			}},
-{
-"key": "企鹅4k",
-"name": "企鹅┃4K",
-"type": 1,
-   "api":"http://tvbox-1-g5221611.deta.app/vod/qq",
-"searchable": 1,
-"quickSearch": 1,
-"playUrl":"json:http://119.91.31.224:81/txqq.php?url="
-},
- {
-  "key": "csp_xb_wnyy",
-  "name": "万能影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/wnyy_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
-  {
-  "key": "csp_xb_nmiyy",
-  "name": "柠檬tv(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/柠檬TV.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
- 
-    {
-  "key": "csp_xb_slyy",
-  "name": "石榴影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/石榴电影.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},  
-  {
-  "key": "csp_xb_nmyy",
-  "name": "农民影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/nong_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
-  
-  {
-  "key": "csp_xb_nmyy1",
-  "name": "农民影院1(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/农民影视.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
-  
-   {
-  "key": "csp_xb_2BT",
-  "name": "两个BT(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/两个BT.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
-{
-  "key": "csp_xb_23yy",
-  "name": "23影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/23w_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},  
-  
-  
-           {
-      "key": "mv",
-      "name": "妹",
-      "type": 4,
-      "api": "http://120.53.102.254/dsp/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
- {
-  "key": "csp_xb_nkyy",
-  "name": "耐看影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/naikan_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},  
-  
-  {
-  "key": "csp_xb_xqmyy",
-  "name": "小强迷影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xqmys_xyqh_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
-  {
-  "key": "csp_xb_auteyy",
-  "name": "AUETE影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/auete_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-  
-  
-  {
-  "key": "csp_xb_7xsyy",
-  "name": "7小时影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/7xs_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-  {
-  "key": "csp_xb_f2daiyy",
-  "name": "富二代影院(XYQ)",
-  "type": 3,
-  "api": "csp_XYQBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/f2dys_xyq_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-  
-
-  
- {
-  "key": "csp_xb_abyy",
-  "name": "AB影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/abys_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
-  
-
- 
-  
-
-  {
-  "key": "csp_xb_99yy",
-  "name": "嗨影视(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/hys_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
- 
-   {
-  "key": "csp_xb_lyys",
-  "name": "凌云影院(XYQh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/lyys_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
-  
-  {
-  "key": "csp_xb_乐猪",
-  "name": "乐猪影院(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "http://www.lezhutv.com/type/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-{
-  "key": "csp_xb_vidhub",
-  "name": "vidhub影院(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://vidhub.top/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
- 
- {
-  "key": "csp_xb_imax",
-  "name": "IMAXW影院(xBPQ)",
-  "type": 3,
-  "api": "csp_xBPQ",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "{\"分类\":\"电影$dianying#连续剧$lianxuju#综艺$zongyi#动漫$dongman\",\"分类url\":\"https://imaxw.com/vodshow/{cateId}--------{catePg}---.html\"}","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
- 
-  {
-  "key": "csp_xb_jpys",
-  "name": "极品影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.jpys.me/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-  
-  
- {"key": "csp_xb_wmkkys",
-  "name": "完美看看影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.wanmeikk.film/category/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-  
-  {
-  "key": "csp_xb_f7ys",
-  "name": "F7影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.f7hkj.cc/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
- 
- {"key": "csp_xBPQ_F7","name": "️F7(XBPQ)","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "{\"副标题\":\"class=\\\"module-item-note\\\">&&</div>\",\"线路数组\": \"class=\\\"module-tab-item tab-item&&</div>\",\"线路标题\": \"<span>&&</span>\",\"分类\":\"电影$2#剧集$1#综艺$4#动漫$3#学习$23\",\"分类url\":\"https://www.f7hkj.cc/vodshow/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}/\",\"筛选\":\"1\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
-
-  {
-  "key": "csp_xb_chok8",
-  "name": "CHOK8影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.chok8.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-  
-  
-    {
-  "key": "csp_xb_zbkys",
-  "name": "真不卡影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.zbkk.net/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-        {
-  "key": "csp_xb_555ys",
-  "name": "555影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.555dy1.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-          {
-  "key": "csp_xb_nullys",
-  "name": "null影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.nulltm.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-  
-
-  
-  {
-  "key": "csp_xb_pkys",
-  "name": "片库影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.btnull.re/{cateId}/------{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-  
-  {
-  "key": "csp_xb_ftys",
-  "name": "饭团影视(xyqh)",
-  "type": 3,
-  "api": "csp_XYQHiker",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fantuan_xyqhz_.json",
-  "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-
-    {
-  "key": "csp_xb_pbys",
-  "name": "片吧影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.pbpb.tv/class/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-      {
-  "key": "csp_xb_dyys",
-  "name": "段友影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://shangjihuoke.com/index.php/vod/show/id/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-        {
-  "key": "csp_xb_135kanys",
-  "name": "135kan影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "http://www.135kan.com/type/{cateId}-{catePg}/","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-          {
-  "key": "csp_xb_4kkanys",
-  "name": "4k看影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://4kan.me/vodshow/{cateId}--------{catePg}---/","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-      {
-  "key": "csp_xb_ddgys",
-  "name": "达达龟影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.dadagui.me/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-        {
-  "key": "csp_xb_543ys",
-  "name": "543影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "  http://543mv.com/vodshow/{cateId}--------{catePg}---/","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-         {
-  "key": "csp_xb_tv9ys",
-  "name": "tv9影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "http://m2.tv9box.com/list-select-id-{cateId}-type--area--year--star--state--order-addtime-p-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-
-        {
-  "key": "csp_xb_lxys",
-  "name": "冷曦影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.lenxitv.cc/t/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-
-        {
-  "key": "csp_xb_mztys",
-  "name": "莫扎兔影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.mozhatu.com/index.php/vod/show/id/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-         {
-  "key": "csp_xb_ummys",
-  "name": "UM影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.umkan.com/index.php/vod/show/id/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-           {
-  "key": "csp_xb_kpkrys",
-  "name": "看片狂人影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.kpkuang.de/vodshow/{cateId}--------{catePg}-----.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-          {
-  "key": "csp_xb_fqys",
-  "name": "番茄影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://tjomet.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-          {
-  "key": "csp_xb_bwys",
-  "name": "被窝影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "http://wyt11.top/index.php/vod/type/id/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-          {
-  "key": "csp_xb_lgys",
-  "name": "蓝光影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.lgyy.cc/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-          {
-  "key": "csp_xb_nikeys",
-  "name": "Nike影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.ajeee.com/show/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-            {
-  "key": "csp_xb_vofixys",
-  "name": "vofix影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.voflix.com/show/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-
-
-    {
-  "key": "csp_xb_mozhatu",
-  "name": "莫扎兔(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.mozhatu.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-    {
-  "key": "csp_xb_lgyy",
-  "name": "蓝光影院(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.lgyy.cc/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-    
-    {
-  "key": "csp_xb_dmxq6",
-  "name": "大米星球(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://dmxq6.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-    {
-  "key": "csp_xb_voflix",
-  "name": "voflix HD影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.voflix.com/show/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-    {
-  "key": "csp_xb_jpys",
-  "name": "极品影视网(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.jpys.me/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-    {
-  "key": "csp_xb_guapitv",
-  "name": "瓜皮TV(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://guapitv.xyz/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-    {
-  "key": "csp_xb_cokemv",
-  "name": "Cokemv(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://cokemv.co/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-   {
-  "key": "csp_xb_libvio",
-  "name": "Libvio(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.libvio.com/show/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-    {
-  "key": "csp_xb_yanetflix",
-  "name": "鸭奈飞电影(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "http://yanetflix.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-
-    {
-  "key": "csp_xb_jubaibai",
-  "name": "剧白白(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.jubaibai.cc/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-
-
-
-
-
-    {
-  "key": "csp_xb_8kvod",
-  "name": "8K影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "http://vip.8kvod.com:888/t/{cateId}-{catePg}/","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-
-
-
-
-
-
-
-    {
-  "key": "csp_xb_939394",
-  "name": "粤正影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://939394.xyz/vodlist/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-    {
-  "key": "csp_xb_gfysys",
-  "name": "干饭影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "http://www.gfysys.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
-
-
-
-
-
-{"key": "csp_XYQBiu_10010","name":"10010(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/10010xyq.json","jar":"https://gitcode.net/weixin_44448955/tvmovie/-/raw/master/tvbox/jar/XYQBiu.jar"},
-{"key": "csp_XYQHiker","name":"看片狂人(XYQh)","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/kpkr_xyqh_.txt","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mix.jar"},
-{"key": "csp_XYQHiker","name":"98km(XYQh)","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/98km_xyqh_.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mix.jar"},
-
-
-{"key": "csp_XYQBiu_juhiang","name":"剧荒(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/juhuang(xyq).json","jar":"https://gitcode.net/weixin_44448955/tvmovie/-/raw/master/tvbox/jar/XYQBiu.jar"},
-{"key": "csp_XYQBiu_yunq","name":"99e(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/yunq.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_cctv6","name":"cctv6(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/cctv6.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_newm","name":"NEWm(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/新媒体.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_23w","name":"23w(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/23w.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_555","name":"555(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/555(xyq).json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_wn","name":"万能影视(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/wnys(xyq).json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_linyun","name":"凌云(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/lyys(xyq).json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
-
-{"key":"csp_Alist1","name":"Alist_一只鱼(SP)","type": 3,"api":"csp_Alist","searchable": 0,"quickSearch": 0,"filterable": 0,"ext": "https://alist.youte.ml","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/alist.jar"}, {"key":"csp_Alist2","name":"Alist_嗨翻(SP)","type": 3,"api":"csp_Alist","searchable": 0,"quickSearch": 0,"filterable": 0,"ext": "https://pan.hikerfans.com","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/alist.jar"}, {"key":"csp_Alist3","name":"Alist_晴园(SP)","type": 3,"api":"csp_Alist","searchable": 0,"quickSearch": 0,"filterable": 0,"ext": "https://alist.52qy.repl.co","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/alist.jar"}, {"key":"csp_Alist4","name":"Alist_Adult.Drive(SP)","type": 3,"api":"csp_Alist","searchable": 0,"quickSearch": 0,"filterable": 0,"ext": "https://drive.9t.ee","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/alist.jar"}, {"key":"csp_Alist5","name":"Alist_七米蓝(SP)","type": 3,"api":"csp_Alist","searchable": 0,"quickSearch": 0,"filterable": 0,"ext": "https://al.chirmyram.com","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/alist.jar"}, {"key":"csp_Alist6","name":"Alist_神族九帝(SP)","type": 3,"api":"csp_Alist","searchable": 0,"quickSearch": 0,"filterable": 0,"ext": "https://alist.shenzjd.com","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/alist.jar"},
-{"key": "csp_XYQBiu_dyxs","name":"电影先生(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/dyxs(xyq).json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_wpxq","name":"歪片星球(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/歪片星球(xyq).json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_mhys","name":"麻花视频(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/麻花视频(xyq).json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_fxys","name":"短视频(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/duan.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key": "csp_XYQBiu_剧荒","name":"剧荒(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/剧荒xyq.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-{"key":"csp_xpath_小强迷","name":"小强迷🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xqm.json"},
-{"key":"csp_xpath_蚂蚁","name":"蚂蚁🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mayi.json"},
-{"key":"csp_xpath_剧荒","name":"剧荒🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/juhuang.json"},
-{"key":"csp_xpath_托乌","name":"托乌🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/tuowu.json"},
-{"key":"csp_xpath_快猫","name":"快猫🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/kuaimao.json"},
-{"key":"csp_xpath_gr4k","name":"gr4k🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/gr4k.json"},
-{"key":"csp_xpath_gr4k","name":"555dy🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/555dy.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/custom_spider.jar"},
-{"key":"csp_xpath_dyn","name":"dyn🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/dyn.json"},
-{"key":"csp_xpath_饭团hd","name":"饭团hd🏀","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/饭团hd.json"},
-{"key":"csp_xpath_77","name":"77hd🏀","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/77.json"},
-{"key":"csp_xpath_磁力搜索","name":"磁力搜索","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/cili.json"},
-  {"key":"csp_XBiubiubiubiu_小强迷影视","name":"小强迷影视","type":3,"api":"csp_XLBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://gitcode.net/weixin_44448955/tvmovie/-/raw/master/tvbox/小强迷xb.json","jar":"https://gitcode.net/weixin_44448955/tvmovie/-/raw/master/tvbox/jar/custom_spider.jar"},  
-   {"key":"csp_XBiubiubiubiu_555dy影视","name":"555dyxb","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/555dyxb.json"},  
-   //,"jar":"https://gitcode.net/weixin_44448955/tvmovie/-/raw/master/tvbox/jar/xbf.jar"
-      {"key":"csp_XBiubiubiubiu_555","name":"555","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://gitea.com/yuegu09/wailian/raw/branch/main/XBF/555.json","jar":"https://gitcode.net/weixin_44448955/tvmovie/-/raw/master/tvbox/jar/xbf.jar"},  
-      {"key":"csp_XBiubiubiubiu_大米星球影视","name":"大米星球xb","type":3,"api":"csp_XLBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/大米星球xb.json","jar":"https://gitcode.net/weixin_44448955/tvmovie/-/raw/master/tvbox/jar/custom_spider.jar"},  
-
-   {"key":"csp_XBiubiubiubiu_80s影视","name":"80scl","type":3,"api":"csp_QXBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/80s.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/qxbiubiu.jar"},  
-       {"key":"小苹果","name":"🐞小苹果","type":3,"api":"csp_LiteApple","searchable":1,"quickSearch":1,"filterable":1},{"key":"csp_xpath_网络搜集库qiumi","name":"球迷🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/516-qiumi.js"},{"key":"csp_xpath_A33","name":"MTV🎸","type":3,"api":"csp_XPath","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mtv"},{"key":"csp_CZSPP","name":"厂长🐞","type":3,"api":"csp_CZSPP","searchable":1,"quickSearch":1,"filterable":1},{"key":"csp_DiDuan","name":"低端🐞","type":3,"api":"csp_DiDuan","searchable":1,"quickSearch":1,"filterable":1},
-    {"key":"csp_Enlienli","name":"嗯里🐞","type":3,"api":"csp_Enlienli","searchable":1,"quickSearch":1,"filterable":1},{"key":"csp_Cokemv","name":"Coke🐞","type":3,"api":"csp_Cokemv","searchable":1,"quickSearch":1,"filterable":1},{"key":"csp_XBiubiubiubiu_蓝光影视","name":"蓝光🐞","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/b02-lgys.js"},{"key":"csp_GitCafe","name":"纸条📃","type":3,"api":"csp_GitCafe","searchable":1,"quickSearch":1,"filterable":0},
-   {"key":"csp_AliPanSou","name":"猫搜😻","type":3,"api":"csp_AliPanSou","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"push_agent","name":"推送","type":3,"api":"csp_PushAgent","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"csp_BBB","name":"bili","type":3,"api":"csp_BBB","searchable":1,"quickSearch":0,"filterable":1},
-{"key":"csp_DY1990","name":"990🐞","type":3,"api":"csp_DY1990","searchable":1,"quickSearch":1,"filterable":0},{"key":"csp_appysv2_9e国语","name":"9E国语","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":1,"filterable":1,"ext":"http://vod.9e03.com/lvdou_api.php/v1.vod"},{"key":"csp_xpath_网络搜集库112","name":"工人","type":3,"api":"csp_XPathMacFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/519-gongreng.json"},{"key":"csp_xpath_网络搜集源03","name":"在线","type":3,"api":"csp_XPathMacFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zxzj.js"},{"key":"csp_biubiu_蓝光影院","name":"蓝光2(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/a00-lgyy.js"},{"key":"csp_biubiu_厂长资源-蓝光","name":"厂长1🏀","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/a01-czzy.js"},{"key":"csp_XBiubiubiubiu_libvio","name":"libvio(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/b14-libvio.js"},{"key":"csp_XBiubiubiubiu_cokemv","name":"Coke(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/b00-coke.js"},
-{"key":"csp_XBiubiubiubiu_AB影视","name":"AB影视","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/AB影视.json"},
-//{"key":"csp_XBiubiubiubiu_剧荒影视","name":"剧荒影视","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/剧荒.json"},
-{"key":"csp_XBiubiubiubiu_黑洞影视","name":"黑洞影视","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/黑洞.txt"},
-{"key":"csp_XBiubiubiubiu_真卡影视","name":"真卡影视","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/真卡.txt"},
-{"key":"csp_XBiubiubiubiu_七年影视","name":"七年影视","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/七年影视.txt"},
-{"key":"csp_XBiubiubiubiu_夜空影视","name":"夜空影视","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/夜空.json"},
-{"key":"csp_XBiubiubiubiu_pk影视","name":"pk影视","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/pk.json"},
-{"key":"csp_XBiubiubiubiu_vofix影视","name":"vofix影视","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/vofix.json"},
-{"key":"csp_XBiubiubiubiu_稀饭","name":"稀饭影视","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/稀饭.json"},
-{"key":"csp_XBiubiubiubiu_橘子tv","name":"🍊橘子tv","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/juzi.js"},
-{"key":"csp_XBiubiubiubiu_lezhu","name":"乐猪(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/b13-lezhu.js"},
-//{"key":"csp_XBiubiubiubiu_555","name":"555(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/b01-555dy.js"},
-{"key":"csp_XBiubiubiubiu_ruix","name":"锐行(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/锐行.json"},
-{"key":"csp_XBiubiubiubiu_87dy","name":"87dy(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/87电影.json"},
-{"key":"csp_XBiubiubiubiu_zxzj","name":"在线(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/在线之家.json"},{"key":"csp_XBiubiubiubiu_ysgc","name":"工厂(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/b03-ysgc.js"},{"key":"csp_XBiubiubiubiu_city","name":"city(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/city.js"},
-{"key":"csp_XBiubiubiubiu_jpys","name":"极品影视(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/极品影视.txt"},{"key":"csp_XBiubiubiubiu_csiren","name":"私人","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/私人.json"},{"key":"csp_XBiubiubiubiu_手机看剧","name":"手机(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/b06-sjkj.js"},{"key":"csp_XBiubiubiubiu_口袋影院","name":"口袋(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/b07-kdys.js"},{"key":"csp_biubiu_特狗影视","name":"特狗(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/a10-tgys.js"},{"key":"csp_biubiu_瓜皮TV","name":"瓜皮(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/a11-gptv.js"},{"key":"csp_biubiu_真的卡影院","name":"真卡(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/a12-zk.js"},{"key":"csp_biubiu_大米星球","name":"大米(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/a13-dmxq.js"},{"key":"csp_biubiu_晗剧","name":"晗剧(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/a14-hanju.js"},{"key":"csp_biubiu_看片狂人","name":"狂人(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/a15-kpkr.js"},{"key":"csp_XBiubiubiubiu_4kan电影网","name":"4k网(B)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/b11-4Kkan.js"},{"key":"csp_XPath_猫群首发","name":"哔嘀","type":3,"api":"csp_XPathMacFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/519-bidi.json"},{"key":"csp_xpath_网络搜集库29","name":"乌龟","type":3,"api":"csp_XPathMac","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/519-dadagui.json"},{"key":"csp_XPathMacFilter_网络搜集源02","name":"极品","type":3,"api":"csp_XPathMacFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/jp"},{"key":"csp_xpath_网络搜集库naikan","name":"耐看","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/516-naikan.js"},{"key":"csp_appysv2_爱酷影视","name":"酷酷","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.zhanlangbu.com/ruifenglb_api.php/v1.vod"},{"key":"csp_xpath_hhys","name":"火火","type":3,"api":"csp_XPathMacFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/604-huohuo.js"},{"key":"csp_xpath_网络搜集库kankan","name":"看看","type":3,"api":"csp_XPathMacFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/516-wmkankan.js"},{"key":"csp_AppYsV2_美剧范","name":"美剧","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":1,"filterable":1,"ext":"http://ttzmz.net/api.php/v1.vod"},{"key":"csp_xpath_网络搜集库heidong","name":"黑洞","type":3,"api":"csp_XPathMac","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/505-heidong.js"},{"key":"csp_xpath_网络搜集源A13","name":"六度","type":3,"api":"csp_XPathMacFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/6dutv.js"},{"key":"csp_xpath_网络搜集库108","name":"小熊","type":3,"api":"csp_XPath","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/519-xiaoxiong.json"},{"key":"csp_xpath_网络搜集库62","name":"嘀哩","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/519-dili.json"},{"key":"csp_xpath_网络搜集库80","name":"兔子","type":3,"api":"csp_XPath","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/519-tuzi.json"},{"key":"csp_xpath_网络搜集库03","name":"影吧","type":3,"api":"csp_XPath","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/519-yingba.json"},{"key":"csp_XPathMacFilter_网络搜集源01-js","name":"VOD","type":3,"api":"csp_XPathMacFilter","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/519-vod.json"},{"key":"csp_xpath_网络搜集库72","name":"钉钉","type":3,"api":"csp_XPath","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/519-dingzidy.json"},{"key":"csp_xpath_网络搜集源21","name":"樱花","type":3,"api":"csp_XPath","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/605-yhdm.js"},{"key":"csp_xpath_A32","name":"动漫","type":3,"api":"csp_XPath","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/604-dmd.js"},{"key":"csp_xpath_网络搜集源22","name":"巴士","type":3,"api":"csp_XPath","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/604-dm84.js"},{"key":"csp_xpath_网络搜集源23","name":"AGE","type":3,"api":"csp_XPath","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/604-age.js"},{"key":"csp_biubiu_风车动漫","name":"风车","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/d05-fcdm.js"},{"key":"csp_biubiu_森屋新番","name":"森屋","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/d02-swxf.js"},{"key":"csp_biubiu_维奇动漫","name":"维奇","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/d03-wqdm.js"},
 
 {"key":"*芒果资源","name":"芒果资源","type":1,"api":"https://mgzyz1.com/api.php/provide/vod/","searchable":0,"quickSearch":0},
 
