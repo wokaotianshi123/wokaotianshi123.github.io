@@ -139,25 +139,7 @@
 
 {"key": "XBPQ_z2w","name": "2w影院","type": 3,"api": "csp_XBPQ",  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{ "主演":"class=\"module-info-item-content\"&&</div>", "简介":"<p&&</p", "分类数组":"class=\"swiper-slide&&</li>","分类标题": ">&&</span","分类ID":"vodtype/&&.html", "分类url":"https://www.2wyy.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html;;m"}},	
 
-    {
-      "key": "csp_XBPQ_JOJO",
-      "name": "JOJO",
-      "type": 3,
-      "api": "csp_XBPQ",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": {
-"二次截取": "class=\"content-body\"&&class=\"content-lift\"",
-"数组": "<a&&</a>",
-"图片": "src=\"&&\"",
-"标题": "class=\"card-title\">&&</p>",
-"副标题": "class=\"item-speed\">&&</p>",
-"链接": "href=\"&&\"",
-"播放数组": "class=\"plyr-sidebar-list&&</div>",
-"嗅探词":"cn-beijing-data.aliyundrive.net",
-"搜索url": "https://app.syrme.top/video/search?q={wd}",
-"分类":"电影$电影#美剧$美剧#日剧$日剧#韩剧$韩剧#动漫$动漫#纪录$纪录","分类url":"https://app.syrme.top/video/type/tag?type={cateId}&tag=&page={catePg}&size=18","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XiaoYiChaHang.jar"}},
+    //{"key": "csp_XBPQ_JOJO","name": "JOJO","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": {"二次截取": "class=\"content-body\"&&class=\"content-lift\"","数组": "<a&&</a>","图片": "src=\"&&\"","标题": "class=\"card-title\">&&</p>","副标题": "class=\"item-speed\">&&</p>","链接": "href=\"&&\"","播放数组": "class=\"plyr-sidebar-list&&</div>","嗅探词":"cn-beijing-data.aliyundrive.net","搜索url": "https://app.syrme.top/video/search?q={wd}","分类":"电影$电影#美剧$美剧#日剧$日剧#韩剧$韩剧#动漫$动漫#纪录$纪录","分类url":"https://app.syrme.top/video/type/tag?type={cateId}&tag=&page={catePg}&size=18","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XiaoYiChaHang.jar"}},
 
 
 	
@@ -241,7 +223,7 @@
     "链接": "href=\"&&\"",
     "搜索url":"https://shdy3.com/search.php?searchword={wd}",
    "分类":"电影$1#喜剧$6#爱情$7#恐怖$8#动作$9#科幻$10#战争$11#犯罪$12#动画$13#奇幻$14#剧情$15#冒险$16#悬疑$17#惊悚$18#其它$19#电视剧$2#大陆$20#TVB$21#韩剧$22#美剧$23#日剧$24#英剧$25#台剧$26#其它$27",
-    "分类url":"https://shdy3.com/list/{cateId}-{catePg}.html;;y"}},		
+    "分类url":"https://saohuo.vip/list/{cateId}-{catePg}.html;;y"}},		
 
 
 
