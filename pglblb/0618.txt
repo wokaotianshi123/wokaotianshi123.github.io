@@ -374,14 +374,7 @@
  
   
   
- {"key": "csp_xb_wmkkys",
-  "name": "完美看看影视(R)",
-  "type": 3,
-  "api": "csp_XBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://www.wanmeikk.film/category/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+ //{"key": "csp_xb_wmkkys","name": "完美看看影视(R)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 1,"filterable": 0,"ext":"https://www.wanmeikk.film/category/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
   
 
  
