@@ -13,27 +13,7 @@
             "type": 3,
             "api": "csp_XBPQ",
             "ext": {"分类url":"https://www.kanys2.com/filmshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"  }},    
- {
-      "key": "csp_XBPQ_qiela",
-      "name": "qiela发布页qie.la",
-      "type": 3,
-      "api": "csp_XBPQ",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": {
- 
-  "数组": "<li class=\"col-6&&</li",
-  "图片": "src=\"&&\"",
-  "标题": "alt=\"&&\"",
-  "链接": "href=\"&&\"",
-  "直接播放":"1",
-  "分类数组": "<li id=\"navbar-category-&&</li>",
-"分类标题": ">&&</a",
-"分类ID": "/frim/index&&.html",
-        "分类url": "https://qie99.xyz/frim/index{cateId}-{catePg}.html"
-      }
-    },
+
 
  {
   "key": "csp_wangju",
@@ -254,7 +234,27 @@
 
 
 {"key": "csp_biubiu_短视频1","name": "️📱短视频","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "分类url:http://www.sharenice.net/{cateId}?page={catePg},分类:抖音,直接播放:1,嗅探词:play/?#?item#qianpailive#.flv#mp4","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
-
+ {
+      "key": "csp_XBPQ_qiela",
+      "name": "qiela发布页qie.la",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+ 
+  "数组": "<li class=\"col-6&&</li",
+  "图片": "src=\"&&\"",
+  "标题": "alt=\"&&\"",
+  "链接": "href=\"&&\"",
+  "直接播放":"1",
+  "分类数组": "<li id=\"navbar-category-&&</li>",
+"分类标题": ">&&</a",
+"分类ID": "/frim/index&&.html",
+        "分类url": "https://qie99.xyz/frim/index{cateId}-{catePg}.html"
+      }
+    },
 {
 "key": "csp_XBPQ_wy剧", "name": "wy影院https://91xvip.tv","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": {
         "请求头":"手机",
