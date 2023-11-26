@@ -13,7 +13,16 @@
             "type": 3,
             "api": "csp_XBPQ",
             "ext": {"分类url":"https://www.kanys2.com/filmshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"  }},    
-
+	 {    "key": "988电影",
+            "name": "💟988电影",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+ 
+"播放数组":"class=\"module-play-list&&</div>",
+"分类url":"https://v.97988.cn/vshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html;;m"   
+    }
+    },    
 
  {
   "key": "csp_wangju",
