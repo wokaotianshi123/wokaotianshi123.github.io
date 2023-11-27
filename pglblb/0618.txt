@@ -23,7 +23,16 @@
 "分类url":"https://v.97988.cn/vshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html;;m"   
     }
     },    
-
+    	 {    "key": "影视大全j",
+            "name": "💟影视大全剧院",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+ 
+"分类": "电影$1#电视剧$2#综艺$3#动漫$4",
+"分类url":"   http://www.wztianyu.com/show_/id/{cateId}/page/{catePg}.html" 
+    }
+    },    
  {
   "key": "csp_wangju",
   "name": "网剧(XYQh)",
