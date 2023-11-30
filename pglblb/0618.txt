@@ -12,7 +12,7 @@
             "name": "💟大全剧院",
             "type": 3,
             "api": "csp_XBPQ",
-            "ext": {"分类url":"https://www.kanys2.com/filmshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"  }},    
+            "ext": {"分类url":"https://www.kanys3.com/filmshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"  }},    
 	 {    "key": "988电影",
             "name": "💟988电影",
             "type": 3,
