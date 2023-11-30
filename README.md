@@ -2,7 +2,7 @@
 #中秋桃子top10
 https://wokaotianshi123.github.io/zhongqiutop10.html
 
-https://wokaotianshi123.github.io/jx.html?=
+https://wokaotianshi123.github.io/?url=
 
 zyplayer接口
 
