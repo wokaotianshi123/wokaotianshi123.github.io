@@ -12,7 +12,17 @@
             "name": "💟大全剧院",
             "type": 3,
             "api": "csp_XBPQ",
-            "ext": {"分类url":"https://www.kanys3.com/filmshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"  }},    
+            "ext": {"分类url":"https://www.kanys3.com/filmshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"  }}, 
+	 {    "key": "88j",
+            "name": "💟88剧院",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+ 
+"分类": "电影$1#电视剧$2#综艺$3#动漫$4",
+"分类url":"   http://www.88ysyy.com/frim/index{ccateId-{catePg}.html" 
+    }
+    },       
 	 {    "key": "988电影",
             "name": "💟988电影",
             "type": 3,
