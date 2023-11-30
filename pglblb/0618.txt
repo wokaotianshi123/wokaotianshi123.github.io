@@ -20,7 +20,7 @@
             "ext": {
  "搜索url":"http://www.88ysyy.com/search.php;post;searchword={wd}",
 "分类": "电影$1#电视剧$2#综艺$3#动漫$4",
-"分类url":"   http://www.88ysyy.com/frim/index{ccateId-{catePg}.html" 
+"分类url":"   http://www.88ysyy.com/frim/index{cateId}-{catePg}.html" 
     }
     },       
 	 {    "key": "988电影",
