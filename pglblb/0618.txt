@@ -602,7 +602,7 @@
 
 {"key": "hav ","name": "黄艾薇 ","type": 0,"api": "https://www.pgxdy.com/api/xml.php ","searchable": 1,"changeable": 1},	
 {"key":"bt资源","name":"bt资源","type":0,"api":"http://bttcj.com/inc/sapi.php","searchable":0,"quickSearch":0},
-{"key":"*九一麻豆","name":"九一麻豆","type":1,"api":"https://91md.me/api.php/provide/vod/","searchable":0,"quickSearch":0},
+//{"key":"*九一麻豆","name":"九一麻豆","type":1,"api":"https://91md.me/api.php/provide/vod/","searchable":0,"quickSearch":0},
 
 {"key":"*美少女源","name":"美少女源","type":0,"api":"https://www.msnii.com/api/xml.php","searchable":0,"quickSearch":0},
 
@@ -659,7 +659,7 @@
 
 
 
-		{"key": "XBPQ_lab","name": "plab","type": 3,"api": "csp_XBPQ",
+		{"key": "XBPQ_lab","name": "avdict.com","type": 3,"api": "csp_XBPQ",
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{
  \"播放数组\":\"class=\\\"module-blocklist&&</div>\",
 	\"分类数组\":\"class=\\\"nav-menu-item&&</li>\",
@@ -670,7 +670,7 @@
 \"标题\": \"title=&&\\\"\",
 \"副标题\":\"空\",   
 \"直接播放\":\"1\",
-	\"分类url\":\"https://www.pornlab.fun/vod/show/id/{cateId}/page/{catePg}.html\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"}
+	\"分类url\":\"https://avdict.com/vod/show/id/{cateId}/page/{catePg}.html\"}"}
 	
 
 
