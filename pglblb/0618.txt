@@ -152,7 +152,7 @@
 
 
 
-{"key": "XBPQ_骚火","name": "骚火影院","type": 3,"api": "csp_XBPQ",  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{ 
+{"key": "XBPQ_骚火","name": "骚火影视https://shapp.us","type": 3,"api": "csp_XBPQ",  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{ 
     "二次截取": "<ul class=\"v_list&&</ul",
     "数组":"<li&&</li>",
     "图片": "data-original=\"&&\"",
@@ -161,7 +161,7 @@
     "链接": "href=\"&&\"",
     "搜索url":"https://saohuo.us/search.php?searchword={wd}",
    "分类":"电影$1#喜剧$6#爱情$7#恐怖$8#动作$9#科幻$10#战争$11#犯罪$12#动画$13#奇幻$14#剧情$15#冒险$16#悬疑$17#惊悚$18#其它$19#电视剧$2#大陆$20#TVB$21#韩剧$22#美剧$23#日剧$24#英剧$25#台剧$26#其它$27",
-    "分类url":"https://saohuo.vip/list/{cateId}-{catePg}.html;;y"}},		
+    "分类url":"https://saohuo.us/list/{cateId}-{catePg}.html;;y"}},		
 
 
 
