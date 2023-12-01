@@ -43,17 +43,7 @@
 "分类url":"   http://www.wztianyu.com/show_/id/{cateId}/page/{catePg}.html" 
     }
     },  
-    {
-      "key": "短劇網",
-      "name": "短劇網",
-      "type": 3,
-      "style": {
-        "type": "rect",
-        "ratio": 1.433
-      },
-      "api": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/lib/drpy2.min.js",
-      "ext": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/js/%E7%9F%AD%E5%89%A7%E7%BD%91.js"
-    },
+
  {
   "key": "csp_wangju",
   "name": "网剧(XYQh)",
@@ -169,7 +159,7 @@
     "标题": "alt=\"&&\"",
     "副标题": "class=\"v_note\">&&</div>",
     "链接": "href=\"&&\"",
-    "搜索url":"https://shdy3.com/search.php?searchword={wd}",
+    "搜索url":"https://saohuo.us/search.php?searchword={wd}",
    "分类":"电影$1#喜剧$6#爱情$7#恐怖$8#动作$9#科幻$10#战争$11#犯罪$12#动画$13#奇幻$14#剧情$15#冒险$16#悬疑$17#惊悚$18#其它$19#电视剧$2#大陆$20#TVB$21#韩剧$22#美剧$23#日剧$24#英剧$25#台剧$26#其它$27",
     "分类url":"https://saohuo.vip/list/{cateId}-{catePg}.html;;y"}},		
 
