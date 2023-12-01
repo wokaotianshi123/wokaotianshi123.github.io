@@ -42,7 +42,18 @@
 "分类": "电影$1#电视剧$2#综艺$3#动漫$4",
 "分类url":"   http://www.wztianyu.com/show_/id/{cateId}/page/{catePg}.html" 
     }
-    },    
+    },  
+    {
+      "key": "短劇網",
+      "name": "短劇網",
+      "type": 3,
+      "style": {
+        "type": "rect",
+        "ratio": 1.433
+      },
+      "api": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/lib/drpy2.min.js",
+      "ext": "https://raw.githubusercontent.com/gaotianliuyun/gao/master/js/%E7%9F%AD%E5%89%A7%E7%BD%91.js"
+    },
  {
   "key": "csp_wangju",
   "name": "网剧(XYQh)",
@@ -714,9 +725,20 @@
 ],
 //"lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=Y2xhbjovL3BnbGJsYi90di90djg4LnR4dA=="]}]}],
 "lives":[
-//{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=aHR0cHM6Ly9hZ2l0LmFpL1lvdXJzbWlsZTcvVFZCb3gvcmF3L2JyYW5jaC9tYXN0ZXIvbGl2ZS50eHQ="]}]},
+{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=aHR0cHM6Ly9hZ2l0LmFpL1lvdXJzbWlsZTcvVFZCb3gvcmF3L2JyYW5jaC9tYXN0ZXIvbGl2ZS50eHQ="]}]},
+{
+      "name": "小三Live",
+      "type": 0,
+      "boot": true,
+      "playerType": 1,
+      "url": "https://raw.githubusercontent.com/mengzehe/m3u/main/live.txt",
+      "ua": "okhttp/3.12.13",
+      "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
+      "logo": "https://epg.112114.xyz/logo/{name}.png"
+    },
 {"name":"YanG","type":0,"url":"https://fongmi.cachefly.net/YanG-1989/m3u/main/Adult.m3u"},
-{"name":"atsushi","type":0,"url":"https://fongmi.cachefly.net/atsushi444/iptv-epg/main/Adult.m3u"}],
+{"name":"atsushi","type":0,"url":"https://fongmi.cachefly.net/atsushi444/iptv-epg/main/Adult.m3u"}
+],
 
 "parses":[
 {"name":"聚合01","type":3,"url":"Demo"},
