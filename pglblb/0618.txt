@@ -736,8 +736,8 @@
       "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
       "logo": "https://epg.112114.xyz/logo/{name}.png"
     },
-{"name":"YanG","type":0,"url":"https://fongmi.cachefly.net/YanG-1989/m3u/main/Adult.m3u"},
-{"name":"atsushi","type":0,"url":"https://fongmi.cachefly.net/atsushi444/iptv-epg/main/Adult.m3u"}
+{"name":"YanG","type":0,"url":"https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Adult.m3u"},
+{"name":"atsushi","type":0,"url":"https://github.moeyy.xyz/https://raw.githubusercontent.com/atsushi444/iptv-epg/main/Adult.m3u"}
 ],
 
 "parses":[
@@ -751,9 +751,7 @@
 {"name":"解析072","type":1,"url":"http://103.42.31.123:5821/jx/?url="},
 {"name":"解析071","type":1,"url":"http://110.42.2.247:880/analysis/json/?uid=2334&my=fhloqstzDIKLMORTZ9&url="},
 {"name":"解析08","type":1,"url":"https://jisu.rongxingvr.top/api/?key=rCMmoKD0H0ShJ00u2f&url="},
-{"name":"解析09","type":0,"url":"https://jx.zui.cm/?url="},
-{"name":"解析11","type":0,"url":"https://jx.beiyan.cc:4433/?url="},
-{"name":"解析10","type":0,"url":"http://1.117.152.239:39000/?url="}],
+{"name":"解析09","type":0,"url":"https://jx.zui.cm/?url="}],
 "flags": ["youku","qq","iqiyi","qiyi","letv","sohu","tudou","pptv","mgtv","wasu","bilibili","duoduozy","renrenmi"],
 
 
