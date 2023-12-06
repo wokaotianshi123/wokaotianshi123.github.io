@@ -8,6 +8,54 @@
 	\"分类标题\": \">&&<\",
 	\"分类ID\": \"Category/&&K.html\",
 	\"分类url\":\"https://kanb.tv/Show/{cateId}K{area}K{by}K{class}KKKKK{catePg}KKK{year}.html\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+	 {    "key": "剧圈圈电影",
+            "name": "💟剧圈圈电影",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+"分类url":"https://www.jqqzx.cc/vodshow/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html;;m"   
+    }
+    },
+	 {    "key": "看吧电影",
+            "name": "💟看吧电影",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+            "线路二次截取": "<ul class=\"nav&&</ul",
+            "线路数组": "<li&&</li",
+            "线路标题": ">&&</a >",
+"分类url":"http://www.kan8.tv/films/{cateId}_{catePg}.html;;m"   
+    }
+    },
+    	 {    "key": "libvio",
+            "name": "💟libvio https://www.libvio.app",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+"分类url":"https://www.libvio.pro/show/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html;;m"   
+    }
+    },  
+        	 {    "key": "freeok",
+            "name": "💟freeok https://www.freeok.pro",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+"分类url":"https://www.freeok.vip/vod-show/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html;;m"  
+    }
+    },      
+   {"key":"66s6","name":"66s6","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"分类url":"https://www.66s6.cc/{cateId}/index_{catePg}.html[firstPage=https://www.66s6.cc/{cateId}/index.html]",
+"分类":"动作片$dongzuopian#爱情片$aiqingpian#科幻片$kehuanpian#恐怖片$kongbupian#战争片$zhanzhengpian#喜剧片$xijupian#纪录片$jilupian#剧情片$juqingpian#国产剧$dianshiju/guoju#日韩剧$dianshiju/rihanju#欧美剧$dianshiju/oumeiju"
+}},
+{
+"key":"csp_XBPQ_悠悠之家",
+"name":"️悠云影视 XBPQ",
+"type":3,
+"api":"csp_XBPQ",
+"searchable":1,
+"quickSearch":1,
+"filterable":1,
+"ext":{
+	"分类url":"https://yoyys.com/vodshow/{cateId}--------{catePg}---.html"}},
 	 {    "key": "大全",
             "name": "💟大全剧院",
             "type": 3,
@@ -741,6 +789,7 @@
 {"name":"解析072","type":1,"url":"http://103.42.31.123:5821/jx/?url="},
 {"name":"解析071","type":1,"url":"http://110.42.2.247:880/analysis/json/?uid=2334&my=fhloqstzDIKLMORTZ9&url="},
 {"name":"解析08","type":1,"url":"https://jisu.rongxingvr.top/api/?key=rCMmoKD0H0ShJ00u2f&url="},
+{"name":"悠云","type":0,"url":"https://yoyys.com/fqbfq1/?url="},
 {"name":"解析09","type":0,"url":"https://jx.zui.cm/?url="}],
 "flags": ["youku","qq","iqiyi","qiyi","letv","sohu","tudou","pptv","mgtv","wasu","bilibili","duoduozy","renrenmi"],
 
