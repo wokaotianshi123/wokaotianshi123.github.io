@@ -23,7 +23,7 @@
             "ext": {
             "线路二次截取": "<ul class=\"nav&&</ul",
             "线路数组": "<li&&</li",
-            "线路标题": ">&&</a >",
+            "线路标题": ">&&</a",
 "分类url":"http://www.kan8.tv/films/{cateId}_{catePg}.html;;m"   
     }
     },
