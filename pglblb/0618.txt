@@ -1,13 +1,7 @@
 {"sites":
-[//{"key":"csp_77","name":"七七🏀","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},{"key":"csp_xpath_网络搜集库huaya","name":"虎牙🎤","type":3,"api":"csp_XPath","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/huya.js"},
+[//{"key":"csp_xpath_网络搜集库huaya","name":"虎牙🎤","type":3,"api":"csp_XPath","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/huya.js"},
 //{"key": "XBPQ_i4k","name": "I4K","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{ \"简介\":\"class=\\\"module-info-items\\\"&&</div>\",\"分类url\":\"https://www.i4k.cc/index.php/show/{cateId}/area/{area}/by/{by}/class/{class}/page/{catePg}/year/{year}.html\"}"},
-   {"key": "XBPQ_看b站","name": "看️b站","type": 3,"api": "csp_XBPQ",
-  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{
-  \"播放数组\":\"hl-plays-list\\\">&&</ul>\",
-	\"分类数组\":\"class=\\\"hl-nav-item hl-slide-swiper\\\">&&</li>\",
-	\"分类标题\": \">&&<\",
-	\"分类ID\": \"Category/&&K.html\",
-	\"分类url\":\"https://kanb.tv/Show/{cateId}K{area}K{by}K{class}KKKKK{catePg}KKK{year}.html\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+  {"key":"csp_77","name":"七七🏀","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},
 	 {    "key": "剧圈圈电影",
             "name": "💟剧圈圈电影",
             "type": 3,
@@ -56,7 +50,14 @@
 "filterable":1,
 "ext":{
 	"分类url":"https://yoyys.com/vodshow/{cateId}--------{catePg}---.html"}},
-	 {    "key": "大全",
+	 {"key": "XBPQ_看b站","name": "看️b站","type": 3,"api": "csp_XBPQ",
+  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{
+  \"播放数组\":\"hl-plays-list\\\">&&</ul>\",
+	\"分类数组\":\"class=\\\"hl-nav-item hl-slide-swiper\\\">&&</li>\",
+	\"分类标题\": \">&&<\",
+	\"分类ID\": \"Category/&&K.html\",
+	\"分类url\":\"https://kanb.tv/Show/{cateId}K{area}K{by}K{class}KKKKK{catePg}KKK{year}.html\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+{    "key": "大全",
             "name": "💟大全剧院",
             "type": 3,
             "api": "csp_XBPQ",
