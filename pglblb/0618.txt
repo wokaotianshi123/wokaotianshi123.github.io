@@ -42,6 +42,14 @@
 "分类url":"https://www.66s6.cc/{cateId}/index_{catePg}.html[firstPage=https://www.66s6.cc/{cateId}/index.html]",
 "分类":"动作片$dongzuopian#爱情片$aiqingpian#科幻片$kehuanpian#恐怖片$kongbupian#战争片$zhanzhengpian#喜剧片$xijupian#纪录片$jilupian#剧情片$juqingpian#国产剧$dianshiju/guoju#日韩剧$dianshiju/rihanju#欧美剧$dianshiju/oumeiju"
 }},
+	 {    "key": "puer电影",
+            "name": "💟puer电影",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+"分类url":"http://www.puer720.com/spu/{cateId}/area/{area}/class/{class}/page/{catePg}/year/{year}.html;;m"   
+    }
+    },
 {
 "key":"csp_XBPQ_悠悠之家",
 "name":"️悠云影视 XBPQ",
