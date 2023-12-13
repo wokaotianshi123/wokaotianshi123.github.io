@@ -939,7 +939,7 @@
 
 	{"key": "XBPQ_1111","name": "1111","type": 3,"api": "csp_XBPQ",
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{  
-
+ "嗅探词": ".mp4#.m3u8",
  "播放数组":"<script type=&&</script",
            "播放列表":"var player_data={&&}",
        "播放链接":"Base64(\"url\":\"&&\")",
