@@ -965,6 +965,8 @@
       "ext": { 
       "分类数组":"class=\"hl-menus-item&&</li>","分类标题": ">&&</span","分类ID":"/lmc/&&/\"", 
       "直接播放":"1",
+ "跳转播放链接":"\"url\"*\"&&\"",
+"嗅探词": ".mp4#.m3u8",
         "分类url": "https://fghhj.lameitv3.com/lmc/{cateId}-{catePg}/;;m"
       }
     },  
