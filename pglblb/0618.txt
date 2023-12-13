@@ -924,8 +924,10 @@
             "type": 3,
             "api": "csp_XBPQ",
             "ext": {
-            "直接播放":"1",
-            "跳转播放链接":"\"url\"*\"&&\"",
+           "播放数组":"<script type=&&</script",
+           "播放列表":"var player_aaaa={&&}",
+       "播放链接":"\"url\":\"&&\"",
+       "播放标题":"立即播放",
             //"分类二次截取":"class=\"stui-header__menu&&</ul",
    "分类数组": "<li&&</li",
 "分类标题": "</span>&&</a",
@@ -954,7 +956,7 @@
 "链接":"href=\"&&\"[替换:detail>>play#.html>>/sid/1/nid/1.html]", 
  "嗅探词": ".mp4#.m3u8",
 "分类url":"https://www.sjhsp1.buzz/index.php/vod/type/id/{cateId}/page/{catePg}.html"}},
- {
+        {
       "key": "csp_XBPQ_lamei",
       "name": "🏄‍♂丨辣妹lameitv.github.io",
       "type": 3,
@@ -964,12 +966,13 @@
       "filterable": 1,
       "ext": { 
       "分类数组":"class=\"hl-menus-item&&</li>","分类标题": ">&&</span","分类ID":"/lmc/&&/\"", 
-      "直接播放":"1",
- "跳转播放链接":"\"url\"*\"&&\"",
-"嗅探词": ".mp4#.m3u8",
-        "分类url": "https://fghhj.lameitv3.com/lmc/{cateId}-{catePg}/;;m"
+    "播放数组":"<script type=&&</script",
+           "播放列表":"var player_aaaa={&&}",
+       "播放链接":"\"url\":\"&&\"",
+       "播放标题":"立即播放",
+        "分类url": "https://gov.lameitv4.com/lmc/{cateId}-{catePg}/;;m"
       }
-    },  
+    },
 {"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
 {
   "key": "csp_xb_f2daiyy",
