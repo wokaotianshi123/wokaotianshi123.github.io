@@ -946,7 +946,7 @@
        "播放标题":"立即播放",
  "嗅探词": ".mp4#.m3u8",
  "分类":"国产传媒$160#日本$2#国产$1#韩国$4#8泰国$82#动漫$6#欧美$5#中文$9#VR$3#巨ru$11#制服$12#熟nv$13#san级$14#AI$15#海外$16", 
-	"分类url":"https://www.1111modruba.cc/index.php/vodtype/{cateId}-{catePg}.html"},"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+	"分类url":"https://www.1111mod.net/index.php/vodtype/{cateId}-{catePg}.html"},"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 {
 "key":"csp_XBPQ_HLX影视",
 "name":"️HLXSP影视 XBPQ https://www.fldz8.buzz/",
