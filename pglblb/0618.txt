@@ -58,6 +58,7 @@
              "线路二次截取": "<ul id=\"play&&</ul",                   
             "线路数组": "<li&&/li",
             "线路标题": ">&&<",
+"跳转播放链接":"\"url\":\"&&\"",
  "简介":"class=\"tjuqing\">&&</div",
   "分类": "电影$a#电视剧$b#动漫$c#综艺$d",          
 "分类url":"https://www.huanyuxing.com/s/id-{cateId}/area/{area}/class/{class}/page/{catePg}/year/{year}.html;;m"   
