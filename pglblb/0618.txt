@@ -1013,9 +1013,11 @@
 "分类标题": ">&&</a",
 "分类ID": "/vodtype/&&.html",
 "图片":"src=\"&&\"",
-   // "分类":"亚洲情色$6#国产主播$7#国产自拍$8#无码专区$9#欧美性爱$10#熟女人妻$11#强奸乱伦$12#卡通动画$13#巨乳美乳$14#中文字幕$15#制服诱惑$16#女同性恋$17#少女萝莉$18#重口色情$20#人兽性交$21#伦理三级$22",
-   "链接":"href=\"&&\"[替换:voddetail>>vodplay#.html>>-1-1.html]","直接播放":"1","分类url":"https://na855.com/vodtype/{cateId}-{catePg}.html"}},
-
+    "播放数组":"id=\"bofang_box\"><script&&</script",
+           "播放列表":"var player_aaaa={&&1}",
+       "播放链接":"\"url\":\"&&\"",
+       "播放标题":"\"vod_name\":\"&&\"",
+   "链接":"href=\"&&\"[替换:voddetail>>vodplay#.html>>-1-1.html]","分类url":"https://nx511.com/vodtype/{cateId}-{catePg}.html"}},
     
     
      // {"key": "XBPQ_114","name": "114影院","type": 3,"api":"csp_XBPQ",  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{ "直接播放":"1", "分类数组":"class=\"menu_items&&</li>","分类标题": ">&&</a","分类ID":"vod/type/id/&&.html", "分类url":"https://llwwhj114.top/index.php/vod/type/id/{cateId}/page/{catePg}.html","数组":"class=\"col-style d-4 m-2 lazy loaded&&</div></a>","图片":"background-image: url(\"&&\"","标题":"<span class=\"title\">&&</span>","链接":"href=\"&&\"[替换:detail>>play#.html>>/sid/1/nid/1.html]"}},	
