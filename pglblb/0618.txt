@@ -37,7 +37,7 @@
 "分类url":"https://www.freeok.vip/vod-show/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html;;m"  
     }
     },      
-   {"key":"66s6","name":"66s6","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
+   {"key":"66s6","name":"66s6 www.xb6v.com","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
     "搜索url":"https://www.66s6.cc/e/search/index.php;post;show=title&tempid=1&tbname=article&mid=1&dopost=search&keyboard={wd}",
 "分类url":"https://www.66s6.cc/{cateId}/index_{catePg}.html[firstPage=https://www.66s6.cc/{cateId}/index.html]",
 "分类":"动作片$dongzuopian#爱情片$aiqingpian#科幻片$kehuanpian#恐怖片$kongbupian#战争片$zhanzhengpian#喜剧片$xijupian#纪录片$jilupian#剧情片$juqingpian#国产剧$dianshiju/guoju#日韩剧$dianshiju/rihanju#欧美剧$dianshiju/oumeiju"
