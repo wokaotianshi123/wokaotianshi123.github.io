@@ -4,13 +4,13 @@ https://wokaotianshi123.github.io/zhongqiutop10.html
 
 https://wokaotianshi123.github.io/?url=
 
-zyplayer接口
+zyplayer一键导入接口
 
         https://wokaotianshi123.github.io/zyplayer/easyconfig.json 
 
-zyplayer直播接口
+zyplayer配置接口
 
-        https://wokaotianshi123.github.io/zyplayer/easyconfig.json
+        https://wokaotianshi123.github.io/zyplayer/config.json
 
 tvbox接口 
 1
