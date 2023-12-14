@@ -13,7 +13,7 @@ Hi all, 本次更新主要包含以下内容：
 注意:
 1.感谢：@ddwinhzy赞助服务器，新源在此 issue #10 下留言，配置方式如下
 
-基础设置->数据管理->一键配置->软件接口---地址[https://zy.hiram.top/easyconfig.json]->导入
-基础设置->数据管理->配置导入->远端导入---地址[https://zy.hiram.top/config.json]->导入
+基础设置->数据管理->一键配置->软件接口---地址[https://zy.catni.cn/easyconfig.json]->导入
+基础设置->数据管理->配置导入->远端导入---地址[https://zy.catni.cn/config.json]->导入
 2.升级：注意数据备份，防止丢失配置
 3.祝福：祝大家双节快乐
