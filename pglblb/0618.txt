@@ -1635,7 +1635,9 @@
 "数组":"class=\"item&&</a",
             "标题":"alt=\"&&\"",
 "图片":"data-original=\"&&\"",
-"链接":"data-original=\"&&/385x233[替换:https://bh.j2.img.jb-aiwei.cc/cdn/contents/videos_screenshots/>>https://yukz.bydd.popur.jb-aiwei.cc/contents/videos/]+/index.m3u8",
+"链接":"data-original=*videos_screenshots/&&/385x233",
+"链接前缀":"https://yukz.bydd.popur.jb-aiwei.cc/contents/videos/",
+"链接后缀":"/index.m3u8",
 "分类url":"https://bav84.xyz/categories/{cateId}/?mode=async&function=get_block&block_id=list_videos_common_videos_list&sort_by=post_date&from={catePg}&_=1702387854903"   
     }
     },    
