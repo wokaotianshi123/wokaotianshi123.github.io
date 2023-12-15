@@ -1021,15 +1021,7 @@
       }
     },
 {"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
-{
-  "key": "csp_xb_f2daiyy",
-  "name": "富二代影院(XYQ)",
-  "type": 3,
-  "api": "csp_XYQBiu",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/f2dys_xyq_.json","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+//{"key": "csp_xb_f2daiyy","name": "富二代影院(XYQ)","type": 3,"api": "csp_XYQBiu","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/f2dys_xyq_.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
 
     		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols16.buzz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "分类ID":"type/&&\"",  "分类url":"https://saols16.buzz/type/{cateId}/{catePg}" } },	    
 
