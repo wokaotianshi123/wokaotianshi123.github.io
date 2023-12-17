@@ -1536,6 +1536,9 @@
 
 {"key":"kkzy.me","name":"成人23","type":1,"api":"https://kkzy.me/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
 {"key":"888dav.com","name":"成人24","type":1,"api":"https://www.888dav.com/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
+   {"key":"国产新传媒","name":"💟国产新传媒","type":3,"api":"csp_XBPQ","ext":{"请求头":"手机","分类":"国产$gccm#麻豆$modelmedia","分类url":"https://madouqu26.cc/{cateId}/page/{catePg}/[firstPage=https://madouqu26.cc/{cateId}/]",
+   //"二次截取":"class=\"post post-list&&</article",
+   "数组":"class=\"placeholder&&</div","标题":"alt=\"&&\"","图片":"src=\"&&\"","链接":"href=\"&&\"","播放数组":"id=\"download&&post-modified-info","播放列表":"下載地址：&&</a","播放标题":"","播放链接":"magnet:?xt=&&\">Magnet","播放链接前缀":"magnet:?xt="},"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 
     {"key":"csp_XBPQ_富二代","name":"富二代 XBPQ fedfby15.com","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
     "请求头":"手机",
