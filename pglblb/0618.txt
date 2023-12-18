@@ -10,6 +10,7 @@
 "分类url":"https://www.jqqzx.cc/vodshow/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html;;m"   
     }
     },
+{ "key": "csp_123音乐", "name": "123音乐(XYQh)",  "type": 3,  "api": "csp_XYQHiker", "searchable": 1,  "quickSearch": 1,"filterable": 0, "ext": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/123音乐.json"},
 	 {    "key": "APP电影",
             "name": "💟APP电影",
             "type": 3,
@@ -87,7 +88,7 @@
 	\"分类数组\":\"class=\\\"hl-nav-item hl-slide-swiper\\\">&&</li>\",
 	\"分类标题\": \">&&<\",
 	\"分类ID\": \"Category/&&K.html\",
-	\"分类url\":\"https://kanb.tv/Show/{cateId}K{area}K{by}K{class}KKKKK{catePg}KKK{year}.html\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+	\"分类url\":\"https://kanb.tv/Show/{cateId}K{area}K{by}K{class}KKKKK{catePg}KKK{year}.html\"}","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 {    "key": "大全",
             "name": "💟大全剧院 www.kanys4.com",
             "type": 3,
@@ -124,21 +125,21 @@
     }
     },  
 
-// { "key": "csp_wangju", "name": "网剧(XYQh)",  "type": 3,  "api": "csp_XYQHiker", "searchable": 1,  "quickSearch": 1,"filterable": 0, "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/wangju.json"}, 	
+// { "key": "csp_wangju", "name": "网剧(XYQh)",  "type": 3,  "api": "csp_XYQHiker", "searchable": 1,  "quickSearch": 1,"filterable": 0, "ext": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/wangju.json"}, 	
   	
    {"key": "XBPQ_干饭","name": "干饭 gfys.top","type": 3,"api": "csp_XBPQ",
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{
 //"数组":"<li class=\"col-md-6&&</li",
-	"分类url":"https://gfysys.cc/vodshow/{cateId}-{area}--{class}-----{catePg}---{year}.html"},"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},		
-{"key": "csp_Mp4Mov","name": "🧲Mp4电影","type": 3,"api": "csp_Mp4Mov","searchable": 1,"quickSearch": 1,"filterable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
-     //  {"key": "csp_DyGod","name": "🧲电影天堂","type": 3,"api": "csp_DyGod","searchable": 1,"quickSearch": 1,"filterable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-       {"key": "csp_DygCL","name": "🧲电影港","type": 3,"api": "csp_DygCL","searchable": 1,"quickSearch": 1,"filterable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-       {"key":"csp_SeedHub","name":"🧲SeedHub","type":3,"api":"csp_SeedHub","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-       {"key":"csp_KubaCL","name":"🧲酷吧电影","type":3,"api":"csp_KubaCL","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-       {"key":"csp_QnMp4","name":"🧲千年电影","type":3,"api":"csp_QnMp4","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-        {"key":"csp_MeijuTT","name":"🧲美剧天堂","type":3,"api":"csp_MeijuTT","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-        {"key":"csp_MeijuMi","name":"🧲美剧迷","type":3,"api":"csp_MeijuMi","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-        {"key":"csp_JianPian","name":"🧲JianPian","type":3,"api":"csp_JianPian","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+	"分类url":"https://gfysys.cc/vodshow/{cateId}-{area}--{class}-----{catePg}---{year}.html"},"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},		
+{"key": "csp_Mp4Mov","name": "🧲Mp4电影","type": 3,"api": "csp_Mp4Mov","searchable": 1,"quickSearch": 1,"filterable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
+     //  {"key": "csp_DyGod","name": "🧲电影天堂","type": 3,"api": "csp_DyGod","searchable": 1,"quickSearch": 1,"filterable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+       {"key": "csp_DygCL","name": "🧲电影港","type": 3,"api": "csp_DygCL","searchable": 1,"quickSearch": 1,"filterable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+       {"key":"csp_SeedHub","name":"🧲SeedHub","type":3,"api":"csp_SeedHub","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+       {"key":"csp_KubaCL","name":"🧲酷吧电影","type":3,"api":"csp_KubaCL","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+       {"key":"csp_QnMp4","name":"🧲千年电影","type":3,"api":"csp_QnMp4","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+        {"key":"csp_MeijuTT","name":"🧲美剧天堂","type":3,"api":"csp_MeijuTT","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+        {"key":"csp_MeijuMi","name":"🧲美剧迷","type":3,"api":"csp_MeijuMi","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+        {"key":"csp_JianPian","name":"🧲JianPian","type":3,"api":"csp_JianPian","playerType":1,"searchable":1,"quickSearch":1,"filterable":1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
 {
             "key": "南瓜",
             "name": "南瓜┃App",
@@ -149,7 +150,7 @@
             "playerType": 2,
             "filterable": 1,
             "ext": "",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "河马",
@@ -158,7 +159,7 @@
             "api": "csp_Hmys",
             "playerType": 1,
             "ext": "https://m.jmzp.net.cn",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "天天",
@@ -167,7 +168,7 @@
             "api": "csp_TTian",
             "playerType": 1,
             "ext": "http://op.ysdqjs.cn",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "蝴蝶",
@@ -176,7 +177,7 @@
             "api": "csp_Hudie",
             "playerType": 2,
             "ext": "https://yundun-hdsign.zhuifeng100.cn|kT2taP|75f7fac7f56d812d1f9ce89d9f312984|b7688bd6347da0b2b62515b0730b872b",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "巧技一",
@@ -185,7 +186,7 @@
             "api": "csp_qiao2",
             "playerType": 2,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/qiaoji1",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "巧技二",
@@ -194,7 +195,7 @@
             "api": "csp_qiao2",
             "playerType": 2,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/qiaoji2",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "巧技三",
@@ -203,7 +204,7 @@
             "api": "csp_qiao2",
             "playerType": 2,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/qiaoji3",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "蜂鸟",
@@ -212,7 +213,7 @@
             "api": "csp_Skapp",
             "playerType": 2,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/fengniao",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "君离",
@@ -221,7 +222,7 @@
             "api": "csp_Skapp",
             "playerType": 2,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/junli",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "极光",
@@ -230,7 +231,7 @@
             "api": "csp_Skapp",
             "playerType": 2,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/jiguang",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "tvbsk",
@@ -239,7 +240,7 @@
             "api": "csp_Skapp",
             "playerType": 2,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/tvbyb",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "嘶哩",
@@ -248,7 +249,7 @@
             "api": "csp_Skapp",
             "playerType": 2,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/sili",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "侠客",
@@ -260,7 +261,7 @@
             "playerType": 2,
             "filterable": 1,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/heihei",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "超神",
@@ -272,7 +273,7 @@
             "playerType": 2,
             "filterable": 1,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/chaoshen",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "云云",
@@ -284,7 +285,7 @@
             "playerType": 2,
             "filterable": 1,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/laohu",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "樱花",
@@ -296,7 +297,7 @@
             "playerType": 2,
             "filterable": 1,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/yinghua",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "星星",
@@ -305,7 +306,7 @@
             "api": "csp_qiao",
             "playerType": 2,
             "ext": "https://jihulab.com/qiaoji/open/-/raw/main/xingxing",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "K影",
@@ -317,21 +318,21 @@
             "filterable": 1,
             "playerType": 2,
             "ext": "http://iosa.xn--654a.cc/api.php/app/",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "JianPian",
             "name": "荐片[边下边播]",
             "type": 3,
             "api": "csp_JianPian",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "Dygang",
             "name": "电影港[边下边播]",
             "type": 3,
             "api": "csp_Dygang",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "蚂蚁",
@@ -343,7 +344,7 @@
             "filterable": 0,
             "playerType": 2,
             "ext": "http://www.rzys.cc",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "看看",
@@ -353,7 +354,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 0,
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "Lib",
@@ -364,7 +365,7 @@
             "quickSearch": 1,
             "filterable": 0,
             "ext": "https://www.libvio.pro/static/js/playerconfig.js",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "时常",
@@ -376,7 +377,7 @@
             "playerType": 1,
             "filterable": 0,
             "ext": "",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "Bdys_spider",
@@ -387,7 +388,7 @@
             "quickSearch": 1,
             "searchable": 1,
             "ext": "",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "NoSearch_csp_DiDuan",
@@ -398,7 +399,7 @@
             "playerType": 2,
             "quickSearch": 1,
             "filterable": 0,
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "sliu_spider",
@@ -410,7 +411,7 @@
             "quickSearch": 1,
             "searchable": 1,
             "ext": "",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "快看",
@@ -421,7 +422,7 @@
             "playerType": 2,
             "quickSearch": 1,
             "filterable": 1,
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "360_spider",
@@ -433,7 +434,7 @@
             "searchable": 1,
             "playerType": 2,
             "ext": "",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "ZXZJ",
@@ -444,7 +445,7 @@
             "quickSearch": 1,
             "searchable": 1,
             "ext": "",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "csp_CZSPP",
@@ -456,7 +457,7 @@
             "quickSearch": 1,
             "filterable": 0,
             "ext": "https://czz9.com/",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "csp_Auete",
@@ -467,7 +468,7 @@
             "playerType": 2,
             "quickSearch": 1,
             "filterable": 1,
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "NoSearch_csp_BBB",
@@ -478,7 +479,7 @@
             "quickSearch": 0,
             "filterable": 1,
             "ext": "https://www.qiaoji8.com/tvbox/bili.json",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "push_agent",
@@ -489,7 +490,7 @@
             "quickSearch": 0,
             "filterable": 0,
             "ext": "https://www.qiaoji8.com/jar1/token.txt",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
         {
             "key": "Music_spider",
@@ -500,7 +501,7 @@
             "quickSearch": 1,
             "searchable": 1,
             "ext": "",
-"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
 
      {"key": "csp_XBPQ_耐看",
@@ -551,7 +552,7 @@
 
 {"key": "XBPQ_z2w","name": "2w影院","type": 3,"api": "csp_XBPQ",  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{ "主演":"class=\"module-info-item-content\"&&</div>", "简介":"<p&&</p", "分类数组":"class=\"swiper-slide&&</li>","分类标题": ">&&</span","分类ID":"vodtype/&&.html", "分类url":"https://www.2wyy.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html;;m"}},	
 
-    //{"key": "csp_XBPQ_JOJO","name": "JOJO","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": {"二次截取": "class=\"content-body\"&&class=\"content-lift\"","数组": "<a&&</a>","图片": "src=\"&&\"","标题": "class=\"card-title\">&&</p>","副标题": "class=\"item-speed\">&&</p>","链接": "href=\"&&\"","播放数组": "class=\"plyr-sidebar-list&&</div>","嗅探词":"cn-beijing-data.aliyundrive.net","搜索url": "https://app.syrme.top/video/search?q={wd}","分类":"电影$电影#美剧$美剧#日剧$日剧#韩剧$韩剧#动漫$动漫#纪录$纪录","分类url":"https://app.syrme.top/video/type/tag?type={cateId}&tag=&page={catePg}&size=18","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XiaoYiChaHang.jar"}},
+    //{"key": "csp_XBPQ_JOJO","name": "JOJO","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": {"二次截取": "class=\"content-body\"&&class=\"content-lift\"","数组": "<a&&</a>","图片": "src=\"&&\"","标题": "class=\"card-title\">&&</p>","副标题": "class=\"item-speed\">&&</p>","链接": "href=\"&&\"","播放数组": "class=\"plyr-sidebar-list&&</div>","嗅探词":"cn-beijing-data.aliyundrive.net","搜索url": "https://app.syrme.top/video/search?q={wd}","分类":"电影$电影#美剧$美剧#日剧$日剧#韩剧$韩剧#动漫$动漫#纪录$纪录","分类url":"https://app.syrme.top/video/type/tag?type={cateId}&tag=&page={catePg}&size=18","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XiaoYiChaHang.jar"}},
 {"key":"csp_XBPQ_爱看影视",
 "name":"️爱看影视 XBPQ",
 "type":3,
@@ -612,14 +613,14 @@
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{
 \"分类\":\"电影$1#剧集$2#综艺$3#动漫$4#最新$27\",
 \"数组\":\"<li&&</a\",
-	\"分类url\":\"http://www.hdqyxy.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+	\"分类url\":\"http://www.hdqyxy.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html\"}","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
    {"key": "XBPQ_茶杯","name": "茶杯","type": 3,"api": "csp_XBPQ",
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{
   \"播放数组\":\"class=\\\"stui-content__playlist&&</ul>\",
 	\"分类数组\":\"class=\\\"clearfix&&</li>\",
 	\"分类标题\": \">&&</a\",
 	\"分类ID\": \"h/&&.html\",
-	\"分类url\":\"https://www.chabeihucupfox.com/h/{cateId}-{catePg}.html\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+	\"分类url\":\"https://www.chabeihucupfox.com/h/{cateId}-{catePg}.html\"}","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 	
  {
   "key": "csp_xb_zjtyy",
@@ -629,7 +630,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/追剧兔.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
+  "ext": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/追剧兔.json","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
 
 
 
@@ -645,18 +646,18 @@
 {"key": "XBPQ_fwitu","name": "飞兔影院","type": 3,"api": "csp_XBPQ",
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{ 
 	\"分类url\":\"https://www.feitu.tv/filter/{cateId}/area/{area}/page/{catePg}/year/{year}/\"}"},	       
-    {"key":"csp_xBiu_qiuxia","name": "秋霞(xBPQ)","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 0,"filterable": 1,"ext": "https://www.qiuxia360.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+    {"key":"csp_xBiu_qiuxia","name": "秋霞(xBPQ)","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 0,"filterable": 1,"ext": "https://www.qiuxia360.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
  
 
- {"key":"csp_xBiu_kuke","name": "酷客影院1(XBiu)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "http://www.kuke66.com/vt/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+ {"key":"csp_xBiu_kuke","name": "酷客影院1(XBiu)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "http://www.kuke66.com/vt/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
 		
 {"key":"*量子资源","name":"量子资源","type":0,"api":"https://cj.lziapi.com/api.php/provide/vod/at/xml/","searchable":0,"quickSearch":0},
 
-{"key": "csp_biubiu_短视频1","name": "️📱短视频","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "分类url:http://www.sharenice.net/{cateId}?page={catePg},分类:抖音,直接播放:1,嗅探词:play/?#?item#qianpailive#.flv#mp4","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
+{"key": "csp_biubiu_短视频1","name": "️📱短视频","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "分类url:http://www.sharenice.net/{cateId}?page={catePg},分类:抖音,直接播放:1,嗅探词:play/?#?item#qianpailive#.flv#mp4","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
 
-  {"key":"csp_xBiu_yszj","name": "影视之家(XBiu)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://www.wybg666.com/vodtype/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  {"key":"csp_xBiu_yszj","name": "影视之家(XBiu)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "https://www.wybg666.com/vodtype/{cateId}-{catePg}.html","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
   
-{"key":"csp_xBPQ_papa","name": "片吧影院(xBPQ)","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "{\"请求头\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\",\"免嗅\":\"1\",\"副标题\":\"<span class=\\\"pic-text text-right\\\">&&</span>\",\"线路数组\": \"class=\\\"stui-vodlist__head&&</div>\",\"线路标题\": \"<span class=\\\"pull-right1\\\">&&</span>\",\"播放标题\":\">&&<\",\"播放数组\":\"class=\\\"stui-content__playlist&&</div>\",\"分类url\":\"https://www.pbpb.tv/class/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html\",\"年份\":\"2000-2022\",\"筛选\":\"1\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
+{"key":"csp_xBPQ_papa","name": "片吧影院(xBPQ)","type": 3,"api": "csp_xBPQ","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "{\"请求头\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36\",\"免嗅\":\"1\",\"副标题\":\"<span class=\\\"pic-text text-right\\\">&&</span>\",\"线路数组\": \"class=\\\"stui-vodlist__head&&</div>\",\"线路标题\": \"<span class=\\\"pull-right1\\\">&&</span>\",\"播放标题\":\">&&<\",\"播放数组\":\"class=\\\"stui-content__playlist&&</div>\",\"分类url\":\"https://www.pbpb.tv/class/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html\",\"年份\":\"2000-2022\",\"筛选\":\"1\"}","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ1022.jar"},
    
 
 
@@ -668,7 +669,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "http://www.taoju.tv/list/{cateId}_{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  "ext": "http://www.taoju.tv/list/{cateId}_{catePg}.html","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
   
   {
 "key":"csp_XBPQ_片吧影视",
@@ -710,7 +711,7 @@
 "ext":"{
 \"筛选\":\"1\",
 \"简介\": \"show-desc\\\" style=\\\"line-height: 20px;\\\">&&</p>\",
-	\"分类url\":\"https://brovod.com/show/{cateId}-{area}-{by}--{lang}----{catePg}---{year}/\"}","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"
+	\"分类url\":\"https://brovod.com/show/{cateId}-{area}-{by}--{lang}----{catePg}---{year}/\"}","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"
 },
 
     {
@@ -721,7 +722,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/石榴电影.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},  
+  "ext": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/石榴电影.json","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},  
  
   
            {
@@ -742,7 +743,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/lyys_xyqhz_.json","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
+  "ext": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/lyys_xyqhz_.json","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
     
     {
   "key": "csp_xb_pbys",
@@ -752,7 +753,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://www.pbpb.tv/class/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  "ext": "https://www.pbpb.tv/class/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
       {
   "key": "csp_xb_dyys",
   "name": "段友影视(R)",
@@ -761,7 +762,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://shangjihuoke.com/index.php/vod/show/id/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  "ext": "https://shangjihuoke.com/index.php/vod/show/id/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
        
       {
   "key": "csp_xb_ddgys",
@@ -771,7 +772,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://www.dadagui.me/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  "ext": "https://www.dadagui.me/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
    
         {
   "key": "csp_xb_lxys",
@@ -781,7 +782,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://www.lenxitv.cc/t/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  "ext": "https://www.lenxitv.cc/t/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
     
           {
   "key": "csp_xb_nikeys",
@@ -791,7 +792,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://www.ajeee.com/show/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  "ext": "https://www.ajeee.com/show/{cateId}/page/{catePg}.html","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
           
 
     {
@@ -802,7 +803,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://cokemv.co/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  "ext": "https://cokemv.co/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
 
     {
   "key": "csp_xb_939394",
@@ -812,7 +813,7 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "https://939394.xyz/vodlist/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  "ext": "https://939394.xyz/vodlist/{cateId}-{catePg}.html","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
 
     {
   "key": "csp_xb_gfysys",
@@ -822,11 +823,11 @@
   "searchable": 1,
   "quickSearch": 1,
   "filterable": 0,
-  "ext": "http://www.gfysys.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
+  "ext": "http://www.gfysys.com/vodshow/{cateId}--------{catePg}---.html","jar": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
 
-{"key": "csp_XYQHiker","name":"98km(XYQh)","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/98km_xyqh_.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mix.jar"},
+{"key": "csp_XYQHiker","name":"98km(XYQh)","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/98km_xyqh_.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mix.jar"},
 
-{"key":"csp_xpath_蚂蚁","name":"蚂蚁🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mayi.json"},
+{"key":"csp_xpath_蚂蚁","name":"蚂蚁🏀","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/mayi.json"},
  {
       "key": "豆豆",
       "name": "❦缝纫机Box",
@@ -834,7 +835,7 @@
       "api": "csp_DouDou",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "filterable": 0,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "玩偶哥哥",
@@ -844,7 +845,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd$$$https://api.wogg.xyz/$$$弹","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd$$$https://api.wogg.xyz/$$$弹","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "YGP",
@@ -853,7 +854,7 @@
       "api": "csp_YGP",
       "searchable": 0,
       "quickSearch": 0,
-      "changeable": 0,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 0,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "Czsapp",
@@ -864,7 +865,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "https://czz9.com/","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://czz9.com/","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "橘子",
@@ -874,7 +875,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "FbjDcUxPqpfNr0QF4QvE6sExbcJUCYdIVisPtbeywENfScyc6nTW0F+D7rX5HCm9c3SL03FsmGsmXS04XZMlbxEVW4/ZgwONbnobxj8KxeRpXqDxCWghfAf9JSR025yi92eOKqE9HokX9QQnl1WsU21CR4+dlEMDEsADd1xFGiiGtsh0vqJFAf41Z7sYL00hBBNM3xJsYyXCuX4BrzNYpZRwmcnwnXIHe2MtwbsJf0IAs6yM+y/ub+niyxOc2YuPbc/VUS4DGPqzelIi6plLWFvZ8+j2xcvAgopZxZFhBkIYCIIC5Uec/JW8RgW9WV1SKntGcmcd5yjIpagsmpXymH3a+FKzHKMB3LvXmR6onijWkP0VpivFgVVfjWrik4Yr0ZjZxKFA0uPQvy9l9EjPMNrQIj0sZjnpv7JmoMO+HfQ+lqKhJrQFq4MooyyGv6yhNv12IOHay3A=","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "FbjDcUxPqpfNr0QF4QvE6sExbcJUCYdIVisPtbeywENfScyc6nTW0F+D7rX5HCm9c3SL03FsmGsmXS04XZMlbxEVW4/ZgwONbnobxj8KxeRpXqDxCWghfAf9JSR025yi92eOKqE9HokX9QQnl1WsU21CR4+dlEMDEsADd1xFGiiGtsh0vqJFAf41Z7sYL00hBBNM3xJsYyXCuX4BrzNYpZRwmcnwnXIHe2MtwbsJf0IAs6yM+y/ub+niyxOc2YuPbc/VUS4DGPqzelIi6plLWFvZ8+j2xcvAgopZxZFhBkIYCIIC5Uec/JW8RgW9WV1SKntGcmcd5yjIpagsmpXymH3a+FKzHKMB3LvXmR6onijWkP0VpivFgVVfjWrik4Yr0ZjZxKFA0uPQvy9l9EjPMNrQIj0sZjnpv7JmoMO+HfQ+lqKhJrQFq4MooyyGv6yhNv12IOHay3A=","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "77",
@@ -883,7 +884,7 @@
       "api": "csp_Kunyu77",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "南瓜",
@@ -893,7 +894,7 @@
       "playerType": 2,
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "嘿嘿",
@@ -903,7 +904,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "FbjDcUxPqpfNr0QF4QvE6sExbcBEGIRZVnQTs7Kyyk1SScOZ8j/C1ATO/eqjASKwdHWA2zQtjGMwVDA+Ttluew9LCZzZnFyFNWEAlX0KjLdiSaX+NDNVdVG1JjEvnt3n7STfbcZ8C5QA+hYk60bwQH58e7eO7msRAJ0ZbmFDDly40NBDxuYsAq8lZuJzVkw0ZkMhqBM9YRPP8mMU/CJYsuBptunppHVQfFQjk8wxXjVRsNe75CuoY+zt9w+Smcm9PL37bGJHS6+1cFg1xMgqVxqvyPfuq5Dvyo1q66Q1NXwhDe4x21KVg4iRMET6Z3Jna25wcmku6xbznbFxlZqH3DqtpBKXLcNrx6n6vgn+/lHRmp5g13bG1xc/jwO78tZL0Pei6A==","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "FbjDcUxPqpfNr0QF4QvE6sExbcBEGIRZVnQTs7Kyyk1SScOZ8j/C1ATO/eqjASKwdHWA2zQtjGMwVDA+Ttluew9LCZzZnFyFNWEAlX0KjLdiSaX+NDNVdVG1JjEvnt3n7STfbcZ8C5QA+hYk60bwQH58e7eO7msRAJ0ZbmFDDly40NBDxuYsAq8lZuJzVkw0ZkMhqBM9YRPP8mMU/CJYsuBptunppHVQfFQjk8wxXjVRsNe75CuoY+zt9w+Smcm9PL37bGJHS6+1cFg1xMgqVxqvyPfuq5Dvyo1q66Q1NXwhDe4x21KVg4iRMET6Z3Jna25wcmku6xbznbFxlZqH3DqtpBKXLcNrx6n6vgn+/lHRmp5g13bG1xc/jwO78tZL0Pei6A==","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "蜂鸟",
@@ -913,7 +914,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "FbjPcVZY48PN/RIZ5UWFroB7MoZYCIIND24O/vn7yU9QR8yI8HjexlGPt+etACSwf3iKwX4rh3ktWiMrCNspYRZYUM6f0R/eKT9M0yoRk6EyAfugfXYhIgLgMSg228vn5DHAeJF8GNUkrF4Jo1n0FBoWeKCl6EsVIZQYaGAULAyk6bAVvvsMCfF8OLsUag5VCEcq1wRjY0Cw+SFg/kgZlsg0iqGp2BFbJ2kHwtc1","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "FbjPcVZY48PN/RIZ5UWFroB7MoZYCIIND24O/vn7yU9QR8yI8HjexlGPt+etACSwf3iKwX4rh3ktWiMrCNspYRZYUM6f0R/eKT9M0yoRk6EyAfugfXYhIgLgMSg228vn5DHAeJF8GNUkrF4Jo1n0FBoWeKCl6EsVIZQYaGAULAyk6bAVvvsMCfF8OLsUag5VCEcq1wRjY0Cw+SFg/kgZlsg0iqGp2BFbJ2kHwtc1","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "小小",
@@ -923,7 +924,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "FbjPcVZY48PN/RIZ5UWFrsgwaYYVSsIJD3UWs7i4yk1XUNSIsT3IgxCP9qyzByO7ZnqW3G0tjmslTGNlCJx9KFpYWdSQ0BTcKTlG3CAclaw3AOm0fS9oLx2taGFrzpf9uSKPPIBwToF3pEZBvQOlHhoMMOnm4EsAMpVefSVfagul7fFS8qxdQvcqdulXNwxSXwVqwgY9fgGounx/txZHh9k8mqD6nFJaZH0GwpEpXmVLgQ==","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "FbjPcVZY48PN/RIZ5UWFrsgwaYYVSsIJD3UWs7i4yk1XUNSIsT3IgxCP9qyzByO7ZnqW3G0tjmslTGNlCJx9KFpYWdSQ0BTcKTlG3CAclaw3AOm0fS9oLx2taGFrzpf9uSKPPIBwToF3pEZBvQOlHhoMMOnm4EsAMpVefSVfagul7fFS8qxdQvcqdulXNwxSXwVqwgY9fgGounx/txZHh9k8mqD6nFJaZH0GwpEpXmVLgQ==","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "极光",
@@ -933,7 +934,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "FbjPcVZY48PN/RIZ5UWFrphicspJGpZFEy1L9qCt0RcDCdqQ/iHaxETP6Le1Hyasa2eX33lg2zI+TmNzCMM4OldJXt6Q2BrULz5M1CsK3w==","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "FbjPcVZY48PN/RIZ5UWFrphicspJGpZFEy1L9qCt0RcDCdqQ/iHaxETP6Le1Hyasa2eX33lg2zI+TmNzCMM4OldJXt6Q2BrULz5M1CsK3w==","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "皮皮虾",
@@ -943,7 +944,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "FbjPcVZY48PN/RIZ5UWFrotwJIZWG4dUVjwO4+rih1hIUJXNp3iJg1HE6Ku0DDW8bH6VwnMqkHV3FGMiXNUxKFVOX9ue0RveKTtG0CYRkK0lRw==","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "FbjPcVZY48PN/RIZ5UWFrotwJIZWG4dUVjwO4+rih1hIUJXNp3iJg1HE6Ku0DDW8bH6VwnMqkHV3FGMiXNUxKFVOX9ue0RveKTtG0CYRkK0lRw==","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "南坊",
@@ -953,7 +954,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "FbjCcU1KqpC5pkRX4Q3D+NciPclIFs4EHzRV89m3pENRS6PivxPrlXvH/4efUSWwUCWwwk8srkIDSXN9RIJkSCZPJqnRikLRakBH0XBB6uNlX6XgMjhUKBTbBXopnsWdvXX6OowIBLQ78wghs3yRbgJxOYvrglBVIeI4cTcDGxixtMJ+yL0zE9g1d+N2RH4JERZh3CoYXSO1hH420ARbjt08lerroREmfGoT8JEGfTFW3MrK3hWueIyRsyOllsiwNM6dXSwTArm5em8Lv8ppXgro","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "FbjCcU1KqpC5pkRX4Q3D+NciPclIFs4EHzRV89m3pENRS6PivxPrlXvH/4efUSWwUCWwwk8srkIDSXN9RIJkSCZPJqnRikLRakBH0XBB6uNlX6XgMjhUKBTbBXopnsWdvXX6OowIBLQ78wghs3yRbgJxOYvrglBVIeI4cTcDGxixtMJ+yL0zE9g1d+N2RH4JERZh3CoYXSO1hH420ARbjt08lerroREmfGoT8JEGfTFW3MrK3hWueIyRsyOllsiwNM6dXSwTArm5em8Lv8ppXgro","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "蚂蚁",
@@ -963,7 +964,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "http://rzys.xyz","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://rzys.xyz","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "繁星",
@@ -974,7 +975,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "FbjDcUxPqpfNr0QF4QvE6sExbd4UXJxJXzdL462ywU1XScGa5G6Hj0/c+Ou1GW6rdX6N2XIhnD46QzIsRoZ8bk4fG4OYi0iCaWwRj2ddkacwFqHtLjQhalHqIy0+kpiTv2eOfJYxTshgrxcJ+g3lEHx7ZLC9kB1TCfZUSHwqHB3tt6V/1OhRENIOZNRFfXVBEFd7jQg+J06kjCAF7z1Bt8hRvMjC2VcbQXsEz8MCZDgu06C9/wirWcTa/wWJsfT+Z7fXaDs+dIWMYiwf6td5CWTx6LfL6eTuiMhs2KU5Byw9F+4Y/AHBg4r+LEe+Hm4EM2d8X3ca5zHSj+kjmpXOiGDo4TalFqgTq67eggmthCbV2d131SKc03V+5gruudQQk/Tb9e4lg6SQhA9/5kWOOM/LRmkqIxSt6d0wpu7yKKh65enwKbgasc93/HnGr6W4LuZjf6eYnS2GgRzWRE0fT5lYNmxnWeRnYuLhoZbDqslAfJzg","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "FbjDcUxPqpfNr0QF4QvE6sExbd4UXJxJXzdL462ywU1XScGa5G6Hj0/c+Ou1GW6rdX6N2XIhnD46QzIsRoZ8bk4fG4OYi0iCaWwRj2ddkacwFqHtLjQhalHqIy0+kpiTv2eOfJYxTshgrxcJ+g3lEHx7ZLC9kB1TCfZUSHwqHB3tt6V/1OhRENIOZNRFfXVBEFd7jQg+J06kjCAF7z1Bt8hRvMjC2VcbQXsEz8MCZDgu06C9/wirWcTa/wWJsfT+Z7fXaDs+dIWMYiwf6td5CWTx6LfL6eTuiMhs2KU5Byw9F+4Y/AHBg4r+LEe+Hm4EM2d8X3ca5zHSj+kjmpXOiGDo4TalFqgTq67eggmthCbV2d131SKc03V+5gruudQQk/Tb9e4lg6SQhA9/5kWOOM/LRmkqIxSt6d0wpu7yKKh65enwKbgasc93/HnGr6W4LuZjf6eYnS2GgRzWRE0fT5lYNmxnWeRnYuLhoZbDqslAfJzg","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "觅视频",
@@ -984,7 +985,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "FbjPcVZY48PN/RIZ5QqOrsp7KctTA8JSVjVJ8fb33R8KUNSIsT3IgxCP9qyzByO7Z2qR3Ggpjn8kS2NlCJx9KFpYWtqe0x/XKTtG3SAclaw3AOm0fT5yKRDkPGFi25mx+DXBMtV3UpEhsgBctFypT1hMdvW6txkGIdVcbXcULwu38vkbsKwSC/YwIKMAOQpRDkEq3wA4MUCwpidroBQbwc5j3aX/1xZdJGgHncNoUQ==","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "FbjPcVZY48PN/RIZ5QqOrsp7KctTA8JSVjVJ8fb33R8KUNSIsT3IgxCP9qyzByO7Z2qR3Ggpjn8kS2NlCJx9KFpYWtqe0x/XKTtG3SAclaw3AOm0fT5yKRDkPGFi25mx+DXBMtV3UpEhsgBctFypT1hMdvW6txkGIdVcbXcULwu38vkbsKwSC/YwIKMAOQpRDkEq3wA4MUCwpidroBQbwc5j3aX/1xZdJGgHncNoUQ==","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "一起看 ",
@@ -993,7 +994,7 @@
       "api": "csp_YQKan",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "zxzj",
@@ -1003,7 +1004,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "https://www.zxzj.pro/","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://www.zxzj.pro/","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "毛驴",
@@ -1013,7 +1014,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "https://www.maolvys.com/","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://www.maolvys.com/","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "Auete",
@@ -1023,7 +1024,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "https://haozhansou.com/","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://haozhansou.com/","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "迪迪",
@@ -1034,7 +1035,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "https://api123.adys.app/xgapp.php/v3/","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://api123.adys.app/xgapp.php/v3/","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_Bttoo",
@@ -1043,7 +1044,7 @@
       "api": "csp_Bttwoo",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "贱贱",
@@ -1064,7 +1065,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "https://www.libvio.pro/","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://www.libvio.pro/","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "DiDuan",
@@ -1074,7 +1075,7 @@
       "playerType": "2",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_Nmys",
@@ -1084,7 +1085,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "https://fanty.run.goorm.site/ext/nmys.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://fanty.run.goorm.site/ext/nmys.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "Xinsj",
@@ -1094,7 +1095,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "https://www.hdmyy.com/","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://www.hdmyy.com/","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "Cokemv",
@@ -1104,7 +1105,7 @@
       "playerType": 2,
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_SP33",
@@ -1114,7 +1115,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "changeable": 0,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 0,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "4KHDR",
@@ -1134,7 +1135,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://www.xb6v.com/","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://www.xb6v.com/","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_Dm84",
@@ -1143,7 +1144,7 @@
       "api": "csp_Dm84",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_Ying",
@@ -1152,7 +1153,7 @@
       "api": "csp_Ying",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_Ysj",
@@ -1161,7 +1162,7 @@
       "api": "csp_Ysj",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_Anime1",
@@ -1170,7 +1171,7 @@
       "api": "csp_Anime1",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_Yj1211",
@@ -1179,7 +1180,7 @@
       "api": "csp_Yj1211",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "Aid",
@@ -1192,7 +1193,7 @@
       "style": {
         "type": "rect",
         "ratio": 3.8
-      },"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      },"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "88js",
@@ -1248,7 +1249,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "https://fanty.run.goorm.site/ext/企鹅直播.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://fanty.run.goorm.site/ext/企鹅直播.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "MV_vod",
@@ -1336,7 +1337,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "Zhaozy",
@@ -1346,7 +1347,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd$$$fanty$$$qqq111","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd$$$fanty$$$qqq111","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "PanSou",
@@ -1356,7 +1357,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "UpYun",
@@ -1366,7 +1367,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "PanSearch",
@@ -1376,7 +1377,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "七夜",
@@ -1386,7 +1387,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 0,
-      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "push_agent",
@@ -1395,7 +1396,7 @@
       "api": "csp_Push",
       "searchable": 0,
       "quickSearch": 0,
-      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_Nbys",
@@ -1404,7 +1405,7 @@
       "api": "csp_NiNi",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "csp_trj",
@@ -1413,7 +1414,7 @@
       "api": "csp_Tangrenjie",
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 1,"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "changeable": 1,"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "Bili",
@@ -1427,7 +1428,7 @@
       "searchable": 1,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "https://fanty.run.goorm.site/ext/bilibili.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://fanty.run.goorm.site/ext/bilibili.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "Biliych",
@@ -1441,7 +1442,7 @@
       "searchable": 1,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "https://fanty.run.goorm.site/ext/biliych.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://fanty.run.goorm.site/ext/biliych.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "dr_兔小贝",
@@ -1469,7 +1470,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "https://fanty.run.goorm.site/ext/少儿教育.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://fanty.run.goorm.site/ext/少儿教育.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "小学课堂",
@@ -1483,7 +1484,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "https://fanty.run.goorm.site/ext/小学课堂.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://fanty.run.goorm.site/ext/小学课堂.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "初中课堂",
@@ -1497,7 +1498,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "https://fanty.run.goorm.site/ext/初中课堂.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://fanty.run.goorm.site/ext/初中课堂.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
     {
       "key": "高中教育",
@@ -1511,7 +1512,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "ext": "https://fanty.run.goorm.site/ext/高中课堂.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "ext": "https://fanty.run.goorm.site/ext/高中课堂.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
 
 {"key": "timizy","name": "甜蜜资源 ","type": 1,"api": "https://timizy10.cc/api.php/provide/vod/?ac=list","searchable": 1,"changeable": 1,"quickSearch": 1,"filterable": 1},
@@ -1538,7 +1539,7 @@
 {"key":"888dav.com","name":"成人24","type":1,"api":"https://www.888dav.com/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
    {"key":"国产新传媒","name":"💟国产新传媒","type":3,"api":"csp_XBPQ","ext":{"请求头":"手机","分类":"国产$gccm#麻豆$modelmedia","分类url":"https://madouqu26.cc/{cateId}/page/{catePg}/[firstPage=https://madouqu26.cc/{cateId}/]",
    //"二次截取":"class=\"post post-list&&</article",
-   "数组":"class=\"placeholder&&</div","标题":"alt=\"&&\"","图片":"src=\"&&\"","链接":"href=\"&&\"","播放数组":"id=\"download&&post-modified-info","播放列表":"下載地址：&&</a","播放标题":"","播放链接":"magnet:?xt=&&\">Magnet","播放链接前缀":"magnet:?xt="},"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+   "数组":"class=\"placeholder&&</div","标题":"alt=\"&&\"","图片":"src=\"&&\"","链接":"href=\"&&\"","播放数组":"id=\"download&&post-modified-info","播放列表":"下載地址：&&</a","播放标题":"","播放链接":"magnet:?xt=&&\">Magnet","播放链接前缀":"magnet:?xt="},"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 
     {"key":"csp_XBPQ_富二代","name":"富二代 XBPQ fedfby15.com","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
     "请求头":"手机",
@@ -1608,7 +1609,7 @@
        "搜索链接后缀":".html",      
         "分类":"国产$cn#日韩$ja#视频$mv#欧美$eu", 
         "分类url":"https://s9043.net71228.com/video/{cateId}/{catePg}.html"
-},"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+},"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 
 	 {    "key": "jav电影",
             "name": "💟jav电影 javdb.com",
@@ -1668,7 +1669,7 @@
       "直接播放":"1",
  "嗅探词": ".mp4#.m3u8",
  "分类":"国产传媒$160#日本$2#国产$1#韩国$4#8泰国$82#动漫$6#欧美$5#中文$9#VR$3#巨ru$11#制服$12#熟nv$13#san级$14#AI$15#海外$16", 
-	"分类url":"https://www.1111mod.net/index.php/vodtype/{cateId}-{catePg}.html"},"jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+	"分类url":"https://www.1111mod.net/index.php/vodtype/{cateId}-{catePg}.html"},"jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 {
 "key":"csp_XBPQ_HLX影视",
 "name":"️HLXSP影视 XBPQ https://www.fldz8.buzz/",
@@ -1711,8 +1712,8 @@
         "分类url": "https://gov.lameitv4.com/lmc/{cateId}-{catePg}/;;m"
       }
     },
-{"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
-//{"key": "csp_xb_f2daiyy","name": "富二代影院(XYQ)","type": 3,"api": "csp_XYQBiu","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/f2dys_xyq_.json","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+{"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
+//{"key": "csp_xb_f2daiyy","name": "富二代影院(XYQ)","type": 3,"api": "csp_XYQBiu","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/f2dys_xyq_.json","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
 
     		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols16.buzz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "分类ID":"type/&&\"",  "分类url":"https://saols16.buzz/type/{cateId}/{catePg}" } },	    
 
@@ -1768,7 +1769,7 @@
 	\"播放数组\": \"vm_video_ratio_mobile\\\":\\\"16:9\\\",&&,\\\"single_media_vod_metadata\",\"播放列表\": \"{&&}\",\"播放标题\": \"source_label\\\":\\\"&&\\\"\",\"播放链接\": \"source_file\\\":\\\"&&\\\"\",
 \"图片\": \"data-src=\\\"&&\\\"\",
 \"标题\": \"alt=&&</img>\",
-	\"分类url\":\"https://cableav.tv/category/{cateId}/page/{catePg}/\"}","jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"}
+	\"分类url\":\"https://cableav.tv/category/{cateId}/page/{catePg}/\"}","jar":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"}
 		
 
 
@@ -1791,13 +1792,13 @@
       "type": 0,
       "boot": true,
       "playerType": 1,
-      "url": "https://raw.githubusercontent.com/mengzehe/m3u/main/live.txt",
+      "url": "https://usercontent.githubfast.com/raw/mengzehe/m3u/main/live.txt",
       "ua": "okhttp/3.12.13",
       "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
       "logo": "https://epg.112114.xyz/logo/{name}.png"
     },
-{"name":"YanG","type":0,"url":"https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Adult.m3u"},
-{"name":"atsushi","type":0,"url":"https://github.moeyy.xyz/https://raw.githubusercontent.com/atsushi444/iptv-epg/main/Adult.m3u"}
+{"name":"YanG","type":0,"url":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/YanG-1989/m3u/main/Adult.m3u"},
+{"name":"atsushi","type":0,"url":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/atsushi444/iptv-epg/main/Adult.m3u"}
 ],
 
 
@@ -1859,6 +1860,6 @@
 "ijk":[{"group":"软解码","options":[{"category":4,"name":"opensles","value":"0"},{"category":4,"name":"overlay-format","value":"842225234"},{"category":4,"name":"framedrop","value":"1"},{"category":4,"name":"soundtouch","value":"1"},{"category":4,"name":"start-on-prepared","value":"1"},{"category":1,"name":"http-detect-range-support","value":"0"},{"category":1,"name":"fflags","value":"fastseek"},{"category":2,"name":"skip_loop_filter","value":"48"},{"category":4,"name":"reconnect","value":"1"},{"category":4,"name":"enable-accurate-seek","value":"0"},{"category":4,"name":"mediacodec","value":"0"},{"category":4,"name":"mediacodec-auto-rotate","value":"0"},{"category":4,"name":"mediacodec-handle-resolution-change","value":"0"},{"category":4,"name":"mediacodec-hevc","value":"0"},{"category":1,"name":"dns_cache_timeout","value":"600000000"}]},{"group":"硬解码","options":[{"category":4,"name":"opensles","value":"0"},{"category":4,"name":"overlay-format","value":"842225234"},{"category":4,"name":"framedrop","value":"1"},{"category":4,"name":"soundtouch","value":"1"},{"category":4,"name":"start-on-prepared","value":"1"},{"category":1,"name":"http-detect-range-support","value":"0"},{"category":1,"name":"fflags","value":"fastseek"},{"category":2,"name":"skip_loop_filter","value":"48"},{"category":4,"name":"reconnect","value":"1"},{"category":4,"name":"enable-accurate-seek","value":"0"},{"category":4,"name":"mediacodec","value":"1"},{"category":4,"name":"mediacodec-auto-rotate","value":"1"},{"category":4,"name":"mediacodec-handle-resolution-change","value":"1"},{"category":4,"name":"mediacodec-hevc","value":"1"},{"category":1,"name":"dns_cache_timeout","value":"600000000"}]}],"ads":["mimg.0c1q0l.cn","www.googletagmanager.com","www.google-analytics.com","mc.usihnbcq.cn","mg.g1mm3d.cn","mscs.svaeuzh.cn","cnzz.hhttm.top","tp.vinuxhome.com","cnzz.mmstat.com","www.baihuillq.com","s23.cnzz.com","z3.cnzz.com","c.cnzz.com","stj.v1vo.top","z12.cnzz.com","img.mosflower.cn","tips.gamevvip.com","ehwe.yhdtns.com","xdn.cqqc3.com","www.jixunkyy.cn","sp.chemacid.cn","hm.baidu.com","s9.cnzz.com","z6.cnzz.com","um.cavuc.com","mav.mavuz.com","wofwk.aoidf3.com","z5.cnzz.com","xc.hubeijieshikj.cn","tj.tianwenhu.com","xg.gars57.cn","k.jinxiuzhilv.com","cdn.bootcss.com","ppl.xunzhuo123.com","xomk.jiangjunmh.top","img.xunzhuo123.com","z1.cnzz.com","s13.cnzz.com","xg.huataisangao.cn","z7.cnzz.com","xg.huataisangao.cn","z2.cnzz.com","s96.cnzz.com","q11.cnzz.com","thy.dacedsfa.cn","xg.whsbpw.cn","s19.cnzz.com","z8.cnzz.com","s4.cnzz.com","f5w.as12df.top","ae01.alicdn.com","www.92424.cn","k.wudejia.com","vivovip.mmszxc.top","qiu.xixiqiu.com","cdnjs.hnfenxun.com","cms.qdwght.com"],"wallpaper":"https://picsum.photos/1080",
 
 
-"spider":"https://github.moeyy.xyz/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/panda230222.jar;md5;6fdffe9b74ae6fa85d5858a2bd9fb6b9"
+"spider":"https://github.moeyy.xyz/https://usercontent.githubfast.com/raw/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/panda230222.jar;md5;6fdffe9b74ae6fa85d5858a2bd9fb6b9"
 
 }
