@@ -42,7 +42,8 @@
 "分类":"电影$dianying#电视剧$lianxuju#综艺$zongyi#动漫$dongman#bilibili$Bilibili#少儿$shaoer#纪录$jishi",
 "分类url":"https://www.wxtv.net/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"   
     }
-    },  
+    }, 
+      {"key":"思古","name":"💟思古剧院","type":3,"api":"csp_XBPQ","ext":{"请求头":"User-Agent$Mozilla/5.0 (Linux; Android 12; TAS-AN00 Build/HUAWEITAS-AN00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/96.0.4664.104 Mobile Safari/537.36#Referer$https://siguyy.cc/search/-------------.html?wd=&submit=#Cookie$PHPSESSID=ojmbi7qf2h4ckanauamrseqjdh; __51uvsct__KBoJ2sOcyoQspkLU=1; __51vcke__KBoJ2sOcyoQspkLU=37673c75-5c98-5459-aa94-351136187fba; __51vuft__KBoJ2sOcyoQspkLU=1703243006348; allpop=1","分类":"电影$m#电视剧$tv#综艺$va#动漫$ct#短剧$dj","搜索二次截取":"id=\"searchList&&</ul","搜索url":"http://siguyy.cc/search/-------------.html?wd={wd}&submit=","搜索数组":"class=\"myui-vodlist__thumb&&</a","搜索标题":"title=\"&&\"","搜索图片":"data-original=\"&&\"","搜索链接":"href=\"/detail/&&.html","搜索链接前缀":"/play/","搜索链接后缀":"-1-1.html","分类url":"https://siguyy.cc/show/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"},"jar":"http://wuciren.3vkj.club/pglblb/XBPQ222.jar;md5;39c95b494cef72d425b4087639603bc8"},
 	 {    "key": "华夏影视",
             "name": "💟华夏 xbpq",
             "type": 3,
