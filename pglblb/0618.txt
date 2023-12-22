@@ -28,6 +28,32 @@
 "分类url":"https://www.appmovie.vip/index.php/vod/show/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html;;m"   
     }
     },
+
+  	 {    "key": "无限",
+           "name": "💟无限剧院www.rssdy.com",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+"数组":"class=\"module-item\"&&class=\"module-item\"",
+"标题":"alt=\"&&\"",
+"副标题":"class=\"module-item-text\">&&<",
+"图片":"src=\"&&\"",
+  "播放数组":"class=\"scroll-content&&</div", 
+"分类":"电影$dianying#电视剧$lianxuju#综艺$zongyi#动漫$dongman#bilibili$Bilibili#少儿$shaoer#纪录$jishi",
+"分类url":"https://www.wxtv.net/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"   
+    }
+    },  
+	 {    "key": "华夏影视",
+            "name": "💟华夏 xbpq",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+            "分类": "电影$1#电视剧$2#综艺片$3#动漫$4#日韩$36#伦理$30",
+            "播放链接":"href='&&'",   
+          "跳转播放链接":"\"url\":\"&&\"",
+"分类url":"http://www.huaxiajingfang.net/vodlist/{cateId}-{catePg}.html"   
+}
+    }, 
 	 {    "key": "看吧电影",
             "name": "💟看吧电影 52kan.info",
             "type": 3,
