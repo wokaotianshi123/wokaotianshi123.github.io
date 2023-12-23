@@ -20,26 +20,7 @@
     }
     },
 //{ "key": "csp_123音乐", "name": "123音乐(XYQh)",  "type": 3,  "api": "csp_XYQHiker", "searchable": 1,  "quickSearch": 1,"filterable": 0, "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/123音乐.json","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
-    {    "key": "子子",
-            "name": "💟子子剧院",
-            "type": 3,
-            "api": "csp_XBPQ",
-            "ext": {
-            "请求头":"User-Agent$MOBILE_UA#accept$text/html",
- "数组":"class=\"module-item\"&&class=\"module-item\"",
-"标题":"alt=\"&&\"","图片":"src=\"&&\"",
-   "链接":"href=\"/vdetail/&&.html",
-   "搜索url":"http://ziziys.com/vsearch/--.html?wd={wd}",
-"搜索数组":"class=\"module-search-item&&</div",
-"搜索标题":"alt=\"&&\"",
-   "链接前缀":"/video/",
-   "链接后缀":"-1-1.html",
-  "播放数组":"class=\"scroll-content&&class=\"module-list",
-"跳转播放链接":"\"url\":\"&&\"",
-"分类": "电影$23#国产剧$13#欧美剧$14#日韩剧$15",
-"分类url":"http://ziziys.com/list/{cateId}-{catePg}.html"
-    }
-    },  
+    //{"key": "子子","name": "💟子子剧院","type": 3,"api": "csp_XBPQ","ext": {"请求头":"User-Agent$MOBILE_UA#accept$text/html","数组":"class=\"module-item\"&&class=\"module-item\"","标题":"alt=\"&&\"","图片":"src=\"&&\"","链接":"href=\"/vdetail/&&.html","搜索url":"http://ziziys.com/vsearch/--.html?wd={wd}","搜索数组":"class=\"module-search-item&&</div","搜索标题":"alt=\"&&\"","链接前缀":"/video/","链接后缀":"-1-1.html","播放数组":"class=\"scroll-content&&class=\"module-list","跳转播放链接":"\"url\":\"&&\"","分类": "电影$23#国产剧$13#欧美剧$14#日韩剧$15","分类url":"http://ziziys.com/list/{cateId}-{catePg}.html"}},  
 	 {    "key": "APP电影",
             "name": "💟APP电影",
             "type": 3,
