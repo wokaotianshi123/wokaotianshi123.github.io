@@ -35,6 +35,7 @@
    "链接前缀":"/video/",
    "链接后缀":"-1-1.html",
   "播放数组":"class=\"scroll-content&&class=\"module-list",
+"跳转播放链接":"\"url\":\"&&\"",
 "分类": "电影$23#国产剧$13#欧美剧$14#日韩剧$15",
 "分类url":"http://ziziys.com/list/{cateId}-{catePg}.html"
     }
