@@ -37,7 +37,7 @@
   "播放数组":"class=\"scroll-content&&class=\"module-list",
 "跳转播放链接":"\"url\":\"&&\"",
 "分类": "电影$23#国产剧$13#欧美剧$14#日韩剧$15",
-"分类url":"http://ziziys.com/list/{cateId}-{catePg}.html"
+"分类url":"http://ziziys.com/list/{cateId}-{catePg}.html","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBPQ222.jar;md5;39c95b494cef72d425b4087639603bc8"
     }
     },  
 	 {    "key": "APP电影",
