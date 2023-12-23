@@ -19,7 +19,7 @@
 "分类url":"https://www.jqqzx.cc/vodshow/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html;;m"   
     }
     },
-{ "key": "csp_123音乐", "name": "123音乐(XYQh)",  "type": 3,  "api": "csp_XYQHiker", "searchable": 1,  "quickSearch": 1,"filterable": 0, "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/123音乐.json","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
+//{ "key": "csp_123音乐", "name": "123音乐(XYQh)",  "type": 3,  "api": "csp_XYQHiker", "searchable": 1,  "quickSearch": 1,"filterable": 0, "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/123音乐.json","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
     {    "key": "子子",
             "name": "💟子子剧院",
             "type": 3,
