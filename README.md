@@ -23,7 +23,7 @@ tvbox接口
          
 3
 
-         https://ghproxy.com/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/0618.txt
+         https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/0618.txt
 
 4
 EasyBox下载地址：https://pan.quark.cn/s/eff053969f0b
