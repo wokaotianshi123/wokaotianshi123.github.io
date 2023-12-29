@@ -1813,7 +1813,7 @@
 {"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
 //{"key": "csp_xb_f2daiyy","name": "富二代影院(XYQ)","type": 3,"api": "csp_XYQBiu","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/f2dys_xyq_.json","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
 
-    		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols.xyz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "分类ID":"type/&&\"",  "分类url":"https://saols17.buzz/type/{cateId}/{catePg}" } },	    
+    		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols.xyz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "播放数组":"<button class=\"button&&</button","分类ID":"type/&&\"",  "分类url":"https://saols17.buzz/type/{cateId}/{catePg}" } },	    
 
 
 {"key": "hav ","name": "黄艾薇 ","type": 0,"api": "https://www.pgxdy.com/api/xml.php ","searchable": 1,"changeable": 1},	
