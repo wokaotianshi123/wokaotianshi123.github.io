@@ -87,7 +87,7 @@ https://agit.ai/youxia/TVBox/raw/branch/main/XC.json
 https://agit.ai/Qingjin
 
 
-slicehosting搭建节点 视频地址 https://www.youtube.com/watch?v=Bc3DMAGVNG0
+slicehosting搭建节点 视频地址 https://www.youtube.com/watch?v=Bc3DMAGVNG0 博客地址 https://www.tweek.top/archives/1704274156814
  是用discord.com 登录，用户名wokaotianshi_96451 密码Chen123省略@
 
 新加坡节点搭建 https://dash.slicehosting.tech/panel
