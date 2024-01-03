@@ -20,16 +20,7 @@
     }
     },
     {"key": "439","name": "439","type": 1,"api": "https://49zyw.com/api.php/provide/vod/","categories": ["国产剧","短剧","欧美剧","香港剧","动作片","爱情片","科幻片","恐怖片","剧情片","战争片","喜剧片","动画片","犯罪片","奇幻片","灾难片","悬疑片","其他片","韩国剧","台湾剧","泰国剧","日剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日本动漫","欧美动漫","海外动漫","电影解说","体育赛事","海外剧","纪录片"]},
-    	 {    "key": "落宫",
-            "name": "💟落宫剧院",
-            "type": 3,
-            "api": "csp_XBPQ",
-            "ext": {
-
-"分类url":"https://www.lggys.com/index.php/api/vod?type={cateId}&page={catePg}&time=时间戳&key=md5(DS时间戳DCC147D11943AF75)&class={class}&area={area}&year={year}&by={by}",
-"搜索url":"https://www.lggys.com/vodsearch/-------------.html?wd={wd}"   
-    }
-    }, 
+    	// {    "key": "落宫", "name": "💟落宫剧院", "type": 3,"api": "csp_XBPQ","ext": {"分类url":"https://www.lggys.com/index.php/api/vod?type={cateId}&page={catePg}&time=时间戳&key=md5(DS时间戳DCC147D11943AF75)&class={class}&area={area}&year={year}&by={by}","搜索url":"https://www.lggys.com/vodsearch/-------------.html?wd={wd}"   } }, 
       {"key": "官采","name": "官采","type": 1,"api": "http://playersll.gaoxin155.com.cn/api.php/provide/vod/from/qq/?at/xml/"},  
 //{ "key": "csp_123音乐", "name": "123音乐(XYQh)",  "type": 3,  "api": "csp_XYQHiker", "searchable": 1,  "quickSearch": 1,"filterable": 0, "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/123音乐.json","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
     	 {    "key": "天空",
