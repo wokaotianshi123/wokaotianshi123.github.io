@@ -6,4 +6,4 @@ slicehosting搭建节点 视频地址 https://www.youtube.com/watch?v=Bc3DMAGVNG
 
 vless://759438e2-dce4-49f9-92cf-5824006e158e@saty.ios6hy6.xyz:8880?encryption=none&security=none&sni=sh.wokaotianshi123.cloudns.org&type=ws&host=sh.wokaotianshi123.cloudns.org&path=%2Fvls%3Fed%3D2048#SG-argo%20saty.ios6hy6.xyz%201x.com
 
-vless://759438e2-dce4-49f9-92cf-5824006e158e@1x.com:443?host=sh.wokaotianshi123.cloudns.org&path=%2Fvls%3Fed%3D2048&type=ws&encryption=none&security=tls&sni=sh.wokaotianshi123.cloudns.org#SG-argo
+vless://759438e2-dce4-49f9-92cf-5824006e158e@1x.com:8443?host=sh.wokaotianshi123.cloudns.org&path=%2Fvls%3Fed%3D2048&type=ws&encryption=none&security=tls&sni=sh.wokaotianshi123.cloudns.org#SG-argo
