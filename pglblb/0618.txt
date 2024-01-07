@@ -35,20 +35,7 @@
     }
     },
 
-  	 {    "key": "无限",
-           "name": "💟无限剧院www.rssdy.com",
-            "type": 3,
-            "api": "csp_XBPQ",
-            "ext": {
-"数组":"class=\"module-item\"&&class=\"module-item\"",
-"标题":"alt=\"&&\"",
-"副标题":"class=\"module-item-text\">&&<",
-"图片":"src=\"&&\"",
-  "播放数组":"class=\"scroll-content&&</div", 
-"分类":"电影$dianying#电视剧$lianxuju#综艺$zongyi#动漫$dongman#bilibili$Bilibili#少儿$shaoer#纪录$jishi",
-"分类url":"https://www.wxtv.net/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"   
-    }
-    }, 
+  	// {    "key": "无限", "name": "💟无限剧院www.rssdy.com", "type": 3,"api": "csp_XBPQ", "ext": {"数组":"class=\"module-item\"&&class=\"module-item\"","标题":"alt=\"&&\"","副标题":"class=\"module-item-text\">&&<","图片":"src=\"&&\"","播放数组":"class=\"scroll-content&&</div","分类":"电影$dianying#电视剧$lianxuju#综艺$zongyi#动漫$dongman#bilibili$Bilibili#少儿$shaoer#纪录$jishi","分类url":"https://www.wxtv.net/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html" }}, 
     	 {    "key": "榜一短剧",
             "name": "💟榜一短剧 xbpq",
             "type": 3,
