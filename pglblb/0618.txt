@@ -1790,7 +1790,7 @@
            "播放列表":"var player_aaaa={&&}",
        "播放链接":"\"url\":\"&&\"",
        "播放标题":"立即播放",
-        "分类url": "https://gov.lameitv4.com/lmc/{cateId}-{catePg}/;;m"
+        "分类url": "https://fghhj.lameitv3.com/lmc/{cateId}-{catePg}/;;m"
       }
     },
 {"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
