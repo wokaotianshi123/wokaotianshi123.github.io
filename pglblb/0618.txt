@@ -1626,6 +1626,7 @@
 
 {"key":"kkzy.me","name":"成人23","type":1,"api":"https://kkzy.me/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
 {"key":"888dav.com","name":"成人24","type":1,"api":"https://www.888dav.com/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
+{ "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols.xyz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "播放数组":"<button class=\"button&&</button","分类ID":"type/&&\"",  "分类url":"https://saols17.buzz/type/{cateId}/{catePg}" } },	    
     {"key":"csp_XBPQ_爱污","name":"爱污 XBPQ https://xhyya.aiwu-cm.xyz/go/","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
     "首页":"麻豆传媒系列$20",
       "分类数组": "class=\"category-thumb&&</div",
@@ -1637,136 +1638,6 @@
    {"key":"国产新传媒","name":"💟国产新传媒 https://github.com/madouqufabuye","type":3,"api":"csp_XBPQ","ext":{"请求头":"手机","分类":"国产$gccm#麻豆$modelmedia","分类url":"https://madouqu21.cc/{cateId}/page/{catePg}/[firstPage=https://madouqu21.cc/{cateId}/]",
    //"二次截取":"class=\"post post-list&&</article",
    "数组":"class=\"placeholder&&</div","标题":"alt=\"&&\"","图片":"src=\"&&\"","链接":"href=\"&&\"","播放数组":"id=\"download&&post-modified-info","播放列表":"下載地址：&&</a","播放标题":"","播放链接":"magnet:?xt=&&\">Magnet","播放链接前缀":"magnet:?xt="},"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
-
-    {"key":"csp_XBPQ_富二代","name":"富二代 XBPQ fedfby15.com","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
-    "请求头":"手机",
-    "分类二次截取":"id=\"nav&&</div",
-      "分类数组": "<a&&/a",
-"分类标题": ">&&<",
-"分类ID": "/video/index/cid/&&\"",
-     "直接播放":"1",     
-     "搜索url":"https://fedfby15.com/search;post;kd={wd}",
-       "跳转播放链接":"var url = '&&'",
-      "图片": "picurl = '&&'",
-   "链接":"href=\"&&\"","分类url":"https://fedfby15.com/video/index/cid/{cateId}/p/{catePg}"}},
-	 {    "key": "ff996",
- 	     "编码": "gb2312",
-            "name": "💟 fff996.com",
-            "type": 3,
-            "api": "csp_XBPQ",
-            "ext": {
-            "请求头":"手机",
-             "直接播放":"1",         
-            "跳转播放链接":"?url=&&\"",
-            "搜索url":"http://1516fff996com.312zzz.com/video_search/{wd}/{pg}/index.htm",
-  "分类":"麻豆视频$1#网曝事件$2#国产视频$3#明星换脸$4#精品推荐$5#精彩不断$6#三级伦理$7#91探花$8#主播探花$9#名优推荐$10#名优中字$11#无码中文$12#日本无码$13#有码中文$14#欧美高清$15#动漫剧情$16",
-  "链接":"href=\"&&\"[替换:video_detail>>video_conter]",  
-"分类url":"http://1516fff996com.312zzz.com/video_list/{cateId}/{catePg}/index.htm"   
-    }
-    },    
- {
-      "key": "csp_XBPQ_qiela",
-      "name": "qiela发布页qie.la",
-      "type": 3,
-      "api": "csp_XBPQ",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": {
- 
-  "数组": "<li class=\"col-6&&</li",
-  "图片": "src=\"&&\"",
-  "标题": "alt=\"&&\"",
-  "链接": "href=\"&&\"",
-  "直接播放":"1",
-  "分类数组": "<li id=\"navbar-category-&&</li>",
-"分类标题": ">&&</a",
-"分类ID": "/frim/index&&.html",
-        "分类url": "https://qie99.xyz/frim/index{cateId}-{catePg}.html"
-      }
-    },
-{
-"key": "csp_XBPQ_wy剧", "name": "wy影院https://91xvip.tv","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": {
-        "请求头":"手机",
-        "数组":"class=\"video-list-box&&</div>",
-        "标题":">&&</p>",
-        "图片":"img-src=\"&&\"",
-        "链接":"/play/+type=\"&&\"+/+vid=\"&&\"",
-       "链接前缀":"https://s9043.net71228.com",
-       "链接后缀":".html",      
-      "播放列表":"let videoList = [&&]",
-       "播放链接":", '&&'",
-       "播放标题":"立即播放",
-       "搜索url":"https://s9043.net71228.com/search/{wd}/{pg}.html",
-       "搜索数组":"class=\"video-list-box&&</div>[不包含:type=\"\"]",
-        "搜索标题":">&&</p>",
-        "搜索图片":"img-src=\"&&\"",
-        "搜索链接":"type=\"&&\"+/+vid=\"&&\"",
-       "搜索链接前缀":"/play/",
-       "搜索链接后缀":".html",      
-        "分类":"国产$cn#日韩$ja#视频$mv#欧美$eu", 
-        "分类url":"https://s9043.net71228.com/video/{cateId}/{catePg}.html"
-},"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
-
-	 {    "key": "jav电影",
-            "name": "💟jav电影 javdb.com",
-            "type": 3,
-            "api": "csp_XBPQ",
-            "ext": {
-          "数组":"class=\"item&&</div",
-                   "播放二次截取":"classm\"magnet-name&&class=\"item",
-                   "播放数组":"id=\"magnets-content&&</button",
-                   "播放列表":"<a&&</a[不包含:直播#美女直播#精彩#x u u 62#最 新]",
-              "搜索url":"https://javdb523.com/search?q={wd};;m",
-              "搜索数组":"class=\"item\"&&</div[包含:class=\"tag]",
-          "分类":"无码$uncensored#有码$censored#欧美$western",
-          "分类url":"https://javdb523.com/{cateId}?page={catePg}"
-    }
-    },
- 	 {    "key": "avjb",
-            "name": "💟avjb avjb.github.io",
-            "type": 3,
-            "api": "csp_XBPQ",
-            "ext": {
-            "直接播放":"1",
-"分类二次截取":"<ul class=\"primary&&</ul",
-   "分类数组": "<li&&</li",
-"分类标题": ">&&</a[不包含:分类]",
-"分类ID": "/categories/&&/",
-"数组":"class=\"item&&</a",
-            "标题":"alt=\"&&\"",
-"图片":"data-original=\"&&\"",
-"链接":"data-original=*videos_screenshots/&&/385x233",
-"链接前缀":"https://yukz.bydd.popur.jb-aiwei.cc/contents/videos/",
-"链接后缀":"/index.m3u8",
-"分类url":"https://bav84.xyz/categories/{cateId}/?mode=async&function=get_block&block_id=list_videos_common_videos_list&sort_by=post_date&from={catePg}&_=1702387854903"   
-    }
-    },    
-
-	 {    "key": "hs仓库",
-            "name": "💟hs仓库 hsck.us",
-            "type": 3,
-            "api": "csp_XBPQ",
-            "ext": {
-           "播放数组":"<script type=&&</script",
-           "播放列表":"var player_aaaa={&&}",
-       "播放链接":"\"url\":\"&&\"",
-       "播放标题":"立即播放",
-            //"分类二次截取":"class=\"stui-header__menu&&</ul",
-   "分类数组": "<li&&</li",
-"分类标题": "</span>&&</a",
-"分类ID": "/vodtype/&&.html",
-"分类url":"http://167hsck.cc/vodtype/{cateId}-{catePg}.html"   
-    }
-    },    
-
-
-	{"key": "XBPQ_1111","name": "1111","type": 3,"api": "csp_XBPQ",
-  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{  
-      "直接播放":"1",
- "嗅探词": ".mp4#.m3u8",
- "分类":"国产传媒$160#日本$2#国产$1#韩国$4#8泰国$82#动漫$6#欧美$5#中文$9#VR$3#巨ru$11#制服$12#熟nv$13#san级$14#AI$15#海外$16", 
-	"分类url":"https://www.1111mod.net/index.php/vodtype/{cateId}-{catePg}.html"},"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 {
 "key":"csp_XBPQ_HLX影视",
 "name":"️HLXSP影视 XBPQ https://www.fldz8.buzz/",
@@ -1788,7 +1659,7 @@
    "跳转播放链接":"\"url\"*\"&&\"",
           "简介":"\"vod_name\":\"&&\"",
  "嗅探词": ".mp4#.m3u8",
-"分类url":"https://www.sjhsp2.buzz/index.php/vod/type/id/{cateId}/page/{catePg}.html"}},
+"分类url":"https://www.sjhsp4.buzz/index.php/vod/type/id/{cateId}/page/{catePg}.html"}},
 	
 
 
@@ -1810,10 +1681,151 @@
       }
     },
 {"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
+    
+	 {    "key": "ff996",
+ 	     "编码": "gb2312",
+            "name": "💟 fff996.com",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+            "请求头":"手机",
+             "直接播放":"1",         
+            "跳转播放链接":"?url=&&\"",
+            "搜索url":"http://1516fff996com.312zzz.com/video_search/{wd}/{pg}/index.htm",
+  "分类":"麻豆视频$1#网曝事件$2#国产视频$3#明星换脸$4#精品推荐$5#精彩不断$6#三级伦理$7#91探花$8#主播探花$9#名优推荐$10#名优中字$11#无码中文$12#日本无码$13#有码中文$14#欧美高清$15#动漫剧情$16",
+  "链接":"href=\"&&\"[替换:video_detail>>video_conter]",  
+"分类url":"http://1516fff996com.312zzz.com/video_list/{cateId}/{catePg}/index.htm"   
+    }
+    },    
+{"key":"csp_XBPQ_003a","name":"003 XBPQ 003xx.com","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
+      "分类数组": "<dd&&</dd",
+"分类标题": ">&&</a",
+"分类ID": "/vodtype/&&.html",
+"图片":"src=\"&&\"",
+    "播放数组":"id=\"bofang_box\"><script&&</script",
+           "播放列表":"var player_aaaa={&&1}",
+       "播放链接":"\"url\":\"&&\"",
+       "播放标题":"\"vod_name\":\"&&\"",
+   "链接":"href=\"&&\"[替换:voddetail>>vodplay#.html>>-1-1.html]","分类url":"https://k3002.com/vodtype/{cateId}-{catePg}.html"}},
+
+{    "key": "jav电影",
+            "name": "💟jav电影 javdb.com",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+          "数组":"class=\"item&&</div",
+                   "播放二次截取":"classm\"magnet-name&&class=\"item",
+                   "播放数组":"id=\"magnets-content&&</button",
+                   "播放列表":"<a&&</a[不包含:直播#美女直播#精彩#x u u 62#最 新]",
+              "搜索url":"https://javdb523.com/search?q={wd};;m",
+              "搜索数组":"class=\"item\"&&</div[包含:class=\"tag]",
+          "分类":"无码$uncensored#有码$censored#欧美$western",
+          "分类url":"https://javdb523.com/{cateId}?page={catePg}"
+    }
+    },
+ {
+      "key": "csp_XBPQ_qiela",
+      "name": "[fq]qiela发布页qie.la",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+ 
+  "数组": "<li class=\"col-6&&</li",
+  "图片": "src=\"&&\"",
+  "标题": "alt=\"&&\"",
+  "链接": "href=\"&&\"",
+  "直接播放":"1",
+  "分类数组": "<li id=\"navbar-category-&&</li>",
+"分类标题": ">&&</a",
+"分类ID": "/frim/index&&.html",
+        "分类url": "https://qie99.xyz/frim/index{cateId}-{catePg}.html"
+      }
+    },
+{
+"key": "csp_XBPQ_wy剧", "name":"[fq]wy影院https://91xvip.tv","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": {
+        "请求头":"手机",
+        "数组":"class=\"video-list-box&&</div>",
+        "标题":">&&</p>",
+        "图片":"img-src=\"&&\"",
+        "链接":"/play/+type=\"&&\"+/+vid=\"&&\"",
+       "链接前缀":"https://s9043.net71228.com",
+       "链接后缀":".html",      
+      "播放列表":"let videoList = [&&]",
+       "播放链接":", '&&'",
+       "播放标题":"立即播放",
+       "搜索url":"https://s9043.net71228.com/search/{wd}/{pg}.html",
+       "搜索数组":"class=\"video-list-box&&</div>[不包含:type=\"\"]",
+        "搜索标题":">&&</p>",
+        "搜索图片":"img-src=\"&&\"",
+        "搜索链接":"type=\"&&\"+/+vid=\"&&\"",
+       "搜索链接前缀":"/play/",
+       "搜索链接后缀":".html",      
+        "分类":"国产$cn#日韩$ja#视频$mv#欧美$eu", 
+        "分类url":"https://s9043.net71228.com/video/{cateId}/{catePg}.html"
+},"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+
+	 
+ 	 {    "key": "avjb",
+            "name": "💟avjb avjb.github.io",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+            "直接播放":"1",
+"分类二次截取":"<ul class=\"primary&&</ul",
+   "分类数组": "<li&&</li",
+"分类标题": ">&&</a[不包含:分类]",
+"分类ID": "/categories/&&/",
+"数组":"class=\"item&&</a",
+            "标题":"alt=\"&&\"",
+"图片":"data-original=\"&&\"",
+"链接":"data-original=*videos_screenshots/&&/385x233",
+"链接前缀":"https://yukz.bydd.popur.jb-aiwei.cc/contents/videos/",
+"链接后缀":"/index.m3u8",
+"分类url":"https://bav84.xyz/categories/{cateId}/?mode=async&function=get_block&block_id=list_videos_common_videos_list&sort_by=post_date&from={catePg}&_=1702387854903"   
+    }
+    },    
+{"key":"csp_XBPQ_富二代","name":"[fq]富二代 XBPQ fedfby15.com","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
+    "请求头":"手机",
+    "分类二次截取":"id=\"nav&&</div",
+      "分类数组": "<a&&/a",
+"分类标题": ">&&<",
+"分类ID": "/video/index/cid/&&\"",
+     "直接播放":"1",     
+     "搜索url":"https://fedfby15.com/search;post;kd={wd}",
+       "跳转播放链接":"var url = '&&'",
+      "图片": "picurl = '&&'",
+   "链接":"href=\"&&\"","分类url":"https://fedfby15.com/video/index/cid/{cateId}/p/{catePg}"}},
+	 {    "key": "hs仓库",
+            "name": "[fq]💟hs仓库 hsck.us",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+           "播放数组":"<script type=&&</script",
+           "播放列表":"var player_aaaa={&&}",
+       "播放链接":"\"url\":\"&&\"",
+       "播放标题":"立即播放",
+            //"分类二次截取":"class=\"stui-header__menu&&</ul",
+   "分类数组": "<li&&</li",
+"分类标题": "</span>&&</a",
+"分类ID": "/vodtype/&&.html",
+"分类url":"http://167hsck.cc/vodtype/{cateId}-{catePg}.html"   
+    }
+    },    
+
+
+	{"key": "XBPQ_1111","name":"[fq]1111","type": 3,"api": "csp_XBPQ",
+  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{  
+      "直接播放":"1",
+ "嗅探词": ".mp4#.m3u8",
+ "分类":"国产传媒$160#日本$2#国产$1#韩国$4#8泰国$82#动漫$6#欧美$5#中文$9#VR$3#巨ru$11#制服$12#熟nv$13#san级$14#AI$15#海外$16", 
+	"分类url":"https://www.1111mod.net/index.php/vodtype/{cateId}-{catePg}.html"},"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+
 //{"key": "csp_xb_f2daiyy","name": "富二代影院(XYQ)","type": 3,"api": "csp_XYQBiu","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/f2dys_xyq_.json","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
 
-    		  { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols.xyz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "播放数组":"<button class=\"button&&</button","分类ID":"type/&&\"",  "分类url":"https://saols17.buzz/type/{cateId}/{catePg}" } },	    
-
+    		  
 
 {"key": "hav ","name": "黄艾薇 ","type": 0,"api": "https://www.pgxdy.com/api/xml.php ","searchable": 1,"changeable": 1},	
 {"key":"bt资源","name":"bt资源","type":0,"api":"http://bttcj.com/inc/sapi.php","searchable":0,"quickSearch":0},
@@ -1835,16 +1847,7 @@
     
        //{ "key": "csp_XBPQ_青龙", "name": "青龙qinglongav.com", "type": 3,"api": "csp_XBPQ", "searchable": 1,"quickSearch": 1,"filterable": 1,"ext": {"分类":"国产$1#日有$2#日无$3#中文$4#欧美$9#动漫$6#强乱$7#变另$8#动漫1$10#巨ru$11#制服$12#熟nv$13#san级$14#AI$15#海外$16","分类url":"https://qinglong.23922ld.cyou/index.php/vod/type/id/{cateId}/page/{catePg}.html"}},
   	
-       {"key":"csp_XBPQ_003a","name":"003 XBPQ 003xx.com","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
-      "分类数组": "<dd&&</dd",
-"分类标题": ">&&</a",
-"分类ID": "/vodtype/&&.html",
-"图片":"src=\"&&\"",
-    "播放数组":"id=\"bofang_box\"><script&&</script",
-           "播放列表":"var player_aaaa={&&1}",
-       "播放链接":"\"url\":\"&&\"",
-       "播放标题":"\"vod_name\":\"&&\"",
-   "链接":"href=\"&&\"[替换:voddetail>>vodplay#.html>>-1-1.html]","分类url":"https://k3002.com/vodtype/{cateId}-{catePg}.html"}},
+       
     
     
      // {"key": "XBPQ_114","name": "114影院","type": 3,"api":"csp_XBPQ",  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{ "直接播放":"1", "分类数组":"class=\"menu_items&&</li>","分类标题": ">&&</a","分类ID":"vod/type/id/&&.html", "分类url":"https://llwwhj114.top/index.php/vod/type/id/{cateId}/page/{catePg}.html","数组":"class=\"col-style d-4 m-2 lazy loaded&&</div></a>","图片":"background-image: url(\"&&\"","标题":"<span class=\"title\">&&</span>","链接":"href=\"&&\"[替换:detail>>play#.html>>/sid/1/nid/1.html]"}},	
