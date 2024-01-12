@@ -1707,7 +1707,25 @@
        "播放链接":"\"url\":\"&&\"",
        "播放标题":"\"vod_name\":\"&&\"",
    "链接":"href=\"&&\"[替换:voddetail>>vodplay#.html>>-1-1.html]","分类url":"https://k3002.com/vodtype/{cateId}-{catePg}.html"}},
-
+{    "key": "avjb",
+            "name": "💟avjb avjb.github.io",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+            "直接播放":"1",
+"分类二次截取":"<ul class=\"primary&&</ul",
+   "分类数组": "<li&&</li",
+"分类标题": ">&&</a[不包含:分类]",
+"分类ID": "/categories/&&/",
+"数组":"class=\"item&&</a",
+            "标题":"alt=\"&&\"",
+"图片":"data-original=\"&&\"",
+"链接":"data-original=*videos_screenshots/&&/385x233",
+"链接前缀":"https://yukz.bydd.popur.jb-aiwei.cc/contents/videos/",
+"链接后缀":"/index.m3u8",
+"分类url":"https://bav90.xyz/categories/{cateId}/?mode=async&function=get_block&block_id=list_videos_common_videos_list&sort_by=post_date&from={catePg}&_=1702387854903"   
+    }
+    },    
 {    "key": "jav电影",
             "name": "💟jav电影 javdb.com",
             "type": 3,
@@ -1768,25 +1786,7 @@
 },"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 
 	 
- 	 {    "key": "avjb",
-            "name": "💟avjb avjb.github.io",
-            "type": 3,
-            "api": "csp_XBPQ",
-            "ext": {
-            "直接播放":"1",
-"分类二次截取":"<ul class=\"primary&&</ul",
-   "分类数组": "<li&&</li",
-"分类标题": ">&&</a[不包含:分类]",
-"分类ID": "/categories/&&/",
-"数组":"class=\"item&&</a",
-            "标题":"alt=\"&&\"",
-"图片":"data-original=\"&&\"",
-"链接":"data-original=*videos_screenshots/&&/385x233",
-"链接前缀":"https://yukz.bydd.popur.jb-aiwei.cc/contents/videos/",
-"链接后缀":"/index.m3u8",
-"分类url":"https://bav84.xyz/categories/{cateId}/?mode=async&function=get_block&block_id=list_videos_common_videos_list&sort_by=post_date&from={catePg}&_=1702387854903"   
-    }
-    },    
+ 	 
 {"key":"csp_XBPQ_富二代","name":"[fq]富二代 XBPQ fedfby15.com","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
     "请求头":"手机",
     "分类二次截取":"id=\"nav&&</div",
