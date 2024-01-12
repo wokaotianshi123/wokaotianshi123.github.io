@@ -1659,7 +1659,7 @@
    "跳转播放链接":"\"url\"*\"&&\"",
           "简介":"\"vod_name\":\"&&\"",
  "嗅探词": ".mp4#.m3u8",
-"分类url":"https://www.flksp2.buzz/index.php/vod/type/id/{cateId}/page/{catePg}.html"}},
+"分类url":"https://www.lpksp3.buzz/index.php/vod/type/id/{cateId}/page/{catePg}.html"}},
 	
 
 
