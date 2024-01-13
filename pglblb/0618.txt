@@ -1791,7 +1791,7 @@
    "分类数组": "<li&&</li",
 "分类标题": "</span>&&</a",
 "分类ID": "/vodtype/&&.html",
-"分类url":"http://167hsck.cc/vodtype/{cateId}-{catePg}.html"   
+"分类url":"http://hsck959.cc/vodtype/{cateId}-{catePg}.html"   
     }
     },    
 
