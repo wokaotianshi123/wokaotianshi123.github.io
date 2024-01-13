@@ -1796,7 +1796,7 @@
     },    
 
 
-	{"key": "XBPQ_1111","name":"[fq]1111","type": 3,"api": "csp_XBPQ",
+	{"key": "XBPQ_1111","name":"[fq]满妹mod","type": 3,"api": "csp_XBPQ",
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{  
       "直接播放":"1",
  "嗅探词": ".mp4#.m3u8",
