@@ -2,7 +2,7 @@
 [
 {
       "key": "豆豆",
-      "name": "❦缝纫机Box",
+      "name": "❦缝纫机Box 提示激活的话输入8527",
       "type": 3,
       "api": "csp_DouDou",
       "searchable": 0,
