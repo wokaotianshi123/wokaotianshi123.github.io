@@ -27,6 +27,7 @@
       }
     },
 {"key": "米宁","name": "💟米宁剧院","type": 3,"api": "csp_XBPQ","ext": {"分类url":"https://www.ywxmining.com/mshow/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html "}},
+     {"key": "永亚","name": "💟永亚剧院","type": 3,"api": "csp_XBPQ","ext": {"线路二次截取":"<ul class=\"nav nav-tabs&&</ul","线路数组":"<li&&</li","线路标题":">&&</a","分类":"电影$1#电视剧$2#综艺$3#动漫$4","分类url":"  http://www.yongyazs.com/ysdq/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html "}}, 
     {
       "key": "csp_XBPQ_4k影视",
       "name": "💞4k┃影视",
