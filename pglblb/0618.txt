@@ -903,7 +903,7 @@
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{
 \"分类\":\"电影$1#剧集$2#综艺$3#动漫$4#最新$27\",
 \"数组\":\"<li&&</a\",
-	\"分类url\":\"http://www.hdqyxy.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html\"}","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
+	\"分类url\":\"http://vip.hdqyxy.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html\"}","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
    {"key": "XBPQ_茶杯","name": "茶杯","type": 3,"api": "csp_XBPQ",
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{
   \"播放数组\":\"class=\\\"stui-content__playlist&&</ul>\",
