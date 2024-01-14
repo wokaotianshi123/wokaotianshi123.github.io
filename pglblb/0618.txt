@@ -936,7 +936,7 @@
 {"key": "XBPQ_fwitu","name": "飞兔影院","type": 3,"api": "csp_XBPQ",
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{ 
 	\"分类url\":\"https://www.feitu.tv/filter/{cateId}/area/{area}/page/{catePg}/year/{year}/\"}"},	       
-        {"key":"csp_xBiu_qiuxia","name": "秋霞(xBPQ)","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 0,"filterable": 1,"ext": {  "请求头": "User-Agent$mobile#Referer$https://www.qiuxia365.com/","分类url":"https://www.qiuxia365.com/index.php?s=home-vod-type-id-{cateId}-mcid-{class}-area-{area}-year-{year}-order-{by}-picm-1-p-{catePg}","副标题":"text-bg-r\">&&</span"}},
+        {"key":"csp_xBiu_qiuxia","name": "秋霞(xBPQ)","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 0,"filterable": 1,"ext": {  "请求头": "User-Agent$pc#Referer$https://www.qiuxia365.com/","分类url":"https://www.qiuxia365.com/index.php?s=home-vod-type-id-{cateId}-mcid-{class}-area-{area}-year-{year}-order-{by}-picm-1-p-{catePg}","副标题":"text-bg-r\">&&</span"}},
  
 
  {"key":"csp_xBiu_kuke","name": "酷客影院1(XBiu)","type": 3,"api": "csp_XBiu","searchable": 1,"quickSearch": 0,"filterable": 0,"ext": "http://www.kuke66.com/vt/{cateId}-{catePg}.html","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBiu.jar"},
