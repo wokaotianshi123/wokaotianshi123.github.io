@@ -35,7 +35,8 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/%E5%B0%8F%E6%9A%B4%E8%84%BE%E6%B0%94.jar;md5;975c8ac43a0f8513bb4d32ca0de03340",          
+      //"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/%E5%B0%8F%E6%9A%B4%E8%84%BE%E6%B0%94.jar;md5;975c8ac43a0f8513bb4d32ca0de03340",     
+
 "ext": {    
         "站名": "4K影院",
         "主页url": "https://www.4kvm.org",
