@@ -193,7 +193,7 @@
         "分类url": "https://www.novipnoad.net/{cateId}/page/{catePg}/[https://www.novipnoad.net/{cateId}/?pg={catePg}];;d0",
         "分类": "剧集$tv#港剧$tv/hongkong#台剧$tv/taiwan#欧美剧$tv/western#韩剧$tv/korea#日剧$tv/japan#泰剧$tv/thailand#土耳其剧$tv/turkey#电影$movie#动画$anime#综艺$shows#音乐$music#短片$short#其他$other"
         }
-      }      
+      },     
 	 //{    "key": "剧圈圈电影","name": "💟剧圈圈电影 www.jqqzx.com", "type": 3, "api": "csp_XBPQ", "ext": {"分类url":"https://www.jqqzx.cc/vodshow/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html;;m" } },
     {"key": "439","name": "439","type": 1,"api": "https://49zyw.com/api.php/provide/vod/","categories": ["国产剧","短剧","欧美剧","香港剧","动作片","爱情片","科幻片","恐怖片","剧情片","战争片","喜剧片","动画片","犯罪片","奇幻片","灾难片","悬疑片","其他片","韩国剧","台湾剧","泰国剧","日剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日本动漫","欧美动漫","海外动漫","电影解说","体育赛事","海外剧","纪录片"]},
    {"key": "rarbt","name": "💟rarbt剧院 www.rarbtv.cc","type": 3,"api": "csp_XBPQ","ext": {"分类url":"http://www.rarbt.fun/vod/show/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html" }},  
