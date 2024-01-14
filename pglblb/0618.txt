@@ -420,7 +420,7 @@
    {"key": "XBPQ_干饭","name": "干饭 gfys.top","type": 3,"api": "csp_XBPQ",
   "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{
 "数组":"<li class=\"col-md-6&&</li",
-	"分类url":"https://gfysys.cc/vodshow/{cateId}-{area}--{class}-----{catePg}---{year}.html"},"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBPQ222.jar"},		
+	"分类url":"https://gfvod.com/vodshow/{cateId}-{area}--{class}-----{catePg}---{year}.html"},"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XBPQ222.jar"},		
 {"key": "csp_Mp4Mov","name": "🧲Mp4电影","type": 3,"api": "csp_Mp4Mov","searchable": 1,"quickSearch": 1,"filterable": 1,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"}, 
      //  {"key": "csp_DyGod","name": "🧲电影天堂","type": 3,"api": "csp_DyGod","searchable": 1,"quickSearch": 1,"filterable": 1,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
        {"key": "csp_DygCL","name": "🧲电影港","type": 3,"api": "csp_DygCL","searchable": 1,"quickSearch": 1,"filterable": 1,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/XYQBiu.jar"},
