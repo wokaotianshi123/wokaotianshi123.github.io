@@ -85,7 +85,7 @@
       "playerType": 1,
       "searchable": 1,
       "quickSearch": 1,
-      "filterable": 1,     //"jar":"https://download.kstore.space/download/3848/TVBox/jar/custom_spider.jar;md5;f57b805ff03db3094dd00ebe7559f0aa",     
+      "filterable": 1,     "jar":"https://download.kstore.space/download/3848/TVBox/jar/custom_spider.jar;md5;f57b805ff03db3094dd00ebe7559f0aa",     
 "ext": {
         "请求头参数": "MOBILE_UA",
         "网页编码格式": "UTF-8",
