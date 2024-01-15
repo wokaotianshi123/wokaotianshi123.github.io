@@ -1829,6 +1829,21 @@
 "图片":"src=\"&&\"",
        "直接播放":"1",
    "链接":"href=\"&&\"","分类url":"https://1rxyb.aiwucm-ova.buzz/index.php/&m=vodtype/mdapp{cateId}/page/{catePg}.html"}},
+	 {    "key": "404",
+            "name": "💟404精品剧院 404jp.com",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+            //"直接播放":"1",
+            "分类":"精品推荐$27#剧情原创$28#国产自拍$29#探花约啪$51#主播大秀$52#传媒影像$53#情色节目$59#P站精品$61#抖阴短视频$63#网曝门$70#AV解说$76#偷拍自拍$31#国产伦理$77#国产精品$75#日韩视频$1#中文字幕$33#名优写真$35#日本伦理$39#骑兵有码$43#码专区$6#卡通动漫$8",
+    "播放数组":"<script type=&&</script",
+           "播放列表":"var player_aaaa={&&}",
+       "播放链接":"\"url\":\"&&\"",
+       "播放标题":"立即播放",
+   "跳转播放链接":"\"url\"*\"&&\"",
+"分类url":"https://404jp8.life/index.php/vod/type/id/{cateId}/page/{catePg}.html"   
+    }
+    }, 
    {"key":"国产新传媒","name":"💟国产新传媒 https://github.com/madouqufabuye","type":3,"api":"csp_XBPQ","ext":{"请求头":"手机","分类":"国产$gccm#麻豆$modelmedia","分类url":"https://madouqu21.cc/{cateId}/page/{catePg}/[firstPage=https://madouqu21.cc/{cateId}/]",
    //"二次截取":"class=\"post post-list&&</article",
    "数组":"class=\"placeholder&&</div","标题":"alt=\"&&\"","图片":"src=\"&&\"","链接":"href=\"&&\"","播放数组":"id=\"download&&post-modified-info","播放列表":"下載地址：&&</a","播放标题":"","播放链接":"magnet:?xt=&&\">Magnet","播放链接前缀":"magnet:?xt="},"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
