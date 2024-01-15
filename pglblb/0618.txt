@@ -380,7 +380,7 @@
 	\"分类ID\": \"Category/&&K.html\",
 	\"分类url\":\"https://kanb.tv/Show/{cateId}K{area}K{by}K{class}KKKKK{catePg}KKK{year}.html\"}","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
 {    "key": "大全",
-            "name": "💟大全剧院 www.kanys4.com",
+            "name": "💟大全剧院 www.kanys3.com",
             "type": 3,
             "api": "csp_XBPQ",
             "ext": {"分类url":"https://www.kanys3.com/filmshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"  }}, 
