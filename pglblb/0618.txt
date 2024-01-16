@@ -1906,10 +1906,10 @@
                    "播放二次截取":"classm\"magnet-name&&class=\"item",
                    "播放数组":"id=\"magnets-content&&</button",
                    "播放列表":"<a&&</a[不包含:直播#美女直播#精彩#x u u 62#最 新]",
-              "搜索url":"https://javdb523.com/search?q={wd};;m",
+              "搜索url":"https://javdb524.com/search?q={wd};;m",
               "搜索数组":"class=\"item\"&&</div[包含:class=\"tag]",
           "分类":"无码$uncensored#有码$censored#欧美$western",
-          "分类url":"https://javdb523.com/{cateId}?page={catePg}"
+          "分类url":"https://javdb524.com/{cateId}?page={catePg}"
     }
     },
  {
