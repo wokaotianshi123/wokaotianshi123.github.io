@@ -11,7 +11,22 @@
     },
 //{"key": "XBPQ_i4k","name": "I4K","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{ \"简介\":\"class=\\\"module-info-items\\\"&&</div>\",\"分类url\":\"https://www.i4k.cc/index.php/show/{cateId}/area/{area}/by/{by}/class/{class}/page/{catePg}/year/{year}.html\"}"},
  // {"key":"csp_77","name":"七七🏀","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},
-  {    "key": "大全2","name": "💟大全剧院2","type": 3,"api": "csp_XBPQ","ext": {"分类":"电影$1#电视剧$2#动漫$4#综艺$3#动画片$20",  "分类url":"https://www.zjxblsw.net/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"}}, 
+  {    "key": "大全2","name": "💟大全剧院2","type": 3,"api": "csp_XBPQ","ext": {"分类":"电影$1#电视剧$2#动漫$4#综艺$3#动画片$20",  "分类url":"https://www.zjxblsw.net/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"}},
+	 {    "key": "好戏",
+            "name": "💟好戏剧院",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+             "图片":"data-src=\"&&\"",
+             "副标题":"ft2\">&&</span",
+            "线路数组":"class=\"swiper-slide&&/a>", 
+             "线路标题":"/i>&&<",
+            "简介":"简介：</em>&&</li",
+             "分类": "电影&剧集&动漫&综艺",
+        "分类值": "1&2&4&3",
+"分类url":" https://haoxi.vip/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}/"   
+    }
+    },     
   {
       "key": "996",
       "name": "🥃996┃影视",
