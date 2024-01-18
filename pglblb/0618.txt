@@ -26,7 +26,9 @@
         "分类值": "1&2&4&3",
 "分类url":" https://haoxi.vip/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}/"   
     }
-    },     
+    },
+      {"key": "片库","name": "💟片库剧院","type": 3,"api": "csp_XBPQ","ext": {"线路二次截取":"<ul class=\"nav nav-tabs&&</ul","线路数组":"<li&&</li","线路标题":">&&</a","分类":"电影$1#电视剧$2#综艺$3#动漫$4","分类url":"  https://wfhbjxsb.com/vodshow/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html "}},
+
   {
       "key": "996",
       "name": "🥃996┃影视",
