@@ -27,6 +27,9 @@
 "分类url":" https://haoxi.vip/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}/"   
     }
     },
+          {"key": "奇优","name": "💟奇优剧院 heihu.info","type": 3,"api": "csp_XBPQ","ext": {
+     "简介":"class=\"col-pd\">*讲述了&&</div>",
+     "分类url":"http://www.qiyoudy5.com/list/{cateId}_{catePg}.html?order={by}"}},    
      {"key": "黑狐","name": "💟黑狐剧院 heihu.info","type": 3,"api": "csp_XBPQ","ext": {
      "简介":"class=\"col-pd\">*讲述了&&</div>",
      "分类url":"http://fagmn.com/list/{cateId}_{catePg}.html?order={by}"}},    
