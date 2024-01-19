@@ -1815,6 +1815,7 @@
 "分类url":"https://404jp10.life/index.php/vod/type/id/{cateId}/page/{catePg}.html"   
     }
     }, 
+    {"key": "13MEI","name": "💟13MEI剧院 https://www.13mei13.top","type": 3,"api": "csp_XBPQ","ext": {"请求头":"手机","分类":"原创自拍$135#国产$14#无码$34#日韩$8#欧美$126#综合$133","直接播放":"1","二次截取":"class=\"showlist&&class=\"el-pagination","数组":"<a&&/a>","标题":"van-multi-ellipsis--l2\">&&</div>","图片":"data-src=\"&&\"","链接":"href=\"&&\"[替换:detail>>play]","搜索url":"https://20240119.13mei7.buzz/13mei/search/{wd}.html","分类url":"https://20240119.13mei7.buzz/13mei/list/{cateId}-{catePg}.html[firstPage=https://20240119.13mei7.buzz/13mei/list/{cateId}.html]"}}, 
    {"key":"国产新传媒","name":"💟国产新传媒 https://github.com/madouqufabuye","type":3,"api":"csp_XBPQ","ext":{"请求头":"手机","分类":"国产$gccm#麻豆$modelmedia","分类url":"https://madouqu27.cc/{cateId}/page/{catePg}/[firstPage=https://madouqu21.cc/{cateId}/]",
    //"二次截取":"class=\"post post-list&&</article",
    "数组":"class=\"placeholder&&</div","标题":"alt=\"&&\"","图片":"src=\"&&\"","链接":"href=\"&&\"","播放数组":"id=\"download&&post-modified-info","播放列表":"下載地址：&&</a","播放标题":"","播放链接":"magnet:?xt=&&\">Magnet","播放链接前缀":"magnet:?xt="},"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xBPQ.jar"},
