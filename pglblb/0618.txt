@@ -33,7 +33,8 @@
      {"key": "黑狐","name": "💟黑狐剧院 heihu.info","type": 3,"api": "csp_XBPQ","ext": {
      "简介":"class=\"col-pd\">*讲述了&&</div>",
      "分类url":"http://fagmn.com/list/{cateId}_{catePg}.html?order={by}"}},    
-
+ {"key": "淘剧","name": "💟淘剧剧院 heihu.info","type": 3,"api": "csp_XBPQ", "jar": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xbpq1103.jar","ext": {
+     "分类url":"http://taoju.tv/list/{cateId}_{catePg}.html?order={by}"}},    
                   {"key": "片库","name": "💟片库剧院","type": 3,"api": "csp_XBPQ","ext": {"线路二次截取":"<ul class=\"nav nav-tabs&&</ul","线路数组":"<li&&</li","线路标题":">&&</a","简介":"&nbsp;。<p>&&</p","分类":"电影$1#电视剧$2#综艺$3#动漫$4","分类url":"  https://wfhbjxsb.com/vodshow/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html "}},
   {
       "key": "996",
@@ -178,7 +179,8 @@
         "分类": "剧集$tv#港剧$tv/hongkong#台剧$tv/taiwan#欧美剧$tv/western#韩剧$tv/korea#日剧$tv/japan#泰剧$tv/thailand#土耳其剧$tv/turkey#电影$movie#动画$anime#综艺$shows#音乐$music#短片$short#其他$other"
         }
       },  
-	 //{    "key": "剧圈圈电影","name": "💟剧圈圈电影 www.jqqzx.com", "type": 3, "api": "csp_XBPQ", "ext": {"分类url":"https://www.jqqzx.cc/vodshow/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html;;m" } },
+
+	 {    "key": "剧圈圈电影","name": "💟剧圈圈电影 www.jqqzx.com", "type": 3, "api": "csp_XBPQ", "ext": {"分类url":"https://www.jqqzx.cc/vodshow/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html;;m" } },
     {"key": "439","name": "439","type": 1,"api": "https://49zyw.com/api.php/provide/vod/","categories": ["国产剧","短剧","欧美剧","香港剧","动作片","爱情片","科幻片","恐怖片","剧情片","战争片","喜剧片","动画片","犯罪片","奇幻片","灾难片","悬疑片","其他片","韩国剧","台湾剧","泰国剧","日剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日本动漫","欧美动漫","海外动漫","电影解说","体育赛事","海外剧","纪录片"]},
    {"key": "rarbt","name": "💟rarbt剧院 www.rarbtv.cc","type": 3,"api": "csp_XBPQ","ext": {"分类url":"http://www.rarbt.fun/vod/show/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html" }},  
    {"key": "神仙","name": "💟神仙影视 ","type": 3,"api": "csp_XBPQ","ext": {
