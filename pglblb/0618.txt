@@ -1810,6 +1810,28 @@
 "图片":"src=\"&&\"",
        "直接播放":"1",
    "链接":"href=\"&&\"","分类url":"https://1rxyb.aiwucm-ova.buzz/index.php/&m=vodtype/mdapp{cateId}/page/{catePg}.html"}},
+	 {    "key": "神秘",
+            "name": "💟神秘电影 sm30.vip",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+             "编码": "UTF-8",//   UTF-8  gb2312
+            "直接播放":"1",
+            "二次截取":"class=\"vodlist&&class=\"pagebtn",
+            "数组":"class=\"vodbox&&</a",
+            "标题":"document.write(I(\"&&\"",
+            "副标题":"神秘",
+            "图片":"data-original=\"&&\"",
+            "链接":"href=\"&&\"",
+            "搜索url":"https://cxky.yksc.vip/so/{wd}.html",
+            "搜索数组":"class=\"vodbox&&</a",
+            "搜索标题":"document.write(I(\"&&\"",                 "搜索图片":"data-original=\"&&\"",
+            "搜索链接":"href=\"&&\"",
+            "分类": "国产&日本&韩国&欧美&三级&动漫",
+    "分类值": "1&2&3&4&5&6",
+"分类url":"https://cxky.yksc.vip/type/{cateId}-{catePg}.html[firstPage=https://cxky.yksc.vip/type/{cateId}.html]"   
+    }
+    }, 
 	 {    "key": "404",
             "name": "💟404精品剧院 404jp.tv",
             "type": 3,
