@@ -303,7 +303,9 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://download.kstore.space/download/3848/TVBox/py/cctv.py"
+      //"ext": "https://download.kstore.space/download/3848/TVBox/py/cctv.py"
+
+"ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/cctv.py"
     },
 	 {    "key": "看吧电影",
             "name": "💟看吧电影 52kan.info",
