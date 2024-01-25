@@ -2,7 +2,7 @@
 [
 {
       "key": "豆豆",
-      "name": "❦缝纫机Box 提示激活的话输入8527 接口来自http://cdn.qiaoji8.com/tvbox.json",
+      "name": "❦缝纫机Box 提示激活输入8527 接口来自http://cdn.qiaoji8.com/tvbox.json",
       "type": 3,
       "api": "csp_DouDou",
       "searchable": 0,
@@ -35,7 +35,7 @@
             "数组":"class=\"col-md-6 col-sm-4&&</li",
             "分类": "电影&剧集&动漫&综艺&短剧&动漫电影&体育赛事",
     "分类值": "1&2&4&3&26&25&24",
-"分类url":"https://www.shxiasang.com/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"   
+"分类url":"https://www.shxiasang.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html"   
     }
     }, 
           {"key": "奇优","name": "💟奇优剧院 heihu.info","type": 3,"api": "csp_XBPQ","ext": {
