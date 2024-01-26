@@ -95,6 +95,13 @@ slicehosting搭建节点 视频地址 https://www.youtube.com/watch?v=Bc3DMAGVNG
 账号 gdq5MWZbfJKG93dO9Ucur2YaUGpjmAFr
 
 
+pg的直播源生成（针对的是范明明的源） 打开直播源，打开下面的地址转换通用txt https://guihet.com/convert-m3u-js.html
+
+然后专用转换（还可以参考https://live.fanmingming.com/） https://live.fanmingming.com/txt2m3u/
+
+再粘贴生成配置
+
+
 vless://759438e2-dce4-49f9-92cf-5824006e158e@1x.com:8443?host=sh.wokaotianshi123.cloudns.org&path=%2Fvls%3Fed%3D2048&type=ws&encryption=none&security=tls&sni=sh.wokaotianshi123.cloudns.org#SG-argo
 
 
