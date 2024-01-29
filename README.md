@@ -108,3 +108,25 @@ vless://759438e2-dce4-49f9-92cf-5824006e158e@1x.com:8443?host=sh.wokaotianshi123
 
 软件如果失效，请前往公众号
 
+
+
+方法1：扫描酒店源
+酒店源一般是这种格式
+http://123.145.146.161:8089/newlive/live/hls/1/live.m3u8
+
+我们扫源的办法就是更换前面的网址和端口
+打开网址 https://fofa.info/result?qbase64=Ym9keT0ic3JjPVwiaW1nL2RsLmdpZlwiIiAmJiB0aXRsZT0i57O757uf55m75b2VIiAmJiBib2R5PSLljY7op4bnvo7ovr4i&page=1&page_size=10
+
+获取一个端口，可以尝试打开一下获取到的网址端口，确定能用 比如 http://222.189.51.62:8888/
+
+然后打开一个橙子的wtv工具箱pro，在中间空白处右键，打开扫源小助手，粘贴酒店源http://222.189.51.62:8888/newlive/live/hls/1/live.m3u8，下一步，点/1,下一步，数值范围1-60。完成，开始检测。
+然后导出m3u就可以了
+
+http://182.150.48.83:8888/newlive/live/hls/1/live.m3u8
+
+
+方法2：扫描其他源
+用到的是 打开网站复制网址和端口 
+https://fofa.info/result?qbase64=L2lwdHYvbGl2ZS96aF9jbi5qcw%3D%3D
+获取一个端口，可以尝试打开一下获取到的网址端口，确定能用 比如 110.7.129.199:8096
+打开find-iptv，输入110.7.129.199:8096回车，获取到txt，导入一个橙子的wtv工具箱pro，开始检测。
