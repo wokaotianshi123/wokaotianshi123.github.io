@@ -18,19 +18,7 @@
   "quickSearch": 1,
   "filterable": 0,
   "ext": "./布谷磁力.json","jar": "./XYQBiu.jar"}, 
-{    "key": "布谷",
-            "name": "💟布谷剧院",
-            "type": 3,
-            "api": "csp_XBPQ",
-//"jar": "./xzy.jar",
-            "ext": {
-"简介":"简　　介</p >*<&&</p",
-        "分类": "4K UHD电影&4K电影&4K剧集&杜比视界&精选合辑&4K纪录片&演示片&4K演示片&杜比演示片&DTS演示片&8K演示片&蓝光资源&蓝光电影&蓝光剧集&3D蓝光&蓝光纪录片&蓝光演唱会",
-"分类值": "4kuhd&4kmovie&4ktv&dolbyvision&4kzhuanti&4kdocu&4kdemo&4kdemo/4ktv-4ktv&4kdemo/dolbydomo&4kdemo/dtsdomo&4kdemo/8kdemo&bluraymovie&bluraymovie/bluray-movie&bluraymovie/bluraytv&bluraymovie/3dmovie&bluraymovie/documentary&bluraymovie/audiotest",
-        "播放数组":"磁力链接下载*</strong></p&&<p>点击或者复制磁力链接","播放列表":"<p&&</a","播放标题":"","播放链接":"href=\"magnet:?xt=&&\">magnet","播放链接前缀":"magnet:?xt=",
-"分类url":"https://www.bugutv.org/{cateId}/page/{catePg}[firstpage=https://www.bugutv.org/{cateId}]"   
-    }
-    }, 
+
 //{"key": "XBPQ_i4k","name": "I4K","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{ \"简介\":\"class=\\\"module-info-items\\\"&&</div>\",\"分类url\":\"https://www.i4k.cc/index.php/show/{cateId}/area/{area}/by/{by}/class/{class}/page/{catePg}/year/{year}.html\"}"},
  // {"key":"csp_77","name":"七七🏀","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},
   {    "key": "大全2","name": "💟大全剧院2","type": 3,"api": "csp_XBPQ","ext": {"分类":"电影$1#电视剧$2#动漫$4#综艺$3#动画片$20",  "分类url":"https://www.zjxblsw.net/vodshow/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html"}},
