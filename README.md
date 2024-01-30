@@ -95,9 +95,7 @@ slicehosting搭建节点 视频地址 https://www.youtube.com/watch?v=Bc3DMAGVNG
 账号 gdq5MWZbfJKG93dO9Ucur2YaUGpjmAFr
 
 
-pg的直播源生成（针对的是范明明的源） 打开直播源，打开下面的地址转换通用txt https://guihet.com/convert-m3u-js.html
 
-然后专用转换（还可以参考https://live.fanmingming.com/） https://live.fanmingming.com/txt2m3u/
 
 再粘贴生成配置
 
@@ -108,8 +106,11 @@ vless://759438e2-dce4-49f9-92cf-5824006e158e@1x.com:8443?host=sh.wokaotianshi123
 
 软件如果失效，请前往公众号
 
+pg的直播源生成（针对的是范明明的源） 打开直播源，打开下面的地址转换通用txt https://guihet.com/convert-m3u-js.html
 
+然后专用转换（还可以参考https://live.fanmingming.com/） https://live.fanmingming.com/txt2m3u/
 
+寻找直播源的方法
 方法1：扫描酒店源
 酒店源一般是这种格式
 http://123.145.146.161:8089/newlive/live/hls/1/live.m3u8
