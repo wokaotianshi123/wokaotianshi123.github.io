@@ -1,0 +1,25 @@
+永远不用再到处找节点，一劳永逸的翻墙方式。 支持IPV4和V6的wireguard协议。 
+
+视频地址:https://m.youtube.com/watch?v=S3hJSro-R7M
+
+文中用到的软件 
+
+NEKOBOX https://github.com/MatsuriDayo/NekoBoxForAndroid
+
+1.先用nekbox生成配置。打开neko左上角三横-工具-cloudflare warp-生成配置
+
+2.替换网址和端口。打开termux,(第一次打开请输入pkg update && pkg install wget )输入优选脚本，获得优选网址和端口，替换配置中的服务器和端口。
+
+enjoy!
+
+termux-app https://github.com/termux/termux-app 
+
+优选脚本 wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/warp-script/main/warp.sh && bash warp.sh 
+
+安卓 Termux 如无 wget 请使用以下命令安装：pkg update && pkg install wget
+
+windows优选程序 https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/neko/warp-yxip-win.7z
+
+其中配置
+
+sn://wg?eNoVzjFOwzAUAFADYuEU3SPZ_38SN7HUhVLTFhUqUCFraqcQCHZkKCFsOVDFAuJIXAN4J3j7jDFjHfeu7pzPsoyb2m-te-Y-_HwcMPaNQ-IoOXASx3REEqSKhwAKEVRKmKjCGqkIgdRaxsoaEkjprjprvEijEMfzk_aUcmev_Kpw3SYKsLywMzPJQZeteNCPo936Kb8cRxr122ShM9tV5zRNBF6vXt6nMN_e-ATvqV1u7jo_6tkhY-Vs8bX3Vx__Z3VdhHJwW4RmUDWvn33_C3_OP7w
