@@ -131,3 +131,6 @@ http://182.150.48.83:8888/newlive/live/hls/1/live.m3u8
 https://fofa.info/result?qbase64=L2lwdHYvbGl2ZS96aF9jbi5qcw%3D%3D
 获取一个端口，可以尝试打开一下获取到的网址端口，确定能用 比如 110.7.129.199:8096
 打开find-iptv（https://www.123pan.com/s/bdqA-igvE.html），输入110.7.129.199:8096回车，获取到txt，导入一个橙子的wtv工具箱pro，开始检测。
+
+方法3：打开网址搜索、整理源
+打开https://www.foodieguide.com/iptvsearch/，点击酒店源搜索专页，复制搜索出的源到notepad里，替换掉copy to tip为英文逗号, 然后复制到https://guihet.com/convert-m3u-js.html生成m3u
