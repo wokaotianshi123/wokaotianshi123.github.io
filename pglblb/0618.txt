@@ -48,7 +48,18 @@
     "分类值": "1&2&4&3&26&25&24",
 "分类url":"https://www.shxiasang.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html"   
     }
-    }, 
+    },
+    {
+      "key": "one影视",
+      "name": "one┃影视",
+      "type": 1,
+      "playerType": 1,
+      "api": "https://xzcjz.com/api.php/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 1
+    },
           {"key": "奇优","name": "💟奇优剧院 heihu.info","type": 3,"api": "csp_XBPQ","ext": {
      "简介":"class=\"col-pd\">*讲述了&&</div>",
      "分类url":"http://www.qiyoudy5.com/list/{cateId}_{catePg}.html?order={by}"}},    
