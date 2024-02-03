@@ -28,7 +28,7 @@
       "type": 3,
       "api": "csp_XBPQ",
       "filterable": 0,
-"jar": "./xzy.jar",
+
            "ext": {
            "数组":"class=\"v-pic&&</li",
            "标题":"alt=\"&&\"",
