@@ -22,6 +22,26 @@
 
 //{"key": "XBPQ_i4k","name": "I4K","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext":"{ \"简介\":\"class=\\\"module-info-items\\\"&&</div>\",\"分类url\":\"https://www.i4k.cc/index.php/show/{cateId}/area/{area}/by/{by}/class/{class}/page/{catePg}/year/{year}.html\"}"},
  // {"key":"csp_77","name":"七七🏀","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},
+   {
+      "key": "csp_xb_久久",
+      "name": "久久(XBPQ)",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "filterable": 0,
+           "ext": {
+           "数组":"class=\"v-pic&&</li",
+           "标题":"alt=\"&&\"",
+           "副标题":"演员：<a*blank\">&&</a",
+           "播放数组":"class=\"play_num_list&&</ul",
+           "搜索url":"https://www.995d.cn/vsearch/-------------.html;post;wd={wd}",
+           "搜索数组":"class=\"item_pic&&</li",
+           "简介":"简介：&&</div",
+           "导演": "导演：</em>&&</a",
+    "主演": "主演：</em>&&</li",
+           "地区": "地区：</em>&&</a",
+           "状态": "类型：</em>&&<em",
+           "分类url":"https://www.995d.cn/vshow/{cateId}-{area}--{class}-----{catePg}---{year}.html"}
+    },   
         	 {    "key": "影视大全影院",
             "name": "💟影视大全影院",
             "type": 3,
