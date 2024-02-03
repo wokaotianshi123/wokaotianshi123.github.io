@@ -32,6 +32,8 @@
            "数组":"class=\"v-pic&&</li",
            "标题":"alt=\"&&\"",
            "副标题":"演员：<a*blank\">&&</a",
+            "分类": "电影&剧集&动漫&综艺",
+    "分类值": "1&2&4&3",
            "播放数组":"class=\"play_num_list&&</ul",
            "搜索url":"https://www.995d.cn/vsearch/-------------.html;post;wd={wd}",
            "搜索数组":"class=\"item_pic&&</li",
