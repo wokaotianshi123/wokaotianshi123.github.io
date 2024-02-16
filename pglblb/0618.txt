@@ -832,21 +832,7 @@
      "分类url":"http://taoju.tv/list/{cateId}_{catePg}.html?order={by}"}},    
                   {"key": "片库","name": "💟片库剧院","type": 3,"api": "csp_XBPQ","ext": {"线路二次截取":"<ul class=\"nav nav-tabs&&</ul","线路数组":"<li&&</li","线路标题":">&&</a","简介":"&nbsp;。<p>&&</p","分类":"电影$1#电视剧$2#综艺$3#动漫$4","分类url":"  https://wfhbjxsb.com/vodshow/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html "}},
 {"key":"csp_xBiu_大全","name": "💟大全(xBPQ)","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 0,"filterable": 1, "jar": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/xbpq1103.jar",   "ext": {  "请求头": "User-Agent$mobile#Referer$https://www.szmdern.com/","分类url":"https://www.szmdern.com/index.php?s=home-vod-type-id-{cateId}-mcid-{class}-area-{area}-year-{year}-order-{by}-picm-1-p-{catePg}","副标题":"text-bg-r\">&&</span"}},
-  {
-      "key": "996",
-      "name": "🥃996┃影视",
-      "type": 3,
-      "api": "csp_XBPQ",
-      "jar": "https://download.kstore.space/download/3848/TVBox/jar/小暴脾气.jar;md5;975c8ac43a0f8513bb4d32ca0de03340",     "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": {
-        "分类url": "https://www.cs1369.com/show/class/{class}/area/{area}/by/{by}/id/{cateId}/page/{catePg}/lang/{lang}/year/{year}.html",
-        "搜索模式": "1",   
-        "搜索url": "https://www.cs1369.com/search.html?wd={wd}",        
-        "分类":"电影$1#电视剧$2#动漫$3#爽文短剧$4#动作片$6#喜剧片$7#爱情片$8#科幻片$9#恐怖片$10#剧情片$11#战争片$12#动画片$13#纪录片$14" 
-      }
-    },
+//{"key": "996", "name": "🥃996┃影视", "type": 3, "api": "csp_XBPQ","jar":"https://download.kstore.space/download/3848/TVBox/jar/小暴脾气.jar;md5;975c8ac43a0f8513bb4d32ca0de03340", "searchable": 1, "quickSearch": 1,"filterable": 1,"ext": {"分类url":"https://www.cs1369.com/show/class/{class}/area/{area}/by/{by}/id/{cateId}/page/{catePg}/lang/{lang}/year/{year}.html", "搜索模式": "1",   "搜索url": "https://www.cs1369.com/search.html?wd={wd}", "分类":"电影$1#电视剧$2#动漫$3#爽文短剧$4#动作片$6#喜剧片$7#爱情片$8#科幻片$9#恐怖片$10#剧情片$11#战争片$12#动画片$13#纪录片$14" }},
     	 {    "key": "大地影院",
             "name": "💟大地影院",
             "type": 3,
