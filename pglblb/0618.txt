@@ -188,6 +188,23 @@
     "手动嗅探视频链接关键词": ".mp4#.m3u8#.flv#video/tos",
     "手动嗅探视频链接过滤词": ".html#=http"
 }}, 
+     	 {    "key": "歪片电影",
+            "name": "💟歪片电影 https://xindizhi.github.io/waipian/",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+ "二次截取":"class=\"module-items\"&&class=\"module-footer",
+ "数组":"<a&&</a",
+ "播放数组":"class=\"module-play-list-content&&</div",
+ "简介":"module-info-introduction\">&&</div",
+ "导演":"导演：</span>&&</div",
+ "演员":"主演：</span>&&</div",
+        "分类url": "https://waipian13.com/show-{cateId}-{area}--{class}-----{catePg}---{year}/",
+        "分类": "电影&剧集&综艺&动漫&纪录片",
+        "分类值": "dianying&juji&zongyi&dongman&jilupian"   
+    }
+    },              
+
 	    {
       "key": "csp_XYQHiker_歪片",
       "name": "💞歪片┃影视",
@@ -357,7 +374,16 @@
     "是否开启手动嗅探": "0",
     "手动嗅探视频链接关键词": ".mp4#.m3u8#.flv#video/tos",
     "手动嗅探视频链接过滤词": ".html#=http"
-}},   
+}}, 
+        	 {    "key": "星空影视电影",
+            "name": "💟星空影视",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "ext": {
+"分类url":"https://hsziz.com/vodshow/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html"   
+    }
+    },
+
 {    "key": "大海影院",
             "name": "💟大海影院",
             "type": 3,
