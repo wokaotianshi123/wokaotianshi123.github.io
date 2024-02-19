@@ -107,6 +107,18 @@
             "api": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvboxtg/main/PG/lib/live2vod.js",
             "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvboxtg/main/PG/lib/feimaolive.json"
         },
+{"key": "缘来神马","name": "🐛缘来神马","type": 3,"api": "csp_XBPQ","ext": {
+"分类": "电影&电视剧&综艺&动漫",
+"分类值":"dy&tv&zy&dm",
+"二次截取":"class=\"m-movies&&class=\"pagination",
+"数组":"class=\"u-movie&&</article>",
+"标题":"<h2>&&</h2>",
+"副标题":"class=\"zhuangtai*<span>&&</span",
+"线路数组":"<h3&&</h3>",
+"线路标题":">&&</strong>",
+"播放数组":"class=\"playlist&&</div>",
+"简介":"class=\"abstract-content*>&&</div>",
+"分类url": "https://ylsm6.cc/haokan/{cateId}-{area}--{class}-----{catePg}---{year}.html"}},      
                	 {    "key": "新剧😁影院",
             "name": "💟新剧😁影院",
             "type": 3,
