@@ -9,7 +9,24 @@
       "quickSearch": 0,
       "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
-
+        {
+      "key": "55",
+      "name": "📽影视五五",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 0,
+      "ext": {
+"简介":"class=\"col-pd\"&&</p>",
+"导演":"导演：&&</p>",
+"主演":"主演：&&</p>",
+"线路数组":"class=\"stui-pannel__head&&</div",
+"线路标题":"class=\"title\"&&</h3",
+"分类url":"https://www.55kan.com/show/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html",
+"分类":"电影$1#电视剧$2#综艺$3#动漫$4"}
+    },
+ 
 	    {
       "key": "csp_XYQHiker_freeok",
       "name": "💞freeok┃影视",
