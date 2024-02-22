@@ -96,6 +96,27 @@
         "手动嗅探视频链接过滤词": ".html#?http"
       }
     },  
+{
+      "key": "Buleitv",
+      "name": "💯布蕾┃TV┃App",
+      "type": 3,
+      "api": "csp_Buleitv",
+      "searchable": 1,
+ "changeable":0,"jar":"https://d.kstore.space/download/6128/TVBOX/jar/追忆影探布蕾带自动追踪.jar"},
+ {
+      "key": "Yingtantv",
+      "name": "💯影探┃TV┃App",
+      "type": 3,
+      "api": "csp_Yingtantv2",
+      "searchable": 1,
+"changeable":0,"jar":"https://d.kstore.space/download/6128/TVBOX/jar/追忆影探布蕾带自动追踪.jar"},
+  {
+      "key": "Zhuiyitv",
+      "name": "💯追忆┃TV┃App",
+      "type": 3,
+      "api": "csp_Zhuiyitv",
+      "searchable": 1,
+"changeable":0,"jar":"https://d.kstore.space/download/6128/TVBOX/jar/追忆影探布蕾带自动追踪.jar"},
                	 {    "key": "djuu😁",
             "name": "💟djuu😁",
             "type": 3,
