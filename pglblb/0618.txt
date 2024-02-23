@@ -26,6 +26,30 @@
 "分类url":"https://www.55kan.com/show/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html",
 "分类":"电影$1#电视剧$2#综艺$3#动漫$4"}
     },
+	    {
+      "key": "csp_XYQHiker_落功影视",
+      "name": "💞落功┃影视",
+      "type": 3,
+      "api": "csp_XYQHiker",
+      "playerType": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,    
+      "jar":"https://download.kstore.space/download/3848/TVBox/jar/custom_spider0208.jar;md5;f57b805ff03db3094dd00ebe7559f0aa", 
+"ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/落功阁.json"            
+    }, 
+        {
+      "key": "csp_XYQHiker_纽约影视",
+      "name": "💞纽约┃影视",
+      "type": 3,
+      "api": "csp_XYQHiker",
+      "playerType": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,    
+      "jar":"https://download.kstore.space/download/3848/TVBox/jar/custom_spider0208.jar;md5;f57b805ff03db3094dd00ebe7559f0aa", 
+"ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/纽约.json"            
+    }, 
           {
       "key": "kekeys",
       "name": "📽可可",
