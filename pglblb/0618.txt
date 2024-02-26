@@ -1347,7 +1347,7 @@
     "分类片单链接": "a&&href",
     "分类片单图片": ".lazyload&&data-original",
     "分类片单副标题": ".pic-text&&Text",
-    "分类片单链接加前缀": "http://www.yejen.com",
+    "分类片单链接加前缀": "http://www.rhyy88.com",
     "分类片单链接加后缀": "",
     "搜索请求头参数": "User-Agent$手机",
     "搜索链接": "http://www.rhyy88.com/index.php/ajax/suggest?mid=1&wd={wd}",
