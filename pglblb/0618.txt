@@ -9,7 +9,7 @@
       "quickSearch": 0,
       "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
-{"key":"圣城","name":"圣城影视","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"csp_XBPQ","ext": {"数组":"cover&&item\"","副标题":"item-text\"&&<","线路数组":"dropdown&&</div>[排序:乐视>蓝光>索尼>量子>]","线路标题":"<span>&&</small>[替换:</span><small>>><]+集>","分类url": "https://sc1080.top/index.php/vod/show/area/{area}/by/{by}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html;;mak","分类": "电影$1#剧集$2#综艺$3#动漫$4#纪实$5"}},
+{"key":"圣城","name":"圣城影视","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"csp_XBPQ","ext": {"数组":"cover&&item\"","副标题":"item-text\"&&<","线路数组":"dropdown&&</div>[排序:乐视>蓝光>索尼>量子>]","线路标题":"<span>&&</small>[替换:</span><small>>><]+集>","影片地区":"area/*.html\">&&</a","影片类型":"id/2.html\">&&</a","影片年代":"year/&&.html","主演":"主演：</span>&&</div","导演":"导演：</span>&&</div","简介":"vod_content\">&&</span","播放数组":"class=\"scroll-content&&</div","分类url": "https://sc1080.top/index.php/vod/show/area/{area}/by/{by}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html;;mak","搜索标题":"<h3*title=\"&&\"","分类": "电影$1#剧集$2#综艺$3#动漫$4#纪实$5"}},
 	    {
       "key": "csp_XYQHiker_农民影视",
       "name": "💞农民┃影视",
