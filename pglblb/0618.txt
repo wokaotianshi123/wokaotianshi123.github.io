@@ -9,6 +9,25 @@
       "quickSearch": 0,
       "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
     },
+{
+            "key": "直播转点播",
+            "name": "🐼️┃电视┃直播",
+            "type": 3,
+            "searchable": 0,
+            "api": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvboxtg/main/PG/lib/live2vod.js",
+            "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvboxtg/main/PG/lib/feimaolive.json"
+        },
+{
+            "key": "NoSearch_csp_BBB",
+            "name": "哔哩哔哩",
+            "type": 3,
+            "api": "csp_Bili",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1,
+            "ext": "https://www.qiaoji8.com/tvbox/bili.json",
+"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
+        },
 	    {
       "key": "csp_XYQHiker_圣城",
       "name": "💞圣城┃影视",
@@ -725,14 +744,7 @@
         "手动嗅探视频链接过滤词": ".html#?http"
       }
     },  
-{
-            "key": "直播转点播",
-            "name": "🐼️┃电视┃直播",
-            "type": 3,
-            "searchable": 0,
-            "api": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvboxtg/main/PG/lib/live2vod.js",
-            "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvboxtg/main/PG/lib/feimaolive.json"
-        },
+
       {    "key": "爱豆影视",
             "name": "💟爱豆 xbpq",
             "type": 3,
@@ -2640,17 +2652,7 @@
             "filterable": 1,
 "jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
-        {
-            "key": "NoSearch_csp_BBB",
-            "name": "哔哩哔哩",
-            "type": 3,
-            "api": "csp_Bili",
-            "searchable": 1,
-            "quickSearch": 0,
-            "filterable": 1,
-            "ext": "https://www.qiaoji8.com/tvbox/bili.json",
-"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
-        },
+        
         {
             "key": "push_agent",
             "name": "推送",
