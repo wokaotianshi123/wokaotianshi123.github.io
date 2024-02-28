@@ -161,93 +161,9 @@
 	"useInSearchAll": true
 },
 {
-	"key": "73ACE5D6D85DAEE2D4C1C7B68228A093",
-	"name": "探探资源se",
-	"api": "https:\/\/apittzy.com\/api.php\/provide\/vod\/at\/xml",
-	"useInSearchAll": true
-},
-{
-	"key": "FC156BEF57FA50C4FF2EFE3FBE59B2A2",
-	"name": "KK资源网se",
-	"api": "https:\/\/kkzy.me\/api.php\/provide\/vod\/at\/xmlsea",
-	"useInSearchAll": true
-},
-{
-	"key": "0ACBA85A564B0CD3836C48B49CE61227",
-	"name": "色猫资源se",
-	"api": "https:\/\/api.maozyapi.com\/inc\/api.php",
-	"useInSearchAll": true
-},
-{
-	"key": "FA5E33DD6B5ECFD8E739595916C23794",
-	"name": "乐播se",
-	"api": "https:\/\/lbapi9.com\/api.php\/provide\/vod\/at\/xml",
-	"useInSearchAll": true
-},
-{
-	"key": "FB03121A9C15413C6A8117BF94FDEEA7",
-	"name": "番号资源 se",
-	"api": "http:\/\/fhapi9.com\/api.php\/provide\/vod\/at\/xml",
-	"useInSearchAll": true
-},
-{
-	"key": "72A6D99724304A6F8CFA4583745800D0",
-	"name": "大地se",
-	"api": "https:\/\/dadiapi.com\/api.php",
-	"useInSearchAll": true
-},
-{
-	"key": "DF717A352720A0B2E269D18198B916EA",
-	"name": "老鸭se",
-	"api": "https:\/\/api.apilyzy.com\/api.php\/provide\/vod\/at\/xml",
-	"useInSearchAll": true
-},
-{
 	"key": "E5E8D123B81950C55FFA721E12AA9AED",
 	"name": "最大资源",
 	"api": "http:\/\/zuidazy.me\/api.php\/provide\/vod\/at\/xml",
-	"useInSearchAll": true
-},
-{
-	"key": "E0E44DBE1349DBEC3C4FF2166401E0AD",
-	"name": "美少女se",
-	"api": "https:\/\/www.msnii.com\/api\/xml.php",
-	"useInSearchAll": true
-},
-{
-	"key": "AB93F7255A274CCBC6DFD4A0F5C11492",
-	"name": "淫水机se",
-	"api": "https:\/\/www.xrbsp.com\/api\/xml.php",
-	"useInSearchAll": true
-},
-{
-	"key": "5C256F50C6B4416B5CCFEDF87449B5A0",
-	"name": "黄AVse",
-	"api": "https:\/\/www.pgxdy.com\/api\/xml.php",
-	"useInSearchAll": true
-},
-{
-	"key": "26617F692CDCAD446F3FED0109A66FE8",
-	"name": "香奶儿se",
-	"api": "https:\/\/www.gdlsp.com\/api\/xml.php",
-	"useInSearchAll": true
-},
-{
-	"key": "D8D6D87DF6522C5B5E2EA30849C0975A",
-	"name": "白嫖se",
-	"api": "https:\/\/www.kxgav.com\/api\/xml.php",
-	"useInSearchAll": true
-},
-{
-	"key": "78C5B59904B4B1DD1933BAA1BE010FD6",
-	"name": "辣椒2se",
-	"api": "http:\/\/api.11bat.com\/api.php\/provide\/vod\/at\/xml\/",
-	"useInSearchAll": true
-},
-{
-	"key": "FBC439AA996A502626D124E534D96912",
-	"name": "天堂se",
-	"api": "http:\/\/bttcj.com\/inc\/sapi.php",
 	"useInSearchAll": true
 },
 {
@@ -293,12 +209,6 @@
 	"useInSearchAll": false
 },
 {
-	"key": "E9A68789A0ADEA847E63E34516E2140E",
-	"name": "奥斯卡se",
-	"api": "https:\/\/aosikazy.com\/api.php\/provide\/vod\/at\/xml",
-	"useInSearchAll": true
-},
-{
 	"key": "01CBC20D9E20A84BFEA766D6362F60D4",
 	"name": "速播",
 	"api": "https:\/\/subocaiji.com\/api.php\/provide\/vod\/at\/xml",
@@ -329,8 +239,98 @@
 	"useInSearchAll": true
 },
 {
+	"key": "0ACBA85A564B0CD3836C48B49CE61227",
+	"name": "色猫资源se",
+	"api": "https:\/\/api.maozyapi.com\/inc\/api.php",
+	"useInSearchAll": true
+},
+{
+	"key": "FA5E33DD6B5ECFD8E739595916C23794",
+	"name": "乐播se",
+	"api": "https:\/\/lbapi9.com\/api.php\/provide\/vod\/at\/xml",
+	"useInSearchAll": true
+},
+{
+	"key": "FB03121A9C15413C6A8117BF94FDEEA7",
+	"name": "番号资源 se",
+	"api": "http:\/\/fhapi9.com\/api.php\/provide\/vod\/at\/xml",
+	"useInSearchAll": true
+},
+{
+	"key": "DF717A352720A0B2E269D18198B916EA",
+	"name": "老鸭se",
+	"api": "https:\/\/api.apilyzy.com\/api.php\/provide\/vod\/at\/xml",
+	"useInSearchAll": true
+},
+{
+	"key": "72A6D99724304A6F8CFA4583745800D0",
+	"name": "大地se",
+	"api": "https:\/\/dadiapi.com\/api.php",
+	"useInSearchAll": true
+},
+{
+	"key": "AB93F7255A274CCBC6DFD4A0F5C11492",
+	"name": "淫水机se",
+	"api": "https:\/\/www.xrbsp.com\/api\/xml.php",
+	"useInSearchAll": true
+},
+{
+	"key": "E0E44DBE1349DBEC3C4FF2166401E0AD",
+	"name": "美少女se",
+	"api": "https:\/\/www.msnii.com\/api\/xml.php",
+	"useInSearchAll": true
+},
+{
+	"key": "5C256F50C6B4416B5CCFEDF87449B5A0",
+	"name": "黄AVse",
+	"api": "https:\/\/www.pgxdy.com\/api\/xml.php",
+	"useInSearchAll": true
+},
+{
+	"key": "26617F692CDCAD446F3FED0109A66FE8",
+	"name": "香奶儿se",
+	"api": "https:\/\/www.gdlsp.com\/api\/xml.php",
+	"useInSearchAll": true
+},
+{
+	"key": "D8D6D87DF6522C5B5E2EA30849C0975A",
+	"name": "白嫖se",
+	"api": "https:\/\/www.kxgav.com\/api\/xml.php",
+	"useInSearchAll": true
+},
+{
 	"key": "993F39A048C8BB263C0779B0D05EC609",
 	"name": "玉兔se",
 	"api": "https:\/\/apiyutu.com\/api.php\/Seacms\/vod\/",
+	"useInSearchAll": true
+},
+{
+	"key": "78C5B59904B4B1DD1933BAA1BE010FD6",
+	"name": "辣椒2se",
+	"api": "http:\/\/api.11bat.com\/api.php\/provide\/vod\/at\/xml\/",
+	"useInSearchAll": true
+},
+{
+	"key": "FC156BEF57FA50C4FF2EFE3FBE59B2A2",
+	"name": "KK资源网se",
+	"api": "https:\/\/kkzy.me\/api.php\/provide\/vod\/at\/xmlsea",
+	"useInSearchAll": true
+},
+{
+	"key": "FBC439AA996A502626D124E534D96912",
+	"name": "天堂se",
+	"api": "http:\/\/bttcj.com\/inc\/sapi.php",
+	"useInSearchAll": true
+},
+{
+	"key": "E9A68789A0ADEA847E63E34516E2140E",
+	"name": "奥斯卡se",
+	"api": "https:\/\/aosikazy.com\/api.php\/provide\/vod\/at\/xml",
+	"useInSearchAll": true
+},
+{
+	"key": "73ACE5D6D85DAEE2D4C1C7B68228A093",
+	"name": "探探资源se",
+	"api": "https:\/\/apittzy.com\/api.php\/provide\/vod\/at\/xml",
 	"useInSearchAll": true
 }]
