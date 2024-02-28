@@ -4,6 +4,9 @@ https://wokaotianshi123.github.io/zhongqiutop10.html
 
 https://wokaotianshi123.github.io/?url=
 
+zy移动版
+
+
 zyplayer一键导入接口
 
         https://wokaotianshi123.github.io/zyplayer/easyconfig.json 
