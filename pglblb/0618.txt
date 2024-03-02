@@ -7,7 +7,7 @@
       "api": "csp_DouDou",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fan.jar;md5;be6121b5c37471b191114027123912d2"
+      "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fanxin.jar;md5;D41D8CD98F00B204E9800998ECF8427E"
     },
 {
             "key": "直播转点播",
