@@ -62,6 +62,8 @@
 "jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
 {"key":"hhzyapi.com","name":"豪华","type":1,"api":"https://hhzyapi.com/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
+{"key":"zijian2","name":"自建2","type":1,"api":"https://www.hongniuzy2.com/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
+
 	    {
       "key": "csp_XYQHiker_圣城",
       "name": "💞圣城┃影视",
