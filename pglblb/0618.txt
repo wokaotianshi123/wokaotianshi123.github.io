@@ -61,7 +61,7 @@
             "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/bili.json",
 "jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
-
+{"key":"hhzyapi.com","name":"豪华","type":1,"api":"https://hhzyapi.com/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
 	    {
       "key": "csp_XYQHiker_圣城",
       "name": "💞圣城┃影视",
@@ -3150,6 +3150,9 @@
 {"key":"pgxdy.com","name":"成人21","type":0,"api":"https://www.pgxdy.com/api/xml.php","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
 
 {"key":"kkzy.me","name":"成人23","type":1,"api":"https://kkzy.me/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
+
+
+
 {"key":"888dav.com","name":"成人24","type":1,"api":"https://www.888dav.com/api.php/provide/vod/","searchable":1,"recordable":0,"style":{"type":"rect","ratio":1.33}},
 {"key": "nik","name": "💟nik剧院 nknk2.com","type": 3,"api": "csp_XBPQ","ext": {"直接播放":"1","链接":"href=\"/voddetail/&&.html\"", "链接前缀":"/vodplay/","链接后缀":"-1-1.html","分类url":"https://16.wangyerrc.top/vodtype/{cateId}-{catePg}.html"}},  
 { "key": "csp_XBPQ_少林寺", "name": "少林寺影院 https://saols.xyz","type": 3,  "api": "csp_XBPQ", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": { "分类数组":"class=\"item&&</li","分类标题": "_blank\">&&<", "播放数组":"<button class=\"button&&</button","分类ID":"type/&&\"",  "分类url":"https://saols18.buzz/type/{cateId}/{catePg}" } },	    
