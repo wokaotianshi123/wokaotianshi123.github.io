@@ -77,7 +77,7 @@
         "key": "久久热资源网采集接口",
         "name": "久久热资源网采集接口",
         "type": 1,
-        "api": "https://99reapi.com/api.php/provide/vod//at/xml",
+        "api": "https://99reapi.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -85,7 +85,7 @@
         "key": "夸克资源网采集接口",
         "name": "夸克资源网采集接口",
         "type": 1,
-        "api": "http://kuakezy1.com/api.php/provide/vod/from/kuake//at/xml",
+        "api": "http://kuakezy1.com/api.php/provide/vod/from/kuake/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -93,7 +93,7 @@
         "key": "乐视资源网采集接口大全",
         "name": "乐视资源网采集接口大全",
         "type": 1,
-        "api": "https://leshizyapi.com/api.php/provide/vod//at/xml",
+        "api": "https://leshizyapi.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -101,7 +101,7 @@
         "key": "全站资源网采集接口分享",
         "name": "全站资源网采集接口分享",
         "type": 1,
-        "api": "https://caiji.yueai55.cc:2277/yuelove.php/provide/vod//at/xml",
+        "api": "https://caiji.yueai55.cc:2277/yuelove.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -109,7 +109,7 @@
         "key": "索尼资源网采集接口大全",
         "name": "索尼资源网采集接口大全",
         "type": 1,
-        "api": "https://suoniapi.com/api.php/provide/vod/from/snm3u8//at/xml",
+        "api": "https://suoniapi.com/api.php/provide/vod/from/snm3u8/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -117,7 +117,7 @@
         "key": "狼友会资源网采集接口",
         "name": "狼友会资源网采集接口",
         "type": 1,
-        "api": "https://api.lyhapi.com/api.php/provide/vod/from/lyhm3u8//at/xml",
+        "api": "https://api.lyhapi.com/api.php/provide/vod/from/lyhm3u8/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -125,7 +125,7 @@
         "key": "红袖资源网采集接口",
         "name": "红袖资源网采集接口",
         "type": 1,
-        "api": "https://hongxiuzy.com/api.php/provide/vod/from/hxm3u8//at/xml",
+        "api": "https://hongxiuzy.com/api.php/provide/vod/from/hxm3u8/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -133,7 +133,7 @@
         "key": "爱坤联盟资源网采集接口",
         "name": "爱坤联盟资源网采集接口",
         "type": 1,
-        "api": "https://ikunzyapi.com/api.php/seaxml/vod//at/xml",
+        "api": "https://ikunzyapi.com/api.php/seaxml/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -141,7 +141,7 @@
         "key": "奥斯卡资源API采集接口大全",
         "name": "奥斯卡资源API采集接口大全",
         "type": 1,
-        "api": "https://aosikazy.com/api.php/provide/vod//at/xml",
+        "api": "https://aosikazy.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -149,7 +149,7 @@
         "key": "速看资源网采集接口大全",
         "name": "速看资源网采集接口大全",
         "type": 1,
-        "api": "https://ziyuan.skm3u8.com/api.php/ff/provide/vod/from/ffm3u8//at/xml",
+        "api": "https://ziyuan.skm3u8.com/api.php/ff/provide/vod/from/ffm3u8/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -157,7 +157,7 @@
         "key": "阳光资源网采集接口",
         "name": "阳光资源网采集接口",
         "type": 1,
-        "api": "http://www.xxzy.org/api.php/provide/vod//at/xml",
+        "api": "http://www.xxzy.org/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -165,7 +165,7 @@
         "key": "188资源网采集接口大全",
         "name": "188资源网采集接口大全",
         "type": 1,
-        "api": "http://www.188zy.org/api.php/provide/vod//at/xml",
+        "api": "http://www.188zy.org/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -173,7 +173,7 @@
         "key": "森林资源网采集接口",
         "name": "森林资源网采集接口",
         "type": 1,
-        "api": "https://slapibf.com/api.php/provide/vod//at/xml",
+        "api": "https://slapibf.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -181,7 +181,7 @@
         "key": "探探资源采集接口中心",
         "name": "探探资源采集接口中心",
         "type": 1,
-        "api": "https://apittzy.com/api.php/provide/vod//at/xml",
+        "api": "https://apittzy.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -189,7 +189,7 @@
         "key": "老鸭资源网采集接口",
         "name": "老鸭资源网采集接口",
         "type": 1,
-        "api": "https://api.apilyzy.com/api.php/provide/vod//at/xml",
+        "api": "https://api.apilyzy.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -197,7 +197,7 @@
         "key": "量子资源网资源采集接口",
         "name": "量子资源网资源采集接口",
         "type": 1,
-        "api": "https://cj.lziapi.com/api.php/provide/vod//at/xml",
+        "api": "https://cj.lziapi.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -205,7 +205,7 @@
         "key": "se窝资源网影视采集接口",
         "name": "se窝资源网影视采集接口",
         "type": 1,
-        "api": "https://sewozyapi.com/api.php/provide/vod//at/xml",
+        "api": "https://sewozyapi.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -213,7 +213,7 @@
         "key": "新浪资源采集网采集接口大全",
         "name": "新浪资源采集网采集接口大全",
         "type": 1,
-        "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod//at/xml",
+        "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -221,7 +221,7 @@
         "key": "金鹰资源网苹果CMS采集接口",
         "name": "金鹰资源网苹果CMS采集接口",
         "type": 1,
-        "api": "https://jyzyapi.com/provide/vod//at/xml",
+        "api": "https://jyzyapi.com/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -229,7 +229,7 @@
         "key": "阿远采集资源网苹果CMSV8采集接口",
         "name": "阿远采集资源网苹果CMSV8采集接口",
         "type": 1,
-        "api": "https://www.cjzy.xyz:8888/api.php/provide/vod//at/xml",
+        "api": "https://www.cjzy.xyz:8888/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -237,7 +237,7 @@
         "key": "光速资源站采集接口地址",
         "name": "光速资源站采集接口地址",
         "type": 1,
-        "api": "https://api.guangsuapi.com/api.php/provide/vod//at/xml",
+        "api": "https://api.guangsuapi.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -245,7 +245,7 @@
         "key": "天空资源网采集接口",
         "name": "天空资源网采集接口",
         "type": 1,
-        "api": "https://api.tiankongapi.com/api.php/provide/vod//at/xml",
+        "api": "https://api.tiankongapi.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -253,7 +253,7 @@
         "key": "U酷资源网采集地址",
         "name": "U酷资源网采集地址",
         "type": 1,
-        "api": "https://api.ukuapi.com/api.php/provide/vod//at/xml",
+        "api": "https://api.ukuapi.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -261,7 +261,7 @@
         "key": "百度资源M3U8 json接口",
         "name": "百度资源M3U8 json接口",
         "type": 1,
-        "api": "https://api.apibdzy.com/api.php/provide/vod//at/xml",
+        "api": "https://api.apibdzy.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     },
@@ -269,7 +269,7 @@
         "key": "红牛云播资源采集地址",
         "name": "红牛云播资源采集地址",
         "type": 1,
-        "api": "https://www.hongniuzy2.com/api.php/provide/vod//at/xml",
+        "api": "https://www.hongniuzy2.com/api.php/provide/vod/at/xml",
         "searchable": 1,
         "recordable": 0
     }
