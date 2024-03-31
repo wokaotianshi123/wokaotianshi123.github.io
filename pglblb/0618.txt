@@ -1,7 +1,7 @@
 {
 
 
-"spider":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/panda230222.jar;md5;6fdffe9b74ae6fa85d5858a2bd9fb6b9",
+"spider":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/pg.jar",
 //"lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=Y2xhbjovL3BnbGJsYi90di90djg4LnR4dA=="]}]}],
 
 
@@ -35,12 +35,13 @@
 
 "sites":[{
       "key": "豆豆",
-      "name": "❦缝纫机Box 提示激活输入8527 接口来自http://cdn.qiaoji8.com/tvbox.json",
+      //"name": "❦缝纫机Box 提示激活输入8527 接口来自http://cdn.qiaoji8.com/tvbox.json",
+      "name": "豆瓣",
       "type": 3,
-      "api": "csp_DouDou",
+      "api": "csp_Douban",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fanxin.jar;md5;D41D8CD98F00B204E9800998ECF8427E"
+      "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/pgnew.jar"
     },
 {
             "key": "直播转点播",
