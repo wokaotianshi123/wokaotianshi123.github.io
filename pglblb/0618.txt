@@ -37,7 +37,7 @@
 "sites":[{
       "key": "豆豆",
       //"name": "❦缝纫机Box 提示激活输入8527 接口来自http://cdn.qiaoji8.com/tvbox.json",
-     //"name": "豆瓣首页",
+     "name": "豆瓣首页",
       "type": 3,
       "api": "csp_DouDou",
       "searchable": 0,
