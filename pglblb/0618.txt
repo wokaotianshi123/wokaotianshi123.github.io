@@ -1,7 +1,7 @@
 {
 
 
-"spider":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/pg.jar",
+"spider":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/panda230222.jar",
 //"lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=Y2xhbjovL3BnbGJsYi90di90djg4LnR4dA=="]}]}],
 
 
@@ -41,7 +41,7 @@
       "api": "csp_Douban",
       "searchable": 0,
       "quickSearch": 0,
-      "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/pgnew.jar"
+      "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/pg.jar"
     },
 {
             "key": "直播转点播",
