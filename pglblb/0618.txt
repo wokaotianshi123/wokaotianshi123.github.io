@@ -42,6 +42,7 @@
       "quickSearch": 0,
       "filterable": 0,"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fanxin.jar;md5;D41D8CD98F00B204E9800998ECF8427E"
     },
+{"key":"教育","name":"🍃 | 教  育 | 💠","type":4,"api":"http://120.53.102.254/dsp16","searchable":1,"changeable":1},
 {
             "key": "直播转点播",
             "name": "🐼️┃电视┃直播",
