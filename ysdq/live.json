@@ -1,0 +1,693 @@
+[
+  {
+    "name": "央视频道",
+    "psw": "",
+    "data": [
+      {
+        "num": 1,
+        "name": "CCTV1综合",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225618/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225642/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv1/HD-8000k-1080P-cctv1"
+        ]
+      },
+      {
+        "num": 2,
+        "name": "CCTV2财经",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225619/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225643/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv2/HD-8000k-1080P-cctv2"
+        ]
+      },
+      {
+        "num": 3,
+        "name": "CCTV3综艺",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225647/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225634/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv3/HD-8000k-1080P-cctv3"
+        ]
+      },
+      {
+        "num": 4,
+        "name": "CCTV4中文国际",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225621/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/cctv-4/cctv-4"
+        ]
+      },
+      {
+        "num": 5,
+        "name": "CCTV5体育",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225648/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225633/index.m3u8",
+		  "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv5/HD-8000k-1080P-cctv5"
+        ]
+      },
+      {
+        "num": 6,
+        "name": "CCTV5+体育赛事",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225649/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225706/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv05plus/HD-8000k-1080P-cctv05plus"
+        ]
+      },
+      {
+        "num": 7,
+        "name": "CCTV6电影",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225650/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225632/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/cctv-6/cctv-6"
+        ]
+      },
+      {
+        "num": 8,
+        "name": "CCTV7国防军事",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225624/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225644/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv7/HD-8000k-1080P-cctv7"
+        ]
+      },
+      {
+        "num": 9,
+        "name": "CCTV8电视剧",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225635/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225631/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv8/HD-8000k-1080P-cctv8"
+        ]
+      },
+      {
+        "num": 10,
+        "name": "CCTV9纪录",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225626/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225646/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv9/HD-8000k-1080P-cctv9"
+        ]
+      },
+      {
+        "num": 11,
+        "name": "CCTV10科教",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225627/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225636/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv10/HD-8000k-1080P-cctv10"
+        ]
+      },
+      {
+        "num": 12,
+        "name": "CCTV11戏曲",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225628/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-cctv-11/n-cctv-11"
+        ]
+      },
+      {
+        "num": 13,
+        "name": "CCTV12社会与法",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225629/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225637/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv12/HD-8000k-1080P-cctv12"
+        ]
+      },
+      {
+        "num": 14,
+        "name": "CCTV13新闻",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225638/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/cctv-13/cctv-13"
+        ]
+      },
+      {
+        "num": 15,
+        "name": "CCTV14少儿",
+        "source": [
+          "http://39.135.138.60:18890/PLTV/88888910/224/3221225639/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225640/index.m3u8",
+		  "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv14/HD-8000k-1080P-cctv14"
+        ]
+      },
+      {
+        "num": 16,
+        "name": "CCTV15音乐",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225641/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-cctv-15/n-cctv-15"
+        ]
+      },
+      {
+        "num": 17,
+        "name": "CCTV17农业农村",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225908/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv17/HD-8000k-1080P-cctv17"
+        ]
+      },
+      {
+        "num": 18,
+        "name": "CCTV-4K",
+        "source": [
+          "http://liveop.cctv.cn/hls/4KHD/playlist.m3u8"
+        ]
+      },
+      {
+        "num": 19,
+        "name": "CCTV-风云音乐",
+        "source": [
+          "http://cg01.hrtn.net:9090/live/fyyy_1500.m3u8"
+        ]
+      },
+      {
+        "num": 20,
+        "name": "CCTV-风云足球",
+        "source": [
+          "http://cg01.hrtn.net:9090/live/fyzq_1500.m3u8"
+        ]
+      },
+      {
+        "num": 21,
+        "name": "CCTV-风云剧场",
+        "source": [
+          "http://cg01.hrtn.net:9090/live/fyjc_1500.m3u8"
+        ]
+      },
+      {
+        "num": 22,
+        "name": "CCTV-怀旧剧场",
+        "source": [
+          "http://cg01.hrtn.net:9090/live/hjjc_1500.m3u8"
+        ]
+      },
+      {
+        "num": 23,
+        "name": "CCTV-世界地理",
+        "source": [
+          "http://cg01.hrtn.net:9090/live/xzws_1500.m3u8"
+        ]
+      },
+      {
+        "num": 24,
+        "name": "CCTV-女性时尚",
+        "source": [
+          "http://cg01.hrtn.net:9090/live/jspd_1500.m3u8"
+        ]
+      },
+      {
+        "num": 25,
+        "name": "CCTV-央视文化精品",
+        "source": [
+          "http://cg01.hrtn.net:9090/live/cctv14hd_4000.m3u8"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "卫视频道",
+    "psw": "",
+    "data": [
+      {
+        "num": 26,
+        "name": "东南卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225657/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-dongnanstv/n-dongnanstv"
+        ]
+      },
+      {
+        "num": 27,
+        "name": "东方卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225658/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225659/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-dongfangstv/n-dongfangstv"
+        ]
+      },
+      {
+        "num": 28,
+        "name": "北京卫视",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225673/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225674/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-2500k-1080P-beijingstv/HD-2500k-1080P-beijingstv"
+        ]
+      },
+      {
+        "num": 29,
+        "name": "天津卫视",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225739/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225698/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-2500k-1080P-tianjinstv/HD-2500k-1080P-tianjinstv"
+        ]
+      },
+      {
+        "num": 30,
+        "name": "安徽卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225737/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225691/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-anhuistv/HD-8000k-1080P-anhuistv"
+        ]
+      },
+      {
+        "num": 31,
+        "name": "山东卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225738/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225697/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-2500k-1080P-shandongstv/HD-2500k-1080P-shandongstv"
+        ]
+      },
+      {
+        "num": 32,
+        "name": "广东卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225742/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225701/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-guangdongstv/n-guangdongstv"
+        ]
+      },
+      {
+        "num": 33,
+        "name": "江苏卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225743/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225702/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-2500k-1080P-jiangsustv/HD-2500k-1080P-jiangsustv"
+        ]
+      },
+      {
+        "num": 34,
+        "name": "江西卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225746/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225705/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/jiangxistv/jiangxistv"
+        ]
+      },
+      {
+        "num": 35,
+        "name": "浙江卫视",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225744/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225703/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/zhejiangstv/zhejiangstv"
+        ]
+      },
+      {
+        "num": 36,
+        "name": "深圳卫视",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225741/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225700/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-2500k-1080P-shenzhenstv/HD-2500k-1080P-shenzhenstv"
+        ]
+      },
+      {
+        "num": 37,
+        "name": "湖北卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225699/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-2500k-1080P-hubeistv/HD-2500k-1080P-hubeistv"
+        ]
+      },
+      {
+        "num": 38,
+        "name": "湖南卫视",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225745/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225704/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/hunanstv/hunanstv"
+        ]
+      },
+      {
+        "num": 39,
+        "name": "辽宁卫视",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225735/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225696/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/liaoningstv/liaoningstv"
+        ]
+      },
+      {
+        "num": 40,
+        "name": "重庆卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225734/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225692/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-chongqingstv/HD-8000k-1080P-chongqingstv"
+        ]
+      },
+      {
+        "num": 41,
+        "name": "黑龙江卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225736/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225690/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-heilongjiangstv/HD-8000k-1080P-heilongjiangstv"
+        ]
+      },
+      {
+        "num": 42,
+        "name": "河北卫视",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225732/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/henanstv/henanstv"
+        ]
+      },
+      {
+        "num": 43,
+        "name": "四川卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225733/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-sichuanstv/n-sichuanstv"
+        ]
+      },
+      {
+        "num": 44,
+        "name": "贵州卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225728/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-guizhoustv/n-guizhoustv"
+        ]
+      },
+      {
+        "num": 45,
+        "name": "吉林卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225680/index.m3u8",
+          "http://stream1.jlntv.cn/jlws/sd/live.m3u8"
+        ]
+      },
+      {
+        "num": 46,
+        "name": "广西卫视",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225731/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-guangxistv/n-guangxistv"
+        ]
+      },
+      {
+        "num": 47,
+        "name": "青海卫视",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225727/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-qinghaistv/n-qinghaistv"
+        ]
+      },
+      {
+        "num": 48,
+        "name": "云南卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225664/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-yntv1/n-yntv1"
+        ]
+      },
+      {
+        "num": 49,
+        "name": "内蒙古卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225667/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-neimenggustv/n-neimenggustv"
+        ]
+      },
+      {
+        "num": 50,
+        "name": "山西卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225730/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-shanxistv/n-shanxistv"
+        ]
+      },
+      {
+        "num": 51,
+        "name": "兵团卫视",
+        "source": [
+		  "http://219.151.31.43/liveplay-kk.rtxapp.com/live/program/live/btws/1300000/mnf.m3u8",
+          "http://183.207.248.71:80/cntv/live1/SD-4000k-576P-bingtuanstv/SD-4000k-576P-bingtuanstv"
+        ]
+      },
+      {
+        "num": 52,
+        "name": "新疆卫视",
+        "source": [
+		  "http://219.151.31.43/liveplay-kk.rtxapp.com/live/program/live/xjws/1300000/mnf.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-xjtv1/n-xjtv1"
+        ]
+      },
+      {
+        "num": 53,
+        "name": "宁夏卫视",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225726/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-ningxiastv/n-ningxiastv"
+        ]
+      },
+      {
+        "num": 54,
+        "name": "南方卫视",
+        "source": [
+          "http://183.207.248.71:80/cntv/live1/SD-4000k-576P-nanfangstv/SD-4000k-576P-nanfangstv"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NewTV",
+    "psw": "",
+    "data": [
+      {
+        "num": 56,
+        "name": "NewTV中国功夫",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225660/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-gzkongfu/n-gzkongfu"
+        ]
+      },
+      {
+        "num": 57,
+        "name": "NewTV军事评论",
+        "source": [
+		  "http://39.134.66.66/PLTV/88888888/224/3221225535/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-junshipl/n-junshipl"
+        ]
+      },
+      {
+        "num": 58,
+        "name": "NewTV军旅剧场",
+        "source": [
+		  "http://39.134.66.66/PLTV/88888888/224/3221225560/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-junlvjc/n-junlvjc"
+        ]
+      },
+      {
+        "num": 59,
+        "name": "NewTV农业致富",
+        "source": [
+		  "http://39.134.66.66/PLTV/88888888/224/3221225552/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-nongyezf/n-nongyezf"
+        ]
+      },
+      {
+        "num": 60,
+        "name": "NewTV动作电影",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225671/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-dongzuody/n-dongzuody"
+        ]
+      },
+      {
+        "num": 61,
+        "name": "NewTV古装剧场",
+        "source": [
+		  "http://39.134.66.66/PLTV/88888888/224/3221225524/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-guzhuangjc/n-guzhuangjc"
+        ]
+      },
+      {
+        "num": 62,
+        "name": "NewTV家庭剧场",
+        "source": [
+		  "http://39.134.66.66/PLTV/88888888/224/3221225538/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-jiatingjc/n-jiatingjc"
+        ]
+      },
+      {
+        "num": 63,
+        "name": "NewTV精品纪录",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225710/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-jingpinjl/n-jingpinjl"
+        ]
+      },
+      {
+        "num": 64,
+        "name": "NewTV金牌综艺",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225711/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-saishijx/n-saishijx"
+        ]
+      },
+      {
+        "num": 65,
+        "name": "NewTV热播精选",
+        "source": [
+          "http://183.207.248.71:80/cntv/live1/n-xiqumd/n-xiqumd"
+        ]
+      },
+      {
+        "num": 66,
+        "name": "NewTV潮妈辣婆",
+        "source": [
+		  "http://39.134.66.66/PLTV/88888888/224/3221225542/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-cmlapo/n-cmlapo"
+        ]
+      },
+      {
+        "num": 67,
+        "name": "NewTV炫舞未来",
+        "source": [
+		  "http://39.134.66.66/PLTV/88888888/224/3221225646/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-4000k-1080P-xwwl/HD-4000k-1080P-xwwl"
+        ]
+      },
+      {
+        "num": 68,
+        "name": "NewTV爱情喜剧",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225748/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-aiqingxj/n-aiqingxj"
+        ]
+      },
+      {
+        "num": 69,
+        "name": "NewTV精品大剧",
+        "source": [
+          "http://183.207.248.71:80/cntv/live1/n-jdaju/n-jdaju"
+        ]
+      },
+      {
+        "num": 70,
+        "name": "NewTV精品综合",
+        "source": [
+          "http://183.207.248.71:80/cntv/live1/n-mingxingdp/n-mingxingdp"
+        ]
+      },
+      {
+        "num": 71,
+        "name": "NewTV健康有约",
+        "source": [
+		  "http://39.134.66.66/PLTV/88888888/224/3221225571/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-ljiankangyouyue/n-ljiankangyouyue"
+        ]
+      },
+      {
+        "num": 72,
+        "name": "NewTV世界搏击",
+        "source": [
+          "http://183.207.248.71:80/cntv/live1/n-bokesen/n-bokesen"
+        ]
+      },
+	  {
+        "num": 73,
+        "name": "NewTV黑莓动画",
+        "source": [
+          "http://183.207.248.71:80/cntv/live1/donghuawg/donghuawg"
+        ]
+      },
+	  {
+        "num": 74,
+        "name": "NewTV黑莓电影",
+        "source": [
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-Supermovie/HD-8000k-1080P-Supermovie"
+        ]
+      } ,
+      {
+        "num": 75,
+        "name": "黑莓电竞",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225653/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/wmyx/wmyx"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "其他",
+    "psw": "",
+    "data": [
+      {
+        "num": 76,
+        "name": "纯享4K",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225786/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-20M-2160P-chunxiang4k/HD-20M-2160P-chunxiang4k"
+        ]
+      },
+      {
+        "num": 77,
+        "name": "上海纪实人文",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225654/index.m3u8",
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225655/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-shanghaijishi/HD-8000k-1080P-shanghaijishi"
+        ]
+      },
+      {
+        "num": 78,
+        "name": "北京冬奥纪实",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225675/index.m3u8",
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225676/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-beijingjishi/HD-8000k-1080P-beijingjishi"
+        ]
+      },
+      {
+        "num": 79,
+        "name": "中华美食",
+        "source": [
+          "http://183.207.248.71:80/cntv/live1/SD-4000k-576P-zhmeishi/SD-4000k-576P-zhmeishi"
+        ]
+      },
+      {
+        "num": 80,
+        "name": "北京卡酷少儿",
+        "source": [
+		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225677/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-kakukaton/n-kakukaton"
+        ]
+      },
+      {
+        "num": 81,
+        "name": "广东嘉佳卡通",
+        "source": [
+          "http://183.207.248.71:80/cntv/live1/SD-4000k-576P-jiajiakaton/SD-4000k-576P-jiajiakaton8"
+        ]
+      },
+      {
+        "num": 82,
+        "name": "江苏优漫卡通",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225665/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-youmankaton/n-youmankaton"
+        ]
+      },
+      {
+        "num": 83,
+        "name": "湖南金鹰卡通",
+        "source": [
+		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225721/index.m3u8",
+          "http://183.207.248.71:80/cntv/live1/n-jinyingkaton/n-jinyingkaton"
+        ]
+      }
+    ]
+  }
+]
