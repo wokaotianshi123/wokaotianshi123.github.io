@@ -4,14 +4,7 @@
     "https://a.wofuck.rr.nu/?url="
   ],
   "jsonParse": [
-	"https://api.okjx.cc:3389/jx.php?url=",
-    "https://api.m3u8.tv:5678/home/api?type=ys&uid=1095368&key=cdgjpsuDFLNRTUVY03&url=",
-	"https://api.m3u8.tv:5678/home/api?type=ys&uid=123503&key=cfjlrswzBCFJUZ3456&url=",
-	"https://jx.vjiangbei.com/home/api?type=ys&uid=281459&key=abhijkmnoqtFKRWX27&url=",
-    "http://www.zhaikanys.com/jx.php?url=",
-    "http://svip.jiangxs.vip/xinxin/?url=",
-    "https://yun.nbjx.vip:4399/json/?uid=12&tokey=aeprvwxACIKSTXZ137&url=",
-	"https://cs.024zs.com:4433/api/?key=ZGIAzc1y86fEENqYWb&url="
+	"http://110.42.2.247:880/analysis/json/?uid=2334&my=fhloqstzDIKLMORTZ9&url="
   ],
   "ad": [
     "mimg.0c1q0l.cn",
