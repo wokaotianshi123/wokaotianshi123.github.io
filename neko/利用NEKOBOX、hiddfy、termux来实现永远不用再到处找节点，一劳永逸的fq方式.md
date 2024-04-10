@@ -13,13 +13,13 @@
 文中用到的软件 
 
 NEKOBOX 
-``` 
+
 https://github.com/MatsuriDayo/NekoBoxForAndroid
-```
+
 termux-app下载地址
-``` 
+ 
 https://github.com/termux/termux-app 
-``` 
+
 1.先用nekbox生成配置。打开neko左上角三横-工具-cloudflare warp-生成配置
 
 2.替换网址和端口。打开termux,
@@ -52,9 +52,9 @@ sn://wg?eNoVzjFOwzAUAFADYuEU3SPZ_38SN7HUhVLTFhUqUCFraqcQCHZkKCFsOVDFAuJIXAN4J3j7
 # 另外，还可以优选ip在hiddfy最新版使用，同样不需要建节点。
 
 1.下载安装hiddify next
-``` 
+
 https://github.com/hiddify/hiddify-next/releases/
-``` 
+
 
 2.打开termux,(
 第一次打开请输入
@@ -84,17 +84,17 @@ warp://188.114.96.213:1002/?ifp=5-10
 1.安装nekobox和termux，hiddfy 14.20版（若有请忽略跳到第二步）
 
 NEKOBOX 
-``` 
+ 
 https://github.com/MatsuriDayo/NekoBoxForAndroid
-``` 
+
 termux下载地址：
-```
+
 https://github.com/termux/termux-app/releases
-```
+
 hiddify next下载地址：查找14.20版
-``` 
+
 https://github.com/hiddify/hiddify-next/releases/
-``` 
+
 
 2.先用nekbox生成配置。打开neko左上角三横-工具-cloudflare warp-生成配置
 分别复制节点私钥 比如iGpo/8+r44JBwD2XndRoUanyf+r0PNdIcEX0Few/jFk= 和节点公钥 比如 bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo= 到手机便签备用
