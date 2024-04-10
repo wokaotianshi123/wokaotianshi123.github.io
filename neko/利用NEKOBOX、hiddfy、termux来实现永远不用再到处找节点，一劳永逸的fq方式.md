@@ -70,7 +70,11 @@ curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/
 
 3.选排序靠前的endip填入配置 warp://优选ip:端口号/?ifp=5-10 用第一步得到的网址和端口替换配置中的服务器和端口。
 
-得出 warp://188.114.96.213:1002/?ifp=5-10
+得出
+```
+warp://188.114.96.213:1002/?ifp=5-10
+```
+
 4.复制到hiddfy里，从剪贴板导入
 
 (更新的时候需要先删除原来warp节点)
