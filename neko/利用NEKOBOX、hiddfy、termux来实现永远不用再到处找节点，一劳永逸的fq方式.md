@@ -81,7 +81,7 @@ wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.
 warp://188.114.96.213:1002/?ifp=5-10
 ```
 
-4.复制到hiddfy里，从剪贴板导入
+4.复制到hiddfy里，从剪贴板导入（不要手动输入，手动添加不成功）
 
 (更新的时候需要先删除原来warp节点)
 
