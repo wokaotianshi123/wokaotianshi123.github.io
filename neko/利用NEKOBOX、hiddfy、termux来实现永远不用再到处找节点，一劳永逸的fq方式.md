@@ -17,6 +17,10 @@
 NEKOBOX 
 ``` 
 https://github.com/MatsuriDayo/NekoBoxForAndroid
+```
+termux-app下载地址
+``` 
+https://github.com/termux/termux-app 
 ``` 
 1.先用nekbox生成配置。打开neko左上角三横-工具-cloudflare warp-生成配置
 
@@ -29,12 +33,7 @@ pkg update && pkg install wget
 
 输入优选脚本，获得优选网址和端口，替换配置中的服务器和端口。
 
-enjoy!
 
-termux-app下载地址
-``` 
-https://github.com/termux/termux-app 
-``` 
 
 优选脚本
 ``` 
@@ -52,7 +51,7 @@ windows优选程序 https://gitjs.wokaotianshi123.cloudns.org/https://raw.github
 sn://wg?eNoVzjFOwzAUAFADYuEU3SPZ_38SN7HUhVLTFhUqUCFraqcQCHZkKCFsOVDFAuJIXAN4J3j7jDFjHfeu7pzPsoyb2m-te-Y-_HwcMPaNQ-IoOXASx3REEqSKhwAKEVRKmKjCGqkIgdRaxsoaEkjprjprvEijEMfzk_aUcmev_Kpw3SYKsLywMzPJQZeteNCPo936Kb8cRxr122ShM9tV5zRNBF6vXt6nMN_e-ATvqV1u7jo_6tkhY-Vs8bX3Vx__Z3VdhHJwW4RmUDWvn33_C3_OP7w
 
 
-另外，还可以优选ip在hiddfy最新版使用，同样不需要建节点。
+# 另外，还可以优选ip在hiddfy最新版使用，同样不需要建节点。
 
 1.下载安装hiddify next
 ``` 
