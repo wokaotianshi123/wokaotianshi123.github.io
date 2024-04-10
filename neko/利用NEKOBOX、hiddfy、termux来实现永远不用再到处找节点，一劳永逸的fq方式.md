@@ -1,6 +1,4 @@
-利用NEKOBOX、hiddfy、termux来实现永远不用再到处找节点，一劳永逸的fq方式。 
-
-
+# 利用NEKOBOX、hiddfy、termux来实现永远不用再到处找节点，一劳永逸的fq方式。 
 
 支持IPV4和V6的wireguard协议。 
 
