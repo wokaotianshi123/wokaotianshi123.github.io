@@ -39,7 +39,12 @@ curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/
 ```
 或者
 ``` 
-wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/warp-script/main/warp.sh && bash warp.sh
+wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/warp-script/main/warp.sh && bash warp.sh 
+```
+下面这个优选只生成一个优选ip
+``` 
+wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/warp/main/endip/install.sh && bash install.sh
+
 ``` 
 安卓 Termux 如无 wget 请使用以下命令安装：
 ``` 
@@ -73,7 +78,11 @@ curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/
 ``` 
 wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/warp-script/main/warp.sh && bash warp.sh 
 ```
+下面这个优选只生成一个优选ip
+``` 
+wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/warp/main/endip/install.sh && bash install.sh
 
+``` 
 3.选排序靠前的endip填入配置 warp://优选ip:端口号/?ifp=5-10 用第一步得到的网址和端口替换配置中的服务器和端口。
 
 得出
