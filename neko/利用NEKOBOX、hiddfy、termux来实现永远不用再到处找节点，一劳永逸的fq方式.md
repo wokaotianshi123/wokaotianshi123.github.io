@@ -104,8 +104,7 @@ hiddify next下载地址：查找14.20版
 https://github.com/hiddify/hiddify-next/releases/
 
 
-2.先用nekbox生成配置。打开neko左上角三横-工具-cloudflare warp-生成配置
-分别复制节点私钥 比如iGpo/8+r44JBwD2XndRoUanyf+r0PNdIcEX0Few/jFk= 和节点公钥 比如 bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo= 到手机便签备用
+2.先用nekbox生成配置。打开neko左上角三横-工具-cloudflare warp-生成配置，分别复制节点私钥 比如iGpo/8+r44JBwD2XndRoUanyf+r0PNdIcEX0Few/jFk= 和节点公钥 比如 bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo= 到手机便签备用
 
 3.用手机安装termux，然后先安装python环境（首次运行需要，以后不需要）获取读写sd权限，预计有600M，手机空间要足够。
 
