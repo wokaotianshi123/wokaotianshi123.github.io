@@ -35,7 +35,11 @@ pkg update && pkg install wget
 
 优选脚本
 ``` 
-wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/warp-script/main/warp.sh && bash warp.sh 
+curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/cf-clean-ips/main/endip.sh -o endip.sh && chmod +x endip.sh && bash endip.sh
+```
+或者
+``` 
+wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/warp-script/main/warp.sh && bash warp.sh
 ``` 
 安卓 Termux 如无 wget 请使用以下命令安装：
 ``` 
@@ -64,7 +68,11 @@ pkg update && pkg install wget
 )输入下面代码得到优选endip和端口
 ``` 
 curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/cf-clean-ips/main/endip.sh -o endip.sh && chmod +x endip.sh && bash endip.sh
+```
+或者
 ``` 
+wget -N https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/warp-script/main/warp.sh && bash warp.sh 
+```
 
 3.选排序靠前的endip填入配置 warp://优选ip:端口号/?ifp=5-10 用第一步得到的网址和端口替换配置中的服务器和端口。
 
