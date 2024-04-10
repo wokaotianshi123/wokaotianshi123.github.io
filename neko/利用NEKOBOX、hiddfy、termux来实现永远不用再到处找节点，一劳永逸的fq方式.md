@@ -10,7 +10,7 @@
 视频地址:https://m.youtube.com/watch?v=S3hJSro-R7M
 
 
-#方法1
+# 方法1
 
 文中用到的软件 
 
@@ -78,8 +78,8 @@ curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/
 
 
 
-#方法2
-# cmliu/Warp2Clash 来自大佬们的代码
+# 方法2 cmliu/Warp2Clash 来自大佬们的代码
+
 1.安装nekobox和termux，hiddfy 14.20版（若有请忽略跳到第二步）
 
 NEKOBOX 
