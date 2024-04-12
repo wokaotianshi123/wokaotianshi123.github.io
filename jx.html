@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CKPlayer 单视频播放器</title>
+<title>CKPlayer 播放最快的 M3U8 视频流</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
-<meta name="renderer" content="webkit|ie-comp|ie-stand">
-<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- 引入 CKPlayer 的 CSS -->
+<link href="https://www.ckplayer.com/skins/ckplayer.css" rel="stylesheet" />
+
 <style>
   #video-container {
     width: 100%;
     max-width: 800px; /* 根据需要调整 */
     margin: 20px auto; /* 留出一些边距 */
-    position: relative; /* 为绝对定位做准备 */
-  }
-  #video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    position: absolute; /* 绝对定位 */
-    top: 0;
-    left: 0;
   }
 </style>
 </head>
 <body>
 <div id="video-container">
-  <!-- 视频播放器将被动态插入这里 -->
+  <!-- CKPlayer 播放器将被动态插入这里 -->
 </div>
+<script src="https://www.ckplayer.com/ckplayer.js"></script>
 <script>
 var apiArray = [
     "https://www.ckplayer.vip/jiexi/?url=",
@@ -38,48 +33,54 @@ var apiArray = [
 
 var origin = decodeURIComponent(document.location.href.split("url=")[1]);
 var videoContainer = document.getElementById("video-container");
-var最快视频流 = null; // 用于存储最快视频流的URL
-var最快视频流时间 = Infinity; // 用于存储最快视频流加载时间
+var fastestUrl = "";
+var fastestTime = Infinity;
 
-function createIframe(src) {
-    var iframe = document.createElement("iframe");
-    iframe.sandbox = "allow-scripts allow-same-origin allow-forms";
-    iframe.frameBorder = "0";
-    iframe.allowFullscreen = true;
-    iframe.referrerPolicy = "no-referrer";
-    iframe.src = src;
-    iframe.loadStartTime = performance.now(); // 记录开始加载的时间
-    iframe.onload = function() {
-        var currentTime = performance.now();
-        var loadTime = currentTime - this.loadStartTime;
-        if (loadTime < 最快视频流时间) {
-            最快视频流时间 = loadTime;
-            // 如果当前已经有最快视频流在播放，先移除它
-            if (最快视频流) {
-                var currentIframe = videoContainer.querySelector('iframe[src*="' + 最快视频流 + '"]');
-                if (currentIframe) {
-                    videoContainer.removeChild(currentIframe);
-                }
-            }
-            // 更新最快视频流URL，并创建新的iframe
-            最快视频流 = this.src;
-            var newIframe = createIframe(最快视频流);
-            videoContainer.innerHTML = ""; // 清空容器
-            videoContainer.appendChild(newIframe);
-        }
-    };
-    return iframe;
-}
-
-function loadVideos() {
-    apiArray.forEach(function(api) {
-        var videoIframe = createIframe(api + origin);
-        videoContainer.appendChild(videoIframe);
+function checkUrl(url) {
+    return new Promise((resolve, reject) => {
+        var script = document.createElement("script");
+        script.src = url + "&callback=loadScript";
+        script.onload = () => resolve(url);
+        script.onerror = () => reject(url);
+        document.head.appendChild(script);
     });
 }
 
-// 页面加载完成后开始加载视频
-document.addEventListener("DOMContentLoaded", loadVideos);
+function loadFastestVideo() {
+    apiArray.reduce((promise, api) => {
+        return promise.then(() => checkUrl(api + origin))
+            .then((url) => {
+                if (!fastestUrl || (performance.now() - startTime < fastestTime)) {
+                    fastestUrl = url;
+                    fastestTime = performance.now() - startTime;
+                }
+                return new Promise((resolve) => setTimeout(resolve, 1000)); // 等待1秒
+            });
+    }, Promise.resolve())
+    .then(() => {
+        if (fastestUrl) {
+            createCkplayer(fastestUrl);
+        } else {
+            console.error("No valid video source found.");
+        }
+    });
+}
+
+function createCkplayer(url) {
+    var ckplayer = new CKPlayer({
+        container: '#video-container', // 指定播放器容器
+        url: url, // 设置视频流URL
+        autoplay: false, // 是否自动播放
+        controls: true, // 是否显示控制栏
+        // 其他CKPlayer配置项...
+    });
+}
+
+// 页面加载完成后开始加载最快的视频
+document.addEventListener("DOMContentLoaded", (event) => {
+    var startTime = performance.now();
+    loadFastestVideo();
+});
 </script>
 </body>
 </html>
