@@ -19,8 +19,10 @@
 </head>
 <body>
 <div id="video-container">
-  <!-- Video.js 播放器将被动态插入这里 -->
-  <video id="video-player" class="video-js" controls preload="auto" width="640" height="360" data-setup='{}'></video>
+  <!-- Video.js 播放器容器 -->
+  <video id="video-player" class="video-js" controls preload="auto" width="640" height="360" data-setup='{"techOrder": ["html5", "flash"]}'>
+    <!-- 视频源将被动态插入这里 -->
+  </video>
 </div>
 
 <!-- 引入 Video.js 的 JavaScript -->
@@ -36,43 +38,48 @@ var apiArray = [
 ];
 
 var origin = decodeURIComponent(document.location.href.split("url=")[1]);
-var videoContainer = document.getElementById("video-container");
 var videoPlayer = document.getElementById("video-player");
 var fastestUrl = null;
 var fastestTime = Infinity;
 
 function checkUrl(url) {
     return new Promise((resolve, reject) => {
-        var script = document.createElement("script");
-        script.src = url + "&callback=loadScript";
-        script.onload = () => resolve(url);
-        script.onerror = () => reject(url);
-        document.head.appendChild(script);
+        var req = new XMLHttpRequest();
+        req.open("HEAD", url, true);
+        req.onreadystatechange = function() {
+            if (req.readyState === 2) { // HTTP请求已接收，但服务器的响应尚未完成
+                var res = req.getResponseHeader("Content-Type");
+                if (res && res.includes("application/x-mpegURL")) {
+                    resolve(url);
+                } else {
+                    reject(url);
+                }
+            }
+        };
+        req.send();
     });
 }
 
 function loadFastestVideo() {
-    var promises = apiArray.map(api => {
-        return checkUrl(api + origin).then(url => {
-            var time = performance.now();
-            if (fastestTime > (time - startTime)) {
-                fastestTime = time - startTime;
-                fastestUrl = url;
+    var startTime = performance.now();
+    Promise.all(apiArray.map(api => checkUrl(api + encodeURIComponent(origin))))
+        .then(urls => {
+            var validUrls = urls.filter(url => url !== null);
+            if (validUrls.length > 0) {
+                fastestUrl = validUrls.reduce((fastest, current) => {
+                    var currentTime = performance.now() - startTime;
+                    return (fastest === null || currentTime < fastest.currentTime) ? current : fastest;
+                }, { url: null, currentTime: Infinity }).url;
+                videoPlayer.src({ src: fastestUrl, type: "application/x-mpegURL" });
             }
-        });
-    });
-    Promise.all(promises).then(() => {
-        if (fastestUrl) {
-            videoPlayer.src("m3u8", fastestUrl);
-        } else {
+        })
+        .catch(() => {
             console.error("No valid video source found.");
-        }
-    });
+        });
 }
 
 // 页面加载完成后开始加载最快的视频
 document.addEventListener("DOMContentLoaded", (event) => {
-    var startTime = performance.now();
     loadFastestVideo();
 });
 </script>
