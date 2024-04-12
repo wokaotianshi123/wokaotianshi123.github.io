@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>最快视频流播放器</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width">
+<script>
+// 定义视频流的URL模板
+var apiArray = [
+    "https://www.ckplayer.vip/jiexi/?url=",
+    "https://jx.jsonplayer.com/player/?url=",
+    "https://jx.m3u8.tv/jiexi/?url=",
+    "https://jx.xmflv.com/?url=",
+    "https://www.8090g.cn/jiexi/?url="
+];
+
+// 获取当前文档URL中的视频流ID
+var origin = document.location.href.split("url=")[1];
+
+// 检测iframe加载速度并选择最快的视频流
+function detectLoadingSpeed() {
+    var fastestIframe = null;
+    var fastestTime = Number.MAX_VALUE;
+    var iframes = [];
+
+    apiArray.forEach(function (api) {
+        var iframe = document.createElement('iframe');
+        iframe.sandbox = 'allow-scripts allow-same-origin allow-forms';
+        iframe.frameBorder = 0;
+        iframe.allowFullscreen = true;
+        iframe.referrerPolicy = 'no-referrer';
+        iframe.src = api + origin;
+        iframe.style.width = '100%'; // 设置宽度
+        iframe.style.height = '100%'; // 设置高度
+        iframes.push(iframe);
+    });
+
+    // 动态创建容器并添加到页面
+    var container = document.createElement('div');
+    container.style.position = 'relative';
+    container.style.width = '80%'; // 容器宽度
+    container.style.maxWidth = '800px'; // 最大宽度
+    container.style.margin = '20px auto'; // 居中显示
+    container.style.paddingTop = '56.25%'; // 16:9 比例
+    document.body.appendChild(container);
+    iframes.forEach(function (iframe) {
+        container.appendChild(iframe);
+    });
+
+    // 监听每个iframe的加载事件
+    iframes.forEach(function (iframe, index) {
+        iframe.onload = function() {
+            var currentTime = performance.now();
+            var loadTime = currentTime - iframes[index].timestamp;
+            if (!fastestIframe || loadTime < fastestTime) {
+                fastestTime = loadTime;
+                if (fastestIframe) {
+                    fastestIframe.style.display = 'none'; // 隐藏当前最快的iframe
+                }
+                fastestIframe = iframe;
+                fastestIframe.style.display = 'block'; // 显示新的最快iframe
+            }
+        };
+        iframes[index].timestamp = performance.now(); // 记录时间戳
+    });
+}
+
+// 页面加载完成后开始检测
+document.addEventListener('DOMContentLoaded', detectLoadingSpeed);
+</script>
+</head>
+<body>
+<!-- 页面其他内容 -->
+</body>
+</html>
