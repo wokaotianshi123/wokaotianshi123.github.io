@@ -44,35 +44,34 @@ function createIframe(src) {
     iframe.referrerPolicy = "no-referrer";
     iframe.src = src;
     iframe.loadStartTime = performance.now();
+    iframe.onload = function() {
+        var currentTime = performance.now();
+        var loadTime = currentTime - this.loadStartTime;
+        if (loadTime < fastestTime && !fastestIframe) {
+            fastestTime = loadTime;
+            // 如果已经有最快的iframe，移除它
+            if (fastestIframe) {
+                videoContainer.removeChild(fastestIframe);
+            }
+            // 更新最快的iframe
+            fastestIframe = this;
+            // 移除其他的iframe
+            var childNodes = videoContainer.childNodes;
+            for (var i = childNodes.length - 1; i >= 0; i--) {
+                if (childNodes[i] !== fastestIframe) {
+                    videoContainer.removeChild(childNodes[i]);
+                }
+            }
+        }
+    };
     return iframe;
 }
 
 function loadVideos() {
-    var iframes = [];
+    videoContainer.innerHTML = ""; // 清空容器
     apiArray.forEach(function(api) {
         var iframe = createIframe(api + origin);
-        iframe.onload = function() {
-            var currentTime = performance.now();
-            var loadTime = currentTime - this.loadStartTime;
-            if (loadTime < fastestTime) {
-                fastestTime = loadTime;
-                // 如果已经有最快的iframe，移除它
-                if (fastestIframe) {
-                    videoContainer.removeChild(fastestIframe);
-                }
-                // 更新最快的iframe
-                fastestIframe = this;
-                // 移除其他的iframe
-                iframes.forEach(function(otherIframe) {
-                    if (otherIframe !== this) {
-                        videoContainer.removeChild(otherIframe);
-                    }
-                });
-                iframes = [this]; // 只保留当前最快的iframe
-            }
-        };
         videoContainer.appendChild(iframe);
-        iframes.push(iframe);
     });
 }
 
