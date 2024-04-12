@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>最快视频流播放器</title>
+<title>CKPlayer 单视频播放器</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -9,14 +9,17 @@
 <style>
   #video-container {
     width: 100%;
-    max-width: 800px; /* 可根据需要调整 */
-    margin: 0 auto;
-    position: relative;
+    max-width: 800px; /* 根据需要调整 */
+    margin: 20px auto; /* 留出一些边距 */
+    position: relative; /* 为绝对定位做准备 */
   }
-  iframe {
+  #video-container iframe {
     width: 100%;
     height: 100%;
     border: none;
+    position: absolute; /* 绝对定位 */
+    top: 0;
+    left: 0;
   }
 </style>
 </head>
@@ -35,9 +38,8 @@ var apiArray = [
 
 var origin = decodeURIComponent(document.location.href.split("url=")[1]);
 var videoContainer = document.getElementById("video-container");
-var iframes = [];
-var fastestIframe = null;
-var fastestTime = Infinity;
+var最快视频流 = null; // 用于存储最快视频流的URL
+var最快视频流时间 = Infinity; // 用于存储最快视频流加载时间
 
 function createIframe(src) {
     var iframe = document.createElement("iframe");
@@ -46,43 +48,38 @@ function createIframe(src) {
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = "no-referrer";
     iframe.src = src;
+    iframe.loadStartTime = performance.now(); // 记录开始加载的时间
     iframe.onload = function() {
         var currentTime = performance.now();
         var loadTime = currentTime - this.loadStartTime;
-        if (loadTime < fastestTime) {
-            fastestTime = loadTime;
-            // 移除其他还未加载完成的iframe
-            iframes.forEach(function(otherIframe) {
-                if (otherIframe !== this && otherIframe.parentNode) {
-                    otherIframe.parentNode.removeChild(otherIframe);
+        if (loadTime < 最快视频流时间) {
+            最快视频流时间 = loadTime;
+            // 如果当前已经有最快视频流在播放，先移除它
+            if (最快视频流) {
+                var currentIframe = videoContainer.querySelector('iframe[src*="' + 最快视频流 + '"]');
+                if (currentIframe) {
+                    videoContainer.removeChild(currentIframe);
                 }
-            });
-            // 保留最快的iframe
-            if (!fastestIframe) {
-                fastestIframe = this;
             }
+            // 更新最快视频流URL，并创建新的iframe
+            最快视频流 = this.src;
+            var newIframe = createIframe(最快视频流);
+            videoContainer.innerHTML = ""; // 清空容器
+            videoContainer.appendChild(newIframe);
         }
     };
-    this.loadStartTime = performance.now();
     return iframe;
 }
 
 function loadVideos() {
-    iframes = [];
     apiArray.forEach(function(api) {
         var videoIframe = createIframe(api + origin);
         videoContainer.appendChild(videoIframe);
-        iframes.push(videoIframe);
     });
 }
 
 // 页面加载完成后开始加载视频
 document.addEventListener("DOMContentLoaded", loadVideos);
-
-// 清除最快的iframe，如果它已经存在
-if (fastestIframe) {
-    fastestIframe.remove();
-}
 </script>
 </body>
 </html>
