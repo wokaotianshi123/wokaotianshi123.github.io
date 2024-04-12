@@ -33,59 +33,46 @@ var apiArray = [
 ];
 var origin = decodeURIComponent(document.location.href.split("url=")[1]);
 var videoContainer = document.getElementById("video-container");
-var最快视频流 = null; // 用于存储最快视频流的URL
-var最快视频流时间 = Infinity; // 用于存储最快视频流加载时间
-var已经加载 = false; // 标记是否已经有视频开始加载
+var fastestIframe = null;
+var fastestTime = Infinity;
 
-function createIframe(src, callback) {
+function createIframe(src) {
     var iframe = document.createElement("iframe");
     iframe.sandbox = "allow-scripts allow-same-origin allow-forms";
     iframe.frameBorder = "0";
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = "no-referrer";
     iframe.src = src;
-    iframe.onload = function() {
-        var currentTime = performance.now();
-        var loadTime = currentTime - this.loadStartTime;
-        if (!已经加载 && loadTime < 最快视频流时间) {
-            最快视频流时间 = loadTime;
-            最快视频流 = this.src;
-            // 移除其他iframe
-            var existingIframes = videoContainer.getElementsByTagName("iframe");
-            for (var i = 0; i < existingIframes.length; i++) {
-                if (existingIframes[i].src !==最快视频流) {
-                    videoContainer.removeChild(existingIframes[i]);
-                }
-            }
-            // 标记为已经加载
-            已经加载 = true;
-            // 调用回调函数
-            if (callback) {
-                callback();
-            }
-        }
-    };
-    this.loadStartTime = performance.now();
+    iframe.loadStartTime = performance.now();
     return iframe;
 }
 
 function loadVideos() {
-    // 清空容器中的旧iframe
-    videoContainer.innerHTML = "";
-    // 创建一个新的iframe并添加到容器中
+    var iframes = [];
     apiArray.forEach(function(api) {
-        var videoIframe = createIframe(api + origin, function() {
-            // 一旦有视频开始加载，停止其他尝试
-            apiArray.forEach(function(otherApi) {
-                var existingIframes = videoContainer.getElementsByTagName("iframe");
-                for (var i = 0; i < existingIframes.length; i++) {
-                    if (existingIframes[i].src.indexOf(otherApi) === 0) {
-                        videoContainer.removeChild(existingIframes[i]);
-                    }
+        var iframe = createIframe(api + origin);
+        iframe.onload = function() {
+            var currentTime = performance.now();
+            var loadTime = currentTime - this.loadStartTime;
+            if (loadTime < fastestTime) {
+                fastestTime = loadTime;
+                // 如果已经有最快的iframe，移除它
+                if (fastestIframe) {
+                    videoContainer.removeChild(fastestIframe);
                 }
-            });
-        });
-        videoContainer.appendChild(videoIframe);
+                // 更新最快的iframe
+                fastestIframe = this;
+                // 移除其他的iframe
+                iframes.forEach(function(otherIframe) {
+                    if (otherIframe !== this) {
+                        videoContainer.removeChild(otherIframe);
+                    }
+                });
+                iframes = [this]; // 只保留当前最快的iframe
+            }
+        };
+        videoContainer.appendChild(iframe);
+        iframes.push(iframe);
     });
 }
 
