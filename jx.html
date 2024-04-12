@@ -1,44 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>视频解析服务</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 引入 Video.js 的 CSS -->
-<link href="https://vjs.zencdn.net/7.10.4/video-js.css" rel="stylesheet">
+<title>最快视频流播放器</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width">
 <style>
   #video-container {
     width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: 800px; /* 根据需要调整 */
+    margin: 20px auto; /* 留出一些边距 */
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 </style>
 </head>
 <body>
 <div id="video-container">
-  <video id="video-player" class="video-js" controls preload="auto" width="640" height="360" data-setup='{}'></video>
+  <!-- 动态插入最快的视频播放窗口 -->
 </div>
-
-<!-- 引入 Video.js 的 JavaScript -->
-<script src="https://vjs.zencdn.net/7.10.4/video.js"></script>
 <script>
-  var videoPlayer = document.getElementById('video-player');
-  var urlParams = new URLSearchParams(window.location.search);
-  var videoUrl = urlParams.get('url');
+var apiArray = [
+    "https://www.ckplayer.vip/jiexi/?url=",
+    "https://jx.jsonplayer.com/player/?url=",
+    "https://jx.m3u8.tv/jiexi/?url=",
+    "https://jx.xmflv.com/?url=",
+    "https://www.8090g.cn/jiexi/?url="
+];
+var origin = decodeURIComponent(document.location.href.split("url=")[1]);
+var videoContainer = document.getElementById("video-container");
+var最快视频流 = null; // 用于存储最快视频流的URL
+var最快视频流时间 = Infinity; // 用于存储最快视频流加载时间
 
-  if (videoUrl) {
-    try {
-      // 尝试解析视频流
-      videoPlayer.src({ src: videoUrl, type: 'application/x-mpegURL' });
-      videoPlayer.load();
-      videoPlayer.play();
-    } catch (error) {
-      console.error('视频流无法解析:', error);
-      alert('视频流无法解析。请检查链接或稍后再试。');
+function createIframe(src) {
+    var iframe = document.createElement("iframe");
+    iframe.sandbox = "allow-scripts allow-same-origin allow-forms";
+    iframe.frameBorder = "0";
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = "no-referrer";
+    iframe.src = src;
+    iframe.onload = function() {
+        var currentTime = performance.now();
+        var loadTime = currentTime - this.loadStartTime;
+        if (loadTime < 最快视频流时间) {
+            最快视频流时间 = loadTime;
+            // 如果已经有最快的iframe，先移除它
+            if (最快视频流) {
+                var currentIframe = videoContainer.querySelector('iframe[src*="' + 最快视频流 + '"]');
+                if (currentIframe) {
+                    videoContainer.removeChild(currentIframe);
+                }
+            }
+            // 更新最快的iframe
+            最快视频流 = this.src;
+        }
+    };
+    this.loadStartTime = performance.now();
+    return iframe;
+}
+
+function loadVideos() {
+    // 清空容器中的旧iframe
+    while (videoContainer.firstChild) {
+        videoContainer.removeChild(videoContainer.firstChild);
     }
-  } else {
-    alert('没有提供视频链接。');
-  }
+    // 创建一个新的iframe并添加到容器中
+    apiArray.forEach(function(api) {
+        var videoIframe = createIframe(api + origin);
+        videoContainer.appendChild(videoIframe);
+    });
+}
+
+// 页面加载完成后开始加载视频
+document.addEventListener("DOMContentLoaded", loadVideos);
 </script>
 </body>
 </html>
