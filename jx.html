@@ -26,7 +26,7 @@
 </div>
 
 <!-- 引入 Video.js 的 JavaScript -->
-<script src="https://vjs.zencdn.net/7.10.4/video.js"></script>
+<script src="https://vjs.zencdn.net/7.10.4/video.js"></script> 
 
 <script>
 var apiArray = [
@@ -37,7 +37,18 @@ var apiArray = [
     "https://www.8090g.cn/jiexi/?url="
 ];
 
-var origin = decodeURIComponent(document.location.href.split("url=")[1]);
+// 从URL参数中获取视频源URL
+function getVideoUrlFromParams() {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('url');
+}
+
+// 移除URL中的特殊字符
+function sanitizeUrl(url) {
+    return decodeURIComponent(url.replace(/'/g, '%27'));
+}
+
+var videoUrl = sanitizeUrl(getVideoUrlFromParams());
 var videoPlayer = document.getElementById("video-player");
 var fastestUrl = null;
 var fastestTime = Infinity;
@@ -62,7 +73,7 @@ function checkUrl(url) {
 
 function loadFastestVideo() {
     var startTime = performance.now();
-    Promise.all(apiArray.map(api => checkUrl(api + encodeURIComponent(origin))))
+    Promise.all(apiArray.map(api => checkUrl(api + encodeURIComponent(videoUrl))))
         .then(urls => {
             var validUrls = urls.filter(url => url !== null);
             if (validUrls.length > 0) {
@@ -70,7 +81,9 @@ function loadFastestVideo() {
                     var currentTime = performance.now() - startTime;
                     return (fastest === null || currentTime < fastest.currentTime) ? current : fastest;
                 }, { url: null, currentTime: Infinity }).url;
-                videoPlayer.src({ src: fastestUrl, type: "application/x-mpegURL" });
+                // 设置视频播放器的源
+                videoPlayer.src(fastestUrl);
+                videoPlayer.play();
             }
         })
         .catch(() => {
