@@ -11,11 +11,15 @@
     width: 100%;
     max-width: 800px; /* 根据需要调整 */
     margin: 20px auto; /* 留出一些边距 */
+    position: relative; /* 为全屏做准备 */
   }
   iframe {
     width: 100%;
     height: 100%;
     border: none;
+    position: absolute; /* 绝对定位 */
+    top: 0;
+    left: 0;
   }
 </style>
 </head>
@@ -56,12 +60,12 @@ function createIframe(src) {
             // 更新最快的iframe
             fastestIframe = this;
             // 移除其他的iframe
-            var childNodes = videoContainer.childNodes;
-            for (var i = childNodes.length - 1; i >= 0; i--) {
-                if (childNodes[i] !== fastestIframe) {
-                    videoContainer.removeChild(childNodes[i]);
-                }
+            while (videoContainer.firstChild) {
+                videoContainer.removeChild(videoContainer.firstChild);
             }
+            videoContainer.appendChild(fastestIframe);
+            // 全屏显示最快的iframe
+            fastestIframe.requestFullscreen();
         }
     };
     return iframe;
