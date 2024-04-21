@@ -54,7 +54,7 @@
             "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvboxtg/main/PG/lib/feimaolive.json"
         },
 			{ "key": "华人影院",  "name": "菠菜华人", "type": 3,"api": "csp_XBPQ", "ext": { "分类url":"https://www.hdvod.cc/vod/filter/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html","分类":"电视剧$drama#电影$movie#论理$movie_ethical#综艺$variety#动漫$animation"}},
-{
+{ "key": "网飞猫",  "name": "网飞猫", "type": 3,"api": "csp_XBPQ", "ext": {
     "站点":"网飞猫",
     "图片": "data-original=\"&&\"[替换:/vod1>>https://vres.a357899.cn/vod1]",
     "线路数组":"<a href=\"javascript:void(0)&&</a>[排序:极速>超清]",
@@ -63,7 +63,7 @@
     "分类url":"https://www.ncat3.com:51111/show/{cateId}-{class}-{area}--{year}-3-{catePg}.html",
     "分类":"电影&电视剧&综艺&动漫&短剧",
     "分类值": "1&2&3&4&6"
-},
+}},
 {
             "key": "NoSearch_csp_BBB",
             "name": "哔哩哔哩",
