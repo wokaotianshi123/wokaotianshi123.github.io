@@ -385,6 +385,163 @@
 "手动嗅探视频链接关键词": ".mp4#.m3u8#.flv#video/tos#magnet:?xt",
 "手动嗅探视频链接过滤词": ".html#=http"
 }},
+{
+"key": "麻豆区",
+"name": "🔞麻豆区",
+"type": 3,
+"jar": "https://download.kstore.space/download/3924/JAR/C1.jar;md5;BB155C3F0133BBCE4756AD52003F5968",
+"api": "csp_XBPQ",
+"style": {"type": "rect","ratio": 1.597},
+"timeout":60,
+"ext":
+
+{
+//网站发布页https://bitbucket.org/fabuye/madouqu/src/master/
+//网站发布页https://github.com/madouqufabuye
+
+"数组":"class=\"entry-media\"&&</a>",
+"图片":"data-src=\"&&\"",
+"标题":"alt=\"&&\"",
+"链接":"https://madouqu21.cc&&\"",
+
+"播放数组":"entry-content u-text-format u-clearfix&&gle-box",
+"播放列表": "片&&pay-sin",
+"播放标题": "名：&&</p>",
+"播放链接": "地址：<a href=\"&&\"",
+
+"分类":"麻豆传媒$modelmedia#国产传媒$gccm",
+"分类url":"https://madouqu21.cc/{cateId}/page/{catePg}/"
+}
+
+},
+
+
+{
+"key": "Javbee",
+"name": "🔞Javbee",
+"type": 3,
+"jar": "https://download.kstore.space/download/3924/JAR/C1.jar;md5;BB155C3F0133BBCE4756AD52003F5968",
+"api": "csp_XBPQ",
+"timeout":60,
+"ext":
+{
+"数组":"class=\"image lazy\"&&</h5>",
+"图片":"data-src=\"&&\"",
+"标题":"detail/&&</a>",
+"链接":"href=\"&&\"",
+"副标题":"has-text-grey\">&&</span>",
+
+"播放数组":"title=\"Download M&&</a>",
+"播放列表": "agnet\"&&nofollow",
+"播放链接": "href=\"&&\"",
+
+"分类url":"https://javbee.org/{cateId}?page={catePg}",
+"分类":"流行&最新&随机",
+"分类值":"popular&new&random"
+}
+},
+
+{
+"key": "Javbt",
+"name": "🔞Javbt",
+"type": 3,
+"jar": "https://download.kstore.space/download/3924/JAR/C1.jar;md5;BB155C3F0133BBCE4756AD52003F5968",
+"api": "csp_XBPQ",
+"style": {"type": "rect","ratio": 1.597},
+"timeout":60,
+"ext":
+{
+"数组":"class=\"card\">&&video-list-item-tag-wrapper",
+"图片":"data-src=\"&&\"",
+"标题":"text-primary\">&&<",
+"链接":"href=\"&&\"",
+"副标题":"class=\"text-muted\">&&</span>",
+
+"播放数组":"更新日期&&</tbody>",
+"播放列表": "<a&&/a>",
+"播放标题": ">&&<",
+"播放链接": "href=\"&&\"",
+
+"分类":"无码$uncensored/download?#欧美$western/download?",
+"分类url":"https://freejavbt.com/{cateId}page={catePg}"
+}
+},
+
+{
+"key": "xxxclub",
+"name": "🔞xxxclub",
+"type": 3,
+"jar": "https://download.kstore.space/download/3924/JAR/C1.jar;md5;BB155C3F0133BBCE4756AD52003F5968",
+"api": "csp_XBPQ",
+"timeout":60,
+"ext":
+{
+"数组":"class=\"catla\">&&</li>",
+"图片":"src=\"&&\"",
+"标题":"()\">&&</a>",
+"链接":"href=\"&&\"",
+"副标题":"fou\">&&</span>",
+
+"播放数组":"Torrent Download&&</ul>",
+"播放列表": "<a &&/a>",
+"播放链接": "href=\"&&\"",
+
+"分类url":"https://xxxclub.to/torrents/browse/{cateId}/?page={catePg}&sort=uploaded&order=desc",
+"分类":"电影&2160&1080&720&480",
+"分类值":"3&4&2&1&0"
+}
+},
+
+{
+//以前没墙的，现在有墙了
+"key": "Javmulu",
+"name": "🔞Javmulu",
+"type": 3,
+"jar": "https://download.kstore.space/download/3924/JAR/C1.jar;md5;BB155C3F0133BBCE4756AD52003F5968",
+"api": "csp_XBPQ",
+"style": {"type": "rect","ratio": 1.597},
+"timeout":60,
+"ext":
+{
+"数组":"text-decoration-none&&</div>",
+"图片":"data-src=\"&&\"",
+"标题":"alt=\"&&\"",
+"链接":"href=\"&&\"",
+
+"播放数组":"javmulu-style-table text-center&&</tbody>",
+"播放列表": "<a&&/a>",
+"播放标题": ">&&<",
+"播放链接": "href=\"&&\"",
+
+"分类":"已有磁力$magnet-share",
+"分类url":"https://javmulu.cc/{cateId}/index?tag_type_search=0&page={catePg}"
+}
+},
+{
+"key": "Myav",
+"name": "🔞Myav",
+"type": 3,
+"jar": "https://download.kstore.space/download/3924/JAR/C1.jar;md5;BB155C3F0133BBCE4756AD52003F5968",
+"api": "csp_XBPQ",
+"ext":
+
+{
+//发邮件获取地址sex8086@gmail.com发布页有墙https://javlist.me/post.php
+"数组":"class=\"img\">&&</h3>",
+"图片":"src=\"&&\"",
+"标题":"blank\">&&</a>",
+"链接":"href=\"&&\"",
+
+"播放数组":"磁力地址&&</table>",
+"播放列表": "<a&&COPY",
+"播放链接": "Base64('&&')",
+
+"分类url":"https://ck6.cc/uncensored.c?year={cateId}&tag=all&other=dc1194d6780ae1741469b7fea8f61b02&ytype=1&sort=DESC&page={catePg}",
+"分类":"2024&2023&2022",
+"分类值":"07811dc6c422334ce36a09ff5cd6fe71&5531a5834816222280f20d1ef9e95f69&3a824154b16ed7dab899bf000b80eeee"
+}
+
+},
 
  	    {
       "key": "csp_XYQHiker_蛋蛋",
