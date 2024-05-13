@@ -95,6 +95,7 @@
         "分类url": "https://www.suying.lol/index.php/vod/show/area/{area}/by/{by}/class/{class}/id/{cateId}/lang/{lang}/page/{catePg}/year/{year}.html;;m"
       }
     },
+  {"key":"宝片视频","name":"宝片视频","type":3,"api":"csp_XBPQ","ext":{"分类":"电影$1#电视$2#动漫$4#短剧$22","分类url":"https://ibaopian.pro/vod/show/area/{area}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html"}},
 {
       "key": "https://leshizy.com/",
       "name": "🎡┃乐事采集┃仅搜索",
