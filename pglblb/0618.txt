@@ -572,16 +572,16 @@
 			"api": "csp_Config",
 			"searchable": 0,
 			"changeable": 0,
-			"ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/tokenm.json"
+			"ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/tokenm.json","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/pg.jar"
 		},
-		{"key":"PushShare","name":"我的资源分享","type":3, "api":"csp_PushShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/tokenm.json$$$https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/pushshare.txt$$$db$$$1",
+		{"key":"PushShare","name":"我的资源分享","type":3, "api":"csp_PushShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/tokenm.json$$$https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/pushshare.txt$$$db$$$1","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/pg.jar",
 			"style": {
 				"type": "list",
 				"ratio": 1.1
 			}
 		},
 		
-		{"key":"PikPakShare","name":"PikPak分享","type":3,"api":"csp_PikPakShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/tokenm.json$$$https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/pikpakclass.json$$$https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/pikpakclass.json.txt.gz",
+		{"key":"PikPakShare","name":"PikPak分享","type":3,"api":"csp_PikPakShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/tokenm.json$$$https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/pikpakclass.json$$$https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/pikpakclass.json.txt.gz","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/pg.jar",
 			"style": {
 				"type": "list",
 				"ratio": 1.1
