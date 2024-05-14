@@ -615,6 +615,7 @@
       "name": "🌾忘川影视1",
       "type": 3,
       "api": "csp_XBPQ", 
+               "jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvboxtg/main/PG/lib/XBPQ.jar",
       "ext": {
         "分类url": "https://www.wcys8.com/{cateId}_rankhot_{class}_{area}_{year}__{catePg}_{catePg}.html",
         "分类": "电视剧$teleplay#电影$film",
@@ -622,12 +623,14 @@
         "搜索数组":"class=\"thumb&&</div",
        "播放数组":"id=\"playlist&&</div",
       "播放列表":"<li&&</li",
-       "播放标题":">&&</a>",
+       "播放标题":">&&</a >",
         "线路数组":"data-toggle=&&</li>",
-        "线路标题":">&&</a>",
-"跳转解析":"默认$https://jx.jsonplayer.com/player/?url=",
-"播放链接":"bofang('&&)"
-}},
+        "线路标题":">&&</a >",
+       "播放链接":"bofang('&&)",
+"跳转解析":"默认$https://jx.jsonplayer.com/player/?url=#线路2$https://jx.xmflv.com/?url=#线路3$https://jx.aidouer.net/?url=",
+"跳转播放链接":"解析+\"url\":\"&&\""
+
+}}, 
     {"key":"csp_XBPQ_vs影院","name":"️vs影院 XBPQ","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
     "数组":"class=\"col-xs-4&&</li",
     "线路数组":"class=\"swiper-slide&&</li",
