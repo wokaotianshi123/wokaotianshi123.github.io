@@ -98,7 +98,8 @@
 				"type": "list",
 				"ratio": 1.1
 			}
-		},    {"key":"csp_XBPQ_bl影院","name":"️bl影院 XBPQ","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
+		},   
+{"key":"csp_XBPQ_bl影院","name":"️bl影院 XBPQ","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
     
    "二次截取":"class=\"module-items&&class=\"module-footer",
      "数组":"class=\"module-item\"&&class=\"module-item\"",
@@ -121,7 +122,8 @@
 "播放链接前缀": "magnet:?xt=urn:btih:",
 "播放链接后缀": "",
     "分类": "电影$movies#电视剧$tv",
-    "分类url":"https://www.btbtl.com/type/{cateId}/{catePg}/"}},       
+    "分类url":"https://www.btbtl.com/type/{cateId}/{catePg}/"}},    
+
     {
       "key": "csp_XBPQ_速映",
       "name": "⚡速映┃影视",
