@@ -77,6 +77,17 @@
 
 "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/cctv.py"
     },
+      {
+      "key": "py_央视1",
+      "name": "🇨🇳CCTV┃影视专用",
+      "type": 3,
+      "api": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/cctv.py",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1,
+      //"ext": "https://download.kstore.space/download/3848/TVBox/py/cctv.py"
+"ext": ""
+    },
 { "key": "可达影院",  "name": "可达影院", "type": 3,"api": "csp_XBPQ", "ext": { "请求头":"手机","二次截取":"<ul class=\"row&&</ul","数组":"class=\"col-xs-4&&</li","标题":"title=\"&&\"","副标题":"text-overflow\">&&</p","图片":"data-original=\"&&\"","链接":"href=\"&&\"","线路数组":"class=\"swiper-slide&&</li","线路标题":">&&<em","简介":"内容简介&&</p","分类url":"https://kedays.org/shaixuan/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html","分类":"电视剧$lianxuju#电影$dianying#少儿$shaoer#综艺$zongyi#动漫$dongman#短剧$duanju"}},	
    // {"key": "短剧侠","name": "🤺短剧侠","type": 3,"api": "csp_XBPQ","ext":{"分类": "快手$21#抖音$22#都市$23#古装$24#重生$25#逆袭$26#虐恋$27#萌宝$28#言情$29#穿越$30#战神$31#神医$32#赘婿$33#甜宠$34#其他$35","搜索url": "https://www.duanjuxia.cn/index.php/vod/search.html?wd={wd}","分类url": "https://www.duanjuxia.cn/index.php/vod/show/area/{area}/by/{by}/class/{class}/id/{cateId}/lang/{lang}/year/{year}/page/{catePg}.html"}}, 
 {
