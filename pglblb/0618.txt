@@ -239,6 +239,22 @@
         "recordable": 0
     },
     {
+        "key": "色虎虎资源网采集接口",
+        "name": "色虎虎资源网采集接口",
+        "type": 1,
+        "api": "https://apisesehuzy.com/api.php/providedao/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "haose资源网采集接口",
+        "name": "haose资源网采集接口",
+        "type": 1,
+        "api": " https://haosezyw.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
         "key": "红袖资源网采集接口",
         "name": "红袖资源网采集接口",
         "type": 1,
