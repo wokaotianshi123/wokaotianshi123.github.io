@@ -5,9 +5,15 @@ https://wokaotianshi123.github.io/zhongqiutop10.html
 https://wokaotianshi123.github.io/?url=
 
 zy移动版
+```
  https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/zyplayer/zy%E7%A7%BB%E5%8A%A8%E7%89%88/V%E5%BD%B1.apk
+```
+```
 https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/zyplayer/zy%E7%A7%BB%E5%8A%A8%E7%89%88/zyjiexi.json
+```
+```
 https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/zyplayer/zy%E7%A7%BB%E5%8A%A8%E7%89%88/zynew.json
+```
 
 zyplayer一键导入接口
 
