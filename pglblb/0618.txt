@@ -123,8 +123,10 @@
 				"ratio": 1.1
 			}
 		},   
-{"key":"csp_XBPQ_bl影院","name":"️bl影院 XBPQ","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{
-    
+    {"key":"csp_XBPQ_bl影院","name":"️bl影院 XBPQ","type":3,"api":"csp_XBPQ",
+    "jar":"https://gitjs.wokaotianshi123.cloudns.org/https://github.com/wokaotianshi123/wokaotianshi123.github.io/raw/main/pglblb/xyqxbpq.jar",
+    "searchable":1,"quickSearch":1,"filterable":1,"ext":{
+    "请求头":"手机",
    "二次截取":"class=\"module-items&&class=\"module-footer",
      "数组":"class=\"module-item\"&&class=\"module-item\"",
      "标题": "title=\"&&\"",
@@ -133,10 +135,10 @@
      "搜索url":"https://www.btbtl.com/search/{wd}",
      "搜索数组":"class=\"module-item-pic&&</div",
        "搜索模式": "1",
-"多线二次截取":"class=\"module-row-info&&立即下载",
+"多线二次截取":"class=\"module-row-info&&<footer",
 "多线数组": "class=\"module-row-text&&</a",
 "多线链接": "href=\"&&\"",
-"多线链接前缀": "",
+"多线链接前缀": "https://www.btbtl.com",
 "多线链接后缀": "",
 "播放数组": "class=\"video-info-footer&&</div",
 "列表二次截取": "",
@@ -146,8 +148,7 @@
 "播放链接前缀": "magnet:?xt=urn:btih:",
 "播放链接后缀": "",
     "分类": "电影$movies#电视剧$tv",
-    "分类url":"https://www.btbtl.com/type/{cateId}/{catePg}/"}},    
-
+    "分类url":"https://www.btbtl.com/type/{cateId}/{catePg}/"}},
     {
       "key": "csp_XBPQ_速映",
       "name": "⚡速映┃影视",
