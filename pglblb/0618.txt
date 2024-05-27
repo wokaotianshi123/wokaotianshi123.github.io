@@ -138,7 +138,7 @@
     "播放列表": "<a&&>",
     "播放标题": "title=\"&&\"",
     "播放链接": "href=\"&&\"",
-    
+"线路合并":"1",     
     "分类": "电影$movies#电视剧$tv",
     "分类url":"https://www.btbtl.com/type/{cateId}/{catePg}/"}},    
 {
