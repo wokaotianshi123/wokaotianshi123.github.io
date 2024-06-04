@@ -30,7 +30,7 @@
     },
 
 {"name":"fan","type":0,"url":"https://fanty.run.goorm.site/live.txt"},
-{"name":"YanG","type":0,"url":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/YanG-1989/m3u/main/Adult.m3u"},
+{"name":"Guovin","type":0,"url":"https://ghproxy.net/raw.githubusercontent.com/Guovin/TV/gd/result.txt"},
 {"name":"atsushi","type":0,"url":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/atsushi444/iptv-epg/main/Adult.m3u"}
 ],
 
