@@ -1,7 +1,7 @@
 {
 
 
-"spider":"https://a.wofuck.rr.nu/pglblb/panda230222.jar;md5;6fdffe9b74ae6fa85d5858a2bd9fb6b9",
+"spider":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/panda230222.jar;md5;6fdffe9b74ae6fa85d5858a2bd9fb6b9",
 //"lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=Y2xhbjovL3BnbGJsYi90di90djg4LnR4dA=="]}]}],
 
 
