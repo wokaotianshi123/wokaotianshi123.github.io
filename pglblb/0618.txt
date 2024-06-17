@@ -50,8 +50,8 @@
             "name": "🐼️┃电视┃直播",
             "type": 3,
             "searchable": 0,
-            "api": "https://a.wofuck.rr.nu/tvtg/PG/lib/live2vod.js",
-            "ext": "https://a.wofuck.rr.nu/tvtg/PG/lib/feimaolive.json"
+            "api": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/live2vod.js",
+            "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/feimaolive.json"
         },
 
 {
@@ -81,7 +81,7 @@
       "key": "py_央视1",
       "name": "🇨🇳CCTV┃影视专用",
       "type": 3,
-      "api": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/cctv.py",
+      "api": "https://a.wofuck.rr.nu/pglblb/cctv.py",
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
@@ -115,16 +115,16 @@
 			"api": "csp_Config",
 			"searchable": 0,
 			"changeable": 0,
-			"ext":"https://a.wofuck.rr.nu/tvtg/PG/lib/tokenm.json","jar":"https://a.wofuck.rr.nu/tvtg/PG/pg.jar"
+			"ext":"https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/tokenm.json","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/pg.jar"
 		},
-		{"key":"PushShare","name":"我的资源分享","type":3, "api":"csp_PushShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"https://a.wofuck.rr.nu/tvtg/PG/lib/tokenm.json$$$https://a.wofuck.rr.nu/tvtg/PG/lib/pushshare.txt$$$db$$$1","jar":"https://a.wofuck.rr.nu/tvtg/PG/pg.jar",
+		{"key":"PushShare","name":"我的资源分享","type":3, "api":"csp_PushShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/tokenm.json$$$https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/pushshare.txt$$$db$$$1","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/pg.jar",
 			"style": {
 				"type": "list",
 				"ratio": 1.1
 			}
 		},
 		
-		{"key":"PikPakShare","name":"PikPak分享","type":3,"api":"csp_PikPakShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"https://a.wofuck.rr.nu/tvtg/PG/lib/tokenm.json$$$https://a.wofuck.rr.nu/tvtg/PG/lib/pikpakclass.json$$$https://a.wofuck.rr.nu/tvtg/PG/lib/pikpakclass.json.txt.gz","jar":"https://a.wofuck.rr.nu/tvtg/PG/pg.jar",
+		{"key":"PikPakShare","name":"PikPak分享","type":3,"api":"csp_PikPakShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/tokenm.json$$$https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/pikpakclass.json$$$https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/pikpakclass.json.txt.gz","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/pg.jar",
 			"style": {
 				"type": "list",
 				"ratio": 1.1
@@ -628,7 +628,7 @@
       "name": "🌾忘川影视1",
       "type": 3,
       "api": "csp_XBPQ", 
-               "jar":"https://a.wofuck.rr.nu/tvtg/PG/lib/XBPQ.jar",
+               "jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/XBPQ.jar",
       "ext": {
         "分类url": "https://www.wcys8.com/{cateId}_rankhot_{class}_{area}_{year}__{catePg}_{catePg}.html",
         "分类": "电视剧$teleplay#电影$film",
