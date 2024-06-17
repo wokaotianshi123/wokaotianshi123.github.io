@@ -91,7 +91,7 @@
  {"key":"www.xb6v.com","name":"6V www.xb6v.com","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"搜索url":"https://www.66s6.cc/e/search/index.php;post;show=title&tempid=1&tbname=article&mid=1&dopost=search&keyboard={wd}","分类url":"https://www.66s6.cc/{cateId}/index_{catePg}.html[firstPage=https://www.66s6.cc/{cateId}/index.html]","分类":"动作片$dongzuopian#爱情片$aiqingpian#科幻片$kehuanpian#恐怖片$kongbupian#战争片$zhanzhengpian#喜剧片$xijupian#纪录片$jilupian#剧情片$juqingpian#国产剧$dianshiju/guoju#日韩剧$dianshiju/rihanju#欧美剧$dianshiju/oumeiju"}},   
  {
       "key": "csp_XBPQ_两个BT",
-      "name": "两个BT",
+      "name": "两个BT bttwo.vip",
       "type": 3,
       "api": "csp_XBPQ",
       "searchable": 1,
@@ -100,10 +100,12 @@
       "ext": {
         "线路数组":"mi_paly_box\">&&</div>",
         "线路标题":"ypxingq_t\">&&<span>[替换:在线播放>>播放列表]",
-        "搜索url":"https://www.bttwoo.com/xssearch?q={wd}&f=_all&p={pg}",
+        "搜索url":"https://wztz.wokaotianshi.eu.org/wztz/https/www.bttwoo.com/xssearch?q={wd}&f=_all&p={pg}",
         "播放数组":"<div class=\"paly_list_btn\">&&</div>",        
         "分类":"最新电影$new-movie#电视剧$dsj#热门下载$hot#本月热门$new-movie#高分电影$new-month#国产剧$zgjun#美剧$meiju#日韩剧$jpsrtv",
-        "分类url":"https://www.bttwo.net/{cateId}/{area}/{year}/{class}/page/{catePg}"
+        //"分类url":"https://www.bttwo.net/{cateId}/{area}/{year}/{class}/page/{catePg}"
+        "分类url":"https://wztz.wokaotianshi.eu.org/wztz/https/www.bttwo.net/{cateId}/{area}/{year}/{class}/page/{catePg}"
+
       }
     },
 {
