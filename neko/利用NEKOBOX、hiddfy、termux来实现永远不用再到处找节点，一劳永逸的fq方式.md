@@ -145,3 +145,23 @@ wget -N -P Warp2Clash https://gitjs.wokaotianshi123.cloudns.org/https://raw.gith
 5.在手机根目录查看 Warp2Clash.yaml是否存在,将Warp2Clash.yaml上传到个人空间得到外链链接。http...，复制下来。以后每次更新就直接更新Warp2Clash.yaml内容即可。
 
 6.下载安装 14.20版本 hiddify next，打开,右上角，剪贴板导入外链链接。
+
+好用的自建节点和订阅
+节点：
+```
+trojan://cf2tj@cfip.wofuck.ddnsfree.com:443?security=tls&type=ws&host=cftj.wofuck.rr.nu&path=%2F%3Fed%3D2560#cfip.wofuck.ddnsfree.com%20%E6%89%93%E5%BC%80https%3A%2F%2Fscanner.github1.cloud%2F%E7%AD%9B%E9%80%89443%E7%AB%AF%E5%8F%A3ip
+trojan://cf2tj@cfip.wofuck.gleeze.com:443?security=tls&type=ws&host=cftj.wofuck.rr.nu&path=%2F%3Fed%3D2560#cfip.wofuck.gleeze.com%20%E6%89%93%E5%BC%80https%3A%2F%2Fscanner.github1.cloud%2F%E7%AD%9B%E9%80%89443%E7%AB%AF%E5%8F%A3ip
+trojan://cf2tj@cloudflare.net:443?security=tls&type=ws&host=cftj.wofuck.rr.nu&path=%2F%3Fed%3D2560#cloudflare.net
+trojan://cf2tj@fbi.gov:443?security=tls&type=ws&host=cftj.wofuck.rr.nu&path=%2F%3Fed%3D2560#fbi.gov
+trojan://cf2tj@www.visa.com.sg:443?security=tls&type=ws&host=cftj.wofuck.rr.nu&path=%2F%3Fed%3D2560#www.visa.com.sg
+vless://543e12fe-f437-43fd-aff3-afe982741e8d@543e12fe-f437-43fd-aff3-afe982741e8d-00-e8zlkxsj2dzt.spock.replit.dev:443?encryption=none&security=tls&sni=543e12fe-f437-43fd-aff3-afe982741e8d-00-e8zlkxsj2dzt.spock.replit.dev&type=ws&host=543e12fe-f437-43fd-aff3-afe982741e8d-00-e8zlkxsj2dzt.spock.replit.dev&path=%2F543e12fe-f437-43fd-aff3-afe982741e8d-vl#%E9%98%B2%E5%A4%B1%E8%81%94%E3%80%82%E5%B9%B3%E6%97%B6%E4%B8%8D%E8%BF%90%E8%A1%8C%E3%80%82%E4%BD%BF%E7%94%A8%E6%97%B6%E6%89%93%E5%BC%80replit%EF%BC%8C%E7%99%BB%E5%BD%95529442986%40qq.com%208606....%E6%89%BE%E5%88%B0newyear20202%2C%E8%BF%90%E8%A1%8Crun%20replit-vless
+trojan://cf2tj@www.dzy66666.com:443?security=tls&type=ws&host=cftj.wofuck.rr.nu&path=%2F%3Fed%3D2560#www.dzy66666.com
+```
+订阅：
+```
+https://cfdyhj.wofuck.rr.nu/ziyong
+https://cfdy.wofuck.rr.nu/cf2w
+http://short.wokaotianshi123.cloudns.org/bpbv2
+https://cftj.wofuck.rr.nu/cf2tj
+https://short.wokaotianshi123.cloudns.org/kxdy
+```
