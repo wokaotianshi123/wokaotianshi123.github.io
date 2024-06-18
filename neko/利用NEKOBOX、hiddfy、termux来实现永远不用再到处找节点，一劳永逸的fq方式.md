@@ -96,7 +96,7 @@ warp://188.114.96.213:1002/?ifp=5-10
 
 
 
-# 方法2 cmliu/Warp2Clash 来自大佬们的代码
+# 方法2 cmliu/Warp2Clash 来自大佬们的代码 目前仅仅适用于ipv6网络环境，手机端是ipv6应该也能使用
 
 1.安装nekobox和termux，hiddfy 14.20版（若有请忽略跳到第二步）
 
