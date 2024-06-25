@@ -97,16 +97,7 @@
                 "国产综艺"
             ]
         },
-{"key": "XBPQ_骚火","name": "骚火影视https://shapp.us","type": 3,"api": "csp_XBPQ",  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{ 
-    "二次截取": "<ul class=\"v_list&&</ul",
-    "数组":"<li&&</li>",
-    "图片": "data-original=\"&&\"",
-    "标题": "alt=\"&&\"",
-    "副标题": "class=\"v_note\">&&</div>",
-    "链接": "href=\"&&\"",
-    "搜索url":"https://saohuo.us/search.php?searchword={wd}",
-   "分类":"电影$1#喜剧$6#爱情$7#恐怖$8#动作$9#科幻$10#战争$11#犯罪$12#动画$13#奇幻$14#剧情$15#冒险$16#悬疑$17#惊悚$18#其它$19#电视剧$2#大陆$20#TVB$21#韩剧$22#美剧$23#日剧$24#英剧$25#台剧$26#其它$27",
-    "分类url":"https://saohuo.us/list/{cateId}-{catePg}.html;;y"}},	
+	
   {
             "key": "hipy_js_采集之王",
             "name": "采集之王(drpy_t3)",
@@ -813,7 +804,16 @@
     "跳转解析": "默认$https://www.jkdy.cc/jx/player.php?url=#HZ(自建)$https://www.jkdy.cc/jx/vid.php?url=",
     "跳转播放链接":"\"url\":\"&&\""
 }},	                          {"key": "狐狸看剧","name": "狐狸看剧","type": 3,   "api": "csp_XBPQ","ext": {"简介":"line-height: 20px;\">&&</div>","播放数组":"class=\"module-play-list&&</div","分类url": "https://honghuli.com/leibiao/{cateId}-{area}--{class}-----{catePg}---{year}.html","分类": "短剧$35#电影$1#连续剧$2#动漫$4#综艺$3"}},
-//{ "key": "网飞猫",  "name": "网飞猫","type": 3,"api": "csp_XBPQ","ext":{"站点":"网飞猫","图片": "data-original=\"&&\"[替换:/vod1>>https://vres.a357899.cn/vod1]","线路数组":"<a href=\"javascript:void(0)&&</a>[排序:极速>超清]","搜索url":"/search?os=pc&k={wd}","搜索图片":"data-original=\"&&\"[替换:/vod1>>https://vres.a357899.cn/vod1]","分类url":"https://www.ncat3.com:51111/show/{cateId}-{class}-{area}--{year}-3-{catePg}.html","分类":"电影&电视剧&综艺&动漫&短剧","分类值": "1&2&3&4&6"}},
+//{ "key": "网飞猫",  "name": "网飞猫","type": 3,"api": "csp_XBPQ","ext":{"站点":"网飞猫","图片": "data-original=\"&&\"[替换:/vod1>>https://vres.a357899.cn/vod1]","线路数组":"<a href=\"javascript:void(0)&&</a>[排序:极速>超清]","搜索url":"/search?os=pc&k={wd}","搜索图片":"data-original=\"&&\"[替换:/vod1>>https://vres.a357899.cn/vod1]","分类url":"https://www.ncat3.com:51111/show/{cateId}-{class}-{area}--{year}-3-{catePg}.html","分类":"电影&电视剧&综艺&动漫&短剧","分类值": "1&2&3&4&6"}},{"key": "XBPQ_骚火","name": "骚火影视https://shapp.us","type": 3,"api": "csp_XBPQ",  "searchable": 1,"quickSearch": 1,"filterable": 1,"ext":{ 
+    "二次截取": "<ul class=\"v_list&&</ul",
+    "数组":"<li&&</li>",
+    "图片": "data-original=\"&&\"",
+    "标题": "alt=\"&&\"",
+    "副标题": "class=\"v_note\">&&</div>",
+    "链接": "href=\"&&\"",
+    "搜索url":"https://saohuo.us/search.php?searchword={wd}",
+   "分类":"电影$1#喜剧$6#爱情$7#恐怖$8#动作$9#科幻$10#战争$11#犯罪$12#动画$13#奇幻$14#剧情$15#冒险$16#悬疑$17#惊悚$18#其它$19#电视剧$2#大陆$20#TVB$21#韩剧$22#美剧$23#日剧$24#英剧$25#台剧$26#其它$27",
+    "分类url":"https://saohuo.us/list/{cateId}-{catePg}.html;;y"}},
 
  	    {
       "key": "csp_XYQHiker_蛋蛋",
