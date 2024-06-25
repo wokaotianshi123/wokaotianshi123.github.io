@@ -65,7 +65,38 @@
             "ext": "https://a.wofuck.rr.nu/bili.json",
 "jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fix1209.jar;md5;3021d0a39a4959c487437ccd2bdba75b"
         },
-
+        {
+            "key": "360资源",
+            "name": "360┃资源",
+            "type": 1,
+            "api": "https://360zy.com/api.php/provide/vod",
+            "playUrl": "",
+            "categories": [
+                "爽文短剧",
+                "国产剧",
+                "国产动漫",
+                "动画电影",
+                "网络电影",
+                "动作片",
+                "喜剧片",
+                "灾难片",
+                "爱情片",
+                "科幻片",
+                "恐怖片",
+                "剧情片",
+                "战争片",
+                "港台剧",
+                "日韩剧",
+                "欧美剧",
+                "惊悚片",
+                "犯罪片",
+                "冒险片",
+                "悬疑片",
+                "武侠片",
+                "奇幻片",
+                "国产综艺"
+            ]
+        },
   {
             "key": "hipy_js_采集之王",
             "name": "采集之王(drpy_t3)",
