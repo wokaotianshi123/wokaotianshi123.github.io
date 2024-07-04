@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -58,14 +59,16 @@
       color: #666;
       font-size: 12px;
     }
-</style>
+  </style>
 </head>
 <body>
+
+
 
   <h2>在线tonkiang.us复制结果列表生成</h2>
      <h3>复制结果:</h3>
   <div id="inputContainer">
-  <textarea id="inputText" rows="20" cols="80" placeholder="Ctrl+A全选tonkiang.us酒店源或组播源的结果，Ctrl+C复制结果粘贴至此"></textarea>
+	<textarea id="inputText" rows="20" cols="80" placeholder="Ctrl+A全选tonkiang.us酒店源或组播源的结果，Ctrl+C复制结果粘贴至此"></textarea>
   </div>
   <button onclick="processText()">生成TXT列表</button>
   <button onclick="processTextareaContent('outputText', 'multicastText')">生成组播ID列表</button>
@@ -85,6 +88,9 @@
 
     <div id="counter">Visits: 4</div>
   </div>
+
+
+
 
 <script>
     function convertToM3U() {
@@ -122,37 +128,37 @@
         document.getElementById('outputText').value = outputText;
     }
 
-  function getMulticastAddr(url) {
-    const regex = /(rtp\/|rtp:\/\/|udp\/|udp:\/\/)(.*)/;
-    const match = url.match(regex);
-    if (match) {
-      return match[2];
-    } else {
-      return null;
-    }
-  }
+	function getMulticastAddr(url) {
+		const regex = /(rtp\/|rtp:\/\/|udp\/|udp:\/\/)(.*)/;
+		const match = url.match(regex);
+		if (match) {
+			return match[2];
+		} else {
+			return null;
+		}
+	}
 
-  function processTextareaContent(inputTextareaId, outputTextareaId) {
-    const inputTextarea = document.getElementById(inputTextareaId);
-    const outputTextarea = document.getElementById(outputTextareaId);
-    if (inputTextarea && outputTextarea) {
-      const lines = inputTextarea.value.split('\n');
-      const updatedLines = lines.map(line => {
-        const parts = line.split(',');
-        if (parts.length === 2) {
-          const url = parts[1].trim();
-          const multicastAddr = getMulticastAddr(url);
-          if (multicastAddr) {
-            return `${parts[0]},rtp://${multicastAddr}`;
-          }else {
+	function processTextareaContent(inputTextareaId, outputTextareaId) {
+		const inputTextarea = document.getElementById(inputTextareaId);
+		const outputTextarea = document.getElementById(outputTextareaId);
+		if (inputTextarea && outputTextarea) {
+			const lines = inputTextarea.value.split('\n');
+			const updatedLines = lines.map(line => {
+				const parts = line.split(',');
+				if (parts.length === 2) {
+					const url = parts[1].trim();
+					const multicastAddr = getMulticastAddr(url);
+					if (multicastAddr) {
+						return `${parts[0]},rtp://${multicastAddr}`;
+					}else {
                     return line + '：无组播ID';
-          }
-        }
-        return line;
-      });
-      outputTextarea.value = updatedLines.join('\n');
-    }
-  }
+					}
+				}
+				return line;
+			});
+			outputTextarea.value = updatedLines.join('\n');
+		}
+	}
 
     function copyText() {
         let outputText = document.getElementById("outputText");
@@ -164,7 +170,7 @@
             alert("Please process text first.");
         }
     }
-  
+	
     function copymulticast() {
         let multicastText = document.getElementById("multicastText");
         if (multicastText) {
@@ -174,8 +180,8 @@
         } else {
             alert("Please process text first.");
         }
-    }  
-  
+    }	
+	
     function copym3u() {
         let m3uOutput = document.getElementById("m3uOutput");
         if (m3uOutput) {
@@ -186,12 +192,12 @@
             alert("Please process text first.");
         }
     }
-  function clearScreen() {
-    document.getElementById('inputText').value = '';
-    document.getElementById('outputText').value = '';
-    document.getElementById('m3uOutput').value = '';
-    document.getElementById('multicastText').value = '';
-  }
+	function clearScreen() {
+		document.getElementById('inputText').value = '';
+		document.getElementById('outputText').value = '';
+		document.getElementById('m3uOutput').value = '';
+		document.getElementById('multicastText').value = '';
+	}
     function saveAsM3U() {
       const m3uContent = document.getElementById('m3uOutput').value;
       const blob = new Blob([m3uContent], { type: 'text/plain' });
@@ -204,5 +210,7 @@
     }
 </script>
     
+
+
   </body>
   </html>
