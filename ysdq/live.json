@@ -14,7 +14,7 @@
         "num": 2,
         "name": "CCTV2财经",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.23:6000",
+		  "http://wouu.net:9977/udp/239.93.0.149:5140",
 		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225643/index.m3u8",
           "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv2/HD-8000k-1080P-cctv2"
         ]
@@ -23,7 +23,7 @@
         "num": 3,
         "name": "CCTV3综艺",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.23:6000",
+		  "http://wouu.net:9977/udp/239.93.0.150:5140",
 		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225634/index.m3u8",
           "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv3/HD-8000k-1080P-cctv3"
         ]
@@ -32,7 +32,7 @@
         "num": 4,
         "name": "CCTV4中文国际",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.105:5140",
+		  "http://wouu.net:9977/udp/239.93.0.212:5140",
           "http://183.207.248.71:80/cntv/live1/cctv-4/cctv-4"
         ]
       },
@@ -40,7 +40,7 @@
         "num": 5,
         "name": "CCTV5体育",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.12:2224",
+		  "http://wouu.net:9977/udp/239.93.0.158:5140",
 		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225633/index.m3u8",
 		  "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv5/HD-8000k-1080P-cctv5"
         ]
@@ -49,7 +49,7 @@
         "num": 6,
         "name": "CCTV5+体育赛事",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.13:2226",
+		  "http://wouu.net:9977/udp/239.93.1.79:5140",
 		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225706/index.m3u8",
           "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv05plus/HD-8000k-1080P-cctv05plus"
         ]
@@ -58,7 +58,7 @@
         "num": 7,
         "name": "CCTV6电影",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.13:2226",
+		  "http://wouu.net:9977/udp/239.93.0.64:5140",
 		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225632/index.m3u8",
           "http://183.207.248.71:80/cntv/live1/cctv-6/cctv-6"
         ]
@@ -67,7 +67,7 @@
         "num": 8,
         "name": "CCTV7国防军事",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.67:5140",
+		  "http://wouu.net:9977/udp/239.93.0.79:5140",
 		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225644/index.m3u8",
           "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv7/HD-8000k-1080P-cctv7"
         ]
@@ -76,7 +76,7 @@
         "num": 9,
         "name": "CCTV8电视剧",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.42.39:5140",
+		  "http://wouu.net:9977/udp/239.93.0.154:5140",
 		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225631/index.m3u8",
           "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv8/HD-8000k-1080P-cctv8"
         ]
@@ -85,7 +85,7 @@
         "num": 10,
         "name": "CCTV9纪录",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.24:5140",
+		  "http://wouu.net:9977/udp/239.93.1.64:5140",
 		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225646/index.m3u8",
           "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv9/HD-8000k-1080P-cctv9"
         ]
@@ -94,7 +94,7 @@
         "num": 11,
         "name": "CCTV10科教",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.28:5140",
+		  "http://wouu.net:9977/udp/239.93.1.63:5140",
 		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225636/index.m3u8",
           "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv10/HD-8000k-1080P-cctv10"
         ]
@@ -103,7 +103,7 @@
         "num": 12,
         "name": "CCTV11戏曲",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.0.102:5140",
+		  "http://wouu.net:9977/udp/239.93.0.170:5140",
           "http://183.207.248.71:80/cntv/live1/n-cctv-11/n-cctv-11"
         ]
       },
@@ -111,7 +111,7 @@
         "num": 13,
         "name": "CCTV12社会与法",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.30:8124",
+		  "http://wouu.net:9977/udp/239.93.1.41:5140",
 		  "http://39.135.138.60:18890/PLTV/88888910/224/3221225637/index.m3u8",
           "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv12/HD-8000k-1080P-cctv12"
         ]
@@ -120,7 +120,7 @@
         "num": 14,
         "name": "CCTV13新闻",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.1.30:8124",
+		  "http://wouu.net:9977/udp/239.93.0.187:5140",
           "http://183.207.248.71:80/cntv/live1/cctv-13/cctv-13"
         ]
       },
@@ -128,7 +128,7 @@
         "num": 15,
         "name": "CCTV14少儿",
         "source": [
-          "http://wouu.net:9977/udp/239.93.1.30:8124",
+          "http://wouu.net:9977/udp/239.93.1.40:5140",
 		  "http://39.135.138.59:18890/PLTV/88888910/224/3221225640/index.m3u8",
 		  "http://183.207.248.71:80/cntv/live1/HD-8000k-1080P-cctv14/HD-8000k-1080P-cctv14"
         ]
@@ -137,7 +137,7 @@
         "num": 16,
         "name": "CCTV15音乐",
         "source": [
-		  "http://wouu.net:9977/udp/239.93.0.103:5140",
+		  "http://wouu.net:9977/udp/239.93.0.171:5140",
           "http://183.207.248.71:80/cntv/live1/n-cctv-15/n-cctv-15"
         ]
       },
