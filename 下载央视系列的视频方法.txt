@@ -1,0 +1,6 @@
+下载央视系列的视频方法
+1.浏览器安装猫抓插件。Edge可以在插件商店里搜索 猫抓 选评论最多那个安装。
+2.用猫抓嗅探出网址，选择850那个（只有这个是360p，效果稍微好些）得到地址。比如：https://dh5aliwx01.v.cntv.cn/asp/h5e/hls/850/0303000a/3/default/d40d012187d64427a303f360c691485a/850.m3u8
+
+3.替换https://dh5aliwx01.v.cntv.cn/asp/h5e/hls/850为https://hls.cntv.lxdns.com/asp/hls/850，得到新地址如下：https://hls.cntv.lxdns.com/asp/hls/850/0303000a/3/default/d40d012187d64427a303f360c691485a/850.m3u8
+4.新地址就是360p的央视下载源。在猫抓插件里可以嗅探下载。
