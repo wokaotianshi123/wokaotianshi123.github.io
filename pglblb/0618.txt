@@ -102,11 +102,11 @@
             "key": "hipy_js_采集之王",
             "name": "采集之王(drpy_t3)",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/hjdhnx/hipy-server/master/app/t4/files/drpy_libs/drpy2.min.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/saajnn/hipy-server/master/app/t4/files/drpy_libs/drpy2.min.js",
             "searchable": 1,
             "quickSearch": 1,
             "order_num": 142,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/hjdhnx/hipy-server/master/app/t4/files/drpy_js/采集之王[合].js?type=url&params=https://ghproxy.net/https://raw.githubusercontent.com/hjdhnx/hipy-server/master/app/t4/files/json/采集静态.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/saajnn/hipy-server/master/app/t4/files/drpy_js/采集之王[合].js?type=url&params=https://ghproxy.net/https://raw.githubusercontent.com/saajnn/hipy-server/master/app/t4/files/json/采集静态.json"
         },	
 
 
