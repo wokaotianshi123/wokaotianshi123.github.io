@@ -118,7 +118,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "order_num": 142,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/hipy-server/master/app/t4/files/drpy_js/采集之王[合].js?type=url&params=https://ghproxy.net/https://raw.githubusercontent.com/hjdhnx/hipy-server/master/app/t4/files/json/采集[密]静态.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/hipy-server/master/app/t4/files/drpy_js/采集之王[合].js?type=url&params=https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/hipy-server/master/app/t4/files/json/采集[密]静态.json"
         },
              {"key": "追剧影视",
       "name": "🌾追剧影视",
