@@ -99,7 +99,16 @@
                 "国产综艺"
             ]
         },
-	
+	        {
+            "key": "yt",
+            "name": "影探",
+            "type": 3,
+            "api": "csp_AppYsV2",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "ext": " http://cms-yt.lyyytv.cn/api.php/app/"
+        },
   {
             "key": "hipy_js_采集之王",
             "name": "采集之王(drpy_t3)",
