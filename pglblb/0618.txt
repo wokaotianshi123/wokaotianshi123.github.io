@@ -101,6 +101,34 @@
                 "国产综艺"
             ]
         },
+{
+     "key": "haokongbu",
+     "name": "👿好恐怖┃磁力┃影院",
+     "type": 3,
+     "api": "csp_XBPQ",
+     "searchable": 1,
+     "quickSearch": 1,
+     "filterable": 1,
+   "jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/XBPQ.jar",
+     
+     "ext": {
+         "请求头": "手机",
+         "主页url": "https://m.haokongbu.top/",
+         "分类url": "https://m.haokongbu.top/{cateId}/index_{catePg}.html[firstPage=https://m.haokongbu.top/{cateId}/index.html]",
+         "分类": "国产剧$guochanju#港剧$gangju#动作片$dongzuopian#喜剧片$xijupian#爱情片$aiqingpian#科幻片$kehuanpian#恐怖片$kongbupian#战争片$zhanzhengpian#剧情片$juqingpian#微电影$weidianying#记录片$m_jlp#高清$gaoqing#动漫$donghuapian#台湾$taiwanju#日本$riju#韩国$hanju#欧美$oumeiju#泰国$taiguoju#海外$haiwaiju",
+         "副标题": "class=\"typeset\"&&</i>",
+         "数组": "class=\"p1 m1&&</li",
+         "调试": 0,
+         "简介": "class=\"jqtxt*<p&&</p",
+       // "线路数组": "/i&&/h2",
+       //"线路标题": ">&&<",
+         "播放二次截取": "icon-xiazai1&&c-love",
+         "播放列表": "<a&&/a",
+         "播放标题": ">&&<",
+         "播放链接": "href=\"&&\"",
+         "播放数组": "<ul>&&</ul"       
+     }
+ },
 	        {
             "key": "yt",
             "name": "影探",
