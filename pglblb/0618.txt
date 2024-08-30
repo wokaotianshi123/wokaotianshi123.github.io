@@ -9,7 +9,7 @@
 {"name":"四川电信组播","type":0,"url":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/zubotv/main/sichuanzubowouu.txt"},
 {"name":"多省组播","type":0,"url":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/udpxy/全国.txt"},
 {"name":"酒店源","type":0,"url":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/AutoIPTV-Hotel/main/lives.txt"},
-{"name":"ctt","type":0,"url":"https://ghproxy.net/https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/merged_output.txt"},
+{"name":"ctt","type":0,"url":"https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/collect-tv-txt/main/merged_output.txt"},
 
 {
                 "name": "电视",
