@@ -57,6 +57,36 @@
             "api": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/live2vod.js",
             "ext": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/PG/lib/feimaolive.json"
         },
+    {
+      "key": "ConfigCenter",
+      "name": "配置中心",
+      "type": 3,
+"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/zx/custom_spider.jar",
+      "api": "csp_ConfigCenter",
+      "searchable": 0,
+      "changeable": 0,
+      "ext": {
+        "commonConfig": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/refs/heads/main/zx/peizhi.json"
+      }
+    },
+    {
+      "key": "Youtubezx",
+      "name": "Youtube真心",
+      "type": 3,
+      "api": "csp_Youtube",
+      "searchable": 1,
+      "changeable": 1,
+"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/zx/custom_spider.jar",
+      "style": {
+        "type": "rect",
+        "ratio": 1.433
+      },
+      "ext": {
+        "commonConfig": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/refs/heads/main/zx/peizhi.json",
+        "json": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/refs/heads/main/zx/youtube.json",
+        "cookie": ""
+      }
+    },
 
 {
             "key": "NoSearch_csp_BBB",
