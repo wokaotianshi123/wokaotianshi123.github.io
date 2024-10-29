@@ -66,7 +66,7 @@
       "searchable": 0,
       "changeable": 0,
       "ext": {
-        "commonConfig": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/refs/heads/main/zx1022/peizhi.json"
+        "commonConfig": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/refs/heads/main/zx1022/json/peizhi.json"
       }
     },
     {
@@ -82,8 +82,8 @@
         "ratio": 1.433
       },
       "ext": {
-        "commonConfig": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/refs/heads/main/zx1022/peizhi.json",
-        "json": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/refs/heads/main/zx1022/youtube.json",
+        "commonConfig": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/refs/heads/main/zx1022/json/peizhi.json",
+        "json": "https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/refs/heads/main/zx1022/json/youtube.json",
         "cookie": ""
       }
     },
