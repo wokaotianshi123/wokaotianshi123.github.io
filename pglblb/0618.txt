@@ -61,7 +61,7 @@
       "key": "ConfigCenter",
       "name": "配置中心",
       "type": 3,
-"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/zx/custom_spider.jar",
+"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/zx1022/custom_spider.jar",
       "api": "csp_ConfigCenter",
       "searchable": 0,
       "changeable": 0,
@@ -76,7 +76,7 @@
       "api": "csp_Youtube",
       "searchable": 1,
       "changeable": 1,
-"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/zx/custom_spider.jar",
+"jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/tvtg/main/zx1022/custom_spider.jar",
       "style": {
         "type": "rect",
         "ratio": 1.433
