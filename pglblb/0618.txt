@@ -87,7 +87,7 @@
         "cookie": ""
       }
     },
-
+{"key":"csp_瓜子","name":"💻瓜子秒播","api":"csp_Gz360","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/gz.jar","type": 3,"searchable": 1,"playerType": 2,"timeout": 30,"changeable": 0},
 {
             "key": "NoSearch_csp_BBB",
             "name": "哔哩哔哩",
