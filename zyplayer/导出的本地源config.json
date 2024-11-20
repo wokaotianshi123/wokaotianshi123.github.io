@@ -1,0 +1,2261 @@
+{
+  "tbl_site": [
+    {
+      "key": "39kan",
+      "name": "39影视",
+      "api": "https://www.39kan.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "1",
+      "isActive": false
+    },
+    {
+      "key": "vipmv",
+      "name": "天堂资源",
+      "api": "http://vipmv.cc/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "2",
+      "isActive": false
+    },
+    {
+      "key": "wolongzyw",
+      "name": "卧龙资源",
+      "api": "https://collect.wolongzyw.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "3",
+      "isActive": true,
+      "resource": 65188
+    },
+    {
+      "key": "6Uzy",
+      "name": "6U资源",
+      "api": "http://zy.ataoju.com/inc/api.php",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "4",
+      "isActive": false
+    },
+    {
+      "key": "lziapi",
+      "name": "量子资源",
+      "api": "http://cj.lziapi.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "5",
+      "isActive": true,
+      "resource": 75607
+    },
+    {
+      "key": "foxzyapi",
+      "name": "FOX资源",
+      "api": "https://api.foxzyapi.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "6",
+      "isActive": false
+    },
+    {
+      "key": "lehootv",
+      "name": "乐活影视",
+      "api": "https://lehootv.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "7",
+      "isActive": false
+    },
+    {
+      "key": "kuaibozy",
+      "name": "快播资源",
+      "api": "http://www.kuaibozy.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "8",
+      "isActive": false
+    },
+    {
+      "key": "apibdzy",
+      "name": "百度云资源",
+      "api": "https://api.apibdzy.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 0,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "9",
+      "isActive": true,
+      "resource": 45213
+    },
+    {
+      "key": "tomziyuan",
+      "name": "tom资源网",
+      "api": "https://tomziyuan.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "10",
+      "isActive": false
+    },
+    {
+      "key": "明帝影视",
+      "name": "明帝影视",
+      "api": "https://ys.md214.cn/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "11",
+      "isActive": false
+    },
+    {
+      "key": "kudianzy",
+      "name": "酷点资源",
+      "api": "https://kudianzy.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "12",
+      "isActive": false
+    },
+    {
+      "key": "taopianapi",
+      "name": "淘片资源采集网",
+      "api": "https://taopianapi.com/home/cjapi/as/mc10/vod/json",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "13",
+      "isActive": false
+    },
+    {
+      "key": "xinlangapi",
+      "name": "新浪资源",
+      "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "14",
+      "isActive": true,
+      "resource": 48942
+    },
+    {
+      "key": "快车资源",
+      "name": "快车资源",
+      "api": "https://caiji.kczyapi.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "15",
+      "isActive": true,
+      "resource": 32427
+    },
+    {
+      "key": "yulecj",
+      "name": "鱼乐资源网",
+      "api": "https://api.yulecj.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "16",
+      "isActive": false
+    },
+    {
+      "key": "sdzyapi",
+      "name": "闪电资源网",
+      "api": "https://sdzyapi.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "17",
+      "isActive": true
+    },
+    {
+      "key": "yparse",
+      "name": "步步高资源",
+      "api": "https://api.yparse.com/api/json",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "18",
+      "isActive": false,
+      "resource": 178984
+    },
+    {
+      "key": "ckzy",
+      "name": "CK资源",
+      "api": "https://ckzy.me/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "19",
+      "isActive": true
+    },
+    {
+      "key": "guangsuapi",
+      "name": "光速资源",
+      "api": "https://api.guangsuapi.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "20",
+      "isActive": true,
+      "resource": 49167
+    },
+    {
+      "key": "jyzyapi",
+      "name": "金鹰资源",
+      "api": "https://jyzyapi.com/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "21",
+      "isActive": false,
+      "resource": 48914
+    },
+    {
+      "key": "tiankongapi",
+      "name": "天空资源",
+      "api": "https://api.tiankongapi.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "22",
+      "isActive": false,
+      "resource": 54970
+    },
+    {
+      "key": "feisuzy",
+      "name": "飞速资源",
+      "api": "https://www.feisuzy.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "isActive": false,
+      "status": false,
+      "type": 1,
+      "id": "23",
+      "resource": 54598
+    },
+    {
+      "key": "ylzy1",
+      "name": "鱼乐资源",
+      "api": "https://api.ylzy1.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "24",
+      "isActive": false
+    },
+    {
+      "key": "zzrhgg",
+      "name": "飘花资源",
+      "api": "http://www.zzrhgg.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "25",
+      "isActive": false
+    },
+    {
+      "key": "hanjuzy",
+      "name": "韩剧资源",
+      "api": "http://www.hanjuzy.com/inc/apijson_vod.php",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "26",
+      "isActive": false
+    },
+    {
+      "key": "28393120-9d11-5110-b209-c925b2d8f87e",
+      "name": "非凡资源",
+      "api": "http://cj.ffzyapi.com/api.php/provide/vod/from/ffm3u8/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "isActive": false,
+      "type": 1,
+      "id": "27",
+      "resource": 61764
+    },
+    {
+      "key": "9fbbb48c-d822-55ed-baee-40964804d8a9",
+      "name": "Ikun资源",
+      "api": "https://ikunzyapi.com/api.php/provide/vod",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "28",
+      "isActive": true,
+      "resource": 47725
+    },
+    {
+      "key": "apiyhzy",
+      "name": "樱花动漫",
+      "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "29",
+      "isActive": false,
+      "resource": 96615
+    },
+    {
+      "key": "rrvipw",
+      "name": "rrvipw",
+      "api": "https://www.rrvipw.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "30",
+      "isActive": false
+    },
+    {
+      "key": "1080zyku",
+      "name": "1080zyku",
+      "api": "http://api.1080zyku.com/inc/api_mac10.php",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "31",
+      "isActive": false,
+      "resource": 48916
+    },
+    {
+      "key": "ukuapi",
+      "name": "U酷资源",
+      "api": "https://api.ukuapi.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "32",
+      "isActive": false,
+      "resource": 34834
+    },
+    {
+      "key": "vodimg",
+      "name": "影图资源",
+      "api": "https://cj.vodimg.top/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "33",
+      "isActive": false
+    },
+    {
+      "key": "无尽资源",
+      "name": "无尽资源",
+      "api": "https://api.wujinapi.me/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "isActive": false,
+      "type": 1,
+      "id": "34",
+      "resource": 56329
+    },
+    {
+      "key": "南国资源",
+      "name": "南国资源",
+      "api": "http://api.nguonphim.tv/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "35",
+      "isActive": false
+    },
+    {
+      "key": "xiaomaomi",
+      "name": "小猫咪",
+      "api": "http://zy.xiaomaomi.cc/api.php/provide/vod/",
+      "playUrl": "http://106.225.218.183:10209/home/api?type=ys&uid=2742611&key=efmqzACFGKORTY3479&url=",
+      "search": 1,
+      "group": "官采",
+      "status": true,
+      "type": 1,
+      "id": "36",
+      "isActive": false
+    },
+    {
+      "key": "映迷影院",
+      "name": "映迷影院",
+      "api": "https://www.inmi.app/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "37",
+      "isActive": false,
+      "resource": 70585
+    },
+    {
+      "key": "1080资源",
+      "name": "1080资源",
+      "api": "https://1080p.tv/api.php/provide/vod",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "38",
+      "isActive": false
+    },
+    {
+      "key": "易看资源",
+      "name": "易看资源",
+      "api": "https://api.yikanapi.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "39",
+      "isActive": false
+    },
+    {
+      "key": "忆梦资源",
+      "name": "忆梦资源",
+      "api": "http://anltv.cn/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "40",
+      "isActive": false,
+      "resource": 25265
+    },
+    {
+      "key": "TOM资源",
+      "name": "TOM资源",
+      "api": "https://api.tomcaiji.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": false,
+      "type": 1,
+      "id": "41",
+      "isActive": false
+    },
+    {
+      "key": "红牛资源",
+      "name": "红牛资源",
+      "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "42",
+      "isActive": false,
+      "resource": 48723
+    },
+    {
+      "key": "77韩剧",
+      "name": "77韩剧",
+      "api": "https://www.77hanju.com/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "切片",
+      "status": true,
+      "type": 1,
+      "id": "43",
+      "isActive": false
+    },
+    {
+      "key": "wandouzy",
+      "name": "豌豆影院",
+      "api": "https://ks.wandouzy.cc/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "综合",
+      "status": false,
+      "type": 1,
+      "id": "44",
+      "isActive": false
+    },
+    {
+      "key": "ganfan",
+      "name": "干饭",
+      "api": "http://124.220.183.81:83/api.php/provide/vod/",
+      "playUrl": "http://106.225.218.183:10209/home/api?type=ys&uid=2742611&key=efmqzACFGKORTY3479&url=",
+      "search": 1,
+      "group": "官采",
+      "status": true,
+      "type": 1,
+      "id": "45",
+      "isActive": false
+    },
+    {
+      "key": "feimao",
+      "name": "肥猫",
+      "api": "http://i.xn--z7x900a.love:63/api.php/provide/vod/",
+      "playUrl": "https://api.tyun77.cn/api.php/provide/parseDicturl?url=",
+      "search": 1,
+      "group": "官采",
+      "status": true,
+      "type": 1,
+      "id": "46",
+      "isActive": false
+    },
+    {
+      "key": "buleitv",
+      "name": "布蕾",
+      "api": "http://117.175.212.198:8088/api.php/app/",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "type": 3,
+      "id": "47",
+      "isActive": false
+    },
+    {
+      "key": "adys",
+      "name": "小龟",
+      "api": "https://api123.adys.app/xgapp.php/v3/",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": false,
+      "type": 3,
+      "id": "48",
+      "isActive": false
+    },
+    {
+      "key": "realdou",
+      "name": "真逗",
+      "api": "http://ys.realdou.cn/api.php/app/",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "type": 3,
+      "id": "49",
+      "isActive": false
+    },
+    {
+      "key": "gvideo",
+      "name": "苹果云视听",
+      "api": "https://www.gvideo.me/api.php/app/",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "type": 3,
+      "id": "50",
+      "isActive": false
+    },
+    {
+      "key": "iptv8848",
+      "name": "8848",
+      "api": "http://bn.iptv8848.site/api.php/app/",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "isActive": false,
+      "type": 3,
+      "id": "51",
+      "resource": 9999
+    },
+    {
+      "key": "jlys6",
+      "name": "家里有事",
+      "api": "http://jlys6.top/mogai_api.php/v1.vod",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "type": 4,
+      "id": "52",
+      "isActive": false
+    },
+    {
+      "key": "sc1080",
+      "name": "上次",
+      "api": "https://sc1080.top/api.php/v1.vod",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "type": 4,
+      "id": "53",
+      "isActive": false
+    },
+    {
+      "key": "juquanweb",
+      "name": "具全",
+      "api": "http://xinxing.juquanweb.top/icciu_api.php/v1.vod",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "type": 4,
+      "id": "54",
+      "isActive": false,
+      "resource": 131944
+    },
+    {
+      "key": "ruifenglb",
+      "name": "瑞丰",
+      "api": "http://81.69.23.108:5566/ruifenglb_api.php/v1.vod",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "type": 4,
+      "id": "55",
+      "isActive": false
+    },
+    {
+      "key": "chiguafilm",
+      "name": "吃瓜",
+      "api": "https://www.chiguafilm.com/api.php/v1.vod",
+      "playUrl": "",
+      "search": 0,
+      "group": "app",
+      "status": true,
+      "type": 4,
+      "id": "56",
+      "isActive": false
+    },
+    {
+      "key": "laimi",
+      "name": "徕米",
+      "api": "https://www.laimi.me/api.php/v1.vod?limit=12&page=1",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "type": 4,
+      "id": "57",
+      "isActive": false,
+      "resource": 10321
+    },
+    {
+      "key": "ishen520",
+      "name": "i神520",
+      "api": "http://app.ishen520.com/api.php/v1.vod",
+      "playUrl": "",
+      "search": 1,
+      "group": "app",
+      "status": true,
+      "type": 4,
+      "id": "58",
+      "isActive": false
+    },
+    {
+      "key": "非凡资源",
+      "name": "非凡资源",
+      "api": "http://www.ffzy.tv/api.php/provide/vod/",
+      "group": "默认",
+      "status": true,
+      "isActive": false,
+      "type": 1,
+      "resource": 61765,
+      "id": "59",
+      "search": 1,
+      "playUrl": ""
+    },
+    {
+      "key": "飞速资源",
+      "name": "飞速资源",
+      "api": "https://www.feisuzyapi.com/api.php/provide/vod/",
+      "group": "默认",
+      "status": true,
+      "type": 1,
+      "id": "60",
+      "search": 1,
+      "playUrl": "",
+      "isActive": false,
+      "resource": 54753
+    },
+    {
+      "key": "速播",
+      "name": "速播",
+      "api": "https://subocaiji.com/api.php/provide/vod/",
+      "group": "默认",
+      "status": true,
+      "type": 1,
+      "search": 1,
+      "id": "61",
+      "playUrl": "",
+      "isActive": false,
+      "resource": 47689
+    },
+    {
+      "key": "葡萄资源",
+      "name": "葡萄资源",
+      "api": "https://caiji.putaozy.net/inc/api.php",
+      "group": "18+",
+      "status": false,
+      "search": 2,
+      "type": 0,
+      "id": "62",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "探探资源",
+      "name": "探探资源",
+      "api": "https://apittzy.com/api.php/provide/vod/at/xml",
+      "group": "18+",
+      "status": true,
+      "search": 2,
+      "type": 0,
+      "id": "63",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "KK资源网",
+      "name": "KK资源网",
+      "api": "https://kkzy.me/api.php/provide/vod/at/xmlsea",
+      "group": "18+",
+      "status": true,
+      "search": 2,
+      "type": 0,
+      "id": "64",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "色猫资源",
+      "name": "色猫资源",
+      "api": "https://api.maozyapi.com/inc/api.php",
+      "group": "18+",
+      "status": true,
+      "search": 2,
+      "type": 0,
+      "id": "65",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "乐播",
+      "name": "乐播",
+      "api": "https://lbapi9.com/api.php/provide/vod/at/xml",
+      "group": "18+",
+      "status": true,
+      "search": 2,
+      "type": 0,
+      "id": "66",
+      "playUrl": "",
+      "isActive": false,
+      "resource": 150067
+    },
+    {
+      "key": "哥哥妹妹",
+      "name": "哥哥妹妹",
+      "type": 0,
+      "api": "http://www.ggmmzy.com:9999/inc/xml",
+      "group": "18+",
+      "status": true,
+      "search": 2,
+      "id": "67",
+      "playUrl": "",
+      "isActive": false,
+      "resource": 21335
+    },
+    {
+      "key": "shayu",
+      "name": "shayu",
+      "api": "https://shayuapi.com/api.php/Seacms/vod/",
+      "playUrl": "",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 0,
+      "id": "68",
+      "isActive": false
+    },
+    {
+      "key": "色屌丝",
+      "name": "色屌丝",
+      "api": "http://sdszyapi.com/home/cjapi/asbb/mc10/vod/xml",
+      "playUrl": "",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 0,
+      "id": "69",
+      "isActive": false
+    },
+    {
+      "key": "番号资源",
+      "name": "番号资源 ",
+      "api": "http://fhapi9.com/api.php/provide/vod/at/xml",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "id": "70",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "点点娱乐",
+      "name": "点点娱乐 ",
+      "api": "https://xx55zyapi.com/home/cjapi/ascf/mc10/vod/xml",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "id": "71",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "52AVAV",
+      "name": "52AVAV ",
+      "api": "https://52zyapi.com/home/cjapi/asda/mc10/vod/xml",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "id": "72",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "小姐姐资源",
+      "name": "小姐姐资源 ",
+      "api": "https://xjjzyapi.com/home/cjapi/askl/mc10/vod/xml",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "id": "73",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "色窝资源",
+      "name": "色窝资源 ",
+      "api": "https://sewozyapi.com/api.php/provide/vod/at/xml",
+      "group": "18+",
+      "status": true,
+      "search": 2,
+      "type": 0,
+      "id": "74",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "大地",
+      "name": "大地",
+      "api": "https://dadiapi.com/api.php",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "id": "75",
+      "playUrl": "",
+      "isActive": true
+    },
+    {
+      "key": "老鸭",
+      "name": "老鸭",
+      "api": "https://api.apilyzy.com/api.php/provide/vod/at/xml",
+      "group": "18+",
+      "status": true,
+      "search": 2,
+      "type": 0,
+      "id": "76",
+      "playUrl": "",
+      "isActive": true,
+      "resource": 149569
+    },
+    {
+      "key": "花魁",
+      "name": "花魁",
+      "api": "https://caiji.huakuiapi.com/inc/apijson_vod.php",
+      "group": "18+",
+      "status": true,
+      "search": 2,
+      "type": 1,
+      "id": "77",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "大MM资源",
+      "name": "大MM资源 ",
+      "api": "https://www.dmmapi.com/home/cjapi/asd2c7/mc10/vod/xml",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "id": "78",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "精工厂资源",
+      "name": "精工厂资源 ",
+      "api": "https://jgczyapi.com/home/cjapi/kld2/mc10/vod/xml",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "id": "79",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "最大资源",
+      "name": "最大资源",
+      "api": "http://zuidazy.me/api.php/provide/vod/at/xml",
+      "group": "默认",
+      "status": true,
+      "type": 0,
+      "search": 1,
+      "id": "80",
+      "playUrl": "",
+      "isActive": true
+    },
+    {
+      "key": "656b916e-94fe-5b57-b300-80ccc1be1cea",
+      "name": "辣椒",
+      "api": "https://apilj.com/api.php/provide/vod/at/json/",
+      "playUrl": "",
+      "group": "18+",
+      "search": 2,
+      "status": false,
+      "type": 1,
+      "id": "81",
+      "isActive": false
+    },
+    {
+      "key": "cee0fca9-1808-5017-9a69-0d9013f95b47",
+      "name": "芒果",
+      "api": "https://mgzyz1.com/api.php/provide/vod/?ac=list",
+      "playUrl": "https://mgm3u8-player.com/player/DPm3u8.php?url=",
+      "group": "18+",
+      "search": 2,
+      "status": false,
+      "type": 1,
+      "id": "82",
+      "isActive": false
+    },
+    {
+      "key": "b0684274-ce9e-5d4f-bf54-f61afbdaf49d",
+      "name": "玉兔",
+      "api": "https://apiyutu.com/api.php/provide/vod/?ac=list",
+      "playUrl": "https://yutujx.com/?url=",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 1,
+      "id": "83",
+      "isActive": false
+    },
+    {
+      "key": "70f4c18c-3276-50f1-adaa-85614f5441eb",
+      "name": "森林",
+      "api": "https://slapibf.com/api.php/provide/vod/?ac=list",
+      "playUrl": "https://sljxsl.com/?url=",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 1,
+      "id": "84",
+      "isActive": true
+    },
+    {
+      "key": "9d8974ba-ddfc-5e53-b008-29f37e5fc88b",
+      "name": "155",
+      "api": "https://155api.com/api.php/provide/vod/?ac=list",
+      "playUrl": "https://www.155jx.com/?url=",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 1,
+      "id": "85",
+      "isActive": true,
+      "resource": 52882
+    },
+    {
+      "key": "a93050f8-e282-521d-9c92-cdbbf5add205",
+      "name": "色猫",
+      "api": "https://caiji.semaozy.net/inc/apijson_vod.php",
+      "playUrl": "https://jiexi.99mao.xyz/m3u8/?url=",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 1,
+      "id": "86",
+      "isActive": false
+    },
+    {
+      "key": "447fa6df-7552-5830-ab64-d45afbf39b42",
+      "name": "草榴",
+      "api": "https://www.caoliuzy.com/api.php/provide/vod/at/json/",
+      "playUrl": "https://jx.caoliuzycdn.com/m3u8.php?url=",
+      "group": "18+",
+      "search": 2,
+      "status": false,
+      "type": 1,
+      "id": "87",
+      "isActive": false
+    },
+    {
+      "key": "8a885bf6-666b-5bbf-8669-4c7f1ffb7a71",
+      "name": "开云",
+      "api": "https://kaiyunzy5.com/inc/apijson_vod.php",
+      "playUrl": "https://jiexi.kaiyunzy.vip/m3u8/?url=",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 1,
+      "id": "88",
+      "isActive": false
+    },
+    {
+      "key": "5ad3edc1-8e52-5bf6-90f1-2f785465ec2a",
+      "name": "奇虎",
+      "api": "https://caiji.qhzyapi.com/api.php/provide/vod/?ac=list",
+      "playUrl": "奇虎",
+      "group": "影视",
+      "search": 1,
+      "status": true,
+      "type": 1,
+      "id": "89",
+      "isActive": false,
+      "resource": 18543
+    },
+    {
+      "key": "a5a4498a-04ae-5267-b11c-a68eb32ff1e8",
+      "name": "极速",
+      "api": "https://jszyapi.com/api.php/provide/vod/at/json",
+      "playUrl": "https://jsjiexi.com/play/?url=",
+      "group": "影视",
+      "search": 1,
+      "status": true,
+      "type": 1,
+      "id": "90",
+      "isActive": true,
+      "resource": 47097
+    },
+    {
+      "key": "a4d8e39c-5981-5c07-84f8-19ab9839e160",
+      "name": "黄瓜",
+      "api": "https://www.avre00.com/api.php/Prodao/vod/?ac=list",
+      "playUrl": "https://player.avre20.com:5418/player/?url=",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 1,
+      "id": "91",
+      "isActive": false
+    },
+    {
+      "key": "dbf45aab-a93b-5952-97e5-6e1a2c130e4d",
+      "name": "大漠",
+      "api": "https://damozy.com/api.php/provide/vod/?ac=list",
+      "playUrl": "https://www.damojx.com/dm/dm.html?url=",
+      "group": "影视",
+      "search": 1,
+      "status": true,
+      "type": 1,
+      "id": "92",
+      "isActive": false,
+      "resource": 21129
+    },
+    {
+      "key": "ffc08730-71ad-56b8-a153-e2e563e6d64c",
+      "name": "奶香",
+      "api": "https://Naixxzy.com/api.php/provide/vod/?ac=list",
+      "playUrl": "https://nxxzynxp.com/?url=",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 1,
+      "id": "93",
+      "isActive": false,
+      "resource": 44553
+    },
+    {
+      "key": "b4c96d80-854d-527e-b6d8-cc9e21960eeb",
+      "name": "68",
+      "api": "https://caiji.68zyapi.com/api.php/provide/vod/?ac=list ",
+      "playUrl": "https://jiexi.68zy.vip/m3u8/?url= ",
+      "group": "影视",
+      "search": 1,
+      "status": false,
+      "type": 1,
+      "id": "94",
+      "isActive": false
+    },
+    {
+      "key": "f81ab05d-3269-5fb9-97bb-1597b00e0e02",
+      "name": "伊人",
+      "api": "https://api.yrzyapi.com/api.php/provide/vod/?ac=list",
+      "playUrl": "https://player.yrplay1.com/m3u8/?url=",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 1,
+      "id": "95",
+      "isActive": false,
+      "resource": 62345
+    },
+    {
+      "key": "f4d594ec-8a57-5e48-8ab6-d5ba4a64615c",
+      "name": "江南",
+      "api": "https://api.yjiexi.com/provide/xml.html",
+      "playUrl": "https://player.yjiexi.com/player?url= ",
+      "group": "影视",
+      "search": 1,
+      "status": false,
+      "type": 0,
+      "id": "96",
+      "isActive": false
+    },
+    {
+      "key": "a00bc761-7b9f-5804-9bfd-7a07322159b5",
+      "name": "海外",
+      "api": "http://api.haiwaikan.com/v1/vod?ac=list",
+      "playUrl": "http://api.haiwaikan.com/v1/vod?ac=list",
+      "group": "影视",
+      "search": 1,
+      "status": false,
+      "type": 1,
+      "id": "97",
+      "isActive": false
+    },
+    {
+      "key": "b8b48f6e-9e96-5619-96ba-d884ef9cb442",
+      "name": "奥斯卡",
+      "api": "https://aosikazy.com/api.php/provide/vod/?ac=list",
+      "playUrl": "https://aosikazy11.com/?url=",
+      "group": "18+",
+      "search": 2,
+      "status": false,
+      "type": 1,
+      "id": "98",
+      "isActive": false,
+      "resource": 86306
+    },
+    {
+      "key": "f951be46-17fa-5f4f-9f41-ff25d21e8d74",
+      "name": "美少女",
+      "api": "https://www.msnii.com/api/xml.php",
+      "playUrl": "",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 0,
+      "id": "99",
+      "isActive": true,
+      "resource": 17664
+    },
+    {
+      "key": "54658e47-58bb-5221-bec2-82b8a3be2ec4",
+      "name": "淫水机",
+      "api": "https://www.xrbsp.com/api/xml.php",
+      "playUrl": "",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 0,
+      "id": "100",
+      "isActive": true,
+      "resource": 16428
+    },
+    {
+      "key": "f951be46-17fa-5f4f-9f41-ff25d21e8d74",
+      "name": "花椒",
+      "api": "https://apihjzy.com/api.php/provide/vod/at/xml/",
+      "playUrl": "",
+      "group": "18+",
+      "search": 2,
+      "status": true,
+      "type": 0,
+      "id": "101",
+      "isActive": false,
+      "resource": 17664
+    },
+    {
+      "key": "cfa8e308-0120-5e43-a937-eebb76f99626",
+      "name": "丝袜",
+      "api": "https://www.siwazyw.cc/api.php/provide/vod/at/xml/",
+      "playUrl": "https://help.siwazywcdn2.com:5278/m3u8.php?url=",
+      "group": "18+",
+      "search": 2,
+      "status": false,
+      "type": 0,
+      "id": "102",
+      "isActive": false
+    },
+    {
+      "key": "34cd623c-0b62-5426-a653-9c1db4a850e8",
+      "name": "黄AV",
+      "api": "https://www.pgxdy.com/api/xml.php",
+      "playUrl": "",
+      "group": "18+",
+      "search": 2,
+      "status": false,
+      "type": 0,
+      "id": "103",
+      "isActive": true,
+      "resource": 16643
+    },
+    {
+      "key": "bajiecaiji",
+      "name": "八戒采集",
+      "api": "https://cj.bajiecaiji.com/inc/apijson.php",
+      "group": "影视",
+      "status": true,
+      "type": 1,
+      "search": 1,
+      "id": "104",
+      "playUrl": "",
+      "isActive": true,
+      "resource": 1011
+    },
+    {
+      "key": "Osu3dV",
+      "name": "香奶儿",
+      "api": "https://www.gdlsp.com/api/xml.php",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "id": "105",
+      "playUrl": "",
+      "isActive": true
+    },
+    {
+      "name": "91麻豆",
+      "api": "https://91md.me/api.php/provide/vod/at/xml/",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "key": "07b96ce7-0791-5f19-9321-ba6085145eef",
+      "id": "106",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "name": "白嫖",
+      "api": "https://www.kxgav.com/api/xml.php",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "key": "4eef8bc4-71f8-54fa-bffd-d1d3d9e77dce",
+      "id": "107",
+      "playUrl": "",
+      "isActive": true,
+      "resource": 16460
+    },
+    {
+      "name": "爱播",
+      "api": "https://cj.apiabzy.com/api.php/provide/vod/at/xml/",
+      "group": "18+",
+      "status": false,
+      "type": 0,
+      "search": 2,
+      "key": "f881d19e-9433-56d4-9c06-4a842b280877",
+      "id": "108",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "name": "草莓",
+      "api": "https://caiji.caomeiapi.com/inc/api.php",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "key": "54658e47-58bb-5221-bec2-82b8a3be2ec4",
+      "id": "109",
+      "playUrl": "",
+      "isActive": false,
+      "resource": 16428
+    },
+    {
+      "name": "小湿妹",
+      "api": "https://www.afasu.com/api/xml.php",
+      "group": "18+",
+      "status": false,
+      "type": 0,
+      "search": 2,
+      "key": "b6b384a4-43d1-5937-babe-c7af2ea5e21b",
+      "id": "110",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "name": "久久",
+      "api": "http://99zy.pw/api.php/provide/vod/at/xml/",
+      "group": "18+",
+      "status": false,
+      "type": 0,
+      "search": 2,
+      "key": "20a58291-0246-5461-97b6-b080245200dd",
+      "id": "111",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "name": "秀色",
+      "api": "https://api.xiuseapi.com/api.php/provide/vod/at/xml",
+      "group": "18+",
+      "status": false,
+      "type": 0,
+      "search": 2,
+      "key": "34cd623c-0b62-5426-a653-9c1db4a850e8",
+      "id": "112",
+      "playUrl": "",
+      "isActive": false,
+      "resource": 16643
+    },
+    {
+      "name": "芒果",
+      "api": "https://www.mgav1.cc/api.php/provide/vod/at/xml/",
+      "group": "18+",
+      "status": false,
+      "type": 0,
+      "search": 2,
+      "key": "cee0fca9-1808-5017-9a69-0d9013f95b47",
+      "id": "113",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "name": "花椒",
+      "api": "https://cj.apihjzy.com/inc/api.php",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "key": "f951be46-17fa-5f4f-9f41-ff25d21e8d74",
+      "id": "114",
+      "playUrl": "",
+      "isActive": false,
+      "resource": 17664
+    },
+    {
+      "name": "辣椒2",
+      "api": "http://api.11bat.com/api.php/provide/vod/at/xml/",
+      "group": "18+",
+      "status": true,
+      "type": 0,
+      "search": 2,
+      "key": "2286c2fd-8e65-52d2-9a7a-f21ec0cae006",
+      "id": "115",
+      "playUrl": "",
+      "isActive": true
+    },
+    {
+      "name": "天堂",
+      "api": "http://bttcj.com/inc/sapi.php",
+      "group": "18+",
+      "status": false,
+      "type": 0,
+      "search": 2,
+      "key": "b0619031-953f-5e05-9d68-a621e8bc6514",
+      "id": "116",
+      "playUrl": "",
+      "isActive": false
+    },
+    {
+      "key": "cb658939-5abf-5d37-81d9-16633d80818e",
+      "name": "优质资源网",
+      "api": "https://api.1080zyku.com/inc/apijson.php",
+      "download": "",
+      "playUrl": "",
+      "group": "影视",
+      "search": 1,
+      "status": true,
+      "type": 1,
+      "id": "117",
+      "isActive": true,
+      "resource": 48916
+    }
+  ],
+  "tbl_iptv": [
+    {
+      "id": "1",
+      "name": "APTV",
+      "url": "https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u",
+      "type": "remote",
+      "isActive": true,
+      "epg": "https://epg.112114.xyz/"
+    },
+    {
+      "id": "2",
+      "name": "bestv",
+      "url": "https://telegram-feiyangdigital.v1.mk/bestv.m3u",
+      "isActive": true,
+      "type": "remote",
+      "epg": "https://epg.112114.xyz/"
+    },
+    {
+      "id": "3",
+      "name": "肥羊精选",
+      "url": "https://telegram-feiyangdigital.v1.mk",
+      "isActive": true,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "4",
+      "name": "B 站",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/bi.m3u",
+      "isActive": true,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "5",
+      "name": "茶客",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/vamoschuck/TV/main/M3U",
+      "isActive": true,
+      "type": "remote",
+      "epg": "https://epg.112114.eu.org/"
+    },
+    {
+      "id": "6",
+      "name": "CQYX",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/youshandefeiyang/IPTV/main/main/cqyx.m3u",
+      "isActive": false,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "7",
+      "name": "乌云",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/wuyun999/wuyun/main/zb/aptv.txt",
+      "isActive": true,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "8",
+      "name": "4k/8k",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/youshandefeiyang/IPTV/main/main/IPTV.m3u",
+      "isActive": true,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "9",
+      "name": "GHYX",
+      "url": "https://telegram-feiyangdigital.v1.mk/ghyx.m3u",
+      "isActive": false,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "10",
+      "name": "SXG-IPV6",
+      "url": "https://telegram-feiyangdigital.v1.mk/sxg.m3u",
+      "isActive": true,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "11",
+      "name": "爱尚",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/youshandefeiyang/IPTV/main/main/aishang.m3u",
+      "isActive": false,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "12",
+      "name": "虎牙直播",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/ya.m3u",
+      "isActive": true,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "13",
+      "name": "虎牙一起看",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/yqk.m3u",
+      "isActive": true,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "14",
+      "name": "斗鱼一起看",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/Ftindy/IPTV-URL/main/douyuyqk.m3u",
+      "isActive": true,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "15",
+      "name": "斗鱼直播",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/yu.m3u",
+      "isActive": true,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "16",
+      "name": "pastebin",
+      "url": "https://pastebin.com/raw/ZvKmAfRg",
+      "isActive": false,
+      "type": "remote",
+      "epg": ""
+    },
+    {
+      "id": "17",
+      "name": "Ray直播",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/dxawi/0/main/tvlive.txt",
+      "type": "remote",
+      "epg": "",
+      "isActive": true
+    },
+    {
+      "id": "19",
+      "name": "IPV6专用",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/YueChan/IPTV/main/IPTV.m3u",
+      "type": "remote",
+      "epg": "http://epg.112114.xyz",
+      "isActive": true
+    },
+    {
+      "id": "20",
+      "name": "电视伴音(广播)",
+      "url": "https://ghproxy.com/https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/radio.m3u",
+      "type": "remote",
+      "epg": "",
+      "isActive": true
+    },
+    {
+      "name": "YanG-1989",
+      "url": "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u ",
+      "epg": "",
+      "type": "remote",
+      "isActive": true,
+      "id": "21"
+    },
+    {
+      "name": "Adult IPTV",
+      "url": "http://adultiptv.net/chs.m3u",
+      "epg": "",
+      "type": "remote",
+      "isActive": true,
+      "id": "49"
+    },
+    {
+      "name": "github:iptv-org",
+      "url": "https://iptv-org.github.io/iptv/index.nsfw.m3u",
+      "epg": "",
+      "type": "remote",
+      "isActive": true,
+      "id": "50"
+    }
+  ],
+  "tbl_channel": [],
+  "tbl_analyze": [
+    {
+      "id": "1",
+      "name": "纯净",
+      "url": "https://im1907.top/?jx=",
+      "isActive": true
+    },
+    {
+      "id": "2",
+      "name": "听乐",
+      "url": "https://jx.dj6u.com/?url=",
+      "isActive": true
+    },
+    {
+      "id": "3",
+      "name": "YT",
+      "url": "https://jx.yangtu.top/?url=",
+      "isActive": true
+    },
+    {
+      "id": "4",
+      "name": "虾米",
+      "url": "https://jx.xmflv.com/?url=",
+      "isActive": true
+    },
+    {
+      "id": "5",
+      "name": "OK解析",
+      "url": "https://okjx.cc/?url=",
+      "isActive": false
+    },
+    {
+      "id": "6",
+      "name": "诺讯",
+      "url": "https://www.nxflv.com/?url=",
+      "isActive": false
+    },
+    {
+      "id": "7",
+      "name": "夜幕",
+      "url": "https://www.yemu.xyz/?url=",
+      "isActive": true
+    },
+    {
+      "id": "8",
+      "name": "M3U8.TV",
+      "url": "https://jx.m3u8.tv/jiexi/?url=",
+      "isActive": true
+    },
+    {
+      "id": "9",
+      "name": "人人迷",
+      "url": "https://jx.blbo.cc:4433/?url=",
+      "isActive": false
+    },
+    {
+      "id": "10",
+      "name": "全民",
+      "url": "https://jx.blbo.cc:4433/?url=",
+      "isActive": false
+    },
+    {
+      "id": "11",
+      "name": "七哥",
+      "url": "https://jx.nnxv.cn/tv.php?url=",
+      "isActive": true
+    },
+    {
+      "id": "12",
+      "name": "冰豆",
+      "url": "https://api.qianqi.net/vip/?url=",
+      "isActive": false
+    },
+    {
+      "id": "13",
+      "name": "迪奥",
+      "url": "https://123.1dior.cn/?url=",
+      "isActive": false
+    },
+    {
+      "id": "14",
+      "name": "CK",
+      "url": "https://www.ckplayer.vip/jiexi/?url=",
+      "isActive": true
+    },
+    {
+      "id": "15",
+      "name": "ckmov",
+      "url": "https://www.ckmov.vip/api.php?url=",
+      "isActive": false
+    },
+    {
+      "id": "16",
+      "name": "playerjy/B站",
+      "url": "https://jx.playerjy.com/?url=",
+      "isActive": true
+    },
+    {
+      "id": "17",
+      "name": "ccyjjd",
+      "url": "https://ckmov.ccyjjd.com/ckmov/?url=",
+      "isActive": false
+    },
+    {
+      "id": "18",
+      "name": "ckmov",
+      "url": "https://www.ckmov.com/?url=",
+      "isActive": false
+    },
+    {
+      "id": "19",
+      "name": "H8",
+      "url": "https://www.h8jx.com/jiexi.php?url=",
+      "isActive": false
+    },
+    {
+      "id": "20",
+      "name": "BL",
+      "url": "https://vip.bljiex.com/?v=",
+      "isActive": false
+    },
+    {
+      "id": "21",
+      "name": "解析la",
+      "url": "https://api.jiexi.la/?url=",
+      "isActive": false
+    },
+    {
+      "id": "22",
+      "name": "MUTV",
+      "url": "https://jiexi.janan.net/jiexi/?url=",
+      "isActive": true
+    },
+    {
+      "id": "23",
+      "name": "MAO",
+      "url": "https://www.mtosz.com/m3u8.php?url=",
+      "isActive": false
+    },
+    {
+      "id": "24",
+      "name": "盘古",
+      "url": "https://www.pangujiexi.cc/jiexi.php?url=",
+      "isActive": false
+    },
+    {
+      "id": "25",
+      "name": "0523",
+      "url": "https://go.yh0523.cn/y.cy?url=",
+      "isActive": false
+    },
+    {
+      "id": "26",
+      "name": "17云",
+      "url": "https://www.1717yun.com/jx/ty.php?url=",
+      "isActive": false
+    },
+    {
+      "id": "27",
+      "name": "4K",
+      "url": "https://jx.4kdv.com/?url=",
+      "isActive": false
+    },
+    {
+      "id": "28",
+      "name": "8090",
+      "url": "https://www.8090g.cn/?url=",
+      "isActive": false
+    },
+    {
+      "id": "29",
+      "name": "180",
+      "url": "https://jx.000180.top/jx/?url=",
+      "isActive": false
+    },
+    {
+      "id": "30",
+      "name": "无名",
+      "url": "https://www.administratorw.com/video.php?url=",
+      "isActive": false
+    },
+    {
+      "id": "31",
+      "name": "阳途",
+      "url": "https://jx.yangtu.top/?url=",
+      "isActive": true
+    },
+    {
+      "id": "32",
+      "name": "777Player",
+      "url": "https://jx.jsonplayer.com/player/?url=",
+      "isActive": false
+    },
+    {
+      "name": "JY",
+      "url": "https://jx.playerjy.com/?url=",
+      "isActive": true,
+      "id": "250"
+    }
+  ],
+  "tbl_drive": [
+    {
+      "name": "🙋丫仙女",
+      "server": "http://alist.xiaoya.pro/",
+      "startPage": "",
+      "search": false,
+      "headers": null,
+      "params": null,
+      "isActive": true,
+      "id": "28"
+    },
+    {
+      "name": "🤮布满灰尘",
+      "server": "https://pan.baiblog.ren/",
+      "startPage": "/🤮布满灰尘/V盘/",
+      "search": false,
+      "headers": null,
+      "params": null,
+      "isActive": true,
+      "id": "29"
+    },
+    {
+      "name": "🌊七米蓝",
+      "server": "https://al.chirmyram.com",
+      "startPage": "",
+      "search": false,
+      "headers": null,
+      "params": null,
+      "isActive": true,
+      "id": "30"
+    },
+    {
+      "name": "🌴非盘",
+      "server": "http://www.feifwp.top",
+      "startPage": "",
+      "search": false,
+      "headers": null,
+      "params": null,
+      "isActive": false,
+      "id": "31"
+    },
+    {
+      "name": "🥼帅盘",
+      "server": "https://hi.shuaipeng.wang",
+      "startPage": "",
+      "search": false,
+      "headers": null,
+      "params": null,
+      "isActive": false,
+      "id": "32"
+    },
+    {
+      "name": "🐉神族九帝",
+      "server": "https://alist.shenzjd.com",
+      "startPage": "",
+      "search": false,
+      "headers": null,
+      "params": null,
+      "isActive": true,
+      "id": "33"
+    },
+    {
+      "name": "☃姬路白雪",
+      "server": "https://pan.jlbx.xyz",
+      "startPage": "",
+      "search": false,
+      "headers": null,
+      "params": null,
+      "isActive": true,
+      "id": "34"
+    },
+    {
+      "name": "🎧听闻网盘",
+      "server": "https://wangpan.sangxuesheng.com",
+      "startPage": "",
+      "search": false,
+      "headers": null,
+      "params": null,
+      "isActive": false,
+      "id": "35"
+    },
+    {
+      "name": "✨星梦",
+      "server": "https://pan.bashroot.top",
+      "startPage": "",
+      "search": false,
+      "headers": null,
+      "params": null,
+      "isActive": true,
+      "id": "36"
+    }
+  ],
+  "tbl_history": [
+    {
+      "date": 1725963513,
+      "type": "film",
+      "relateId": "5",
+      "siteSource": "liangzi",
+      "playEnd": false,
+      "videoId": 92664,
+      "videoImage": "https://img.lzzyimg.com/upload/vod/20240815-1/326c8b8737d26ff36574beb6cab6fdd2.jpg",
+      "videoName": "星球大战：少年绝地历险记第二季",
+      "videoIndex": "第01集$https://v.cdnlz22.com/share/cbf22ab286e2ad4900bdf5d6a2e47009",
+      "watchTime": 74.624662,
+      "duration": 1459.8405109999972,
+      "skipTimeInStart": 30,
+      "skipTimeInEnd": 30,
+      "id": "c9293ade-549a-4fd8-b3ff-962a7adf6187"
+    },
+    {
+      "date": 1725976516,
+      "type": "film",
+      "relateId": "5",
+      "siteSource": "liangzi",
+      "playEnd": false,
+      "videoId": 93368,
+      "videoImage": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2910411311.jpg",
+      "videoName": "传说2024",
+      "videoIndex": "HD中字$https://v.cdnlz12.com/share/d0bfcb426cd8154f5350db5a73e29b4d",
+      "watchTime": 378.890702,
+      "duration": 7797.9916590000075,
+      "skipTimeInStart": 30,
+      "skipTimeInEnd": 30,
+      "id": "f0c51485-6cba-4b16-8b68-017347eadc65"
+    },
+    {
+      "date": 1725979883,
+      "type": "film",
+      "relateId": "5",
+      "siteSource": "liangzi",
+      "playEnd": true,
+      "videoId": 93208,
+      "videoImage": "https://img.lzzyimg.com/upload/vod/20240827-1/b95701bd4e80cc3e0c2f7ae5c26fd2fd.jpg",
+      "videoName": "逃脱2024",
+      "videoIndex": "HD中字$https://v.cdnlz12.com/share/c63858b17de9d0649b59be0c57201b9d",
+      "watchTime": 5715.284012,
+      "duration": 0,
+      "skipTimeInStart": 30,
+      "skipTimeInEnd": 30,
+      "id": "2bcab690-3db8-4176-b390-b47c8084a017"
+    },
+    {
+      "date": 1725980170,
+      "type": "film",
+      "relateId": "5",
+      "siteSource": "liangzi",
+      "playEnd": false,
+      "videoId": 91928,
+      "videoImage": "https://img.lzzyimg.com/upload/vod/20240729-1/bee412f937c8a3161346714f42185c32.jpg",
+      "videoName": "死侍与金刚狼",
+      "videoIndex": "TC中字$https://v.cdnlz21.com/share/018b59ce1fd616d874afad0f44ba338d",
+      "watchTime": 77.325522,
+      "duration": 7805.633194999924,
+      "skipTimeInStart": 30,
+      "skipTimeInEnd": 30,
+      "id": "0f2d0f0a-9545-4150-b935-78c2ddc60c93"
+    },
+    {
+      "date": 1725980220,
+      "type": "film",
+      "relateId": "5",
+      "siteSource": "liangzi",
+      "playEnd": false,
+      "videoId": 91982,
+      "videoImage": "https://img.lzzyimg.com/upload/vod/20240730-1/f64e7e6a89003a6a000248bccfa0ff0a.jpg",
+      "videoName": "哪吒·魔童归来",
+      "videoIndex": "HD中字$https://v.cdnlz21.com/share/d759175de8ea5b1d9a2660e45554894f",
+      "watchTime": 75.899956,
+      "duration": 4795.075130000028,
+      "skipTimeInStart": 30,
+      "skipTimeInEnd": 30,
+      "id": "ee834a67-48ce-4009-803a-8219c5a1bb9a"
+    },
+    {
+      "date": 1725980263,
+      "type": "film",
+      "relateId": "20",
+      "siteSource": "gsyun",
+      "playEnd": false,
+      "videoId": 100316,
+      "videoImage": "https://img.guangsuimage.com/cover/6ebaea9076291d5b4ce3bf24a1c59395.jpg",
+      "videoName": "别叫我赌神",
+      "videoIndex": "粤语版正片$https://v.gsuus.com/play/mbklA1Xd",
+      "watchTime": 45.848123,
+      "duration": 6876.208393000034,
+      "skipTimeInStart": 30,
+      "skipTimeInEnd": 30,
+      "id": "39504382-a234-4dab-89f1-0bb0e0d9feee"
+    },
+    {
+      "date": 1732090432,
+      "type": "film",
+      "relateId": "5",
+      "siteSource": "liangzi",
+      "playEnd": false,
+      "videoId": 97821,
+      "videoImage": "https://img.lzzyimg.com/upload/vod/20241120-1/71a42725122f9d5fef4229b8fa88caab.jpg",
+      "videoName": "出走的决心",
+      "videoIndex": "HD中字$https://v.cdnlz21.com/share/1843e35d41ccf6e63273495ba42df3c1",
+      "watchTime": 2824.213111,
+      "duration": 6390.879998000014,
+      "skipTimeInStart": 30,
+      "skipTimeInEnd": 30,
+      "id": "6b9c70df-c4f2-45f4-8ab9-5eab1431691e"
+    }
+  ],
+  "tbl_star": [],
+  "tbl_setting": [
+    {
+      "key": "version",
+      "value": "3.3.7",
+      "id": "db11f981-07a7-4471-8ef4-edd1b90a4ae8"
+    },
+    {
+      "key": "theme",
+      "value": "auto",
+      "id": "d7ad71a6-4674-4fd9-b863-34a59961c503"
+    },
+    {
+      "key": "lang",
+      "value": "zh_CN",
+      "id": "b776defd-425d-423d-b6c5-5aee5fd54fb7"
+    },
+    {
+      "key": "defaultHot",
+      "value": "kylive",
+      "id": "b4bbfa88-651a-4a29-b42e-61e03d991c3a"
+    },
+    {
+      "key": "defaultSearchRecommend",
+      "value": "site",
+      "id": "f7e7dab5-a5d1-4bb5-82a4-9353644d554d"
+    },
+    {
+      "key": "defaultSearchType",
+      "value": "site",
+      "id": "e765436f-4a18-415a-9486-fe0ce8ab57f8"
+    },
+    {
+      "key": "defaultViewCasual",
+      "value": "",
+      "id": "c7bcfec6-db2f-46fb-bab9-dce2f33b8fb9"
+    },
+    {
+      "key": "defaultDanMuKu",
+      "value": "",
+      "id": "40c80571-f676-435b-805e-8a033b4b65e6"
+    },
+    {
+      "key": "defaultIptvEpg",
+      "value": "http://diyp.112114.xyz/",
+      "id": "26d74c4a-20e8-441f-8c61-3e6c0d1634cd"
+    },
+    {
+      "key": "defaultIptvLogo",
+      "value": "https://epg.112114.eu.org/logo/",
+      "id": "c23a15c8-e6e9-4231-9d26-c33e6a082d3e"
+    },
+    {
+      "key": "iptvSkipIpv6",
+      "value": true,
+      "id": "333f0cec-8139-41d8-a1bb-97a8991bc07a"
+    },
+    {
+      "key": "iptvThumbnail",
+      "value": false,
+      "id": "f27ff25f-07bf-4060-b9a7-3303170c6556"
+    },
+    {
+      "key": "iptvStatus",
+      "value": false,
+      "id": "6d4587b1-09b9-4873-9149-8f785b76f2e0"
+    },
+    {
+      "key": "defaultSite",
+      "value": "5",
+      "id": "83ba8a2c-09d7-45fb-b386-0c7764638c2b"
+    },
+    {
+      "key": "defaultIptv",
+      "value": "17",
+      "id": "dd70a4c4-30a6-45b3-9da6-f68e09b90d10"
+    },
+    {
+      "key": "defaultAnalyze",
+      "value": "2",
+      "id": "f5aeeefd-f64c-42aa-b66d-a0a0d832856c"
+    },
+    {
+      "key": "analyzeFlag",
+      "value": [
+        "youku",
+        "qq",
+        "iqiyi",
+        "qiyi",
+        "letv",
+        "sohu",
+        "tudou",
+        "pptv",
+        "mgtv"
+      ],
+      "id": "f3dd8cce-80a1-4b17-8e4d-7953ae64e4cf"
+    },
+    {
+      "key": "defaultDrive",
+      "value": "33",
+      "id": "194575f4-2e03-4974-8fe1-dc8d56e9f12d"
+    },
+    {
+      "key": "softSolution",
+      "value": false,
+      "id": "18633348-b082-4a1a-81c4-5acf6dd8222b"
+    },
+    {
+      "key": "agreementMask",
+      "value": true,
+      "id": "5ddc91ec-3931-47d9-9d21-74a1abfdb5a5"
+    },
+    {
+      "key": "recordShortcut",
+      "value": "",
+      "id": "22ee11fd-d009-46ab-bc4f-dbf5d8b9d131"
+    },
+    {
+      "key": "selfBoot",
+      "value": false,
+      "id": "412d8c24-34df-48af-ad2d-94d32cebe213"
+    },
+    {
+      "key": "hardwareAcceleration",
+      "value": true,
+      "id": "7f4305e5-7a84-4069-9e91-6f2f17f89298"
+    },
+    {
+      "key": "ua",
+      "value": "Mozilla/5.0 (Linux; Android 11; M2007J3SC Build/RKQ1.200826.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045714 Mobile Safari/537.36",
+      "id": "59920f2e-e802-430f-9cf9-f5aebab24ddc"
+    },
+    {
+      "key": "dns",
+      "value": "",
+      "id": "60e050e8-f21d-43f7-851e-8344f16f5265"
+    },
+    {
+      "key": "playerMode",
+      "value": {
+        "type": "dplayer",
+        "external": ""
+      },
+      "id": "8750951b-7eba-48dd-a81a-5d09d60a3207"
+    },
+    {
+      "key": "snifferMode",
+      "value": {
+        "type": "pie",
+        "url": ""
+      },
+      "id": "17f201f3-0abe-4d39-9444-28c47f37bb37"
+    },
+    {
+      "key": "timeout",
+      "value": 5000,
+      "id": "1690eaa3-9e8e-4879-af49-a23c91b0b1b1"
+    },
+    {
+      "key": "webdev",
+      "value": {
+        "sync": false,
+        "data": {
+          "url": "https://dav.jianguoyun.com/dav/",
+          "username": "",
+          "password": ""
+        }
+      },
+      "id": "3b2f8f24-9aa3-4164-a3d1-5176c66b3fc0"
+    },
+    {
+      "key": "barrage",
+      "value": {
+        "url": "",
+        "key": "",
+        "support": "",
+        "start": "",
+        "mode": "",
+        "color": "",
+        "content": ""
+      },
+      "id": "2c72b410-604e-42b9-b104-7a304930f8e7"
+    },
+    {
+      "key": "windowPosition",
+      "value": {
+        "status": false,
+        "position_main": {
+          "x": 268,
+          "y": 85,
+          "width": 1001,
+          "height": 640
+        },
+        "position_play": {
+          "x": 362,
+          "y": 155,
+          "width": 876,
+          "height": 550
+        }
+      },
+      "id": "5fd69b6c-46c6-4cf5-b986-a4cc7de7612c"
+    },
+    {
+      "key": "ai",
+      "value": {
+        "server": "",
+        "key": "",
+        "model": ""
+      },
+      "id": "06c95000-2b5d-47d8-98a9-e8446dcae0e2"
+    },
+    {
+      "key": "defaultFilterType",
+      "value": "off",
+      "id": "05b56a4d-b5e4-4fb0-8bbb-c53bc221bfea"
+    },
+    {
+      "key": "debug",
+      "value": false,
+      "id": "e9019618-3330-493d-b225-592f43a41644"
+    }
+  ]
+}
