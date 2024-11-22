@@ -87,6 +87,7 @@
         "cookie": ""
       }
     },
+{ "key": "drpy_xbpq_毒舌影视", "name": "┃☛毒舌影视☚┃","type": 3,"changeable": 1, "searchable": 1,"quickSearch": 1,"filterable": 1, "api": "csp_XBPQ","ext": { "数组": "module-item&&/span>","副标题": "<span>&&<","图片": "https+://vres.jxlfl.cn/vod1/+data-original=\"/vod1/&&\"","简介": "detail-desc\">&&</p>","线路数组": "class=\"swiper-slide source-swiper-slide&&</div>","线路标题": ">&&</span>","搜索二次截取": "<div class=\"search-result-list&&pagenation-box fs-margin-section","搜索数组": "<a&&</a>","搜索图片": "https+://vres.jxlfl.cn/vod1/+data-original=\"/vod1/&&\"","搜索标题": "title=\"&&\"","搜索链接": "href=\"&&\"","搜索url": "https://www.dushe1.app/search?k={wd}&page={pg}","分类url": "https://www.dushe1.app/show/{cateId}-{class}-{area}-{lang}-{year}-{by}-{catePg}.html[https://www.dushe1.app/channel/{cateId}.html]","分类": "电影$1#电视剧$2#综艺$4#动漫$3#短剧$6"}},
 {"key":"csp_瓜子","name":"💻瓜子秒播","api":"csp_Gz360","jar":"https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/gz.jar","type": 3,"searchable": 1,"playerType": 2,"timeout": 30,"changeable": 0},
 {
             "key": "NoSearch_csp_BBB",
@@ -278,23 +279,7 @@
             "order_num": 142,
             "ext": "https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/hipy-server/master/app/t4/files/drpy_js/采集之王[合].js?type=url&params=https://ghproxy.net/https://raw.githubusercontent.com/wokaotianshi123/hipy-server/master/app/t4/files/json/采集[密]静态.json"
         },
-             {"key": "追剧影视",
-      "name": "🌾追剧影视",
-      "type": 3,
-      "api": "csp_XBPQ",
-      "ext": {
-"分类url":"https://www.8q8k.com/vodshow/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html",        "分类": "电影&剧集&综艺&动漫&短剧&纪录片",
-        "分类值": "dy&dsj&zy&dm&duanju&jilupian",
-        "链接":"https://www.8q8k.com/play/+/x/&&.html+-1-1.html",
-         "搜索url": "https://www.8q8k.com/vodsearch/{wd}-------------.html",
-    "线路二次截取":"class=\"shoutu-playlist&&</ul",
-"线路数组":"<li&&</li>",
-"线路标题":">&&</a",
-"播放数组":"class=\"swiper-wrapper shoutu-playlist&&</ul",
-"播放列表":"<li&&</li",
-"播放标题":">&&</a",
-"播放链接":"href=\"&&\"" 
-} },  
+  
 {
             "key": "GimyTV",
             "name": "💕GimyTV",
