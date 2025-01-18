@@ -6,13 +6,13 @@ https://wokaotianshi123.github.io/?url=
 
 zy移动版
 ```
- https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/zyplayer/zy%E7%A7%BB%E5%8A%A8%E7%89%88/V%E5%BD%B1.apk
+ https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/zyplayer/zy%E7%A7%BB%E5%8A%A8%E7%89%88/V%E5%BD%B1.apk
 ```
 ```
-https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/zyplayer/zy%E7%A7%BB%E5%8A%A8%E7%89%88/zyjiexi.json
+https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/zyplayer/zy%E7%A7%BB%E5%8A%A8%E7%89%88/zyjiexi.json
 ```
 ```
-https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/zyplayer/zy%E7%A7%BB%E5%8A%A8%E7%89%88/zynew.json
+https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/zyplayer/zy%E7%A7%BB%E5%8A%A8%E7%89%88/zynew.json
 ```
 
 zyplayer一键导入接口
@@ -34,7 +34,7 @@ tvbox接口
          
 3
 
-         https://gitjs.wokaotianshi123.cloudns.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/0618.txt
+         https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/0618.txt
 
 4
 EasyBox下载地址：https://pan.quark.cn/s/eff053969f0b
