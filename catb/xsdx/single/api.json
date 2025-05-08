@@ -3,7 +3,15 @@
     "wallpaper": "http://bobohome.ignorelist.com:20247/bing",
     "logo": "http://127.0.0.1:9978/file/TVBox/logo.png",
     "sites": [
-	        {
+
+        {
+            "key": "豆瓣",
+            "name": "豆瓣｜首页",
+            "type": 3,
+            "api": "csp_Douban",
+            "searchable": 0
+        },
+	    	        {
             "key": "版本信息",
             "name": "版本｜信息",
             "type": 3,
@@ -12,13 +20,6 @@
             "changeable": 0,
             "indexs": 0,
             "ext": "https://a.wofuck.dpdns.org/catb/xsdx/single/single.json"
-        },
-        {
-            "key": "豆瓣",
-            "name": "豆瓣｜首页",
-            "type": 3,
-            "api": "csp_Douban",
-            "searchable": 0
         },
         {
             "key": "预告",
