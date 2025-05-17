@@ -19,5 +19,16 @@
                 "icon": "http://bd.qiqiv.cn/说明.jpg"
             }
         ]
+    },
+        {
+        "name": "每月2号，16号更新",
+        "list": [
+            {
+                "name": "每月2号，16号更新",
+                "url": "http://bd.qiqiv.cn/测试包.zip",
+                "icon": "http://bd.qiqiv.cn/更新.jpg",
+                "version": "05.02"
+            }
+        ]
     }
 ]
