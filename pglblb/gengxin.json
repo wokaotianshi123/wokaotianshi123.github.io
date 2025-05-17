@@ -1,0 +1,33 @@
+[
+    {
+        "name": "推荐",
+        "list": [
+            {
+                "name": "公众号：奇奇乐分享",
+                "url": "",
+                "icon": "http://bd.qiqiv.cn/公众号.jpg"
+            }
+        ]
+    },
+    {
+        "name": "每月2号，16号更新",
+        "list": [
+            {
+                "name": "每月2号，16号更新",
+                "url": "http://bd.qiqiv.cn/测试包.zip",
+                "icon": "http://bd.qiqiv.cn/更新.jpg",
+                "version": "05.02"
+            }
+        ]
+    },
+    {
+        "name": "纯采集",
+        "list": [
+            {
+                "name": "纯采集",
+                "url": "https://whm.cfwofuck.dpdns.org/fabu/chuncaiji.zip",
+                "icon": "http://bd.qiqiv.cn/说明.jpg"
+            }
+        ]
+    }
+]
