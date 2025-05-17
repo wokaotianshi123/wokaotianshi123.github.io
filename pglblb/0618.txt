@@ -48,6 +48,17 @@
       "quickSearch": 0,
       "filterable": 0,"jar":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/fanxin.jar;md5;D41D8CD98F00B204E9800998ECF8427E"
     },
+        {
+            "key": "本地采集包更新",
+            "name": "💞本地包｜更新",
+            "type": 3,
+            "api": "csp_Market",
+            "jar": "https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/refs/heads/main/pglblb/gx.jar",
+            "searchable": 0,
+            "changeable": 0,
+            "indexs": 0,
+            "ext": "https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/refs/heads/main/pglblb/gengxin.json"
+        },
 {"key":"教育","name":"🍃 | 教  育 | 💠","type":4,"api":"http://120.53.102.254/dsp16","searchable":1,"changeable":1},
 {
             "key": "直播转点播",
