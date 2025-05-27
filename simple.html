@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯前端简谱钢琴演奏器</title>
+    <script src='https://unpkg.com/tesseract.js@v2.1.1/dist/tesseract.min.js'></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+        #imagePreview {
+            max-width: 100%;
+            max-height: 300px;
+            margin: 20px 0;
+            display: none;
+        }
+        #musicInput {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        .control-group {
+            margin: 10px 0;
+        }
+        label {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #playButton {
+            background-color: #2196F3;
+        }
+        #stopButton {
+            background-color: #f44336;
+        }
+        #exportMidiButton {
+            background-color: #9C27B0;
+        }
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .progress {
+            height: 20px;
+            background-color: #4CAF50;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .chord-display {
+            font-size: 24px;
+            margin: 10px 0;
+            min-height: 30px;
+        }
+        .settings {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .note-display {
+            font-family: monospace;
+            font-size: 18px;
+            margin: 10px 0;
+            min-height: 20px;
+        }
+        #midiOutput {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            word-break: break-all;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>纯前端简谱钢琴演奏器</h1>
+        <p>上传简谱图片或输入简谱，支持节奏、八度、和弦识别和播放</p>
+        <div class="section">
+            <h2>简谱输入</h2>
+            <input type="file" id="imageUpload" accept="image/*">
+            <br>
+            <img id="imagePreview" alt="预览图片">
+            <h3>或直接输入简谱</h3>
+            <textarea id="musicInput" placeholder="输入简谱，例如：1 2 3 4 51. 2. 3. 4. 5. (带附点)1- 2- 3- 4- 5- (带减时线)1 2 3 4 5 6 7 (音符)1, 3, 5 (和弦)O=4 (设置八度为4)R=4/4 (设置节奏为4/4)"></textarea>
+            <button id="parseButton">解析并播放</button>
+        </div>
+        <div class="section">
+            <h2>设置</h2>
+            <div class="settings">
+                <div class="control-group">
+                    <label for="octaveControl">当前八度:</label>
+                    <input type="number" id="octaveControl" min="1" max="8" value="4">
+                </div>
+                <div class="control-group">
+                    <label for="tempoControl">速度 (BPM):</label>
+                    <input type="number" id="tempoControl" min="40" max="240" value="120">
+                </div>
+                <div class="control-group">
+                    <label for="rhythmControl">节奏:</label>
+                    <select id="rhythmControl">
+                        <option value="4/4">4/4</option>
+                        <option value="3/4">3/4</option>
+                        <option value="2/4">2/4</option>
+                        <option value="6/8">6/8</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>识别结果</h2>
+            <div id="result">
+                <p>识别结果将显示在这里</p>
+                <div class="note-display" id="noteDisplay"></div>
+                <div class="chord-display" id="chordDisplay"></div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>播放控制</h2>
+            <div class="loading" id="loading">
+                <h3>正在识别简谱...</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+            </div>
+            <button id="playButton" disabled>播放</button>
+            <button id="stopButton" disabled>停止</button>
+            <button id="exportMidiButton" disabled>导出MIDI</button>
+        </div>
+        <div class="section">
+            <h2>MIDI数据</h2>
+            <div id="midiOutput">MIDI数据将在这里显示</div>
+        </div>
+    </div>
+    <script>
+        // 全局变量
+        let audioContext;
+        let isPlaying = false;
+        let currentNoteIndex = 0;
+        let notes = [];
+        let timeouts = [];
+        let chords = [];
+        let currentOctave = 4;
+        let tempo = 120;
+        let rhythm = "4/4";
+        let midiData = null;
+
+        // DOM元素
+        const imageUpload = document.getElementById('imageUpload');
+        const imagePreview = document.getElementById('imagePreview');
+        const musicInput = document.getElementById('musicInput');
+        const resultDiv = document.getElementById('result');
+        const noteDisplay = document.getElementById('noteDisplay');
+        const chordDisplay = document.getElementById('chordDisplay');
+        const playButton = document.getElementById('playButton');
+        const stopButton = document.getElementById('stopButton');
+        const exportMidiButton = document.getElementById('exportMidiButton');
+        const loadingDiv = document.getElementById('loading');
+        const progressBar = document.getElementById('progressBar');
+        const octaveControl = document.getElementById('octaveControl');
+        const tempoControl = document.getElementById('tempoControl');
+        const rhythmControl = document.getElementById('rhythmControl');
+        const midiOutput = document.getElementById('midiOutput');
+
+        // 初始化音频上下文
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        // 播放音符
+        function playNote(frequency, duration) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.type = 'sine';
+            oscillator.frequency.value = frequency;
+
+            gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.start();
+            return {
+                stop: () => {
+                    oscillator.stop();
+                }
+            };
+        }
+
+        // 停止所有声音
+        function stopAllSounds() {
+            timeouts.forEach(timeout => clearTimeout(timeout));
+            timeouts = [];
+            isPlaying = false;
+            currentNoteIndex = 0;
+        }
+
+        // 播放音乐
+        async function playMusic() {
+            if (isPlaying) return;
+
+            initAudio();
+            isPlaying = true;
+            playButton.disabled = true;
+            stopButton.disabled = false;
+
+            try {
+                for (let i = 0; i < notes.length; i++) {
+                    const note = notes[i];
+                    const chordNotes = chords.filter(c => c.startTime === note.startTime);
+
+                    const chordOscillators = [];
+                    chordNotes.forEach(chordNote => {
+                        const osc = playNote(chordNote.frequency, note.duration);
+                        chordOscillators.push(osc);
+                    });
+
+                    if (chordNotes.length === 0) {
+                        const osc = playNote(note.frequency, note.duration);
+                        chordOscillators.push(osc);
+                    }
+
+                    const nextNoteDelay = (i < notes.length - 1) ? notes[i + 1].startTime - note.startTime : 0;
+
+                    const timeoutId = setTimeout(() => {
+                        chordOscillators.forEach(osc => osc.stop());
+                    }, note.duration * 1000);
+
+                    timeouts.push(timeoutId);
+
+                    if (i < notes.length - 1) {
+                        await new Promise(resolve => setTimeout(resolve, nextNoteDelay * 1000));
+                    }
+                }
+            } finally {
+                isPlaying = false;
+                playButton.disabled = false;
+                stopButton.disabled = true;
+            }
+        }
+
+        // 解析简谱
+        function parseSimpleMusic(input) {
+            const lines = input.split('
+');
+            const parsedNotes = [];
+            const parsedChords = [];
+            let currentTime = 0;
+            let currentChordNotes = [];
+
+            const settings = { octave: currentOctave, tempo: tempo, rhythm: rhythm };
+
+            for (const line of lines) {
+                const trimmedLine = line.trim();
+                if (!trimmedLine) continue;
+
+                if (trimmedLine.startsWith('O=')) {
+                    settings.octave = parseInt(trimmedLine.substring(2));
+                    continue;
+                }
+                if (trimmedLine.startsWith('R=')) {
+                    settings.rhythm = trimmedLine.substring(2);
+                    continue;
+                }
+
+                const tokens = trimmedLine.split(/\s+/);
+
+                for (const token of tokens) {
+                    if (token.includes(',')) {
+                        const chordNotes = token.split(',').map(note => note.trim());
+                        const chordFrequencies = [];
+                        for (const chordNote of chordNotes) {
+                            const noteInfo = parseNote(chordNote, settings.octave);
+                            if (noteInfo) {
+                                chordFrequencies.push(noteInfo.frequency);
+                            }
+                        }
+                        if (chordFrequencies.length > 0) {
+                            parsedChords.push({ frequencies: chordFrequencies, startTime: currentTime, duration: 0.5 });
+                        }
+                    } else {
+                        const noteInfo = parseNote(token, settings.octave);
+                        if (noteInfo) {
+                            parsedNotes.push({ frequency: noteInfo.frequency, startTime: currentTime, duration: 0.5 });
+                            currentTime += 0.5;
+                        }
+                    }
+                }
+            }
+
+            return { notes: parsedNotes, chords: parsedChords, settings: settings };
+        }
+
+        // 解析单个音符
+        function parseNote(noteSymbol, octave) {
+            const noteMap = {
+                '1': { name: 'C', offset: 0 },
+                '2': { name: 'D', offset: 2 },
+                '3': { name: 'E', offset: 4 },
+                '4': { name: 'F', offset: 5 },
+                '5': { name: 'G', offset: 7 },
+                '6': { name: 'A', offset: 9 },
+                '7': { name: 'B', offset: 11 }
+            };
+
+            let isDotted = false;
+            if (noteSymbol.endsWith('.')) {
+                isDotted = true;
+                noteSymbol = noteSymbol.substring(0, noteSymbol.length - 1);
+            }
+
+            let durationMultiplier = 1;
+            if (noteSymbol.endsWith('-')) {
+                const dashes = (noteSymbol.match(/-/g) || []).length;
+                durationMultiplier = Math.pow(0.5, dashes);
+                noteSymbol = noteSymbol.substring(0, noteSymbol.length - dashes);
+            }
+
+            const noteInfo = noteMap[noteSymbol];
+            if (!noteInfo) return null;
+
+            const noteNumber = 12 * (octave - 1) + noteInfo.offset;
+            const frequency = 440 * Math.pow(2, (noteNumber - 69) / 12);
+
+            const baseDuration = 0.5;
+            const duration = baseDuration * durationMultiplier;
+
+            return { frequency, duration };
+        }
+
+        // 解析简谱输入框
+        function parseMusicInput() {
+            const input = musicInput.value;
+            const result = parseSimpleMusic(input);
+
+            resultDiv.innerHTML = `
+                <h3>解析设置：</h3>
+                <p>八度: ${result.settings.octave}</p>
+                <p>节奏: ${result.settings.rhythm}</p>
+                <p>速度: ${result.settings.tempo} BPM</p>
+                <h3>解析的音符：</h3>
+                <ul>${result.notes.map((note, index) => `<li>${index + 1}. ${note.frequency.toFixed(2)}Hz (${(note.duration * 1000).toFixed(0)}ms)</li>`).join('')}</ul>
+                <h3>解析的和弦：</h3>
+                <ul>${result.chords.map((chord, index) => `<li>${index + 1}. 和弦 (${(chord.duration * 1000).toFixed(0)}ms)</li>`).join('')}</ul>
+            `;
+
+            notes = result.notes;
+            chords = result.chords;
+
+            playButton.disabled = false;
+            exportMidiButton.disabled = false;
+
+            updateNoteAndChordDisplay();
+        }
+
+        // 更新音符和和弦显示
+        function updateNoteAndChordDisplay() {
+            let noteText = "";
+            notes.forEach((note, index) => {
+                noteText += `音符 ${index + 1}: ${note.frequency.toFixed(2)}Hz (${(note.duration * 1000).toFixed(0)}ms)
+`;
+            });
+            noteDisplay.textContent = noteText || "无音符";
+
+            let chordText = "";
+            chords.forEach((chord, index) => {
+                chordText += `和弦 ${index + 1}: ${chord.frequencies.join(', ')} (${(chord.duration * 1000).toFixed(0)}ms)
+`;
+            });
+            chordDisplay.textContent = chordText || "无和弦";
+        }
+
+        // 生成MIDI数据（纯前端模拟）
+        function generateMidiData() {
+            const midiData = {
+                header: { format: 1, numTracks: 1, ticksPerBeat: 480 },
+                tracks: [{ events: [] }]
+            };
+
+            midiData.tracks[0].events.push({ deltaTime: 0, type: 'trackName', text: '简谱演奏' });
+
+            let currentTime = 0;
+            notes.forEach(note => {
+                midiData.tracks[0].events.push({ deltaTime: Math.round(currentTime * 480 / (60 / tempo)), type: 'noteOn', channel: 0, note: getMidiNoteNumber(note.frequency), velocity: 64 });
+                midiData.tracks[0].events.push({ deltaTime: Math.round(note.duration * 480 / (60 / tempo)), type: 'noteOff', channel: 0, note: getMidiNoteNumber(note.frequency), velocity: 64 });
+                currentTime += note.duration;
+            });
+
+            const midiBinary = encodeMidiToBinary(midiData);
+            const midiBase64 = btoa(String.fromCharCode.apply(null, midiBinary));
+
+            midiOutput.innerHTML = `
+                <p>MIDI数据已生成（Base64编码）：</p>
+                <textarea id="midiTextarea" rows="10" cols="80" readonly>${midiBase64}</textarea>
+                <button id="copyMidiButton">复制MIDI数据</button>
+                <p>注意：由于浏览器安全限制，纯前端无法直接生成可下载的MIDI文件。你需要：</p>
+                <ol>
+                    <li>将上面的Base64编码复制到文本编辑器中</li>
+                    <li>保存为.txt文件</li>
+                    <li>使用在线MIDI转换工具将其转换为MIDI文件</li>
+                    <li>或者使用支持MIDI的音频软件打开</li>
+                </ol>
+            `;
+            document.getElementById('copyMidiButton').addEventListener('click', () => {
+                const textarea = document.getElementById('midiTextarea');
+                textarea.select();
+                document.execCommand('copy');
+                alert('MIDI数据已复制到剪贴板！');
+            });
+        }
+
+        // 将频率转换为MIDI音符编号
+        function getMidiNoteNumber(frequency) {
+            return Math.round(69 + 12 * Math.log2(frequency / 440));
+        }
+
+        // 将MIDI数据结构转换为二进制
+        function encodeMidiToBinary(midiData) {
+            const headerChunk = createHeaderChunk(midiData.header);
+            const trackChunk = createTrackChunk(midiData.tracks[0](@ref);
+            const midiBinary = new Uint8Array(headerChunk.length + trackChunk.length);
+            midiBinary.set(headerChunk, 0);
+            midiBinary.set(trackChunk, headerChunk.length);
+            return midiBinary;
+        }
+
+        // 事件监听器
+        imageUpload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+                recognizeImage(file);
+            };
+            reader.readAsDataURL(file);
+        });
+
+        musicInput.addEventListener('input', parseMusicInput);
+        playButton.addEventListener('click', playMusic);
+        stopButton.addEventListener('click', stopAllSounds);
+        exportMidiButton.addEventListener('click', generateMidiData);
+        octaveControl.addEventListener('change', () => {
+            currentOctave = parseInt(octaveControl.value);
+        });
+        tempoControl.addEventListener('change', () => {
+            tempo = parseInt(tempoControl.value);
+        });
+        rhythmControl.addEventListener('change', () => {
+            rhythm = rhythmControl.value;
+        });
+
+        // 初始解析示例简谱
+        window.addEventListener('load', () => {
+            musicInput.value = `1 2 3 4 5
+1, 3, 5
+O=4
+R=4/4`;
+            parseMusicInput();
+        });
+
+        // OCR识别图片中的简谱
+        async function recognizeImage(file) {
+            loadingDiv.style.display = 'block';
+            progressBar.style.width = '0%';
+
+            const { createWorker } = Tesseract;
+            const worker = createWorker();
+            await worker.load();
+            await worker.loadLanguage('chi_sim');
+            await worker.initialize('chi_sim');
+
+            const { data: { text } } = await worker.recognize(URL.createObjectURL(file));
+            await worker.terminate();
+
+            musicInput.value = text;
+            parseMusicInput();
+
+            loadingDiv.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
