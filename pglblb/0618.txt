@@ -7,34 +7,11 @@
 
 "lives":[
 {"name":"四川电信组播","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/IPTVccsh/refs/heads/main/live.txt"},
-{"name":"多省组播","type":0,"url":"https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/udpxy/全国.txt"},
+{"name":"多省组播","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/udpxy/全国.txt"},
 {"name":"酒店源","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/hotel/%E5%85%A8%E5%9B%BD.txt"},
 {"name":"ctt","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/collect-tv-txt/main/merged_output.txt"},
-
-{
-                "name": "电视",
-                "type": 0,
-                "url": "https://lengniuge.cf/live/live.txt",
-                "playerType": 1,
-                "epg": "http://epg.112114.xyz/?ch={name}&date={date}",
-                "logo": "",
-                "timeout": 40,
-                "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0"
-        },
 {"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=aHR0cHM6Ly9hZ2l0LmFpL1lvdXJzbWlsZTcvVFZCb3gvcmF3L2JyYW5jaC9tYXN0ZXIvbGl2ZS50eHQ="]}]},
-{
-      "name": "小三Live",
-      "type": 0,
-      "boot": true,
-      "playerType": 1,
-      "url": "https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/mengzehe/m3u/main/live.txt",
-      "ua": "okhttp/3.12.13",
-      "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
-      "logo": "https://epg.112114.xyz/logo/{name}.png"
-    },
-
-{"name":"fan","type":0,"url":"https://fanty.run.goorm.site/live.txt"},
-{"name":"Guovin","type":0,"url":"https://gitjs.tianshideyou.eu.org/raw.githubusercontent.com/Guovin/TV/gd/result.txt"},
+{"name":"PizazzGY","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/PizazzGY/TV/refs/heads/master/output/user_result.m3u"},
 {"name":"adu","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/tv/Adu.txt"}
 ],
 
