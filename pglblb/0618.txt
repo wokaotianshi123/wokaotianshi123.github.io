@@ -10,7 +10,6 @@
 {"name":"多省组播","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/udpxy/全国.txt"},
 {"name":"酒店源","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/hotel/%E5%85%A8%E5%9B%BD.txt"},
 {"name":"ctt","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/collect-tv-txt/main/merged_output.txt"},
-{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=aHR0cHM6Ly9hZ2l0LmFpL1lvdXJzbWlsZTcvVFZCb3gvcmF3L2JyYW5jaC9tYXN0ZXIvbGl2ZS50eHQ="]}]},
 {"name":"PizazzGY","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/PizazzGY/TV/refs/heads/master/output/user_result.m3u"},
 {"name":"adu","type":0,"url":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/tv/Adu.txt"}
 ],
