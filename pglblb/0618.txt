@@ -580,75 +580,291 @@
 {"key":"Bt_PH","name": "🅱️BT天堂(PQ)","type": 3,"api":"csp_XBPQ","searchable":1,"filterable":1,"quickSearch":0,"playerType":1, "ext":{ "数组": "class=\"col-md-6\">&&</li>", "副标题": "span>更新时间：&&<a", "简介": "<p>◎简*介&&<p>◎影片截图</p>", "起始页": 0, "线路标题": "磁力", "搜索请求头参数": "User-Agent$PC_UA", "搜索url": "https://www.bttt11.com/e/search/;post", "POST请求数据": "show=title,newstext&keyboard={wd}&searchtype=影视搜索", "分类url":"https://www.bttt11.com/html/page-{cateId}-{catePg}.html", "分类": "大陆电影&港台电影&欧美电影&欧美剧&日韩剧&日韩电影&动漫&亚太剧&畅太电影&综艺&畅影纪录片", "分类值": "4&3&1&6&7&2&11&10&5&12&13" } },
 	   
 //{"key":"cjy1","name":"光速资源","type":1,"api":"https://api.guangsuapi.com/api.php/provide/vod/","searchable":1,"recordable":0},
-{"key":"cjy2","name":"量子资源(切)","type":1,"api":"http://cj.lziapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy3","name":"自建高速CDN线路-1","type":1,"api":"https://api.wujinapi.me/api.php/provide/vod/from/wjm3u8/","searchable":1,"recordable":0},{"key":"cjy4","name":"自建CDN高速线路-2","type":1,"api":"https://www.hongniuzy2.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy5","name":"自建高速CDN线路-3","type":1,"api":"http://cj.ffzyapi.com/api.php/seacms/vod/","searchable":1,"recordable":0},{"key":"cjy6","name":"自建线路-16","type":1,"api":"https://ikunzyapi.com/api.php/seaxml/vod/","searchable":1,"recordable":0},{"key":"cjy7","name":"自建线路-17","type":0,"api":"https://api.1080zyku.com/inc/ldg_api_all.php","searchable":1,"recordable":0},{"key":"cjy8","name":"6U资源","type":0,"api":"http://www.6uzy.cc/inc/apijson_vod.php","searchable":1,"recordable":0},{"key":"cjy9","name":"花旗资源","type":0,"api":"https://seacms.huaqi.live/zyapi.php","searchable":1,"recordable":0},{"key":"cjy10","name":"一点官采","type":1,"api":"https://collect.movurl.xyz/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy11","name":"至圣云","type":1,"api":"http://82.156.40.118:1234/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy12","name":"阿里影视","type":1,"api":"http://aliys.cn:90/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy13","name":"小胡4K","type":1,"api":"http://c.xn--yetu07f.icu/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy14","name":"则奇","type":1,"api":"https://api.zeqaht.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy15","name":"种子短剧","type":1,"api":"https://zzdj.cc/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy16","name":"U酷资源","type":1,"api":"https://api.ukuapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy17","name":"一点切片","type":1,"api":"https://m3u8.movurl.xyz/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy18","name":"1080P资源","type":1,"api":"https://1080api.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy19","name":"淘片资源","type":1,"api":"https://taopianapi.com/cjapi/mc10/vod/json.html","searchable":1,"recordable":0},{"key":"cjy20","name":"海外看资源(VPN)","type":1,"api":"https://haiwaikan.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy21","name":"乐视资源","type":1,"api":"https://leshizyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy22","name":"49资源","type":1,"api":"https://49zyw.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy23","name":"68资源","type":1,"api":"https://68zy88.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy24","name":"极光资源","type":1,"api":"https://jiguang.la/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy25","name":"华为吧","type":1,"api":"https://hw8.live/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy26","name":"熊掌资源","type":1,"api":"https://xzcjz.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy27","name":"索尼资源","type":1,"api":"https://suoniapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy28","name":"豪华资源","type":1,"api":"https://hhzyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy29","name":"可可资源","type":1,"api":"https://caiji.kekezyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy30","name":"速博资源","type":1,"api":"https://subocaiji.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy31","name":"虎牙资源","type":1,"api":"https://www.huyaapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy32","name":"夸克资源","type":1,"api":"http://kuakezy1.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy33","name":"奇虎资源","type":1,"api":"https://caiji.qhzyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy34","name":"魔都资源","type":1,"api":"https://www.moduzy.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy35","name":"享看资源","type":1,"api":"https://xkanzy10.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy36","name":"秒看资源","type":1,"api":"https://mkzy.vip/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy37","name":"看看资源","type":1,"api":"https://zy.hikan.xyz/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy38","name":"最大资源","type":1,"api":"https://api.zuidapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy39","name":"大漠资源","type":1,"api":"http://142.4.103.17/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy40","name":"暴风资源","type":1,"api":"https://bfzyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy41","name":"快看资源","type":1,"api":"https://kuaikan-api.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy42","name":"快云资源","type":1,"api":"https://www.kuaiyunzy.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy43","name":"CK资源","type":1,"api":"https://ckzy.me/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy44","name":"CK资源","type":1,"api":"http://www.feifei67.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy45","name":"极速资源","type":1,"api":"https://jszyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy46","name":"火狐资源","type":1,"api":"https://hhzyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy47","name":"速看资源","type":1,"api":"https://ziyuan.skm3u8.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy48","name":"步步高资源","type":0,"api":"https://api.yparse.com/api/json","searchable":1,"recordable":0},{"key":"cjy49","name":"金鹰资源","type":1,"api":"https://jyzyapi.com/provide/vod/","searchable":1,"recordable":0},{"key":"cjy50","name":"爱坤资源","type":1,"api":"https://ikunzyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy51","name":"42资源","type":1,"api":"https://www.42.la/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy52","name":"非凡资源","type":1,"api":"http://cj.ffzyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy53","name":"1080资源库","type":0,"api":"https://api.1080zyku.com/inc/api_mac10.php","searchable":1,"recordable":0},{"key":"cjy54","name":"TOM资源","type":1,"api":"https://api.tomcaiji.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy55","name":"快车资源","type":1,"api":"https://caiji.kczyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy56","name":"量子资源","type":1,"api":"http://cj.lziapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy57","name":"卧龙资源","type":1,"api":"https://collect.wolongzyw.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy58","name":"红牛资源","type":1,"api":"https://www.hongniuzy2.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy59","name":"樱花资源","type":1,"api":"https://m3u8.apiyhzy.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy60","name":"易看资源","type":1,"api":"https://api.yikanapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy61","name":"闪电资源","type":1,"api":"http://sdzyapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy62","name":"飞速资源","type":1,"api":"https://www.feisuzy.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy63","name":"光速资源","type":1,"api":"https://api.guangsuapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy64","name":"新浪资源","type":1,"api":"http://api.xinlangapi.com/xinlangapi.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy65","name":"韩剧资源","type":0,"api":"https://www.hanjuzy.com/inc/apijson_vod.php","searchable":1,"recordable":0},{"key":"cjy66","name":"八戒资源","type":0,"api":"http://cj.bajiecaiji.com/inc/apijson_vod.php","searchable":1,"recordable":0},{"key":"cjy67","name":"百度资源","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy68","name":"无尽资源","type":1,"api":"https://api.wujinapi.net/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy69","name":"天空资源","type":1,"api":"https://api.tiankongapi.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy70","name":"四个圈影视","type":1,"api":"https://pg.fenwe078.cf/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy71","name":"电影雷达","type":1,"api":"https://www.dianyingleida.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy72","name":"人人影视","type":1,"api":"https://www.rrvipw.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy73","name":"小小影视","type":1,"api":"http://haowywz.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy74","name":"影图","type":1,"api":"https://cj.vodimg.top/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy75","name":"飘零影院","type":1,"api":"https://p2100.net/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy76","name":"新马影视","type":1,"api":"https://movie.gsl99.com/api.php/provide/vod/","searchable":1,"recordable":0},{"key":"cjy77","name":"155资源","type":1,"api":"https://155api.com/api.php/provide/vod/","searchable":1,"recordable":0},{
-        "key": "久久热资源网采集接口",
-        "name": "久久热资源网采集接口",
+    {
+        "key": "快播资源网采集接口",
+        "name": "快播资源网采集接口",
         "type": 1,
-        "api": "https://99reapi.com/api.php/provide/vod/",
+        "api": "https://gayapi.com/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
     {
-        "key": "夸克资源网采集接口",
-        "name": "夸克资源网采集接口",
+        "key": "大奶子资源网采集接口",
+        "name": "大奶子资源网采集接口",
         "type": 1,
-        "api": "http://kuakezy1.com/api.php/provide/vod/from/kuake/",
+        "api": "https://apidanaizi.com/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
     {
-        "key": "乐视资源网采集接口大全",
-        "name": "乐视资源网采集接口大全",
+        "key": "天涯影视资源网采集接口",
+        "name": "天涯影视资源网采集接口",
         "type": 1,
-        "api": "https://leshizyapi.com/api.php/provide/vod/",
+        "api": "https://tyyszyapi.com/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
     {
-        "key": "全站资源网采集接口分享",
-        "name": "全站资源网采集接口分享",
+        "key": "爱奇艺资源站采集接口",
+        "name": "爱奇艺资源站采集接口",
         "type": 1,
-        "api": "https://caiji.yueai55.cc:2277/yuelove.php/provide/vod/",
+        "api": "https://iqiyizyapi.com/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
     {
-        "key": "索尼资源网采集接口大全",
-        "name": "索尼资源网采集接口大全",
+        "key": "金马资源网采集接口",
+        "name": "金马资源网采集接口",
         "type": 1,
-        "api": "https://suoniapi.com/api.php/provide/vod/from/snm3u8/",
+        "api": "https://api.jmzy.com/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
     {
-        "key": "狼友会资源网采集接口",
-        "name": "狼友会资源网采集接口",
+        "key": "电影天堂采集综合资源接口",
+        "name": "电影天堂采集综合资源接口",
         "type": 1,
-        "api": "https://api.lyhapi.com/api.php/provide/vod/from/lyhm3u8/",
+        "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
     {
-        "key": "色虎虎资源网采集接口",
-        "name": "色虎虎资源网采集接口",
+        "key": "杏吧资源站采集接口",
+        "name": "杏吧资源站采集接口",
         "type": 1,
-        "api": "https://apisesehuzy.com/api.php/providedao/vod/",
+        "api": "https://xingba111.com/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
     {
-        "key": "haose资源网采集接口",
-        "name": "haose资源网采集接口",
+        "key": "茅台资源站采集接口",
+        "name": "茅台资源站采集接口",
         "type": 1,
-        "api": " https://haosezyw.com/api.php/provide/vod/",
+        "api": "https://caiji.maotaizy.cc/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
     {
-        "key": "红袖资源网采集接口",
-        "name": "红袖资源网采集接口",
+        "key": "无线资源网采集接口",
+        "name": "无线资源网采集接口",
         "type": 1,
-        "api": "https://hongxiuzy.com/api.php/provide/vod/from/hxm3u8/",
+        "api": "https://api.wuxianzy.net/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "黄色仓库资源采集网采集接口",
+        "name": "黄色仓库资源采集网采集接口",
+        "type": 1,
+        "api": "https://hsckzy.vip/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "X细胞资源网采集接口",
+        "name": "X细胞资源网采集接口",
+        "type": 1,
+        "api": "https://www.xxibaozyw.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "搜av资源站采集接口",
+        "name": "搜av资源站采集接口",
+        "type": 1,
+        "api": "https://api.souavzy.vip/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "魔爪资源采集网采集接口",
+        "name": "魔爪资源采集网采集接口",
+        "type": 1,
+        "api": "https://mozhuazy.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "如意资源网采集接口",
+        "name": "如意资源网采集接口",
+        "type": 1,
+        "api": "https://cj.rycjapi.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "百万资源网采集接口",
+        "name": "百万资源网采集接口",
+        "type": 1,
+        "api": "https://api.baiwanapi.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "卧龙影视资源采集站采集接口",
+        "name": "卧龙影视资源采集站采集接口",
+        "type": 1,
+        "api": "https://collect.wolongzy.cc/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "丝袜资源采集网采集接口",
+        "name": "丝袜资源采集网采集接口",
+        "type": 1,
+        "api": "https://siwazyw.tv/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "无尽资源网采集接口",
+        "name": "无尽资源网采集接口",
+        "type": 1,
+        "api": "https://api.wujinapi.me/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "樱花资源网采集接口",
+        "name": "樱花资源网采集接口",
+        "type": 1,
+        "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "色猫资源网采集接口",
+        "name": "色猫资源网采集接口",
+        "type": 1,
+        "api": "https://caiji.semaozy.net/inc/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "麒麟资源站全站采集接口",
+        "name": "麒麟资源站全站采集接口",
+        "type": 1,
+        "api": "https://www.qilinzyz.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "辣椒资源网采集接口",
+        "name": "辣椒资源网采集接口",
+        "type": 1,
+        "api": "https://apilj.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "155资源站采集接口",
+        "name": "155资源站采集接口",
+        "type": 1,
+        "api": "https://155api.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "非凡资源网采集接口",
+        "name": "非凡资源网采集接口",
+        "type": 1,
+        "api": "http://api.ffzyapi.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "奶香香资源站采集接口",
+        "name": "奶香香资源站采集接口",
+        "type": 1,
+        "api": "https://naixxzy.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "暴风资源网采集接口",
+        "name": "暴风资源网采集接口",
+        "type": 1,
+        "api": "https://bfzyapi.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "极速资源网采集接口",
+        "name": "极速资源网采集接口",
+        "type": 1,
+        "api": "https://jszyapi.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "jkun爱坤联盟资源网采集接口",
+        "name": "jkun爱坤联盟资源网采集接口",
+        "type": 1,
+        "api": "https://jkunzyapi.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "魔都动漫资源采集网采集接口",
+        "name": "魔都动漫资源采集网采集接口",
+        "type": 1,
+        "api": "https://www.mdzyapi.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "豪华资源网采集接口地址",
+        "name": "豪华资源网采集接口地址",
+        "type": 1,
+        "api": "https://hhzyapi.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "丫丫资源网采集接口",
+        "name": "丫丫资源网采集接口",
+        "type": 1,
+        "api": "https://cj.yayazy.net/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "老色逼资源站采集接口",
+        "name": "老色逼资源站采集接口",
+        "type": 1,
+        "api": "https://apilsbzy1.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "黑木耳资源站采集接口",
+        "name": "黑木耳资源站采集接口",
+        "type": 1,
+        "api": "https://json.heimuer.xyz/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "桃花资源采集网采集接口",
+        "name": "桃花资源采集网采集接口",
+        "type": 1,
+        "api": "https://thzy1.me/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "玉兔资源采集接口",
+        "name": "玉兔资源采集接口",
+        "type": 1,
+        "api": "https://apiyutu.com/api.php/provide/vod/",
+        "searchable": 1,
+        "recordable": 0
+    },
+    {
+        "key": "360资源站采集接口",
+        "name": "360资源站采集接口",
+        "type": 1,
+        "api": "https://360zy.com/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
@@ -656,7 +872,7 @@
         "key": "爱坤联盟资源网采集接口",
         "name": "爱坤联盟资源网采集接口",
         "type": 1,
-        "api": "https://ikunzyapi.com/api.php/seaxml/vod/",
+        "api": "https://ikunzyapi.com/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
@@ -669,90 +885,18 @@
         "recordable": 0
     },
     {
-        "key": "速看资源网采集接口大全",
-        "name": "速看资源网采集接口大全",
+        "key": "CK资源采集接口",
+        "name": "CK资源采集接口",
         "type": 1,
-        "api": "https://ziyuan.skm3u8.com/api.php/ff/provide/vod/from/ffm3u8/",
+        "api": "https://ckzy.me/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
     {
-        "key": "阳光资源网采集接口",
-        "name": "阳光资源网采集接口",
+        "key": "S猫资源网苹果cmsV8采集接口",
+        "name": "S猫资源网苹果cmsV8采集接口",
         "type": 1,
-        "api": "http://www.xxzy.org/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "188资源网采集接口大全",
-        "name": "188资源网采集接口大全",
-        "type": 1,
-        "api": "http://www.188zy.org/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "森林资源网采集接口",
-        "name": "森林资源网采集接口",
-        "type": 1,
-        "api": "https://slapibf.com/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "探探资源采集接口中心",
-        "name": "探探资源采集接口中心",
-        "type": 1,
-        "api": "https://apittzy.com/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "老鸭资源网采集接口",
-        "name": "老鸭资源网采集接口",
-        "type": 1,
-        "api": "https://api.apilyzy.com/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "量子资源网资源采集接口",
-        "name": "量子资源网资源采集接口",
-        "type": 1,
-        "api": "https://cj.lziapi.com/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "se窝资源网影视采集接口",
-        "name": "se窝资源网影视采集接口",
-        "type": 1,
-        "api": "https://sewozyapi.com/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "新浪资源采集网采集接口大全",
-        "name": "新浪资源采集网采集接口大全",
-        "type": 1,
-        "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "金鹰资源网苹果CMS采集接口",
-        "name": "金鹰资源网苹果CMS采集接口",
-        "type": 1,
-        "api": "https://jyzyapi.com/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "阿远采集资源网苹果CMSV8采集接口",
-        "name": "阿远采集资源网苹果CMSV8采集接口",
-        "type": 1,
-        "api": "https://www.cjzy.xyz:8888/api.php/provide/vod/",
+        "api": "https://api.maozyapi.com/inc/api.php/provide/vod/",
         "searchable": 1,
         "recordable": 0
     },
@@ -764,39 +908,6 @@
         "searchable": 1,
         "recordable": 0
     },
-    {
-        "key": "天空资源网采集接口",
-        "name": "天空资源网采集接口",
-        "type": 1,
-        "api": "https://api.tiankongapi.com/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "U酷资源网采集地址",
-        "name": "U酷资源网采集地址",
-        "type": 1,
-        "api": "https://api.ukuapi.com/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "百度资源M3U8 json接口",
-        "name": "百度资源M3U8 json接口",
-        "type": 1,
-        "api": "https://api.apibdzy.com/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    },
-    {
-        "key": "红牛云播资源采集地址",
-        "name": "红牛云播资源采集地址",
-        "type": 1,
-        "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
-        "searchable": 1,
-        "recordable": 0
-    }
-,
 {
       "key": "https://leshizy.com/",
       "name": "🎡┃乐事采集┃仅搜索",
