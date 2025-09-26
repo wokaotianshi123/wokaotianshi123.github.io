@@ -1,9 +1,9 @@
 [
   {
     "id": "1",
-    "name": "百度资源",
+    "name": "电影天堂",
     "logo": "",
     "nsfw": false,
-    "api": "https://cj.apibdzy.com/inc/api.php"
+    "api": "http://caiji.dyttzyapi.com/api.php"
   }
 ]
