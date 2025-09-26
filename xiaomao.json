@@ -4,6 +4,6 @@
     "name": "电影天堂",
     "logo": "",
     "nsfw": false,
-    "api": "http://caiji.dyttzyapi.com/api.php"
+    "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/at/xml"
   }
 ]
