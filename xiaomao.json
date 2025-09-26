@@ -1,0 +1,9 @@
+[
+  {
+    "id": "1",
+    "name": "百度资源",
+    "logo": "",
+    "nsfw": false,
+    "api": "https://cj.apibdzy.com/inc/api.php"
+  }
+]
