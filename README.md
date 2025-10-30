@@ -145,3 +145,6 @@ https://fofa.info/result?qbase64=L2lwdHYvbGl2ZS96aF9jbi5qcw%3D%3D
 
 方法3：打开网址搜索、整理源
 打开https://www.foodieguide.com/iptvsearch/，点击酒店源搜索专页，复制搜索出的源到notepad里，替换掉copy to tip为英文逗号, 然后复制到https://guihet.com/convert-m3u-js.html生成m3u
+
+
+lunatv配置 luna20251027.json 适用于 https://lunatv.tianshideyou.eu.org/ 
