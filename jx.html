@@ -64,207 +64,73 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/artplayer@5.1.6/dist/artplayer.js"></script>
-    <script>
-        // 解析线路配置
-        var apiArray = [
-            {
-                name: "线路1",
-                url: "https://www.ckplayer.vip/jiexi/?url=",
-                type: "hls"
-            },
-            {
-                name: "线路2", 
-                url: "https://jx.m3u8.tv/jiexi/?url=",
-                type: "hls"
-            }
-        ];
+<script>
+    var apiArray = [
+        { name: "线路1", url: "https://www.ckplayer.vip/jiexi/?url=" },
+        { name: "线路2", url: "https://jx.m3u8.tv/jiexi/?url=" }
+    ];
 
-        // 获取原始视频URL
-        var origin = decodeURIComponent(document.location.href.split("url=")[1]);
-        if (!origin || origin === "undefined") {
-            showError("未提供视频URL参数");
+    var origin = decodeURIComponent((document.location.href.match(/url=([^&]+)/) || [])[1]);
+    if (!origin || origin === "undefined") {
+        showError("未提供视频URL参数");
+        return;
+    }
+
+    var loadingEl = document.querySelector(".loading");
+    var art = null;
+
+    function showError(msg) {
+        loadingEl.style.display = "none";
+        var div = document.createElement("div");
+        div.className = "error";
+        div.innerHTML = msg;
+        document.getElementById("video-container").appendChild(div);
+    }
+
+    async function testSpeed(api) {
+        const start = performance.now();
+        try {
+            const res = await fetch(api.url + encodeURIComponent(origin), { method: "HEAD", mode: "no-cors" });
+            // no-cors 模式下无法读取状态，但会完成网络握手
+            return { api, time: performance.now() - start, ok: true };
+        } catch {
+            return { api, time: Infinity, ok: false };
+        }
+    }
+
+    async function pickFastest() {
+        const results = await Promise.all(apiArray.map(testSpeed));
+        const fastest = results.filter(r => r.ok).sort((a, b) => a.time - b.time)[0];
+        if (!fastest) {
+            showError("所有线路都无法连接");
             return;
         }
+        console.log("最快线路:", fastest.api.name, fastest.time.toFixed(0) + "ms");
+        playWithArtPlayer(fastest.api.url + encodeURIComponent(origin), fastest.api.name);
+    }
 
-        var videoContainer = document.getElementById("video-container");
-        var loadingEl = document.querySelector(".loading");
-        var art = null;
-        var testedApis = 0;
-        var fastestApi = null;
-        var fastestTime = Infinity;
-
-        // 显示错误信息
-        function showError(message) {
-            loadingEl.style.display = "none";
-            var errorEl = document.createElement("div");
-            errorEl.className = "error";
-            errorEl.innerHTML = message + "<br><small>请检查视频URL是否正确</small>";
-            videoContainer.appendChild(errorEl);
-        }
-
-        // 测试线路速度
-        function testApiSpeed(apiConfig, callback) {
-            var startTime = performance.now();
-            var testUrl = apiConfig.url + encodeURIComponent(origin);
-            
-            var video = document.createElement("video");
-            video.preload = "metadata";
-            video.muted = true;
-            
-            video.onloadedmetadata = function() {
-                var loadTime = performance.now() - startTime;
-                callback({
-                    success: true,
-                    loadTime: loadTime,
-                    api: apiConfig,
-                    url: testUrl
-                });
-                video.remove();
-            };
-            
-            video.onerror = function() {
-                callback({
-                    success: false,
-                    loadTime: Infinity,
-                    api: apiConfig,
-                    url: testUrl
-                });
-                video.remove();
-            };
-            
-            video.src = testUrl;
-        }
-
-        // 初始化ArtPlayer
-        function initArtPlayer(videoUrl, apiName) {
-            loadingEl.style.display = "none";
-            
-            // 销毁之前的播放器
-            if (art) {
-                art.destroy();
-            }
-            
-            // 创建新的播放器实例
-            art = new Artplayer({
-                container: "#artplayer-app",
-                url: videoUrl,
-                title: "视频播放 - " + apiName,
-                poster: "",
-                autoplay: true,
-                muted: false,
-                loop: false,
-                autoSize: false,
-                autoMini: false,
-                screenshot: true,
-                setting: true,
-                hotkey: true,
-                pip: true,
-                mutex: true,
-                fullscreen: true,
-                fullscreenWeb: true,
-                subtitleOffset: false,
-                miniProgressBar: true,
-                localVideo: false,
-                localSubtitle: false,
-                networkMonitor: true,
-                plugins: [],
-                contextmenu: [],
-                controls: [
-                    {
-                        name: "speed",
-                        index: 10,
-                        position: "right",
-                        html: "倍速",
-                        selector: [
-                            { html: "0.5x", value: 0.5 },
-                            { html: "0.75x", value: 0.75 },
-                            { html: "1.0x", value: 1 },
-                            { html: "1.25x", value: 1.25 },
-                            { html: "1.5x", value: 1.5 },
-                            { html: "2.0x", value: 2 }
-                        ],
-                        onSelect: function(item) {
-                            art.playbackRate = item.value;
-                            return item.html;
-                        }
-                    }
-                ],
-                settings: [
-                    {
-                        html: "播放器",
-                        tooltip: "ArtPlayer",
-                        icon: ""
-                    }
-                ],
-                quality: [],
-                highlight: [],
-                thumbnails: {
-                    url: "",
-                    number: 60,
-                    width: 160,
-                    height: 90,
-                    column: 10
-                }
-            });
-
-            // 播放器事件监听
-            art.on("ready", function() {
-                console.log("播放器已就绪，使用线路: " + apiName);
-            });
-
-            art.on("error", function(error) {
-                console.error("播放错误:", error);
-                showError("视频播放失败，请尝试刷新页面");
-            });
-
-            art.on("fullscreen", function(state) {
-                if (state) {
-                    document.body.style.overflow = "hidden";
-                } else {
-                    document.body.style.overflow = "";
-                }
-            });
-        }
-
-        // 测试所有线路
-        function testAllApis() {
-            apiArray.forEach(function(apiConfig) {
-                testApiSpeed(apiConfig, function(result) {
-                    testedApis++;
-                    
-                    if (result.success && result.loadTime < fastestTime) {
-                        fastestTime = result.loadTime;
-                        fastestApi = result;
-                    }
-                    
-                    // 所有线路测试完成
-                    if (testedApis === apiArray.length) {
-                        if (fastestApi) {
-                            console.log("最快线路: " + fastestApi.api.name + " (" + fastestApi.loadTime.toFixed(0) + "ms)");
-                            initArtPlayer(fastestApi.url, fastestApi.api.name);
-                        } else {
-                            showError("所有线路都无法播放此视频");
-                        }
-                    }
-                });
-            });
-        }
-
-        // 页面加载完成后开始测试
-        document.addEventListener("DOMContentLoaded", function() {
-            if (origin && origin !== "undefined") {
-                testAllApis();
-            } else {
-                showError("请提供视频URL参数，例如: ?url=https://example.com/video.mp4");
-            }
+    function playWithArtPlayer(src, name) {
+        loadingEl.style.display = "none";
+        art = new Artplayer({
+            container: "#artplayer-app",
+            url: src,
+            title: "视频播放 - " + name,
+            autoplay: true,
+            muted: false,
+            fullscreen: true,
+            fullscreenWeb: true,
+            pip: true,
+            screenshot: true,
+            playbackRate: true,
+            setting: true,
+            hotkey: true,
+            mutex: true
         });
+        art.on("error", () => showError("视频播放失败，请刷新重试"));
+    }
 
-        // 页面卸载时销毁播放器
-        window.addEventListener("beforeunload", function() {
-            if (art) {
-                art.destroy();
-            }
-        });
-    </script>
+    document.addEventListener("DOMContentLoaded", pickFastest);
+</script>
 </body>
 </html>
+
