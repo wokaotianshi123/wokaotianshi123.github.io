@@ -73,7 +73,7 @@ const apiArray = [
 
 /* ========== 取目标视频地址 ========== */
 const origin = decodeURIComponent((location.href.match(/url=([^&]+)/)||[])[1]);
-if(!origin){showError('缺少url参数'); return;}
+if(!origin){showError('缺少url参数'); throw new Error('缺少url参数');}
 
 /* ========== DOM ========== */
 const loadingEl = document.querySelector('.loading');
@@ -132,5 +132,6 @@ document.addEventListener('DOMContentLoaded', pickFastest);
 </script>
 </body>
 </html>
+
 
 
