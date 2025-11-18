@@ -47,6 +47,7 @@
 
 { "key": "drpy_xbpq_毒舌影视", "name": "┃☛毒舌影视☚┃","type": 3,"changeable": 1, "searchable": 1,"quickSearch": 1,"filterable": 1, "api": "csp_XBPQ","ext": { "数组": "module-item&&/span>","副标题": "<span>&&<","图片": "https+://vres.jxlfl.cn/vod1/+data-original=\"/vod1/&&\"","简介": "detail-desc\">&&</p>","线路数组": "class=\"swiper-slide source-swiper-slide&&</div>","线路标题": ">&&</span>","搜索二次截取": "<div class=\"search-result-list&&pagenation-box fs-margin-section","搜索数组": "<a&&</a>","搜索图片": "https+://vres.jxlfl.cn/vod1/+data-original=\"/vod1/&&\"","搜索标题": "title=\"&&\"","搜索链接": "href=\"&&\"","搜索url": "https://www.dushe1.app/search?k={wd}&page={pg}","分类url": "https://www.dushe1.app/show/{cateId}-{class}-{area}-{lang}-{year}-{by}-{catePg}.html[https://www.dushe1.app/channel/{cateId}.html]","分类": "电影$1#电视剧$2#综艺$4#动漫$3#短剧$6"}},
 {"key":"csp_瓜子","name":"💻瓜子秒播","api":"csp_Gz360","jar":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/gz.jar","type": 3,"searchable": 1,"playerType": 2,"timeout": 30,"changeable": 0},
+{"key": "csp_XYQBiu_zhiboh","name":"se播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
 {
             "key": "NoSearch_csp_BBB",
             "name": "哔哩哔哩",
@@ -4496,7 +4497,7 @@
         "分类url": "https://gov.lameitv4.com/lmc/{cateId}-{catePg}/;;m"
       }
     },
-{"key": "csp_XYQBiu_zhiboh","name":"涩播(XYQ)","type":3,"api":"csp_XYQBiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://gitjs.tianshideyou.eu.org/https://raw.githubusercontent.com/wokaotianshi123/wokaotianshi123.github.io/main/pglblb/zhiboxyq.json"},
+
     
 	 {    "key": "ff996",
  	     "编码": "gb2312",
