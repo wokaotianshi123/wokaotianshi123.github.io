@@ -87,17 +87,20 @@ function showError(msg){
 }
 
 /* ========== 真实测速：用 link prefetch ========== */
-function testByPrefetch(api){
-  return new Promise(resolve=>{
-    const link = document.createElement('link');
-    link.rel = 'prefetch';
-    link.href = api.url + encodeURIComponent(origin);
-    const start = performance.now();
-    link.onload = () => resolve({api, time:performance.now()-start, ok:true});
-    link.onerror = () => resolve({api, time:Infinity, ok:false});
-    document.head.appendChild(link);
-    setTimeout(()=>link.remove(), 100);   // 清理
-  });
+function testByPrefetch(api) {
+  return Promise.race([
+    new Promise(res => {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = api.url + encodeURIComponent(origin);
+      const st = performance.now();
+      link.onload  = () => res({api, time: performance.now()-st, ok: true});
+      link.onerror = () => res({api, time: Infinity, ok: false});
+      document.head.appendChild(link);
+      setTimeout(() => link.remove(), 200);
+    }),
+    new Promise(res => setTimeout(() => res({api, time: Infinity, ok: false}), 2000)) // 最长等2s
+  ]);
 }
 
 /* ========== 选最快 ========== */
@@ -132,6 +135,7 @@ document.addEventListener('DOMContentLoaded', pickFastest);
 </script>
 </body>
 </html>
+
 
 
 
