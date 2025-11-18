@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>最快视频流播放器 - ArtPlayer Iframe 模式</title>
+<title>最快视频流播放器 - ArtPlayer Iframe 模式 (CDNJS)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -14,31 +14,29 @@
     html, body {
         margin: 0;
         padding: 0;
-        height: 100%; /* 确保body占满整个视口 */
-        overflow: hidden; /* 防止滚动条 */
+        height: 100%; 
+        overflow: hidden;
         background-color: #000;
     }
 
     #video-container {
         width: 100%;
-        height: 100vh; /* 确保容器高度占满整个视口高度 */
+        height: 100vh;
         position: relative;
     }
     
-    /* 隐藏所有初始的 iframe，只显示最快加载完成的那一个 */
     .temp-iframe {
         width: 100%;
         height: 100%;
         border: none;
-        position: absolute; /* 让所有 iframe 叠在一起 */
+        position: absolute;
         top: 0;
         left: 0;
-        opacity: 0; /* 默认隐藏 */
-        pointer-events: none; /* 默认不接受鼠标事件 */
+        opacity: 0; 
+        pointer-events: none;
         transition: opacity 0.5s;
     }
     
-    /* ArtPlayer 容器样式，确保其充满父容器 */
     .art-player-wrapper {
         width: 100%;
         height: 100%;
@@ -83,22 +81,19 @@ if (!origin) {
 }
 
 
-/**
- * 初始化 ArtPlayer Iframe 模式，使用最快的 iframe 作为播放源
- * @param {HTMLIFrameElement} iframe - 最快加载完成的 iframe 元素
- */
 function initArtPlayerIframeMode(iframe) {
-    // 防止重复初始化
+    // ⚠️ 检查 ArtPlayer 是否已定义。如果此错误仍出现，请执行下一步本地下载。
+    if (typeof ArtPlayer === 'undefined') {
+        console.error('ArtPlayer 未定义！请检查 CDN 资源是否加载失败。');
+        return; 
+    }
     if (artPlayerInstance) return; 
 
-    // 隐藏加载完成的 iframe
     iframe.style.opacity = 0;
     iframe.style.pointerEvents = 'none';
 
-    // 移除容器内所有其他元素（包括其他 iframe 和加载提示）
     videoContainer.innerHTML = ''; 
 
-    // 创建 ArtPlayer 容器
     const artWrapper = document.createElement('div');
     artWrapper.id = 'art-player-wrapper';
     artWrapper.className = 'art-player-wrapper';
@@ -107,15 +102,14 @@ function initArtPlayerIframeMode(iframe) {
     // 实例化 ArtPlayer Iframe 模式
     artPlayerInstance = new ArtPlayer({
         container: '#art-player-wrapper',
-        url: iframe.src, // 将最快 iframe 的 src 作为 ArtPlayer 的 url
-        type: 'iframe', // 关键：开启 Iframe 模式
-        // 配置
+        url: iframe.src, 
+        type: 'iframe', 
         title: '最快解析视频流',
-        autoplay: true, // 尝试自动播放
+        autoplay: true,
         muted: false,
-        fullscreen: true, // 开启全屏按钮
+        fullscreen: true,
         pip: true,
-        autoSize: true, // 自动调整大小
+        autoSize: true, 
         loop: false,
         lang: 'zh-cn'
     });
@@ -123,34 +117,23 @@ function initArtPlayerIframeMode(iframe) {
     console.log(`ArtPlayer (Iframe Mode) 已加载源: ${iframe.src}`);
 }
 
-/**
- * 创建并加载 iframe，并监听加载速度
- * @param {string} src - iframe 的源地址
- * @returns {HTMLIFrameElement}
- */
 function createIframe(src) {
     var iframe = document.createElement("iframe");
     iframe.className = "temp-iframe";
-    // 允许脚本、同源、表单、弹出窗口和指针锁定，确保解析页正常工作
     iframe.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock";
     iframe.frameBorder = "0";
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = "no-referrer";
     iframe.src = src;
     
-    // 记录开始加载时间
     iframe.loadStartTime = performance.now();
     
-    // 关键逻辑：判断最快加载
     iframe.onload = function() {
         var currentTime = performance.now();
         var loadTime = currentTime - this.loadStartTime;
         
-        // 如果当前 iframe 加载时间更快，并且 ArtPlayer 还没有初始化
         if (loadTime < fastestTime && !artPlayerInstance) {
             fastestTime = loadTime;
-            
-            // 立即启动 ArtPlayer Iframe 模式
             initArtPlayerIframeMode(this);
         }
     };
@@ -158,21 +141,15 @@ function createIframe(src) {
     return iframe;
 }
 
-/**
- * 启动所有解析源的竞速加载
- */
 function loadVideos() {
-    // 显示加载提示
     videoContainer.innerHTML = '<div id="loading-tip">正在竞速解析，请稍候...</div>';
     
     apiArray.forEach(function(api) {
         var iframe = createIframe(api + origin);
-        // 先将所有 iframe 加入到 DOM 树中，以便开始加载
         videoContainer.appendChild(iframe);
     });
 }
 
-// 页面加载完成后开始加载视频
 document.addEventListener("DOMContentLoaded", loadVideos);
 </script>
 </body>
