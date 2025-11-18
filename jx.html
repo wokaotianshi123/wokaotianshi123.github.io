@@ -58,13 +58,17 @@
 
 <script>
 var apiArray = [
-    // 您的解析 API 列表
+    // 您原有的源
     { name: "源1 (ckplayer)", url: "https://www.ckplayer.vip/jiexi/?url=" },
     { name: "源2 (m3u8.tv)", url: "https://jx.m3u8.tv/jiexi/?url=" },
-    { name: "源3 (xmflv)", url: "https://jx.xmflv.com/?url=" }
-    // 建议增加更多源进行测试，例如：
-    // { name: "源4 (bfq)", url: "https://jx.bfq.cc/?url=" },
-    // { name: "源5 (vip.parwix)", url: "https://vip.parwix.com:4433/player/?url=" }
+    { name: "源3 (xmflv)", url: "https://jx.xmflv.com/?url=" },
+    
+    // 新增的 5 个源
+    { name: "源4 (xmflv备)", url: "https://jx.xmflv.com/?url=" },
+    { name: "源5 (乐多)", url: "https://jx.leduotv.com/?url=" },
+    { name: "源6 (M3U8备)", url: "https://jx.m3u8.tv/jiexi/?url=" },
+    { name: "源7 (视频解析)", url: "https://jx.bozrc.com:4433/player/?url=" },
+    { name: "源8 (维多)", url: "https://www.vdsup.com/?url=" }
 ];
 // 从 URL 中获取原始视频地址
 var origin = decodeURIComponent(document.location.href.split("url=")[1] || '');
@@ -162,3 +166,4 @@ document.addEventListener("DOMContentLoaded", loadVideos);
 </script>
 </body>
 </html>
+
