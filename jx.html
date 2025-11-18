@@ -65,72 +65,72 @@
 
     <script src="https://cdn.jsdelivr.net/npm/artplayer@5.1.6/dist/artplayer.js"></script>
 <script>
-    var apiArray = [
-        { name: "线路1", url: "https://www.ckplayer.vip/jiexi/?url=" },
-        { name: "线路2", url: "https://jx.m3u8.tv/jiexi/?url=" }
-    ];
+/* ========== 配置 ========== */
+const apiArray = [
+  {name:'线路1', url:'https://www.ckplayer.vip/jiexi/?url='},
+  {name:'线路2', url:'https://jx.m3u8.tv/jiexi/?url='}
+];
 
-    var origin = decodeURIComponent((document.location.href.match(/url=([^&]+)/) || [])[1]);
-    if (!origin || origin === "undefined") {
-        showError("未提供视频URL参数");
-        return;
-    }
+/* ========== 取目标视频地址 ========== */
+const origin = decodeURIComponent((location.href.match(/url=([^&]+)/)||[])[1]);
+if(!origin){showError('缺少url参数'); return;}
 
-    var loadingEl = document.querySelector(".loading");
-    var art = null;
+/* ========== DOM ========== */
+const loadingEl = document.querySelector('.loading');
+let art = null;
 
-    function showError(msg) {
-        loadingEl.style.display = "none";
-        var div = document.createElement("div");
-        div.className = "error";
-        div.innerHTML = msg;
-        document.getElementById("video-container").appendChild(div);
-    }
+/* ========== 工具 ========== */
+function showError(msg){
+  loadingEl.style.display='none';
+  document.getElementById('video-container').insertAdjacentHTML('beforeend',
+    `<div class="error">${msg}<br><small>示例：?url=https://example.com/video.mp4</small></div>`);
+}
 
-    async function testSpeed(api) {
-        const start = performance.now();
-        try {
-            const res = await fetch(api.url + encodeURIComponent(origin), { method: "HEAD", mode: "no-cors" });
-            // no-cors 模式下无法读取状态，但会完成网络握手
-            return { api, time: performance.now() - start, ok: true };
-        } catch {
-            return { api, time: Infinity, ok: false };
-        }
-    }
+/* ========== 真实测速：用 link prefetch ========== */
+function testByPrefetch(api){
+  return new Promise(resolve=>{
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = api.url + encodeURIComponent(origin);
+    const start = performance.now();
+    link.onload = () => resolve({api, time:performance.now()-start, ok:true});
+    link.onerror = () => resolve({api, time:Infinity, ok:false});
+    document.head.appendChild(link);
+    setTimeout(()=>link.remove(), 100);   // 清理
+  });
+}
 
-    async function pickFastest() {
-        const results = await Promise.all(apiArray.map(testSpeed));
-        const fastest = results.filter(r => r.ok).sort((a, b) => a.time - b.time)[0];
-        if (!fastest) {
-            showError("所有线路都无法连接");
-            return;
-        }
-        console.log("最快线路:", fastest.api.name, fastest.time.toFixed(0) + "ms");
-        playWithArtPlayer(fastest.api.url + encodeURIComponent(origin), fastest.api.name);
-    }
+/* ========== 选最快 ========== */
+async function pickFastest(){
+  const res = await Promise.all(apiArray.map(testByPrefetch));
+  const fast = res.filter(r=>r.ok).sort((a,b)=>a.time-b.time)[0];
+  if(!fast){showError('所有线路都无法连接'); return;}
+  console.log(`最快线路：${fast.api.name}  ${fast.time.toFixed(0)}ms`);
+  play(fast.api.url + encodeURIComponent(origin), fast.api.name);
+}
 
-    function playWithArtPlayer(src, name) {
-        loadingEl.style.display = "none";
-        art = new Artplayer({
-            container: "#artplayer-app",
-            url: src,
-            title: "视频播放 - " + name,
-            autoplay: true,
-            muted: false,
-            fullscreen: true,
-            fullscreenWeb: true,
-            pip: true,
-            screenshot: true,
-            playbackRate: true,
-            setting: true,
-            hotkey: true,
-            mutex: true
-        });
-        art.on("error", () => showError("视频播放失败，请刷新重试"));
-    }
+/* ========== ArtPlayer ========== */
+function play(src, name){
+  loadingEl.style.display='none';
+  art = new Artplayer({
+    container: '#artplayer-app',
+    url: src,
+    title: `正在播放 - ${name}`,
+    autoplay: true,
+    muted: false,
+    fullscreen: true,
+    fullscreenWeb: true,
+    pip: true,
+    screenshot: true,
+    mutex: true
+  });
+  art.on('error', ()=>showError('播放失败，请刷新重试'));
+}
 
-    document.addEventListener("DOMContentLoaded", pickFastest);
+/* ========== 启动 ========== */
+document.addEventListener('DOMContentLoaded', pickFastest);
 </script>
 </body>
 </html>
+
 
