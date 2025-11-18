@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>最快视频流播放器 - ArtPlayer Iframe 模式 (CDNJS)</title>
+<title>最快视频流播放器 - 调试模式</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -25,6 +25,7 @@
         position: relative;
     }
     
+    /* 所有的 iframe 默认隐藏，只在选中后显示 */
     .temp-iframe {
         width: 100%;
         height: 100%;
@@ -35,11 +36,6 @@
         opacity: 0; 
         pointer-events: none;
         transition: opacity 0.5s;
-    }
-    
-    .art-player-wrapper {
-        width: 100%;
-        height: 100%;
     }
     
     /* 加载提示样式 */
@@ -63,68 +59,74 @@
 <script>
 var apiArray = [
     // 您的解析 API 列表
-    "https://www.ckplayer.vip/jiexi/?url=",
-    "https://jx.m3u8.tv/jiexi/?url=",
-    "https://jx.xmflv.com/?url=" 
+    { name: "源1 (ckplayer)", url: "https://www.ckplayer.vip/jiexi/?url=" },
+    { name: "源2 (m3u8.tv)", url: "https://jx.m3u8.tv/jiexi/?url=" },
+    { name: "源3 (xmflv)", url: "https://jx.xmflv.com/?url=" }
+    // 建议增加更多源进行测试，例如：
+    // { name: "源4 (bfq)", url: "https://jx.bfq.cc/?url=" },
+    // { name: "源5 (vip.parwix)", url: "https://vip.parwix.com:4433/player/?url=" }
 ];
 // 从 URL 中获取原始视频地址
 var origin = decodeURIComponent(document.location.href.split("url=")[1] || '');
 
 var videoContainer = document.getElementById("video-container");
 var fastestTime = Infinity;
-var artPlayerInstance = null; // 用于存储 ArtPlayer 实例
+var fastestApiName = "未知";
+var isIframeDisplayed = false; // 标记是否已经显示了最快的 iframe
 
 // 检查 URL 参数是否缺失
 if (!origin) {
-    videoContainer.innerHTML = '<div style="color:white;text-align:center;padding:20px;">错误：URL 参数缺失！请在 URL 后添加 ?url=[您的视频地址]</div>';
+    videoContainer.innerHTML = '<div id="loading-tip" style="color:white;">错误：URL 参数缺失！请在 URL 后添加 ?url=[您的视频地址]</div>';
     throw new Error('URL parameter is missing.');
 }
 
 
-function initArtPlayerIframeMode(iframe) {
-    // ⚠️ 检查 ArtPlayer 是否已定义。如果此错误仍出现，请执行下一步本地下载。
-    if (typeof ArtPlayer === 'undefined') {
-        console.error('ArtPlayer 未定义！请检查 CDN 资源是否加载失败。');
-        return; 
-    }
-    if (artPlayerInstance) return; 
-
-    iframe.style.opacity = 0;
-    iframe.style.pointerEvents = 'none';
-
-    videoContainer.innerHTML = ''; 
-
-    const artWrapper = document.createElement('div');
-    artWrapper.id = 'art-player-wrapper';
-    artWrapper.className = 'art-player-wrapper';
-    videoContainer.appendChild(artWrapper);
-
-    // 实例化 ArtPlayer Iframe 模式
-    artPlayerInstance = new ArtPlayer({
-        container: '#art-player-wrapper',
-        url: iframe.src, 
-        type: 'iframe', 
-        title: '最快解析视频流',
-        autoplay: true,
-        muted: false,
-        fullscreen: true,
-        pip: true,
-        autoSize: true, 
-        loop: false,
-        lang: 'zh-cn'
-    });
+/**
+ * 选中最快的 iframe 并直接显示
+ * @param {HTMLIFrameElement} iframe - 最快加载完成的 iframe 元素
+ * @param {string} apiName - 对应的 API 名称
+ */
+function displayFastestIframe(iframe, apiName) {
+    if (isIframeDisplayed) return; 
     
-    console.log(`ArtPlayer (Iframe Mode) 已加载源: ${iframe.src}`);
+    // 标记为已显示
+    isIframeDisplayed = true;
+    fastestApiName = apiName;
+
+    // 移除加载提示
+    const loadingTip = document.getElementById('loading-tip');
+    if (loadingTip) {
+        loadingTip.style.display = 'none';
+    }
+
+    // 移除所有其他的 iframe
+    Array.from(videoContainer.children).forEach(child => {
+        if (child !== iframe) {
+            videoContainer.removeChild(child);
+        }
+    });
+
+    // 让最快的 iframe 显示并接受事件
+    iframe.style.opacity = 1;
+    iframe.style.pointerEvents = 'auto';
+    
+    console.log(`✅ 竞速成功！显示最快解析源: ${apiName}`);
+    console.log(`请检查该 iframe 内部的控制台信息，查找视频加载失败的原因 (403 或被阻止)。`);
 }
 
-function createIframe(src) {
+/**
+ * 创建并加载 iframe，并监听加载速度
+ * @param {Object} api - API 对象 { name, url }
+ * @returns {HTMLIFrameElement}
+ */
+function createIframe(api) {
     var iframe = document.createElement("iframe");
     iframe.className = "temp-iframe";
     iframe.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock";
     iframe.frameBorder = "0";
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = "no-referrer";
-    iframe.src = src;
+    iframe.src = api.url + origin;
     
     iframe.loadStartTime = performance.now();
     
@@ -132,20 +134,26 @@ function createIframe(src) {
         var currentTime = performance.now();
         var loadTime = currentTime - this.loadStartTime;
         
-        if (loadTime < fastestTime && !artPlayerInstance) {
+        // 只有当前 iframe 加载时间更快，并且还没有 iframe 被显示时才处理
+        if (loadTime < fastestTime && !isIframeDisplayed) {
             fastestTime = loadTime;
-            initArtPlayerIframeMode(this);
+            
+            // 立即显示最快的 iframe
+            displayFastestIframe(this, api.name);
         }
     };
     
     return iframe;
 }
 
+/**
+ * 启动所有解析源的竞速加载
+ */
 function loadVideos() {
     videoContainer.innerHTML = '<div id="loading-tip">正在竞速解析，请稍候...</div>';
     
     apiArray.forEach(function(api) {
-        var iframe = createIframe(api + origin);
+        var iframe = createIframe(api);
         videoContainer.appendChild(iframe);
     });
 }
