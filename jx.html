@@ -38,10 +38,21 @@
         transition: opacity 0.5s;
     }
     
-    /* ArtPlayer 容器样式 */
+    /* ArtPlayer 容器样式，确保其充满父容器 */
     .art-player-wrapper {
         width: 100%;
         height: 100%;
+    }
+    
+    /* 加载提示样式 */
+    #loading-tip {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 18px;
+        z-index: 10;
     }
 </style>
 </head>
@@ -53,32 +64,38 @@
 
 <script>
 var apiArray = [
+    // 您的解析 API 列表
     "https://www.ckplayer.vip/jiexi/?url=",
     "https://jx.m3u8.tv/jiexi/?url=",
-    "https://jx.xmflv.com/?url=" // 重新启用一个，确保有足够多的竞速源
+    "https://jx.xmflv.com/?url=" 
 ];
+// 从 URL 中获取原始视频地址
 var origin = decodeURIComponent(document.location.href.split("url=")[1] || '');
 
-if (!origin) {
-    document.getElementById("video-container").innerHTML = '<div style="color:white;text-align:center;padding:20px;">错误：URL 参数缺失！</div>';
-    throw new Error('URL parameter is missing.');
-}
-
 var videoContainer = document.getElementById("video-container");
-var fastestIframe = null;
 var fastestTime = Infinity;
 var artPlayerInstance = null; // 用于存储 ArtPlayer 实例
 
+// 检查 URL 参数是否缺失
+if (!origin) {
+    videoContainer.innerHTML = '<div style="color:white;text-align:center;padding:20px;">错误：URL 参数缺失！请在 URL 后添加 ?url=[您的视频地址]</div>';
+    throw new Error('URL parameter is missing.');
+}
+
+
 /**
- * 初始化 ArtPlayer Iframe 模式
+ * 初始化 ArtPlayer Iframe 模式，使用最快的 iframe 作为播放源
  * @param {HTMLIFrameElement} iframe - 最快加载完成的 iframe 元素
  */
 function initArtPlayerIframeMode(iframe) {
+    // 防止重复初始化
+    if (artPlayerInstance) return; 
+
     // 隐藏加载完成的 iframe
     iframe.style.opacity = 0;
     iframe.style.pointerEvents = 'none';
 
-    // 移除容器内所有其他元素（所有 iframe）
+    // 移除容器内所有其他元素（包括其他 iframe 和加载提示）
     videoContainer.innerHTML = ''; 
 
     // 创建 ArtPlayer 容器
@@ -92,34 +109,29 @@ function initArtPlayerIframeMode(iframe) {
         container: '#art-player-wrapper',
         url: iframe.src, // 将最快 iframe 的 src 作为 ArtPlayer 的 url
         type: 'iframe', // 关键：开启 Iframe 模式
-        // ArtPlayer Iframe 模式的配置
-        // 更多配置请参考 ArtPlayer 文档
+        // 配置
         title: '最快解析视频流',
-        autoplay: true,
+        autoplay: true, // 尝试自动播放
         muted: false,
-        fullscreen: true,
+        fullscreen: true, // 开启全屏按钮
         pip: true,
         autoSize: true, // 自动调整大小
         loop: false,
+        lang: 'zh-cn'
     });
     
     console.log(`ArtPlayer (Iframe Mode) 已加载源: ${iframe.src}`);
-    
-    // 如果需要：ArtPlayer 加载完成后，可能需要手动将 ArtPlayer 实例的全屏
-    // artPlayerInstance.on('ready', () => {
-    //     // 尝试进入全屏模式，取决于浏览器策略，可能无法自动进入
-    //     // artPlayerInstance.fullscreen = true; 
-    // });
 }
 
 /**
- * 创建并加载 iframe
+ * 创建并加载 iframe，并监听加载速度
  * @param {string} src - iframe 的源地址
  * @returns {HTMLIFrameElement}
  */
 function createIframe(src) {
     var iframe = document.createElement("iframe");
     iframe.className = "temp-iframe";
+    // 允许脚本、同源、表单、弹出窗口和指针锁定，确保解析页正常工作
     iframe.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock";
     iframe.frameBorder = "0";
     iframe.allowFullscreen = true;
@@ -137,20 +149,18 @@ function createIframe(src) {
         // 如果当前 iframe 加载时间更快，并且 ArtPlayer 还没有初始化
         if (loadTime < fastestTime && !artPlayerInstance) {
             fastestTime = loadTime;
-            fastestIframe = this; // 标记为最快的 iframe
-
-            // **立即启动 ArtPlayer Iframe 模式**
-            initArtPlayerIframeMode(fastestIframe);
             
-            // 此时，因为 ArtPlayer 已经启动，可以停止其他 iframe 的加载，
-            // 但在 onload 事件中停止其他资源加载比较困难，
-            // 只要 ArtPlayer 实例存在，后续的 onload 事件将不再触发 initArtPlayerIframeMode
+            // 立即启动 ArtPlayer Iframe 模式
+            initArtPlayerIframeMode(this);
         }
     };
     
     return iframe;
 }
 
+/**
+ * 启动所有解析源的竞速加载
+ */
 function loadVideos() {
     // 显示加载提示
     videoContainer.innerHTML = '<div style="color:white;text-align:center;padding:20px;" id="loading-tip">正在竞速解析，请稍候...</div>';
