@@ -7,7 +7,7 @@
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<link href="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.css" rel="stylesheet">
+<link href="https://unpkg.com/artplayer/dist/artplayer.min.css" rel="stylesheet">
 
 <style>
     /* 1. 全屏自适应样式 */
@@ -60,7 +60,7 @@
 <div id="video-container">
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.js"></script>
+<script src="https://unpkg.com/artplayer/dist/artplayer.min.js"></script>
 
 <script>
 var apiArray = [
@@ -163,7 +163,7 @@ function createIframe(src) {
  */
 function loadVideos() {
     // 显示加载提示
-    videoContainer.innerHTML = '<div style="color:white;text-align:center;padding:20px;" id="loading-tip">正在竞速解析，请稍候...</div>';
+    videoContainer.innerHTML = '<div id="loading-tip">正在竞速解析，请稍候...</div>';
     
     apiArray.forEach(function(api) {
         var iframe = createIframe(api + origin);
