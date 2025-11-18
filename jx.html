@@ -1,141 +1,169 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>最快视频流播放器</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/artplayer@5.1.6/dist/artplayer.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #000;
-        }
-        
-        #video-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .artplayer-app {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            font-size: 18px;
-            z-index: 100;
-        }
-        
-        .error {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #ff6b6b;
-            font-size: 16px;
-            text-align: center;
-            z-index: 100;
-        }
-    </style>
+<title>最快视频流播放器 - ArtPlayer Iframe 模式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link href="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.css" rel="stylesheet">
+
+<style>
+    /* 1. 全屏自适应样式 */
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%; /* 确保body占满整个视口 */
+        overflow: hidden; /* 防止滚动条 */
+        background-color: #000;
+    }
+
+    #video-container {
+        width: 100%;
+        height: 100vh; /* 确保容器高度占满整个视口高度 */
+        position: relative;
+    }
+    
+    /* 隐藏所有初始的 iframe，只显示最快加载完成的那一个 */
+    .temp-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        position: absolute; /* 让所有 iframe 叠在一起 */
+        top: 0;
+        left: 0;
+        opacity: 0; /* 默认隐藏 */
+        pointer-events: none; /* 默认不接受鼠标事件 */
+        transition: opacity 0.5s;
+    }
+    
+    /* ArtPlayer 容器样式 */
+    .art-player-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+</style>
 </head>
 <body>
-    <div id="video-container">
-        <div class="loading">正在加载最快线路...</div>
-        <div class="artplayer-app" id="artplayer-app"></div>
+<div id="video-container">
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/artplayer@5.1.6/dist/artplayer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.js"></script>
+
 <script>
-/* ========== 配置 ========== */
-const apiArray = [
-  {name:'线路1', url:'https://www.ckplayer.vip/jiexi/?url='},
-  {name:'线路2', url:'https://jx.m3u8.tv/jiexi/?url='}
+var apiArray = [
+    "https://www.ckplayer.vip/jiexi/?url=",
+    "https://jx.m3u8.tv/jiexi/?url=",
+    "https://jx.xmflv.com/?url=" // 重新启用一个，确保有足够多的竞速源
 ];
+var origin = decodeURIComponent(document.location.href.split("url=")[1] || '');
 
-/* ========== 取目标视频地址 ========== */
-const origin = decodeURIComponent((location.href.match(/url=([^&]+)/)||[])[1]);
-if(!origin){showError('缺少url参数'); throw new Error('缺少url参数');}
-
-/* ========== DOM ========== */
-const loadingEl = document.querySelector('.loading');
-let art = null;
-
-/* ========== 工具 ========== */
-function showError(msg){
-  loadingEl.style.display='none';
-  document.getElementById('video-container').insertAdjacentHTML('beforeend',
-    `<div class="error">${msg}<br><small>示例：?url=https://example.com/video.mp4</small></div>`);
+if (!origin) {
+    document.getElementById("video-container").innerHTML = '<div style="color:white;text-align:center;padding:20px;">错误：URL 参数缺失！</div>';
+    throw new Error('URL parameter is missing.');
 }
 
-/* ========== 真实测速：用 link prefetch ========== */
-function testByPrefetch(api) {
-  return Promise.race([
-    new Promise(res => {
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.href = api.url + encodeURIComponent(origin);
-      const st = performance.now();
-      link.onload  = () => res({api, time: performance.now()-st, ok: true});
-      link.onerror = () => res({api, time: Infinity, ok: false});
-      document.head.appendChild(link);
-      setTimeout(() => link.remove(), 200);
-    }),
-    new Promise(res => setTimeout(() => res({api, time: Infinity, ok: false}), 2000)) // 最长等2s
-  ]);
+var videoContainer = document.getElementById("video-container");
+var fastestIframe = null;
+var fastestTime = Infinity;
+var artPlayerInstance = null; // 用于存储 ArtPlayer 实例
+
+/**
+ * 初始化 ArtPlayer Iframe 模式
+ * @param {HTMLIFrameElement} iframe - 最快加载完成的 iframe 元素
+ */
+function initArtPlayerIframeMode(iframe) {
+    // 隐藏加载完成的 iframe
+    iframe.style.opacity = 0;
+    iframe.style.pointerEvents = 'none';
+
+    // 移除容器内所有其他元素（所有 iframe）
+    videoContainer.innerHTML = ''; 
+
+    // 创建 ArtPlayer 容器
+    const artWrapper = document.createElement('div');
+    artWrapper.id = 'art-player-wrapper';
+    artWrapper.className = 'art-player-wrapper';
+    videoContainer.appendChild(artWrapper);
+
+    // 实例化 ArtPlayer Iframe 模式
+    artPlayerInstance = new ArtPlayer({
+        container: '#art-player-wrapper',
+        url: iframe.src, // 将最快 iframe 的 src 作为 ArtPlayer 的 url
+        type: 'iframe', // 关键：开启 Iframe 模式
+        // ArtPlayer Iframe 模式的配置
+        // 更多配置请参考 ArtPlayer 文档
+        title: '最快解析视频流',
+        autoplay: true,
+        muted: false,
+        fullscreen: true,
+        pip: true,
+        autoSize: true, // 自动调整大小
+        loop: false,
+    });
+    
+    console.log(`ArtPlayer (Iframe Mode) 已加载源: ${iframe.src}`);
+    
+    // 如果需要：ArtPlayer 加载完成后，可能需要手动将 ArtPlayer 实例的全屏
+    // artPlayerInstance.on('ready', () => {
+    //     // 尝试进入全屏模式，取决于浏览器策略，可能无法自动进入
+    //     // artPlayerInstance.fullscreen = true; 
+    // });
 }
 
-/* ========== 选最快 ========== */
-async function pickFastest(){
-  const res = await Promise.all(apiArray.map(testByPrefetch));
-  const fast = res.filter(r=>r.ok).sort((a,b)=>a.time-b.time)[0];
-  if(!fast){showError('所有线路都无法连接'); return;}
-  console.log(`最快线路：${fast.api.name}  ${fast.time.toFixed(0)}ms`);
-  play(fast.api.url + encodeURIComponent(origin), fast.api.name);
+/**
+ * 创建并加载 iframe
+ * @param {string} src - iframe 的源地址
+ * @returns {HTMLIFrameElement}
+ */
+function createIframe(src) {
+    var iframe = document.createElement("iframe");
+    iframe.className = "temp-iframe";
+    iframe.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock";
+    iframe.frameBorder = "0";
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = "no-referrer";
+    iframe.src = src;
+    
+    // 记录开始加载时间
+    iframe.loadStartTime = performance.now();
+    
+    // 关键逻辑：判断最快加载
+    iframe.onload = function() {
+        var currentTime = performance.now();
+        var loadTime = currentTime - this.loadStartTime;
+        
+        // 如果当前 iframe 加载时间更快，并且 ArtPlayer 还没有初始化
+        if (loadTime < fastestTime && !artPlayerInstance) {
+            fastestTime = loadTime;
+            fastestIframe = this; // 标记为最快的 iframe
+
+            // **立即启动 ArtPlayer Iframe 模式**
+            initArtPlayerIframeMode(fastestIframe);
+            
+            // 此时，因为 ArtPlayer 已经启动，可以停止其他 iframe 的加载，
+            // 但在 onload 事件中停止其他资源加载比较困难，
+            // 只要 ArtPlayer 实例存在，后续的 onload 事件将不再触发 initArtPlayerIframeMode
+        }
+    };
+    
+    return iframe;
 }
 
-/* ========== ArtPlayer ========== */
-function play(src, name){
-  loadingEl.style.display='none';
-  art = new Artplayer({
-    container: '#artplayer-app',
-    url: src,
-    title: `正在播放 - ${name}`,
-    autoplay: true,
-    muted: false,
-    fullscreen: true,
-    fullscreenWeb: true,
-    pip: true,
-    screenshot: true,
-    mutex: true
-  });
-  art.on('error', ()=>showError('播放失败，请刷新重试'));
+function loadVideos() {
+    // 显示加载提示
+    videoContainer.innerHTML = '<div style="color:white;text-align:center;padding:20px;" id="loading-tip">正在竞速解析，请稍候...</div>';
+    
+    apiArray.forEach(function(api) {
+        var iframe = createIframe(api + origin);
+        // 先将所有 iframe 加入到 DOM 树中，以便开始加载
+        videoContainer.appendChild(iframe);
+    });
 }
 
-/* ========== 启动 ========== */
-document.addEventListener('DOMContentLoaded', pickFastest);
+// 页面加载完成后开始加载视频
+document.addEventListener("DOMContentLoaded", loadVideos);
 </script>
 </body>
 </html>
-
-
-
-
