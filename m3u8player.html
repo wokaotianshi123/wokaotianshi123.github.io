@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 播放器 (支持 URL 参数)</title>
+    <title>M3U8 播放器 (切片广告过滤版)</title>
     <style>
         /* 基础样式和布局 */
         body {
@@ -106,9 +106,9 @@
 
 <div id="app-container">
     
-    <h1>M3U8 播放器 (鲁棒性增强版)</h1>
+    <h1>M3U8 播放器 (切片广告过滤版)</h1>
     <p style="text-align: center; color: #777;">
-        支持 URL 参数加载 (例如: `?url=...`)，并启用极限性能优化。
+        已启用极限性能优化，并自动过滤域名不一致的 $TS$ 分片广告。
     </p>
 
     <div id="control-panel">
@@ -155,6 +155,17 @@
             statusDiv.style.display = 'none';
         }
 
+        // **获取 URL 域名**
+        function getDomainFromUrl(url) {
+            try {
+                // 使用 URL API 提取 hostname
+                const u = new URL(url);
+                return u.hostname;
+            } catch (e) {
+                return ''; // 非法 URL
+            }
+        }
+
         function updateDebugInfo(hls) {
             if (!hls || !hls.currentLevel || !hls.levels[hls.currentLevel]) return;
             
@@ -169,12 +180,11 @@
             debugDiv.textContent = info;
         }
         
-        // **新增：获取 URL 参数的函数**
+        // 获取 URL 参数的函数
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             const results = regex.exec(location.search);
-            // 确保解码 URL 编码
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
@@ -187,25 +197,33 @@
             }
             
             clearStatus();
-            showStatus('正在加载流，尝试并行下载优化...');
+            showStatus('正在加载流，尝试过滤切片广告...');
 
             // 销毁旧实例和定时器
             if (window.hlsInstance) {
+                if (window.adFilterListener) {
+                    window.hlsInstance.off(Hls.Events.FRAG_LOADING, window.adFilterListener);
+                }
                 window.hlsInstance.destroy();
             }
             if (window.debugTimer) {
                 clearInterval(window.debugTimer);
             }
 
-
             if (Hls.isSupported()) {
-                // HLS 极限缓存与并行下载配置
+                
+                // 1. 获取主内容域名
+                const baseDomain = getDomainFromUrl(url);
+
+                // 2. HLS 极限缓存与并行下载配置
                 const hlsConfig = {
+                    // 缓存与码率优化
                     startBufferLength: 8,       
                     maxBufferLength: 60,        
                     maxBufferSize: 100 * 1024 * 1024, 
                     autoLevelEnabled: true,     
                     
+                    // 并行与重试优化
                     fragLoadingTimeOut: 15000,  
                     fragLoadingMaxRetry: 5,     
                     fragLoadingMaxConnections: 6,
@@ -215,28 +233,58 @@
                 const hls = new Hls(hlsConfig);
                 window.hlsInstance = hls;
 
+                // **3. 广告过滤逻辑：拦截 FRAG_LOADING 事件**
+                const adFilterListener = function (event, data) {
+                    const fragmentUrl = data.frag.url;
+                    const fragmentDomain = getDomainFromUrl(fragmentUrl);
+
+                    if (fragmentDomain && fragmentDomain !== baseDomain) {
+                        // 域名不匹配，判定为广告，拦截加载
+                        console.warn(`[Ad Filter] 广告片段被拦截: ${fragmentUrl} (主域名: ${baseDomain})`);
+                        
+                        // 手动触发 FRAG_LOADED 事件，传递空数据，欺骗 hls.js 认为片段已加载但内容为空。
+                        hls.trigger(Hls.Events.FRAG_LOADED, {
+                            frag: data.frag,
+                            payload: new ArrayBuffer(0), // 空缓冲区
+                            stats: { 
+                                trequest: performance.now(), 
+                                tfirst: performance.now(), 
+                                tload: performance.now(), 
+                                tparsed: performance.now(), 
+                                loaded: 0 
+                            }
+                        });
+                        
+                        // 终止默认的加载行为
+                        return; 
+                    }
+                };
+
+                // 绑定监听器并保存引用以便销毁
+                hls.on(Hls.Events.FRAG_LOADING, adFilterListener);
+                window.adFilterListener = adFilterListener;
+
+
                 hls.loadSource(url);
                 hls.attachMedia(video);
 
-                // 事件监听
+                // 4. 事件监听 (播放和错误处理)
                 hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
                     const levelCount = hls.levels.length; 
                     if (levelCount > 1) {
                         hls.currentLevel = 0; // 强制最低码率
-                        showStatus(`加载成功！已强制选择最低清晰度 (Level 0/${levelCount - 1}) 播放。`);
+                        showStatus(`加载成功！已强制选择最低清晰度 (Level 0/${levelCount - 1}) 播放，广告过滤已启用。`);
                     } else {
-                        showStatus('加载成功！视频为单码率流。');
+                        showStatus('加载成功！视频为单码率流，广告过滤已启用。');
                     }
                     
                     video.play().catch(error => {
                         showStatus("注意：浏览器阻止了自动播放，请手动点击播放按钮。", false);
                     });
                     
-                    // 启动调试信息更新 (每秒更新)
                     window.debugTimer = setInterval(() => updateDebugInfo(hls), 1000);
                 });
                 
-                // 错误处理与恢复增强
                 hls.on(Hls.Events.ERROR, function (event, data) {
                     if (data.fatal) {
                        switch(data.type) {
@@ -273,16 +321,13 @@
         
         // --- 初始化与事件绑定 ---
         
-        // ** URL 参数加载逻辑 **
         const urlParam = getUrlParameter('url');
         let initialUrl = input.value.trim();
 
         if (urlParam) {
-            // 如果 URL 参数存在，则优先使用它
             initialUrl = urlParam;
-            input.value = initialUrl; // 更新输入框显示
+            input.value = initialUrl;
         } else {
-            // 否则，确保清空默认占位符，除非用户手动输入了
             initialUrl = initialUrl === 'YOUR_M3U8_URL_HERE' ? '' : initialUrl;
         }
 
@@ -308,6 +353,9 @@
                 clearInterval(window.debugTimer);
             }
             if (window.hlsInstance) {
+                 if (window.adFilterListener) {
+                    window.hlsInstance.off(Hls.Events.FRAG_LOADING, window.adFilterListener);
+                }
                 window.hlsInstance.destroy();
             }
         });
