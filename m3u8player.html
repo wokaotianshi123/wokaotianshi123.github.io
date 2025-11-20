@@ -157,7 +157,7 @@
         }
 
         // **核心：提取内容签名 (Content Signature)**
-        // 专注于提取最独特的 8+ 字符 ID (例如 GsUnW9HR)。
+        // 专注于提取 M3U8 URL 中最独特的 8+ 字符 ID (例如 GsUnW9HR)。
         function getContentSignature(m3u8Url) {
             try {
                 const path = new URL(m3u8Url).pathname;
@@ -204,8 +204,7 @@
             clearStatus();
             showStatus('正在加载流，准备进行基于块的 M3U8 清理...');
             
-            // ... (销毁旧实例和定时器代码不变)
-
+            // 清理旧实例和定时器
             if (window.hlsInstance) {
                  if (window.manifestLoadedHandler) {
                     window.hlsInstance.off(Hls.Events.MANIFEST_LOADED, window.manifestLoadedHandler);
@@ -244,16 +243,19 @@
                         let lines = manifestText.split('\n');
                         let cleanedLines = [];
                         let fragmentsRemoved = 0;
-                        let currentFragmentLines = []; // 用于存储当前片段块（包括 KEY, INF, URL）
+                        let currentFragmentLines = []; // 用于存储当前片段块（包括 KEY, INF, URL, DISCONTINUITY）
                         
                         // 遍历所有行，将 M3U8 分割成片段块
                         for (let i = 0; i < lines.length; i++) {
-                            const line = lines[i].trim();
+                            const line = lines[i];
+                            const trimmedLine = line.trim();
 
-                            // 1. 如果遇到新的 EXTINF，则意味着一个片段块结束，开始处理
-                            if (line.startsWith('#EXTINF:') && currentFragmentLines.length > 0) {
+                            // 逻辑：遇到 EXTINF 或 EXT-X-KEY 开始新片段块。
+                            // 当遇到下一个 EXTINF 时，处理上一个块。
+                            if (trimmedLine.startsWith('#EXTINF:') && currentFragmentLines.length > 0) {
                                 
-                                // 检查上一个片段块是否包含签名
+                                // --- 处理上一个片段块 ---
+                                // 检查上一个片段块是否包含签名 (CONTENT/AD 判断)
                                 let hasSignature = currentFragmentLines.some(l => l.includes(contentSignature));
                                 
                                 if (hasSignature) {
@@ -265,19 +267,21 @@
                                     console.warn(`[MANIFEST] 🛑 移除广告块。块内容不包含签名: ${contentSignature}`);
                                 }
 
-                                // 清空并开始收集新的片段块
+                                // 清空并开始收集新的片段块（当前行的 EXTINF 将是新块的开始）
                                 currentFragmentLines = [];
                             } 
                             
-                            // 2. 将当前行添加到当前片段块
-                            currentFragmentLines.push(lines[i]); // 保持原始格式（包括空行和注释）
-
-                            // 3. 检查文件头或 #EXT-X-VERSION 等非片段/非密钥行，立即保留
-                            if (line.startsWith('#EXTM3U') || line.startsWith('#EXT-X-VERSION') || line.startsWith('#EXT-X-TARGETDURATION')) {
-                                cleanedLines.push(lines[i]);
+                            // 确保文件头（#EXTM3U, VERSION, TARGETDURATION, MEDIA-SEQUENCE）等保留在头部
+                            if (trimmedLine.startsWith('#EXTM3U') || trimmedLine.startsWith('#EXT-X-VERSION') || 
+                                trimmedLine.startsWith('#EXT-X-TARGETDURATION') || trimmedLine.startsWith('#EXT-X-MEDIA-SEQUENCE')) 
+                            {
+                                cleanedLines.push(line);
                                 currentFragmentLines = [];
                                 continue;
                             }
+                            
+                            // 否则，将当前行添加到当前片段块
+                            currentFragmentLines.push(line); 
                         }
 
                         // 处理文件末尾的最后一个片段块
@@ -291,12 +295,7 @@
                             }
                         }
                         
-                        // 确保 M3U8 列表以 #EXTM3U 开头
-                        if (!cleanedLines[0] || !cleanedLines[0].includes('#EXTM3U')) {
-                            // 如果文件头被误删，我们应该恢复它，但这通常不会发生
-                        }
-
-                        // 最终清理：移除连续重复的 #EXT-X-DISCONTINUITY
+                        // 最终清理：移除连续重复的 #EXT-X-DISCONTINUITY，以防清理造成断层
                         const finalLines = [];
                         let lastLineWasDiscontinuity = false;
                         for (const line of cleanedLines) {
@@ -312,13 +311,12 @@
                             }
                         }
 
-
                         adFragmentsSkipped = fragmentsRemoved;
                         
                         const newManifestText = finalLines.join('\n');
                         data.response.data = newManifestText; // **重写 HLS.js 的数据**
 
-                        console.info(`[MANIFEST] M3U8 文件清理完毕。原始行数: ${lines.length}，最终行数: ${finalLines.length}。成功移除了 ${fragmentsRemoved} 个片段块。`);
+                        console.info(`[MANIFEST] M3U8 文件清理完毕。原始行数: ${lines.length}。成功移除了 ${fragmentsRemoved} 个片段块。`);
                     }
                 };
                 
