@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 播放器(密钥和分片双重过滤版)</title>
+    <title>M3U8 播放器 (内容重写过滤版)</title>
     <style>
         /* 基础样式和布局 */
         body {
@@ -106,9 +106,9 @@
 
 <div id="app-container">
     
-    <h1>M3U8 播放器 (密钥和分片双重过滤版)</h1>
+    <h1>M3U8 播放器 (内容重写过滤版)</h1>
     <p style="text-align: center; color: #777;">
-        已启用极限性能优化，并对**分片和加密密钥**进行双重签名过滤。请打开 **控制台 (F12)** 观察过滤日志。
+        已采用**修改 M3U8 文件内容**的最强过滤策略。请打开 **控制台 (F12)** 观察清理日志。
     </p>
 
     <div id="control-panel">
@@ -140,8 +140,8 @@
         const statusDiv = document.getElementById('status-message');
         const debugDiv = document.getElementById('debug-info');
         
-        let adFragmentsSkipped = 0;
-        
+        let adFragmentsSkipped = 0; // 这个计数器在新的策略下可能不准确，但仍保留
+
         input.value = input.value === 'YOUR_M3U8_URL_HERE' ? '' : input.value;
 
         // --- 工具函数 ---
@@ -167,6 +167,7 @@
         }
         
         // **核心：提取内容签名 (Content Signature) - 简化版**
+        // 专注于提取最独特的 8+ 字符 ID (例如 GsUnW9HR)。
         function getContentSignature(m3u8Url) {
             try {
                 const path = new URL(m3u8Url).pathname;
@@ -175,7 +176,7 @@
                 const match = path.match(signatureRegex);
                 
                 const signature = match ? match[1] : ''; 
-                console.log(`[Signature Check] 提取 M3U8 流ID成功: ${signature}`);
+                console.log(`[Signature Check] 提取 M3U8 流ID: ${signature}`);
                 return signature;
             } catch (e) {
                 console.error("[Signature Check] 提取 M3U8 流ID失败:", e);
@@ -196,14 +197,12 @@
             debugDiv.textContent = info;
         }
         
-        // 获取 URL 参数的函数
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             const results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
-
 
         // --- HLS 播放器核心逻辑 ---
         function loadM3U8(url) {
@@ -213,17 +212,13 @@
             }
             
             clearStatus();
-            showStatus('正在加载流，尝试过滤切片广告...');
+            showStatus('正在加载流，准备进行内容重写过滤...');
             
-            adFragmentsSkipped = 0;
+            // ... (销毁旧实例和定时器代码不变)
 
-            // 销毁旧实例和定时器
             if (window.hlsInstance) {
-                if (window.adFilterListener) {
-                    window.hlsInstance.off(Hls.Events.FRAG_LOADING, window.adFilterListener);
-                }
-                 if (window.keyFilterListener) {
-                    window.hlsInstance.off(Hls.Events.KEY_LOADING, window.keyFilterListener);
+                 if (window.manifestLoadedHandler) {
+                    window.hlsInstance.off(Hls.Events.MANIFEST_LOADED, window.manifestLoadedHandler);
                 }
                 window.hlsInstance.destroy();
             }
@@ -233,9 +228,8 @@
 
             if (Hls.isSupported()) {
                 
-                const baseDomain = getDomainFromUrl(url);
                 const contentSignature = getContentSignature(url);
-
+                console.log(`[Filter] 设定的内容流ID为: ${contentSignature}`);
 
                 const hlsConfig = {
                     startBufferLength: 8,       
@@ -250,93 +244,78 @@
 
                 const hls = new Hls(hlsConfig);
                 window.hlsInstance = hls;
+
+                // ------------------------------------------------------------------
+                // 4. **M3U8 内容重写过滤逻辑 (最强过滤)**
+                // ------------------------------------------------------------------
+                const manifestLoadedHandler = function (event, data) {
+                    if (data.type === 'main' && contentSignature) {
+                        let manifestText = data.response.data;
+                        const originalLength = manifestText.split('\n').length;
+                        
+                        let lines = manifestText.split('\n');
+                        let cleanedLines = [];
+                        let inAdBlock = false;
+                        let lastKeyLine = '';
+                        let fragmentsRemoved = 0;
+
+                        // 核心：基于签名判断每一行是否属于广告
+                        for (let i = 0; i < lines.length; i++) {
+                            const line = lines[i].trim();
+
+                            if (line.startsWith('#EXT-X-KEY:')) {
+                                lastKeyLine = line; // 记录最近的密钥行
+                                // 检查密钥是否为广告密钥（不包含内容签名）
+                                if (!line.includes(contentSignature)) {
+                                    inAdBlock = true;
+                                    // 拦截广告密钥，不将此行添加到 cleanedLines
+                                    console.warn(`[MANIFEST] 🛑 发现广告密钥，拦截: ${line.substring(0, 70)}...`);
+                                    continue;
+                                } else {
+                                    inAdBlock = false;
+                                }
+                            } else if (line.startsWith('#EXTINF:')) {
+                                // 检查片段 URL 是否包含内容签名，如果密钥已判定为广告，则跳过
+                                const nextLine = lines[i + 1] ? lines[i + 1].trim() : '';
+
+                                // 如果当前处于广告块，或者下一行（分片URL）不包含内容签名
+                                if (inAdBlock || (nextLine && !nextLine.includes(contentSignature))) {
+                                    
+                                    // 确保我们不会删除 #EXT-X-DISCONTINUITY，它是片段之间的分隔符
+                                    if (lines[i - 1] && lines[i - 1].startsWith('#EXT-X-DISCONTINUITY')) {
+                                        cleanedLines.push(lines[i - 1]);
+                                    }
+
+                                    // 拦截 EXTINF 和随后的 URL
+                                    fragmentsRemoved++;
+                                    console.warn(`[MANIFEST] 🛑 拦截片段: ${nextLine.substring(0, 70)}...`);
+                                    i++; // 跳过下一行的URL
+                                    continue;
+                                }
+                            } else if (line.startsWith('#EXT-X-DISCONTINUITY')) {
+                                inAdBlock = false; // DISCONTINUITY 后通常是新的流（可能是内容，也可能是广告）
+                            }
+                            
+                            // 默认情况下，添加该行
+                            cleanedLines.push(line);
+                        }
+                        
+                        adFragmentsSkipped = fragmentsRemoved;
+                        
+                        const newManifestText = cleanedLines.join('\n');
+                        data.response.data = newManifestText; // **重写 HLS.js 的数据**
+
+                        console.info(`[MANIFEST] M3U8 文件清理完毕。原始行数: ${originalLength}，移除片段数量: ${fragmentsRemoved}。`);
+                    }
+                };
+                
+                // 绑定清单加载处理器
+                hls.on(Hls.Events.MANIFEST_LOADED, manifestLoadedHandler);
+                window.manifestLoadedHandler = manifestLoadedHandler;
                 
                 // ----------------------------------------------------
-                // 4A. **KEY_LOADING 广告过滤逻辑 (拦截密钥文件加载)**
+                // （移除 FRAG_LOADING 和 KEY_LOADING 监听，因为已在源头解决）
                 // ----------------------------------------------------
-                const keyFilterListener = function (event, data) {
-                    const keyUrl = data.url; 
-                    
-                    if (contentSignature && !keyUrl.includes(contentSignature)) {
-                        // 密钥 URL 中不包含主内容的流ID，判定为广告密钥
-                        console.warn(`[Ad Filter: KEY] 🛑 拦截广告密钥 (签名不匹配)：${keyUrl}`);
-                        
-                        // 阻止 hls.js 加载密钥，通过触发 ERROR 来跳过此段。
-                        // 由于 Key Loader是定制的，我们不能像片段一样发送空载荷，只能让它失败。
-                        hls.trigger(Hls.Events.ERROR, {
-                            type: Hls.ErrorTypes.NETWORK_ERROR,
-                            details: Hls.ErrorDetails.KEY_LOAD_ERROR,
-                            fatal: false, // 设为false，让hls.js尝试跳过或恢复
-                            frag: data.frag,
-                            reason: "Ad Key Blocked by Signature Filter"
-                        });
-                        
-                        // 记录为跳过的片段广告
-                        adFragmentsSkipped++;
-                        
-                        return;
-                    } else {
-                        console.log(`[Ad Filter: KEY] ✅ 允许内容密钥加载 (包含签名: ${contentSignature}): ${keyUrl}`);
-                    }
-                };
-
-                // 绑定监听器
-                hls.on(Hls.Events.KEY_LOADING, keyFilterListener);
-                window.keyFilterListener = keyFilterListener;
-
-
-                // ----------------------------------------------------
-                // 4B. **FRAG_LOADING 广告过滤逻辑 (拦截分片加载)**
-                // ----------------------------------------------------
-                const adFilterListener = function (event, data) {
-                    const fragmentUrl = data.frag.url;
-                    const fragmentDomain = getDomainFromUrl(fragmentUrl);
-                    
-                    let isAd = false;
-                    let reason = '';
-
-                    // A. 规则 1 (路径签名比对 - 最精准): 
-                    if (contentSignature && !fragmentUrl.includes(contentSignature)) {
-                        isAd = true;
-                        reason = '内容签名不匹配'; 
-                    }
-                    
-                    // B. 规则 2 (域名比对 - 辅助): 
-                    if (!isAd && fragmentDomain && fragmentDomain !== baseDomain) {
-                        isAd = true;
-                        reason = '域名不匹配';
-                    }
-
-                    if (isAd) {
-                        // 判定为广告，拦截加载
-                        console.warn(`[Ad Filter: FRAG] 🛑 拦截广告片段 (原因: ${reason})：${fragmentUrl}`);
-                        
-                        adFragmentsSkipped++;
-                        
-                        // 手动触发 FRAG_LOADED 事件，传递空数据，实现跳过。
-                        hls.trigger(Hls.Events.FRAG_LOADED, {
-                            frag: data.frag,
-                            payload: new ArrayBuffer(0), 
-                            stats: { 
-                                trequest: performance.now(), 
-                                tfirst: performance.now(), 
-                                tload: performance.now(), 
-                                tparsed: performance.now(), 
-                                loaded: 0 
-                            }
-                        });
-                        
-                        return; 
-                    } else {
-                        // 判定为内容，允许加载
-                        console.log(`[Ad Filter: FRAG] ✅ 允许内容片段加载 (包含签名: ${contentSignature}): ${fragmentUrl}`);
-                    }
-                };
-
-                // 绑定监听器
-                hls.on(Hls.Events.FRAG_LOADING, adFilterListener);
-                window.adFilterListener = adFilterListener;
-
 
                 hls.loadSource(url);
                 hls.attachMedia(video);
@@ -348,7 +327,7 @@
                         `已强制选择最低清晰度 (Level 0/${levelCount - 1}) 播放` : 
                         '视频为单码率流';
                     
-                    showStatus(`加载成功！${clarityMessage}。当前已跳过 ${adFragmentsSkipped} 个广告片段。`);
+                    showStatus(`加载成功！${clarityMessage}。M3U8 清单已清理并移除了 ${adFragmentsSkipped} 个广告片段。`);
                     
                     video.play().catch(error => {
                         showStatus("注意：浏览器阻止了自动播放，请手动点击播放按钮。", false);
@@ -374,9 +353,6 @@
                                 hls.destroy();
                                 break;
                        }
-                    } else if (data.details === Hls.ErrorDetails.KEY_LOAD_ERROR) {
-                        // 忽略我们主动触发的密钥加载错误，让 hls.js 跳过此分段。
-                        console.log(`[Ad Filter] 忽略已拦截的密钥加载错误: ${data.reason}`);
                     } else {
                         showStatus(`警告：非致命错误 (${data.type}/${data.details})，播放器正在处理。`, false);
                     }
@@ -428,11 +404,8 @@
                 clearInterval(window.debugTimer);
             }
             if (window.hlsInstance) {
-                 if (window.adFilterListener) {
-                    window.hlsInstance.off(Hls.Events.FRAG_LOADING, window.adFilterListener);
-                }
-                 if (window.keyFilterListener) {
-                    window.hlsInstance.off(Hls.Events.KEY_LOADING, window.keyFilterListener);
+                 if (window.manifestLoadedHandler) {
+                    window.hlsInstance.off(Hls.Events.MANIFEST_LOADED, window.manifestLoadedHandler);
                 }
                 window.hlsInstance.destroy();
             }
@@ -442,4 +415,3 @@
 
 </body>
 </html>
-
