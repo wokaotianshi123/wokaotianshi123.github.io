@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 播放器 (自定义加载器过滤)</title>
+    <title>M3U8 播放器 (最终修复版)</title>
     <style>
         /* 基础样式和布局 */
         body {
@@ -106,9 +106,9 @@
 
 <div id="app-container">
     
-    <h1>M3U8 播放器 (自定义加载器过滤)</h1>
+    <h1>M3U8 播放器 (最终修复版)</h1>
     <p style="text-align: center; color: #777;">
-        已采用**自定义加载器**的最终过滤策略，在 M3U8 文件解析前同步删除广告块。请打开 **控制台 (F12)** 观察清理日志。
+        已启用最稳定的 M3U8 清理逻辑，并修复了 URL 参数加载问题。请打开 **控制台 (F12)** 观察清理日志。
     </p>
 
     <div id="control-panel">
@@ -116,7 +116,7 @@
             type="url" 
             id="m3u8-input" 
             placeholder="在此粘贴您的 M3U8 播放地址，或通过 ?url= 参数加载"
-            value="YOUR_M3U8_URL_HERE"
+            value=""
         >
         <button id="load-button">
             ⚡️ 开始播放
@@ -141,8 +141,6 @@
         const debugDiv = document.getElementById('debug-info');
         
         let adFragmentsSkipped = 0; 
-
-        input.value = input.value === 'YOUR_M3U8_URL_HERE' ? '' : input.value;
 
         // --- 工具函数 ---
         function showStatus(message, isError = false) {
@@ -181,149 +179,89 @@
             debugDiv.textContent = info;
         }
 
-        // --- 自定义 M3U8 加载器 (Custom Manifest Loader) ---
-        class CustomManifestLoader {
-            constructor(config) {
-                this.config = config;
-                this.hls = null;
-                this.loader = null;
-                this.contentSignature = '';
-            }
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            // 修复 URL 参数读取问题
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
 
-            // hls.js 调用这个方法来设置加载器
-            setup(hls) {
-                this.hls = hls;
-            }
+        // --- M3U8 清理逻辑 (基于块的清理) ---
+        function cleanManifest(manifestText, contentSignature) {
+            let lines = manifestText.split('\n');
+            let cleanedLines = [];
+            let fragmentsRemoved = 0;
+            let currentFragmentLines = []; // 用于存储当前片段块（包括 KEY, INF, URL, DISCONTINUITY）
             
-            // hls.js 调用这个方法来开始加载
-            load(context, config, callbacks) {
-                // 仅处理 MASTER 或 LEVEL 清单
-                if (context.type !== 'manifest' || !this.contentSignature) {
-                    // 如果是其他类型的加载，或者签名未设置，使用默认加载逻辑
-                    const DefaultLoader = this.hls.config.loader;
-                    this.loader = new DefaultLoader(config);
-                    this.loader.load(context, config, callbacks);
-                    return;
-                }
+            // 遍历所有行，将 M3U8 分割成片段块
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const trimmedLine = line.trim();
 
-                this.callbacks = callbacks;
-                this.context = context;
-
-                // 1. 使用 Fetch API 获取 M3U8 文件内容
-                fetch(context.url, { cache: 'no-cache' }) // 禁用缓存
-                    .then(response => {
-                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                        return response.text();
-                    })
-                    .then(manifestText => {
-                        // 2. 在解析前同步进行清理
-                        const cleanedText = this.cleanManifest(manifestText, this.contentSignature);
-
-                        // 3. 构造 hls.js 期望的响应对象
-                        const data = {
-                            url: context.url,
-                            data: cleanedText,
-                            responseURL: context.url,
-                            response: { url: context.url, code: 200, data: cleanedText },
-                            type: context.type,
-                            level: context.level
-                        };
-
-                        // 4. 通知 hls.js 加载成功
-                        this.callbacks.onSuccess(data, context, cleanedText);
-
-                    })
-                    .catch(error => {
-                        console.error('[Custom Loader] M3U8 加载或清理失败:', error);
-                        // 通知 hls.js 失败
-                        const errorData = {
-                            code: 0,
-                            text: error.message,
-                            context: context
-                        };
-                        this.callbacks.onError(errorData, context);
-                    });
-            }
-
-            // M3U8 清理逻辑 (与上一个版本相同，但现在在加载器内部执行)
-            cleanManifest(manifestText, contentSignature) {
-                let lines = manifestText.split('\n');
-                let cleanedLines = [];
-                let fragmentsRemoved = 0;
-                let currentFragmentLines = []; 
-                
-                // 遍历所有行，将 M3U8 分割成片段块
-                for (let i = 0; i < lines.length; i++) {
-                    const line = lines[i];
-                    const trimmedLine = line.trim();
-
-                    // 逻辑：遇到 EXTINF 或 EXT-X-KEY 开始新片段块。
-                    // 当遇到下一个 EXTINF 时，处理上一个块。
-                    if (trimmedLine.startsWith('#EXTINF:') && currentFragmentLines.length > 0) {
-                        
-                        // --- 处理上一个片段块 ---
-                        let hasSignature = currentFragmentLines.some(l => l.includes(contentSignature));
-                        
-                        if (hasSignature) {
-                            cleanedLines.push(...currentFragmentLines);
-                        } else {
-                            fragmentsRemoved++;
-                            // 打印被删除块的首行内容（排除空行和注释）
-                            const firstContentLine = currentFragmentLines.find(l => l.trim().length > 0 && !l.trim().startsWith('#'));
-                            console.warn(`[MANIFEST CLEANER] 🛑 移除广告块 (${fragmentsRemoved})，首片段: ${firstContentLine ? firstContentLine.substring(0, 50) + '...' : 'N/A'}`);
-                        }
-
-                        // 清空并开始收集新的片段块
-                        currentFragmentLines = [];
-                    } 
+                // 逻辑：遇到 EXTINF 或 EXT-X-KEY 开始新片段块。
+                // 当遇到下一个 EXTINF 时，处理上一个块。
+                if (trimmedLine.startsWith('#EXTINF:') && currentFragmentLines.length > 0) {
                     
-                    // 确保文件头（#EXTM3U, VERSION, TARGETDURATION, MEDIA-SEQUENCE）等保留在头部
-                    if (trimmedLine.startsWith('#EXTM3U') || trimmedLine.startsWith('#EXT-X-VERSION') || 
-                        trimmedLine.startsWith('#EXT-X-TARGETDURATION') || trimmedLine.startsWith('#EXT-X-MEDIA-SEQUENCE')) 
-                    {
-                        cleanedLines.push(line);
-                        currentFragmentLines = [];
-                        continue;
-                    }
-                    
-                    // 否则，将当前行添加到当前片段块
-                    currentFragmentLines.push(line); 
-                }
-
-                // 处理文件末尾的最后一个片段块
-                if (currentFragmentLines.length > 0) {
+                    // --- 处理上一个片段块 ---
+                    // 检查上一个片段块是否包含签名 (CONTENT/AD 判断)
                     let hasSignature = currentFragmentLines.some(l => l.includes(contentSignature));
+                    
                     if (hasSignature) {
                         cleanedLines.push(...currentFragmentLines);
                     } else {
                         fragmentsRemoved++;
-                        console.warn(`[MANIFEST CLEANER] 🛑 移除末尾广告块。`);
+                        // 打印被删除块的首行内容（排除空行和注释）
+                        const firstContentLine = currentFragmentLines.find(l => l.trim().length > 0 && !l.trim().startsWith('#'));
+                        console.warn(`[MANIFEST CLEANER] 🛑 移除广告块 (${fragmentsRemoved})，首片段: ${firstContentLine ? firstContentLine.substring(0, 50) + '...' : 'N/A'}`);
                     }
+
+                    // 清空并开始收集新的片段块（当前行的 EXTINF 将是新块的开始）
+                    currentFragmentLines = [];
+                } 
+                
+                // 确保文件头（#EXTM3U, VERSION, TARGETDURATION, MEDIA-SEQUENCE）等保留在头部
+                if (trimmedLine.startsWith('#EXTM3U') || trimmedLine.startsWith('#EXT-X-VERSION') || 
+                    trimmedLine.startsWith('#EXT-X-TARGETDURATION') || trimmedLine.startsWith('#EXT-X-MEDIA-SEQUENCE')) 
+                {
+                    cleanedLines.push(line);
+                    currentFragmentLines = [];
+                    continue;
                 }
                 
-                // 移除连续重复的 #EXT-X-DISCONTINUITY
-                const finalLines = [];
-                let lastLineWasDiscontinuity = false;
-                for (const line of cleanedLines) {
-                    const trimmed = line.trim();
-                    if (trimmed === '#EXT-X-DISCONTINUITY') {
-                        if (!lastLineWasDiscontinuity) {
-                            finalLines.push(line);
-                        }
-                        lastLineWasDiscontinuity = true;
-                    } else {
-                        finalLines.push(line);
-                        lastLineWasDiscontinuity = false;
-                    }
-                }
-
-                adFragmentsSkipped += fragmentsRemoved; // 更新全局跳过计数
-                return finalLines.join('\n');
+                // 否则，将当前行添加到当前片段块
+                currentFragmentLines.push(line); 
             }
 
-            // 必须实现的 abort() 和 destroy() 方法
-            abort() { if (this.loader) this.loader.abort(); }
-            destroy() { if (this.loader) this.loader.destroy(); this.loader = null; }
+            // 处理文件末尾的最后一个片段块
+            if (currentFragmentLines.length > 0) {
+                let hasSignature = currentFragmentLines.some(l => l.includes(contentSignature));
+                if (hasSignature) {
+                    cleanedLines.push(...currentFragmentLines);
+                } else {
+                    fragmentsRemoved++;
+                    console.warn(`[MANIFEST CLEANER] 🛑 移除末尾广告块。`);
+                }
+            }
+            
+            // 移除连续重复的 #EXT-X-DISCONTINUITY
+            const finalLines = [];
+            let lastLineWasDiscontinuity = false;
+            for (const line of cleanedLines) {
+                const trimmed = line.trim();
+                if (trimmed === '#EXT-X-DISCONTINUITY') {
+                    if (!lastLineWasDiscontinuity) {
+                        finalLines.push(line);
+                    }
+                    lastLineWasDiscontinuity = true;
+                } else {
+                    finalLines.push(line);
+                    lastLineWasDiscontinuity = false;
+                }
+            }
+
+            adFragmentsSkipped = fragmentsRemoved; // 更新全局跳过计数
+            return finalLines.join('\n');
         }
 
         // --- HLS 播放器核心逻辑 ---
@@ -338,6 +276,9 @@
             
             // 清理旧实例
             if (window.hlsInstance) {
+                 if (window.manifestLoadedHandler) {
+                    window.hlsInstance.off(Hls.Events.MANIFEST_LOADED, window.manifestLoadedHandler);
+                }
                 window.hlsInstance.destroy();
             }
             if (window.debugTimer) {
@@ -348,29 +289,41 @@
                 
                 const contentSignature = getContentSignature(url);
                 
-                const customLoaderInstance = new CustomManifestLoader({});
-                customLoaderInstance.contentSignature = contentSignature; // 传递签名给加载器
-
-                // 1. 配置 hls.js 使用自定义加载器
+                // 1. hls.js 配置
                 const hlsConfig = {
                     startBufferLength: 8,       
                     maxBufferLength: 60,        
                     maxBufferSize: 100 * 1024 * 1024, 
                     autoLevelEnabled: true,     
-                    fragLoadingTimeOut: 15000,  
-                    manifestLoader: CustomManifestLoader, // 使用 CustomManifestLoader
+                    fragLoadingTimeOut: 15000,
+                    // 禁用缓存，强制获取最新 M3U8
+                    // xhrSetup: function(xhr, url) {
+                    //     xhr.setRequestHeader('Cache-Control', 'no-cache');
+                    // }
                 };
 
                 const hls = new Hls(hlsConfig);
                 window.hlsInstance = hls;
                 
-                showStatus('正在加载流，通过自定义加载器进行 M3U8 清理...');
+                showStatus('正在加载流，通过 MANIFEST_LOADED 事件进行 M3U8 清理...');
+
+                // 2. 绑定 MANIFEST_LOADED 事件进行清理 (上一个版本的稳定逻辑)
+                const manifestLoadedHandler = function (event, data) {
+                    if (data.type === 'main' && contentSignature && data.response && data.response.data) {
+                        // 清理 M3U8 内容并重写数据
+                        const cleanedText = cleanManifest(data.response.data, contentSignature);
+                        data.response.data = cleanedText; 
+                    }
+                };
+
+                hls.on(Hls.Events.MANIFEST_LOADED, manifestLoadedHandler);
+                window.manifestLoadedHandler = manifestLoadedHandler;
 
 
                 hls.loadSource(url);
                 hls.attachMedia(video);
 
-                // 2. 事件监听
+                // 3. 事件监听
                 hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
                     const levelCount = hls.levels.length; 
                     const clarityMessage = levelCount > 1 ? 
@@ -389,6 +342,7 @@
                 hls.on(Hls.Events.ERROR, function (event, data) {
                     if (data.fatal) {
                        console.error(`[HLS Error] 致命错误: ${data.type}/${data.details}`, data);
+                       showStatus(`致命错误 (${data.type}/${data.details})，请检查源地址。`, true);
                        // 致命错误处理...
                     } else {
                         console.warn(`[HLS Error] 非致命错误: ${data.type}/${data.details}`);
@@ -410,13 +364,10 @@
         // --- 初始化与事件绑定 ---
         
         const urlParam = getUrlParameter('url');
-        let initialUrl = input.value.trim();
-
+        
+        // 修复 URL 参数失效问题：
         if (urlParam) {
-            initialUrl = urlParam;
-            input.value = initialUrl;
-        } else {
-            initialUrl = initialUrl === 'YOUR_M3U8_URL_HERE' ? '' : initialUrl;
+            input.value = urlParam;
         }
 
         // 绑定按钮和回车事件
@@ -431,8 +382,8 @@
         });
         
         // 页面加载时自动加载
-        if (initialUrl) {
-            loadM3U8(initialUrl);
+        if (input.value.trim()) {
+            loadM3U8(input.value.trim());
         }
         
         // 页面卸载时清理资源
@@ -441,6 +392,9 @@
                 clearInterval(window.debugTimer);
             }
             if (window.hlsInstance) {
+                if (window.manifestLoadedHandler) {
+                    window.hlsInstance.off(Hls.Events.MANIFEST_LOADED, window.manifestLoadedHandler);
+                }
                 window.hlsInstance.destroy();
             }
         });
