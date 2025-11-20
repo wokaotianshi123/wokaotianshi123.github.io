@@ -108,7 +108,7 @@
     
     <h1>M3U8 播放器 (最终增强过滤版)</h1>
     <p style="text-align: center; color: #777;">
-        已启用极限性能优化，并基于**完整内容路径签名**增强了广告的识别精度。
+        已启用极限性能优化，并基于**内容签名（流ID）**进行精准过滤。请打开 **控制台 (F12)** 观察过滤日志。
     </p>
 
     <div id="control-panel">
@@ -166,22 +166,21 @@
             }
         }
         
-        // **核心：提取内容签名 (Content Signature) - 增强版**
-        // 提取主 M3U8 路径中包含日期、ID 和码率的这整个路径前缀，作为最强的流标识。
-        // 例如：对于 /20241116/GsUnW9HR/1100kb/hls/index.m3u8，提取 '20241116/GsUnW9HR/1100kb'
+        // **核心：提取内容签名 (Content Signature) - 简化版**
+        // 专注于提取最独特的 8+ 字符 ID (例如 GsUnW9HR)，作为最强的流标识。
         function getContentSignature(m3u8Url) {
             try {
-                const urlObj = new URL(m3u8Url);
-                const path = urlObj.pathname;
-                
-                // 匹配 /(\d{8})\/([a-zA-Z0-9]{8,})\/(\d+kb)/ 结构
-                // 捕获 YYYYMMDD, ID, 码率
-                const signatureRegex = /(\d{8})\/([a-zA-Z0-9]{8,})\/(\d+kb)/; 
+                const path = new URL(m3u8Url).pathname;
+                // 查找 ID/BITRATE/ 结构，捕获 ID
+                const signatureRegex = /([a-zA-Z0-9]{8,})\/\d+kb/; 
                 const match = path.match(signatureRegex);
                 
-                // 组合成完整的流路径签名
-                return match ? `${match[1]}/${match[2]}/${match[3]}` : ''; 
+                // 返回匹配到的 ID，例如 'GsUnW9HR'
+                const signature = match ? match[1] : ''; 
+                console.log(`[Signature Check] 提取 M3U8 流ID成功: ${signature}`);
+                return signature;
             } catch (e) {
+                console.error("[Signature Check] 提取 M3U8 流ID失败:", e);
                 return '';
             }
         }
@@ -254,18 +253,20 @@
                 const hls = new Hls(hlsConfig);
                 window.hlsInstance = hls;
 
-                // **4. 广告过滤逻辑：基于内容路径签名（最强规则）**
+                // **4. 广告过滤逻辑：基于内容签名（最强规则）**
                 const adFilterListener = function (event, data) {
+                    // data.frag.url 是 hls.js 最终解析并尝试加载的 URL
                     const fragmentUrl = data.frag.url;
                     const fragmentDomain = getDomainFromUrl(fragmentUrl);
                     
                     let isAd = false;
                     let reason = '';
 
-                    // A. 规则 1 (路径签名比对 - 最精准): 检查分片URL是否包含主内容的完整路径签名。
+                    // A. 规则 1 (路径签名比对 - 最精准): 
+                    // 检查分片URL是否包含主内容的流ID。如果签名存在但URL不包含，则判定为广告。
                     if (contentSignature && !fragmentUrl.includes(contentSignature)) {
                         isAd = true;
-                        reason = '内容路径签名不匹配'; 
+                        reason = '内容签名不匹配'; 
                     }
                     
                     // B. 规则 2 (域名比对 - 辅助): 检查绝对路径的分片域名是否与主域名不一致。
@@ -276,7 +277,7 @@
 
                     if (isAd) {
                         // 判定为广告，拦截加载
-                        console.warn(`[Ad Filter] 广告片段被拦截 (原因: ${reason})：${fragmentUrl}`);
+                        console.warn(`[Ad Filter] 🛑 拦截广告 (原因: ${reason})：${fragmentUrl}`);
                         
                         adFragmentsSkipped++;
                         
@@ -294,6 +295,9 @@
                         });
                         
                         return; 
+                    } else {
+                        // 判定为内容，允许加载
+                        console.log(`[Ad Filter] ✅ 允许内容加载 (包含签名: ${contentSignature}): ${fragmentUrl}`);
                     }
                 };
 
