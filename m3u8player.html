@@ -140,6 +140,9 @@
         const statusDiv = document.getElementById('status-message');
         const debugDiv = document.getElementById('debug-info');
         
+        // **全局广告计数器**
+        let adFragmentsSkipped = 0;
+        
         // 检查并清除默认占位符，防止加载无效地址
         input.value = input.value === 'YOUR_M3U8_URL_HERE' ? '' : input.value;
 
@@ -155,27 +158,25 @@
             statusDiv.style.display = 'none';
         }
 
-        // **获取 URL 域名**
+        // 获取 URL 域名
         function getDomainFromUrl(url) {
             try {
-                // 使用 URL API 提取 hostname
                 const u = new URL(url);
                 return u.hostname;
             } catch (e) {
-                return ''; // 非法 URL
+                return '';
             }
         }
 
         function updateDebugInfo(hls) {
             if (!hls || !hls.currentLevel || !hls.levels[hls.currentLevel]) return;
             
-            // 计算当前缓冲区剩余时长
             const buffer = video.buffered.length > 0 ? (video.buffered.end(0) - video.currentTime).toFixed(1) : '0.0';
             const currentLevel = hls.levels[hls.currentLevel];
             
             let info = `缓存: ${buffer}s | `;
-            // 显示当前码率
-            info += `码率: ${(currentLevel.bitrate / 1000).toFixed(0)} kbps`; 
+            info += `码率: ${(currentLevel.bitrate / 1000).toFixed(0)} kbps | `;
+            info += `广告跳过: ${adFragmentsSkipped}`; 
             
             debugDiv.textContent = info;
         }
@@ -198,6 +199,9 @@
             
             clearStatus();
             showStatus('正在加载流，尝试过滤切片广告...');
+            
+            // 重置广告计数器
+            adFragmentsSkipped = 0;
 
             // 销毁旧实例和定时器
             if (window.hlsInstance) {
@@ -217,13 +221,10 @@
 
                 // 2. HLS 极限缓存与并行下载配置
                 const hlsConfig = {
-                    // 缓存与码率优化
                     startBufferLength: 8,       
                     maxBufferLength: 60,        
                     maxBufferSize: 100 * 1024 * 1024, 
                     autoLevelEnabled: true,     
-                    
-                    // 并行与重试优化
                     fragLoadingTimeOut: 15000,  
                     fragLoadingMaxRetry: 5,     
                     fragLoadingMaxConnections: 6,
@@ -241,6 +242,9 @@
                     if (fragmentDomain && fragmentDomain !== baseDomain) {
                         // 域名不匹配，判定为广告，拦截加载
                         console.warn(`[Ad Filter] 广告片段被拦截: ${fragmentUrl} (主域名: ${baseDomain})`);
+                        
+                        // 递增广告计数器
+                        adFragmentsSkipped++;
                         
                         // 手动触发 FRAG_LOADED 事件，传递空数据，欺骗 hls.js 认为片段已加载但内容为空。
                         hls.trigger(Hls.Events.FRAG_LOADED, {
@@ -271,17 +275,17 @@
                 // 4. 事件监听 (播放和错误处理)
                 hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
                     const levelCount = hls.levels.length; 
-                    if (levelCount > 1) {
-                        hls.currentLevel = 0; // 强制最低码率
-                        showStatus(`加载成功！已强制选择最低清晰度 (Level 0/${levelCount - 1}) 播放，广告过滤已启用。`);
-                    } else {
-                        showStatus('加载成功！视频为单码率流，广告过滤已启用。');
-                    }
+                    const clarityMessage = levelCount > 1 ? 
+                        `已强制选择最低清晰度 (Level 0/${levelCount - 1}) 播放` : 
+                        '视频为单码率流';
+                    
+                    showStatus(`加载成功！${clarityMessage}。当前已跳过 ${adFragmentsSkipped} 个广告片段。`);
                     
                     video.play().catch(error => {
                         showStatus("注意：浏览器阻止了自动播放，请手动点击播放按钮。", false);
                     });
                     
+                    // 启动调试信息更新 (每秒更新)
                     window.debugTimer = setInterval(() => updateDebugInfo(hls), 1000);
                 });
                 
