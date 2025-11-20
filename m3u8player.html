@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 播放器 (内容签名增强过滤版)</title>
+    <title>M3U8 播放器 (最终增强过滤版)</title>
     <style>
         /* 基础样式和布局 */
         body {
@@ -106,9 +106,9 @@
 
 <div id="app-container">
     
-    <h1>M3U8 播放器 (内容签名增强过滤版)</h1>
+    <h1>M3U8 播放器 (最终增强过滤版)</h1>
     <p style="text-align: center; color: #777;">
-        已启用极限性能优化，并基于内容签名（流ID）增强了广告的识别精度。
+        已启用极限性能优化，并基于**完整内容路径签名**增强了广告的识别精度。
     </p>
 
     <div id="control-panel">
@@ -166,23 +166,22 @@
             }
         }
         
-        // **核心：提取内容签名 (Content Signature)**
-        // 提取类似 GsUnW9HR 的独特流 ID，用于精准过滤
+        // **核心：提取内容签名 (Content Signature) - 增强版**
+        // 提取主 M3U8 路径中包含日期、ID 和码率的这整个路径前缀，作为最强的流标识。
+        // 例如：对于 /20241116/GsUnW9HR/1100kb/hls/index.m3u8，提取 '20241116/GsUnW9HR/1100kb'
         function getContentSignature(m3u8Url) {
             try {
-                // 确保 URL 是合法的，以便使用 URL API
                 const urlObj = new URL(m3u8Url);
                 const path = urlObj.pathname;
                 
-                // 正则表达式查找类似 ID/BITRATE/hls/ 的结构，并捕获 ID
-                // ID通常是 8+ 位字母数字，位于 /BITRATE/ 之前
-                const signatureRegex = /([a-zA-Z0-9]{8,})\/\d+kb/; 
+                // 匹配 /(\d{8})\/([a-zA-Z0-9]{8,})\/(\d+kb)/ 结构
+                // 捕获 YYYYMMDD, ID, 码率
+                const signatureRegex = /(\d{8})\/([a-zA-Z0-9]{8,})\/(\d+kb)/; 
                 const match = path.match(signatureRegex);
                 
-                // 返回匹配到的 ID，例如 'GsUnW9HR'
-                return match ? match[1] : ''; 
+                // 组合成完整的流路径签名
+                return match ? `${match[1]}/${match[2]}/${match[3]}` : ''; 
             } catch (e) {
-                // 如果 URL 不规范，则返回空签名
                 return '';
             }
         }
@@ -236,7 +235,7 @@
                 
                 // 1. 获取主内容域名
                 const baseDomain = getDomainFromUrl(url);
-                // 2. 提取内容签名 (例如: GsUnW9HR)
+                // 2. 提取最强的流路径签名
                 const contentSignature = getContentSignature(url);
 
 
@@ -255,7 +254,7 @@
                 const hls = new Hls(hlsConfig);
                 window.hlsInstance = hls;
 
-                // **4. 广告过滤逻辑：基于内容签名（主要）+ 域名（辅助）**
+                // **4. 广告过滤逻辑：基于内容路径签名（最强规则）**
                 const adFilterListener = function (event, data) {
                     const fragmentUrl = data.frag.url;
                     const fragmentDomain = getDomainFromUrl(fragmentUrl);
@@ -263,10 +262,10 @@
                     let isAd = false;
                     let reason = '';
 
-                    // A. 规则 1 (签名比对 - 最精准): 如果成功提取到签名，检查分片URL是否包含该签名。
+                    // A. 规则 1 (路径签名比对 - 最精准): 检查分片URL是否包含主内容的完整路径签名。
                     if (contentSignature && !fragmentUrl.includes(contentSignature)) {
                         isAd = true;
-                        reason = '内容签名不匹配'; 
+                        reason = '内容路径签名不匹配'; 
                     }
                     
                     // B. 规则 2 (域名比对 - 辅助): 检查绝对路径的分片域名是否与主域名不一致。
