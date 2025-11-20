@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 播放器 (最终增强过滤版)</title>
+    <title>M3U8 播放器 (密钥和分片双重过滤版)</title>
     <style>
         /* 基础样式和布局 */
         body {
@@ -106,9 +106,9 @@
 
 <div id="app-container">
     
-    <h1>M3U8 播放器 (最终增强过滤版)</h1>
+    <h1>M3U8 播放器 (密钥和分片双重过滤版)</h1>
     <p style="text-align: center; color: #777;">
-        已启用极限性能优化，并基于**内容签名（流ID）**进行精准过滤。请打开 **控制台 (F12)** 观察过滤日志。
+        已启用极限性能优化，并对**分片和加密密钥**进行双重签名过滤。请打开 **控制台 (F12)** 观察过滤日志。
     </p>
 
     <div id="control-panel">
@@ -167,7 +167,6 @@
         }
         
         // **核心：提取内容签名 (Content Signature) - 简化版**
-        // 专注于提取最独特的 8+ 字符 ID (例如 GsUnW9HR)，作为最强的流标识。
         function getContentSignature(m3u8Url) {
             try {
                 const path = new URL(m3u8Url).pathname;
@@ -175,7 +174,6 @@
                 const signatureRegex = /([a-zA-Z0-9]{8,})\/\d+kb/; 
                 const match = path.match(signatureRegex);
                 
-                // 返回匹配到的 ID，例如 'GsUnW9HR'
                 const signature = match ? match[1] : ''; 
                 console.log(`[Signature Check] 提取 M3U8 流ID成功: ${signature}`);
                 return signature;
@@ -224,6 +222,9 @@
                 if (window.adFilterListener) {
                     window.hlsInstance.off(Hls.Events.FRAG_LOADING, window.adFilterListener);
                 }
+                 if (window.keyFilterListener) {
+                    window.hlsInstance.off(Hls.Events.KEY_LOADING, window.keyFilterListener);
+                }
                 window.hlsInstance.destroy();
             }
             if (window.debugTimer) {
@@ -232,13 +233,10 @@
 
             if (Hls.isSupported()) {
                 
-                // 1. 获取主内容域名
                 const baseDomain = getDomainFromUrl(url);
-                // 2. 提取最强的流路径签名
                 const contentSignature = getContentSignature(url);
 
 
-                // 3. HLS 极限缓存与并行下载配置
                 const hlsConfig = {
                     startBufferLength: 8,       
                     maxBufferLength: 60,        
@@ -252,10 +250,45 @@
 
                 const hls = new Hls(hlsConfig);
                 window.hlsInstance = hls;
+                
+                // ----------------------------------------------------
+                // 4A. **KEY_LOADING 广告过滤逻辑 (拦截密钥文件加载)**
+                // ----------------------------------------------------
+                const keyFilterListener = function (event, data) {
+                    const keyUrl = data.url; 
+                    
+                    if (contentSignature && !keyUrl.includes(contentSignature)) {
+                        // 密钥 URL 中不包含主内容的流ID，判定为广告密钥
+                        console.warn(`[Ad Filter: KEY] 🛑 拦截广告密钥 (签名不匹配)：${keyUrl}`);
+                        
+                        // 阻止 hls.js 加载密钥，通过触发 ERROR 来跳过此段。
+                        // 由于 Key Loader是定制的，我们不能像片段一样发送空载荷，只能让它失败。
+                        hls.trigger(Hls.Events.ERROR, {
+                            type: Hls.ErrorTypes.NETWORK_ERROR,
+                            details: Hls.ErrorDetails.KEY_LOAD_ERROR,
+                            fatal: false, // 设为false，让hls.js尝试跳过或恢复
+                            frag: data.frag,
+                            reason: "Ad Key Blocked by Signature Filter"
+                        });
+                        
+                        // 记录为跳过的片段广告
+                        adFragmentsSkipped++;
+                        
+                        return;
+                    } else {
+                        console.log(`[Ad Filter: KEY] ✅ 允许内容密钥加载 (包含签名: ${contentSignature}): ${keyUrl}`);
+                    }
+                };
 
-                // **4. 广告过滤逻辑：基于内容签名（最强规则）**
+                // 绑定监听器
+                hls.on(Hls.Events.KEY_LOADING, keyFilterListener);
+                window.keyFilterListener = keyFilterListener;
+
+
+                // ----------------------------------------------------
+                // 4B. **FRAG_LOADING 广告过滤逻辑 (拦截分片加载)**
+                // ----------------------------------------------------
                 const adFilterListener = function (event, data) {
-                    // data.frag.url 是 hls.js 最终解析并尝试加载的 URL
                     const fragmentUrl = data.frag.url;
                     const fragmentDomain = getDomainFromUrl(fragmentUrl);
                     
@@ -263,13 +296,12 @@
                     let reason = '';
 
                     // A. 规则 1 (路径签名比对 - 最精准): 
-                    // 检查分片URL是否包含主内容的流ID。如果签名存在但URL不包含，则判定为广告。
                     if (contentSignature && !fragmentUrl.includes(contentSignature)) {
                         isAd = true;
                         reason = '内容签名不匹配'; 
                     }
                     
-                    // B. 规则 2 (域名比对 - 辅助): 检查绝对路径的分片域名是否与主域名不一致。
+                    // B. 规则 2 (域名比对 - 辅助): 
                     if (!isAd && fragmentDomain && fragmentDomain !== baseDomain) {
                         isAd = true;
                         reason = '域名不匹配';
@@ -277,7 +309,7 @@
 
                     if (isAd) {
                         // 判定为广告，拦截加载
-                        console.warn(`[Ad Filter] 🛑 拦截广告 (原因: ${reason})：${fragmentUrl}`);
+                        console.warn(`[Ad Filter: FRAG] 🛑 拦截广告片段 (原因: ${reason})：${fragmentUrl}`);
                         
                         adFragmentsSkipped++;
                         
@@ -297,11 +329,11 @@
                         return; 
                     } else {
                         // 判定为内容，允许加载
-                        console.log(`[Ad Filter] ✅ 允许内容加载 (包含签名: ${contentSignature}): ${fragmentUrl}`);
+                        console.log(`[Ad Filter: FRAG] ✅ 允许内容片段加载 (包含签名: ${contentSignature}): ${fragmentUrl}`);
                     }
                 };
 
-                // 绑定监听器并保存引用以便销毁
+                // 绑定监听器
                 hls.on(Hls.Events.FRAG_LOADING, adFilterListener);
                 window.adFilterListener = adFilterListener;
 
@@ -342,6 +374,9 @@
                                 hls.destroy();
                                 break;
                        }
+                    } else if (data.details === Hls.ErrorDetails.KEY_LOAD_ERROR) {
+                        // 忽略我们主动触发的密钥加载错误，让 hls.js 跳过此分段。
+                        console.log(`[Ad Filter] 忽略已拦截的密钥加载错误: ${data.reason}`);
                     } else {
                         showStatus(`警告：非致命错误 (${data.type}/${data.details})，播放器正在处理。`, false);
                     }
@@ -395,6 +430,9 @@
             if (window.hlsInstance) {
                  if (window.adFilterListener) {
                     window.hlsInstance.off(Hls.Events.FRAG_LOADING, window.adFilterListener);
+                }
+                 if (window.keyFilterListener) {
+                    window.hlsInstance.off(Hls.Events.KEY_LOADING, window.keyFilterListener);
                 }
                 window.hlsInstance.destroy();
             }
