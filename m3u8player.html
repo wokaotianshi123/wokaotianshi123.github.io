@@ -3,239 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 播放器 (底层加载拦截版)</title>
+    <title>M3U8 专用去广告播放器</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: #f4f7f6; color: #333; }
-        #app-container { max-width: 1000px; margin: 40px auto; padding: 20px; background: #fff; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 12px; }
-        h1 { color: #d32f2f; text-align: center; } /* 红色标题表示强力模式 */
-        #control-panel { display: flex; gap: 15px; margin-bottom: 30px; align-items: center; }
-        #m3u8-input { flex-grow: 1; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
-        #load-button { padding: 12px 25px; background: #d32f2f; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; }
-        #load-button:hover { background: #b71c1c; }
-        #video-container { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 8px; overflow: hidden; position: relative; }
-        #video { width: 100%; height: 100%; }
-        #status-message { margin-top: 15px; padding: 10px; border-radius: 4px; display: none; background: #ffebee; color: #c62828; }
-        #debug-info { position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,0.8); color: #0f0; padding: 5px; font-size: 12px; pointer-events: none; font-family: monospace; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; background: #f0f2f5; color: #333; }
+        #container { max-width: 900px; margin: 30px auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #1a73e8; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; }
+        button { padding: 10px 25px; background: #1a73e8; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #1557b0; }
+        #video-wrapper { width: 100%; aspect-ratio: 16/9; background: #000; position: relative; border-radius: 8px; overflow: hidden; }
+        video { width: 100%; height: 100%; }
+        #log { margin-top: 15px; padding: 10px; background: #f8f9fa; border: 1px solid #eee; font-family: monospace; font-size: 12px; height: 100px; overflow-y: auto; color: #555; }
+        .log-success { color: green; }
+        .log-warn { color: orange; }
+        .log-error { color: red; }
+        .tag { display: inline-block; padding: 2px 6px; background: #e8f0fe; color: #1a73e8; border-radius: 4px; font-size: 12px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-<div id="app-container">
-    <h1>M3U8 播放器 (底层加载拦截版)</h1>
-    <p style="text-align: center; color: #666;">通过覆盖 pLoader 在网络层直接抹除广告代码。</p>
-
-    <div id="control-panel">
-        <input type="url" id="m3u8-input" placeholder="在此输入 M3U8 地址" value="">
-        <button id="load-button">🚀 强力播放</button>
-    </div>
+<div id="container">
+    <h2>M3U8 专用去广告播放器</h2>
+    <div style="text-align: center;"><span class="tag">针对 thm3u8.com 结构优化</span></div>
     
-    <div id="status-message"></div>
-    <div id="video-container">
-        <video id="video" controls></video>
-        <div id="debug-info">准备就绪</div>
+    <div class="input-group">
+        <input type="text" id="urlInput" placeholder="在此粘贴 M3U8 地址" value="">
+        <button onclick="startPlay()">播放并净化</button>
     </div>
+
+    <div id="video-wrapper">
+        <video id="video" controls></video>
+    </div>
+
+    <div id="log">准备就绪...</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
-    // 全局变量存储目标签名，供 Loader 使用
-    window.TARGET_SIGNATURE = '';
-    window.ADS_REMOVED_COUNT = 0;
-
-    // --- 自定义加载器类 ---
-    class CustomPlaylistLoader {
-        constructor(config) {
-            this.config = config;
-        }
-
-        load(context, config, callbacks) {
-            const url = context.url;
-            console.log(`[Loader] 正在请求: ${url}`);
-
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                    return response.text();
-                })
-                .then(text => {
-                    // 只有当是 M3U8 播放列表时才进行清理
-                    if (window.TARGET_SIGNATURE && (text.includes('#EXTM3U'))) {
-                        console.log(`[Loader] 正在清洗 M3U8，目标签名: ${window.TARGET_SIGNATURE}`);
-                        const originalLines = text.split('\n');
-                        const cleanedText = this.purify(text, window.TARGET_SIGNATURE);
-                        
-                        // 统计移除行数
-                        const newLines = cleanedText.split('\n');
-                        const diff = originalLines.length - newLines.length;
-                        if (diff > 0) {
-                            window.ADS_REMOVED_COUNT += diff; // 粗略计数
-                            console.warn(`[Loader] 移除了约 ${diff} 行广告代码`);
-                            updateDebugUI();
-                        }
-
-                        // 返回修改后的数据给 HLS.js
-                        callbacks.onSuccess({
-                            url: url,
-                            data: cleanedText
-                        }, {
-                            url: url,
-                            data: cleanedText
-                        }, context);
-                    } else {
-                        // 如果不是目标M3U8或没签名，直接返回原数据
-                        callbacks.onSuccess({
-                            url: url,
-                            data: text
-                        }, {
-                            url: url,
-                            data: text
-                        }, context);
-                    }
-                })
-                .catch(error => {
-                    console.error("[Loader] 加载失败:", error);
-                    callbacks.onError(error, context);
-                });
-        }
-
-        // **核心净化逻辑**
-        purify(manifestText, signature) {
-            const lines = manifestText.split('\n');
-            let output = [];
-            let buffer = []; // 缓存 EXTINF 等信息
-
-            for (let i = 0; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (!line) continue;
-
-                // 1. 全局标签：保留
-                if (line.startsWith('#EXTM3U') || 
-                    line.startsWith('#EXT-X-VERSION') ||
-                    line.startsWith('#EXT-X-TARGETDURATION') ||
-                    line.startsWith('#EXT-X-MEDIA-SEQUENCE') ||
-                    line.startsWith('#EXT-X-PLAYLIST-TYPE') ||
-                    line.startsWith('#EXT-X-ENDLIST') || 
-                    line.startsWith('#EXT-X-DISCONTINUITY')) {
-                    
-                    // 遇到 Discontinuity 也要把之前的 buffer 清空（理论上不该有残留）
-                    buffer = [];
-                    output.push(line);
-                    continue;
-                }
-
-                // 2. Key 行：单独检查
-                // 广告的 Key 行通常不包含签名 URI="..."
-                if (line.startsWith('#EXT-X-KEY')) {
-                    if (line.includes(signature)) {
-                        output.push(line); // 是正片Key，保留
-                    } else {
-                        console.log(`[Filter] 丢弃广告Key: ${line}`);
-                        // 丢弃
-                    }
-                    continue;
-                }
-
-                // 3. 片段元数据：缓存
-                if (line.startsWith('#EXTINF') || line.startsWith('#EXT-X-PROGRAM-DATE-TIME')) {
-                    buffer.push(line);
-                    continue;
-                }
-
-                // 4. URL 行 (非#开头)
-                if (!line.startsWith('#')) {
-                    // 检查 URL 是否包含签名
-                    if (line.includes(signature)) {
-                        // 包含签名 -> 写入缓存的 INF 和 当前 URL
-                        output = output.concat(buffer);
-                        output.push(line);
-                    } else {
-                        // 不包含签名 -> 丢弃缓存 和 当前 URL
-                        // console.log(`[Filter] 丢弃广告片段: ${line}`);
-                    }
-                    buffer = []; // 清空缓存
-                } else {
-                    // 其他未知标签，保留以防万一
-                    output.push(line);
-                }
-            }
-            return output.join('\n');
-        }
-
-        abort() { console.log('[Loader] Abort requested'); }
-        destroy() { console.log('[Loader] Destroyed'); }
-    }
-
-
-    // --- 主程序逻辑 ---
     const video = document.getElementById('video');
-    const input = document.getElementById('m3u8-input');
-    const debugDiv = document.getElementById('debug-info');
-    const statusDiv = document.getElementById('status-message');
+    const logDiv = document.getElementById('log');
+    let hls = null;
 
-    function getUrlParam(name) {
-        const r = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(location.search);
-        return r ? decodeURIComponent(r[1]) : '';
+    // 日志辅助函数
+    function log(msg, type = '') {
+        const p = document.createElement('div');
+        p.textContent = `> ${msg}`;
+        if (type) p.className = `log-${type}`;
+        logDiv.prepend(p);
     }
 
-    function updateDebugUI() {
-        debugDiv.innerText = `目标ID: ${window.TARGET_SIGNATURE || '无'} | 拦截行数: ${window.ADS_REMOVED_COUNT}`;
-    }
-
-    // 提取 URL 中的 8位 ID (如 GsUnW9HR)
-    function extractSignature(url) {
+    // 1. 从 URL 中提取核心 ID (例如 GsUnW9HR)
+    function extractStreamID(url) {
         try {
-            // 查找 /XXXXXXXX/d+kb/ 结构
-            const match = url.match(/\/([a-zA-Z0-9]{8,})\/\d+kb/);
-            return match ? match[1] : '';
-        } catch (e) { return ''; }
+            const path = new URL(url).pathname;
+            // 匹配结构: /日期/ID/码率/
+            const match = path.match(/\/([a-zA-Z0-9]{8,})\//);
+            return match ? match[1] : null;
+        } catch (e) {
+            return null;
+        }
     }
 
-    function loadM3U8(url) {
-        if (!url) return;
-        
-        if (Hls.isSupported()) {
-            if (window.hls) window.hls.destroy();
-
-            // 1. 提取签名
-            window.TARGET_SIGNATURE = extractSignature(url);
-            window.ADS_REMOVED_COUNT = 0;
-            updateDebugUI();
+    // 2. 自定义加载器：拦截网络请求，修改 M3U8 内容
+    class PLoader extends Hls.DefaultConfig.loader {
+        constructor(config) {
+            super(config);
+            const load = this.load.bind(this);
             
-            if (!window.TARGET_SIGNATURE) {
-                statusDiv.textContent = "警告：无法从 URL 识别内容 ID，广告过滤可能失效。";
-                statusDiv.style.display = 'block';
-            } else {
-                statusDiv.textContent = `已锁定内容 ID: ${window.TARGET_SIGNATURE}，正在过滤...`;
-                statusDiv.style.display = 'block';
-            }
+            this.load = function(context, config, callbacks) {
+                // 仅拦截 M3U8 播放列表请求
+                if (context.type === 'manifest' || context.type === 'level') {
+                    const streamID = window.TARGET_STREAM_ID;
+                    
+                    if (!streamID) {
+                        load(context, config, callbacks);
+                        return;
+                    }
 
-            // 2. 配置 HLS 使用自定义 Loader
-            const config = {
-                // 覆盖 Playlist Loader (处理 m3u8 文件)
-                pLoader: CustomPlaylistLoader,
-                // 常用优化
-                startBufferLength: 10,
-                maxBufferLength: 60,
-                debug: false
+                    log(`正在请求并净化: ${context.url}`);
+                    
+                    // 使用 fetch 手动下载
+                    fetch(context.url)
+                        .then(res => {
+                            if (!res.ok) throw new Error(res.statusText);
+                            return res.text();
+                        })
+                        .then(text => {
+                            // **核心净化逻辑**
+                            const lines = text.split('\n');
+                            let output = [];
+                            let removedCount = 0;
+                            let buffer = []; // 暂存 EXTINF 等标签
+
+                            for (let i = 0; i < lines.length; i++) {
+                                let line = lines[i].trim();
+                                if (!line) continue;
+
+                                // A. 如果是 Key 定义行
+                                if (line.startsWith('#EXT-X-KEY')) {
+                                    // 只有当 Key URI 包含 ID 时才保留
+                                    if (line.includes(streamID)) {
+                                        output.push(line);
+                                    } else {
+                                        removedCount++; // 删除了广告 Key
+                                    }
+                                    continue;
+                                }
+
+                                // B. 如果是元数据行 (#EXTINF 等)，先缓存，看下一行 URL 决定留不留
+                                if (line.startsWith('#') && !line.startsWith('#EXTM3U') && !line.startsWith('#EXT-X-')) {
+                                    buffer.push(line);
+                                    continue;
+                                }
+
+                                // C. 如果是全局配置行 (#EXT-X-...)，直接保留
+                                if (line.startsWith('#')) {
+                                    // 遇到 DISCONTINUITY 也要小心，如果是在广告前后的可能导致黑屏，但通常保留无害
+                                    output.push(line);
+                                    continue; 
+                                }
+
+                                // D. 这是一行 URL (分片地址)
+                                if (line.includes(streamID)) {
+                                    // 这是一个包含正确 ID 的正片
+                                    output = output.concat(buffer); // 把之前的 #EXTINF 放进去
+                                    output.push(line); // 把 URL 放进去
+                                } else {
+                                    // 这是一个不包含 ID 的广告片
+                                    removedCount++;
+                                }
+                                // 处理完 URL，清空 buffer
+                                buffer = [];
+                            }
+
+                            log(`净化完成: 移除了 ${removedCount} 行广告代码`, 'success');
+
+                            const cleanText = output.join('\n');
+
+                            // 返回给 HLS.js
+                            callbacks.onSuccess({
+                                url: context.url,
+                                data: cleanText
+                            }, {
+                                url: context.url,
+                                data: cleanText
+                            }, context);
+                        })
+                        .catch(err => {
+                            log(`加载失败: ${err.message}`, 'error');
+                            callbacks.onError(err, context);
+                        });
+
+                } else {
+                    // 对于 TS 片段和 Key 文件的请求，使用默认加载器
+                    load(context, config, callbacks);
+                }
             };
+        }
+    }
 
-            const hls = new Hls(config);
-            window.hls = hls;
+    function startPlay() {
+        const url = document.getElementById('urlInput').value.trim();
+        if (!url) return alert('请输入地址');
+
+        if (hls) hls.destroy();
+        logDiv.innerHTML = ''; // 清空日志
+
+        // 1. 提取 ID
+        const id = extractStreamID(url);
+        if (id) {
+            window.TARGET_STREAM_ID = id;
+            log(`识别到内容 ID: ${id}`, 'success');
+        } else {
+            window.TARGET_STREAM_ID = null;
+            log('警告: 未能识别 ID，将无法过滤广告', 'warn');
+        }
+
+        if (Hls.isSupported()) {
+            hls = new Hls({
+                // 使用自定义加载器覆盖默认逻辑
+                pLoader: PLoader,
+                // 其他优化
+                enableWorker: true,
+                manifestLoadingTimeOut: 20000,
+            });
 
             hls.loadSource(url);
             hls.attachMedia(video);
 
             hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                console.log("Manifest 解析成功");
-                video.play().catch(e => console.log("自动播放被拦截"));
+                log('解析成功，开始播放', 'success');
+                video.play().catch(e => log('自动播放受限，请手动点击播放'));
             });
 
-            hls.on(Hls.Events.ERROR, (e, data) => {
+            hls.on(Hls.Events.ERROR, (event, data) => {
                 if (data.fatal) {
-                    console.error("Fatal Error:", data);
-                    // statusDiv.textContent = `加载错误: ${data.details}`;
-                    // 尝试自动恢复
-                    switch(data.type) {
+                    log(`致命错误: ${data.details}`, 'error');
+                    switch (data.type) {
                         case Hls.ErrorTypes.NETWORK_ERROR:
                             hls.startLoad();
                             break;
@@ -248,26 +213,20 @@
                     }
                 }
             });
-
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
             video.src = url;
-            alert("iOS Safari 原生播放器不支持拦截广告，请使用 PC 或 安卓 Chrome。");
+            log('iOS 模式: 无法在原生播放器中拦截广告', 'warn');
         }
     }
 
-    // --- 初始化 ---
-    const paramUrl = getUrlParam('url');
-    if (paramUrl) {
-        input.value = paramUrl;
-        loadM3U8(paramUrl);
-    } else {
-        // 检查输入框是否有值 (例如浏览器记住的)
-        if (input.value) loadM3U8(input.value);
+    // URL 参数自动加载
+    const params = new URLSearchParams(window.location.search);
+    const urlParam = params.get('url');
+    if (urlParam) {
+        document.getElementById('urlInput').value = urlParam;
+        setTimeout(startPlay, 500);
     }
-
-    document.getElementById('load-button').onclick = () => loadM3U8(input.value.trim());
-    input.onkeydown = (e) => { if(e.key === 'Enter') loadM3U8(input.value.trim()); };
-
 </script>
+
 </body>
 </html>
