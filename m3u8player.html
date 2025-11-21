@@ -1,318 +1,181 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 播放器 (支持 URL 参数)</title>
-    <style>
-        /* 基础样式和布局 */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f7f6;
-            color: #333;
-        }
-
-        #app-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-        }
-
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-        }
-
-        /* 控制面板样式 */
-        #control-panel {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            align-items: center;
-        }
-
-        #m3u8-input {
-            flex-grow: 1;
-            padding: 12px 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        #load-button {
-            padding: 12px 25px;
-            background-color: #2c3e50; 
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        #load-button:hover { background-color: #34495e; }
-
-        /* 播放器区域 */
-        #video-container {
-            width: 100%;
-            aspect-ratio: 16 / 9; 
-            background-color: #000;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        #video {
-            width: 100%;
-            height: 100%;
-        }
-        
-        /* 状态提示 */
-        #status-message {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 4px;
-            background-color: #d9edf7;
-            color: #31708f;
-            font-weight: bold;
-            display: none;
-        }
-
-        /* 调试信息 (实时显示缓存和码率) */
-        #debug-info {
-            position: absolute;
-            bottom: 5px;
-            left: 5px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 5px 10px;
-            font-size: 12px;
-            border-radius: 3px;
-            z-index: 10;
-        }
-        /* 移动端优化 */
-        @media (max-width: 600px) {
-            #control-panel { flex-direction: column; gap: 10px; }
-            #m3u8-input, #load-button { width: 100%; box-sizing: border-box; }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>M3U8 播放器（自动去除异常分片）</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;font-family:Segoe UI,Helvetica,Arial,sans-serif;background:#f4f7f6;color:#333}
+#app{max-width:1000px;margin:40px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 8px 16px rgba(0,0,0,.1)}
+h1{text-align:center;color:#2c3e50}
+#ctrl{display:flex;gap:15px;margin-bottom:20px}
+#urlInp{flex:1;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:16px}
+#loadBtn{padding:12px 25px;background:#2c3e50;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:16px}
+#loadBtn:hover{background:#34495e}
+#videoBox{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}
+#video{width:100%;height:100%}
+#debug{position:absolute;bottom:5px;left:5px;background:rgba(0,0,0,.6);color:#fff;padding:4px 8px;font-size:12px;border-radius:3px}
+#status{margin-top:15px;padding:10px;border-radius:4px;font-weight:bold;display:none}
+.success{background:#d9edf7;color:#31708f}
+.error{background:#f2dede;color:#a94442}
+@media(max-width:600px){
+ #ctrl{flex-direction:column}
+ #urlInp,#loadBtn{width:100%;box-sizing:border-box}
+}
+</style>
 </head>
 <body>
 
-<div id="app-container">
-    
-    <h1>M3U8 播放器 (鲁棒性增强版)</h1>
-    <p style="text-align: center; color: #777;">
-        支持 URL 参数加载 (例如: `?url=...`)，并启用极限性能优化。
-    </p>
-
-    <div id="control-panel">
-        <input 
-            type="url" 
-            id="m3u8-input" 
-            placeholder="在此粘贴您的 M3U8 播放地址，或通过 ?url= 参数加载"
-            value="YOUR_M3U8_URL_HERE"
-        >
-        <button id="load-button">
-            ⚡️ 开始播放
-        </button>
-    </div>
-    
-    <div id="status-message"></div>
-
-    <div id="video-container">
-        <video id="video" controls></video>
-        <div id="debug-info"></div> </div>
-
+<div id="app">
+  <h1>M3U8 播放器（自动去除异常分片）</h1>
+  <div id="ctrl">
+    <input id="urlInp" type="url" placeholder="粘贴 M3U8 地址，或通过 ?url= 参数加载">
+    <button id="loadBtn">⚡ 加载并播放</button>
+  </div>
+  <div id="status"></div>
+  <div id="videoBox">
+    <video id="video" controls></video>
+    <div id="debug"></div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const video = document.getElementById('video');
-        const input = document.getElementById('m3u8-input');
-        const button = document.getElementById('load-button');
-        const statusDiv = document.getElementById('status-message');
-        const debugDiv = document.getElementById('debug-info');
-        
-        // 检查并清除默认占位符，防止加载无效地址
-        input.value = input.value === 'YOUR_M3U8_URL_HERE' ? '' : input.value;
+(() => {
+  const video   = document.getElementById('video');
+  const urlInp  = document.getElementById('urlInp');
+  const loadBtn = document.getElementById('loadBtn');
+  const status  = document.getElementById('status');
+  const debug   = document.getElementById('debug');
 
-        // --- 工具函数 ---
-        function showStatus(message, isError = false) {
-            statusDiv.textContent = message;
-            statusDiv.style.display = 'block';
-            statusDiv.style.backgroundColor = isError ? '#f2dede' : '#d9edf7';
-            statusDiv.style.color = isError ? '#a94442' : '#31708f';
-        }
-        
-        function clearStatus() {
-            statusDiv.style.display = 'none';
-        }
+  /* ---------- 工具 ---------- */
+  const log = (msg, err = false) => {
+    status.textContent = msg;
+    status.className   = err ? 'error' : 'success';
+    status.style.display = 'block';
+  };
+  const clear = () => status.style.display = 'none';
 
-        function updateDebugInfo(hls) {
-            if (!hls || !hls.currentLevel || !hls.levels[hls.currentLevel]) return;
-            
-            // 计算当前缓冲区剩余时长
-            const buffer = video.buffered.length > 0 ? (video.buffered.end(0) - video.currentTime).toFixed(1) : '0.0';
-            const currentLevel = hls.levels[hls.currentLevel];
-            
-            let info = `缓存: ${buffer}s | `;
-            // 显示当前码率
-            info += `码率: ${(currentLevel.bitrate / 1000).toFixed(0)} kbps`; 
-            
-            debugDiv.textContent = info;
-        }
-        
-        // **新增：获取 URL 参数的函数**
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(location.search);
-            // 确保解码 URL 编码
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
+  /* 获取 URL 参数 */
+  const getParam = name => {
+    const m = new RegExp('[?&]' + name + '=([^&#]*)').exec(location.search);
+    return m ? decodeURIComponent(m[1]) : '';
+  };
 
-
-        // --- HLS 播放器核心逻辑 ---
-        function loadM3U8(url) {
-            if (!url) {
-                showStatus('请输入有效的 M3U8 地址！', true);
-                return;
-            }
-            
-            clearStatus();
-            showStatus('正在加载流，尝试并行下载优化...');
-
-            // 销毁旧实例和定时器
-            if (window.hlsInstance) {
-                window.hlsInstance.destroy();
-            }
-            if (window.debugTimer) {
-                clearInterval(window.debugTimer);
-            }
-
-
-            if (Hls.isSupported()) {
-                // HLS 极限缓存与并行下载配置
-                const hlsConfig = {
-                    startBufferLength: 8,       
-                    maxBufferLength: 60,        
-                    maxBufferSize: 100 * 1024 * 1024, 
-                    autoLevelEnabled: true,     
-                    
-                    fragLoadingTimeOut: 15000,  
-                    fragLoadingMaxRetry: 5,     
-                    fragLoadingMaxConnections: 6,
-                    maxBufferHole: 0.5,         
-                };
-
-                const hls = new Hls(hlsConfig);
-                window.hlsInstance = hls;
-
-                hls.loadSource(url);
-                hls.attachMedia(video);
-
-                // 事件监听
-                hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
-                    const levelCount = hls.levels.length; 
-                    if (levelCount > 1) {
-                        hls.currentLevel = 0; // 强制最低码率
-                        showStatus(`加载成功！已强制选择最低清晰度 (Level 0/${levelCount - 1}) 播放。`);
-                    } else {
-                        showStatus('加载成功！视频为单码率流。');
-                    }
-                    
-                    video.play().catch(error => {
-                        showStatus("注意：浏览器阻止了自动播放，请手动点击播放按钮。", false);
-                    });
-                    
-                    // 启动调试信息更新 (每秒更新)
-                    window.debugTimer = setInterval(() => updateDebugInfo(hls), 1000);
-                });
-                
-                // 错误处理与恢复增强
-                hls.on(Hls.Events.ERROR, function (event, data) {
-                    if (data.fatal) {
-                       switch(data.type) {
-                           case Hls.ErrorTypes.NETWORK_ERROR:
-                                showStatus(`致命网络错误，尝试恢复... (${data.details})`, true);
-                                hls.startLoad();
-                                break;
-                           case Hls.ErrorTypes.MEDIA_ERROR:
-                                showStatus(`致命媒体错误，尝试恢复... (${data.details})`, true);
-                                hls.recoverMediaError();
-                                break;
-                           default:
-                                showStatus(`无法恢复的致命错误 (${data.type})，请检查源地址。`, true);
-                                clearInterval(window.debugTimer);
-                                hls.destroy();
-                                break;
-                       }
-                    } else {
-                        showStatus(`警告：非致命错误 (${data.type}/${data.details})，播放器正在处理。`, false);
-                    }
-                });
-                
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                // 原生支持 (Safari/iOS)
-                video.src = url;
-                showStatus('浏览器原生支持 HLS，直接加载...');
-                video.addEventListener('loadedmetadata', function() {
-                    video.play();
-                });
-            } else {
-                showStatus('您的浏览器不支持 HLS 播放！', true);
-            }
-        }
-        
-        // --- 初始化与事件绑定 ---
-        
-        // ** URL 参数加载逻辑 **
-        const urlParam = getUrlParameter('url');
-        let initialUrl = input.value.trim();
-
-        if (urlParam) {
-            // 如果 URL 参数存在，则优先使用它
-            initialUrl = urlParam;
-            input.value = initialUrl; // 更新输入框显示
-        } else {
-            // 否则，确保清空默认占位符，除非用户手动输入了
-            initialUrl = initialUrl === 'YOUR_M3U8_URL_HERE' ? '' : initialUrl;
-        }
-
-        // 绑定按钮和回车事件
-        button.addEventListener('click', () => {
-            loadM3U8(input.value.trim());
-        });
-
-        input.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                loadM3U8(input.value.trim());
-            }
-        });
-        
-        // 页面加载时自动加载
-        if (initialUrl) {
-            loadM3U8(initialUrl);
-        }
-        
-        // 页面卸载时清理资源
-        window.addEventListener('beforeunload', () => {
-            if (window.debugTimer) {
-                clearInterval(window.debugTimer);
-            }
-            if (window.hlsInstance) {
-                window.hlsInstance.destroy();
-            }
-        });
+  /* ---------- M3U8 过滤 ---------- */
+  /* 返回 Blob URL（过滤后） */
+  async function filterM3U8(rawUrl) {
+    const text = await fetch(rawUrl).then(r => {
+      if (!r.ok) throw new Error('网络错误 ' + r.status);
+      return r.text();
     });
-</script>
+    const lines = text.split(/\r?\n/);
 
+    /* 1. 统计每个 URI 前缀出现次数 */
+    const counter = {};
+    let maxKey  = '', maxCnt = 0;
+    for (let i = 0; i < lines.length; i++) {
+      const m = lines[i].match(/^#EXT-X-KEY:.*?URI="([^"]+)"/);
+      if (!m) continue;
+      const prefix = m[1].split('/').slice(0, -1).join('/');
+      const c = (counter[prefix] || 0) + 1;
+      counter[prefix] = c;
+      if (c > maxCnt) { maxCnt = c; maxKey = prefix; }
+    }
+    if (!maxKey) return rawUrl; // 无 KEY 直接返回原地址
+
+    /* 2. 过滤 */
+    const out = [];
+    let skip = false;
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const km = line.match(/^#EXT-X-KEY:.*?URI="([^"]+)"/);
+      if (km) {
+        const prefix = km[1].split('/').slice(0, -1).join('/');
+        skip = prefix !== maxKey;
+      }
+      if (!skip) out.push(line);
+    }
+    const blob = new Blob([out.join('\n')], { type: 'application/vnd.apple.mpegurl' });
+    return URL.createObjectURL(blob);
+  }
+
+  /* ---------- 播放器 ---------- */
+  let hlsInst = null, debugTimer = null;
+
+  async function playM3U8(url) {
+    if (!url) return log('请先输入 M3U8 地址', true);
+    clear();
+    log('正在过滤异常分片并加载……');
+
+    if (hlsInst) { hlsInst.destroy(); hlsInst = null; }
+    if (debugTimer) { clearInterval(debugTimer); debugTimer = null; }
+
+    let src;
+    try { src = await filterM3U8(url); }
+    catch (e) { log('过滤失败：' + e.message, true); return; }
+
+    if (Hls.isSupported()) {
+      const hls = new Hls({
+        startBufferLength: 8,
+        maxBufferLength: 60,
+        maxBufferSize: 100 * 1024 * 1024,
+        fragLoadingTimeOut: 15000,
+        fragLoadingMaxRetry: 5,
+        fragLoadingMaxConnections: 6
+      });
+      hlsInst = hls;
+      hls.loadSource(src);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        log('加载成功，开始播放');
+        video.play().catch(() => log('浏览器拦截自动播放，请手动点击播放', false));
+        debugTimer = setInterval(() => {
+          const buf = video.buffered.length ? (video.buffered.end(0) - video.currentTime).toFixed(1) : '0.0';
+          const lvl = hls.levels[hls.currentLevel];
+          const br  = lvl ? (lvl.bitrate / 1000).toFixed(0) : '?';
+          debug.textContent = `缓存: ${buf}s | 码率: ${br} kbps`;
+        }, 1000);
+      });
+      hls.on(Hls.Events.ERROR, (e, data) => {
+        if (data.fatal) {
+          switch (data.type) {
+            case Hls.ErrorTypes.NETWORK_ERROR:
+              log('网络错误，尝试恢复……', true);
+              hls.startLoad();
+              break;
+            case Hls.ErrorTypes.MEDIA_ERROR:
+              log('媒体错误，尝试恢复……', true);
+              hls.recoverMediaError();
+              break;
+            default:
+              log('致命错误，停止播放', true);
+              hls.destroy();
+              break;
+          }
+        }
+      });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = src;
+      log('浏览器原生支持，直接播放');
+      video.addEventListener('loadedmetadata', () => video.play(), { once: true });
+    } else {
+      log('浏览器不支持 HLS 播放', true);
+    }
+  }
+
+  /* ---------- 绑定 ---------- */
+  const initUrl = getParam('url') || urlInp.value;
+  if (initUrl) { urlInp.value = initUrl; playM3U8(initUrl); }
+
+  loadBtn.addEventListener('click', () => playM3U8(urlInp.value.trim()));
+  urlInp.addEventListener('keydown', e => { if (e.key === 'Enter') playM3U8(urlInp.value.trim()); });
+
+  window.addEventListener('beforeunload', () => {
+    if (debugTimer) clearInterval(debugTimer);
+    if (hlsInst) hlsInst.destroy();
+  });
+})();
+</script>
 </body>
 </html>
