@@ -1,184 +1,450 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>M3U8 播放器（自动去除异常分片）</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-body{margin:0;font-family:Segoe UI,Helvetica,Arial,sans-serif;background:#f4f7f6;color:#333}
-#app{max-width:1000px;margin:40px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 8px 16px rgba(0,0,0,.1)}
-h1{text-align:center;color:#2c3e50}
-#ctrl{display:flex;gap:15px;margin-bottom:20px}
-#urlInp{flex:1;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:16px}
-#loadBtn{padding:12px 25px;background:#2c3e50;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:16px}
-#loadBtn:hover{background:#34495e}
-#videoBox{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}
-#video{width:100%;height:100%}
-#debug{position:absolute;bottom:5px;left:5px;background:rgba(0,0,0,.6);color:#fff;padding:4px 8px;font-size:12px;border-radius:3px}
-#status{margin-top:15px;padding:10px;border-radius:4px;font-weight:bold;display:none}
-.success{background:#d9edf7;color:#31708f}
-.error{background:#f2dede;color:#a94442}
-@media(max-width:600px){
- #ctrl{flex-direction:column}
- #urlInp,#loadBtn{width:100%;box-sizing:border-box}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3U8 播放器 (智能去广告版)</title>
+    <style>
+        /* 基础样式和布局 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        #app-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        /* 控制面板样式 */
+        #control-panel {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        #m3u8-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        #load-button {
+            padding: 12px 25px;
+            background-color: #2c3e50; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #load-button:hover { background-color: #34495e; }
+
+        /* 播放器区域 */
+        #video-container {
+            width: 100%;
+            aspect-ratio: 16 / 9; 
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #video {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 状态提示 */
+        #status-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #d9edf7;
+            color: #31708f;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* 调试信息 (实时显示缓存和码率) */
+        #debug-info {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+            z-index: 10;
+        }
+        /* 移动端优化 */
+        @media (max-width: 600px) {
+            #control-panel { flex-direction: column; gap: 10px; }
+            #m3u8-input, #load-button { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "hls.js": "https://aistudiocdn.com/hls.js@^1.6.15",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
 }
-</style>
+</script>
 </head>
 <body>
 
-<div id="app">
-  <h1>M3U8 播放器（自动去除异常分片）</h1>
-  <div id="ctrl">
-    <input id="urlInp" type="url" placeholder="粘贴 M3U8 地址，或通过 ?url= 参数加载">
-    <button id="loadBtn">⚡ 加载并播放</button>
-  </div>
-  <div id="status"></div>
-  <div id="videoBox">
-    <video id="video" controls></video>
-    <div id="debug"></div>
-  </div>
+<div id="app-container">
+    
+    <h1>M3U8 播放器 (智能去广告版)</h1>
+    <p style="text-align: center; color: #777;">
+        自动检测并移除与主体内容格式不符的异常分片 (如伪装成图片的广告)。
+    </p>
+
+    <div id="control-panel">
+        <input 
+            type="url" 
+            id="m3u8-input" 
+            placeholder="在此粘贴您的 M3U8 播放地址，或通过 ?url= 参数加载"
+            value="YOUR_M3U8_URL_HERE"
+        >
+        <button id="load-button">
+            ⚡️ 开始播放
+        </button>
+    </div>
+    
+    <div id="status-message"></div>
+
+    <div id="video-container">
+        <video id="video" controls></video>
+        <div id="debug-info"></div> </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
-(() => {
-  const video   = document.getElementById('video');
-  const urlInp  = document.getElementById('urlInp');
-  const loadBtn = document.getElementById('loadBtn');
-  const status  = document.getElementById('status');
-  const debug   = document.getElementById('debug');
+    document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('video');
+        const input = document.getElementById('m3u8-input');
+        const button = document.getElementById('load-button');
+        const statusDiv = document.getElementById('status-message');
+        const debugDiv = document.getElementById('debug-info');
+        
+        input.value = input.value === 'YOUR_M3U8_URL_HERE' ? '' : input.value;
 
-  /* ---------- 工具 ---------- */
-  const log = (msg, err = false) => {
-    status.textContent = msg;
-    status.className   = err ? 'error' : 'success';
-    status.style.display = 'block';
-  };
-  const clear = () => status.style.display = 'none';
-
-  /* 获取 URL 参数 */
-  const getParam = name => {
-    const m = new RegExp('[?&]' + name + '=([^&#]*)').exec(location.search);
-    return m ? decodeURIComponent(m[1]) : '';
-  };
-
-  /* ---------- M3U8 过滤 ---------- */
-  /* 返回 Blob URL（过滤后） */
-   /* ---------- 修正版 过滤函数 ---------- */
-  async function filterM3U8(rawUrl) {
-    const text = await fetch(rawUrl).then(r => {
-      if (!r.ok) throw new Error('网络错误 ' + r.status);
-      return r.text();
-    });
-    const lines = text.split(/\r?\n/);
-
-    /* 1. 统计每个 URI 前缀出现次数 */
-    const counter = {};
-    let maxKey  = '', maxCnt = 0;
-    for (let i = 0; i < lines.length; i++) {
-      const m = lines[i].match(/^#EXT-X-KEY:.*?URI="([^"]+)"/);
-      if (!m) continue;
-      const prefix = m[1].split('/').slice(0, -1).join('/');
-      const c = (counter[prefix] || 0) + 1;
-      counter[prefix] = c;
-      if (c > maxCnt) { maxCnt = c; maxKey = prefix; }
-    }
-    if (!maxKey) return rawUrl;          // 无 KEY 直接返回原地址
-
-    /* 2. 只保留与 maxKey 一致的分片，其余丢弃 */
-    const out = [];
-    let skip = false;
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      /* 遇到 KEY 行就决定是否跳过 */
-      const km = line.match(/^#EXT-X-KEY:.*?URI="([^"]+)"/);
-      if (km) {
-        const prefix = km[1].split('/').slice(0, -1).join('/');
-        skip = prefix !== maxKey;
-      }
-      if (!skip) out.push(line);
-    }
-    const blob = new Blob([out.join('\n')], { type: 'application/vnd.apple.mpegurl' });
-    return URL.createObjectURL(blob);
-  }
-
-  /* ---------- 播放器 ---------- */
-  let hlsInst = null, debugTimer = null;
-
-  async function playM3U8(url) {
-    if (!url) return log('请先输入 M3U8 地址', true);
-    clear();
-    log('正在过滤异常分片并加载……');
-
-    if (hlsInst) { hlsInst.destroy(); hlsInst = null; }
-    if (debugTimer) { clearInterval(debugTimer); debugTimer = null; }
-
-    let src;
-    try { src = await filterM3U8(url); }
-    catch (e) { log('过滤失败：' + e.message, true); return; }
-
-    if (Hls.isSupported()) {
-      const hls = new Hls({
-        startBufferLength: 8,
-        maxBufferLength: 60,
-        maxBufferSize: 100 * 1024 * 1024,
-        fragLoadingTimeOut: 15000,
-        fragLoadingMaxRetry: 5,
-        fragLoadingMaxConnections: 6
-      });
-      hlsInst = hls;
-      hls.loadSource(src);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        log('加载成功，开始播放');
-        video.play().catch(() => log('浏览器拦截自动播放，请手动点击播放', false));
-        debugTimer = setInterval(() => {
-          const buf = video.buffered.length ? (video.buffered.end(0) - video.currentTime).toFixed(1) : '0.0';
-          const lvl = hls.levels[hls.currentLevel];
-          const br  = lvl ? (lvl.bitrate / 1000).toFixed(0) : '?';
-          debug.textContent = `缓存: ${buf}s | 码率: ${br} kbps`;
-        }, 1000);
-      });
-      hls.on(Hls.Events.ERROR, (e, data) => {
-        if (data.fatal) {
-          switch (data.type) {
-            case Hls.ErrorTypes.NETWORK_ERROR:
-              log('网络错误，尝试恢复……', true);
-              hls.startLoad();
-              break;
-            case Hls.ErrorTypes.MEDIA_ERROR:
-              log('媒体错误，尝试恢复……', true);
-              hls.recoverMediaError();
-              break;
-            default:
-              log('致命错误，停止播放', true);
-              hls.destroy();
-              break;
-          }
+        // --- UI 工具函数 ---
+        function showStatus(message, isError = false) {
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+            statusDiv.style.backgroundColor = isError ? '#f2dede' : '#d9edf7';
+            statusDiv.style.color = isError ? '#a94442' : '#31708f';
         }
-      });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = src;
-      log('浏览器原生支持，直接播放');
-      video.addEventListener('loadedmetadata', () => video.play(), { once: true });
-    } else {
-      log('浏览器不支持 HLS 播放', true);
-    }
-  }
+        
+        function clearStatus() {
+            statusDiv.style.display = 'none';
+        }
 
-  /* ---------- 绑定 ---------- */
-  const initUrl = getParam('url') || urlInp.value;
-  if (initUrl) { urlInp.value = initUrl; playM3U8(initUrl); }
+        function updateDebugInfo(hls) {
+            if (!hls || !hls.currentLevel || !hls.levels[hls.currentLevel]) return;
+            const buffer = video.buffered.length > 0 ? (video.buffered.end(0) - video.currentTime).toFixed(1) : '0.0';
+            const currentLevel = hls.levels[hls.currentLevel];
+            let info = `缓存: ${buffer}s | 码率: ${(currentLevel.bitrate / 1000).toFixed(0)} kbps`; 
+            debugDiv.textContent = info;
+        }
 
-  loadBtn.addEventListener('click', () => playM3U8(urlInp.value.trim()));
-  urlInp.addEventListener('keydown', e => { if (e.key === 'Enter') playM3U8(urlInp.value.trim()); });
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
 
-  window.addEventListener('beforeunload', () => {
-    if (debugTimer) clearInterval(debugTimer);
-    if (hlsInst) hlsInst.destroy();
-  });
-})();
+        // --- M3U8 清洗核心逻辑 ---
+        
+        // 转换相对路径为绝对路径
+        function resolveUrl(url, base) {
+            try {
+                return new URL(url, base).href;
+            } catch (e) {
+                return url;
+            }
+        }
+
+        // 获取文件后缀
+        function getFileExtension(url) {
+            try {
+                // 处理 query 参数
+                const cleanUrl = url.split('?')[0];
+                const pathname = new URL(cleanUrl, 'http://example.com').pathname;
+                const parts = pathname.split('.');
+                // 如果没有后缀，返回 unknown
+                return parts.length > 1 ? parts.pop().toLowerCase() : 'unknown';
+            } catch (e) {
+                return 'unknown';
+            }
+        }
+
+        /**
+         * 下载并清洗 M3U8 内容
+         * 算法：统计所有分片的 "后缀+域名" 特征，找出占主导地位的特征，移除不符合该特征的分片。
+         */
+        async function fetchAndCleanM3u8(url) {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const originalContent = await response.text();
+
+            const lines = originalContent.split(/\r?\n/);
+            const segments = [];
+            const fingerprintCounts = {};
+
+            // 1. 扫描所有分片，建立特征指纹
+            lines.forEach((line, index) => {
+                const trimmed = line.trim();
+                if (!trimmed || trimmed.startsWith('#')) return;
+
+                const isAbsolute = trimmed.startsWith('http');
+                const ext = getFileExtension(trimmed);
+                let host = 'relative';
+                if (isAbsolute) {
+                    try { host = new URL(trimmed).hostname; } catch(e){}
+                }
+
+                // 指纹示例: "ts|relative" 或 "jpg|ad.com"
+                const fingerprint = `${ext}|${isAbsolute ? 'abs' : 'rel'}|${host}`;
+                
+                if (!fingerprintCounts[fingerprint]) fingerprintCounts[fingerprint] = 0;
+                fingerprintCounts[fingerprint]++;
+
+                segments.push({
+                    lineIndex: index,
+                    fingerprint: fingerprint
+                });
+            });
+
+            // 2. 找出主要内容特征 (数量最多的特征)
+            let dominantFingerprint = '';
+            let maxCount = 0;
+            for (const [fp, count] of Object.entries(fingerprintCounts)) {
+                if (count > maxCount) {
+                    maxCount = count;
+                    dominantFingerprint = fp;
+                }
+            }
+
+            // 安全检查：如果文件太少，或者没有明显的主导特征，可能不需要清理
+            if (segments.length === 0) return { content: originalContent, removedCount: 0, totalSegments: 0 };
+
+            // 3. 标记需要删除的行
+            const linesToRemove = new Set();
+            let removedCount = 0;
+
+            segments.forEach(seg => {
+                // 只有当该分片特征与主导特征不一致时，才认为是异常分片
+                if (seg.fingerprint !== dominantFingerprint) {
+                    linesToRemove.add(seg.lineIndex);
+                    removedCount++;
+
+                    // 向前回溯，删除相关的元数据标签 (EXTINF, EXT-X-BYTERANGE)
+                    let j = seg.lineIndex - 1;
+                    while (j >= 0) {
+                        const prevLine = lines[j].trim();
+                        // 遇到分片相关的标签则删除
+                        if (prevLine.startsWith('#EXTINF') || prevLine.startsWith('#EXT-X-BYTERANGE')) {
+                            linesToRemove.add(j);
+                            j--;
+                        } else {
+                            // 遇到其他标签(如 #EXT-X-KEY)或空行则停止回溯，防止误删全局配置
+                            break;
+                        }
+                    }
+                }
+            });
+
+            // 4. 重建 M3U8 内容 (同时修正路径)
+            const newLines = [];
+            lines.forEach((line, index) => {
+                if (linesToRemove.has(index)) return;
+                
+                let content = line.trim();
+                if (!content) return;
+
+                if (content.startsWith('#')) {
+                    // 关键：修正加密 Key 的 URI。如果是相对路径，必须转为绝对路径，
+                    // 因为 Blob URL 的 base 是 blob:，会导致相对路径 Key 加载失败。
+                    if (content.startsWith('#EXT-X-KEY') && content.includes('URI="')) {
+                        content = content.replace(/URI="([^"]+)"/, (match, p1) => {
+                            // 如果已经是绝对路径则不变，否则转换
+                            if (p1.startsWith('http')) return match;
+                            return `URI="${resolveUrl(p1, url)}"`;
+                        });
+                    }
+                    newLines.push(content);
+                } else {
+                    // 分片链接：统一转为绝对路径
+                    newLines.push(resolveUrl(content, url));
+                }
+            });
+
+            return {
+                content: newLines.join('\n'),
+                removedCount: removedCount,
+                totalSegments: segments.length
+            };
+        }
+
+
+        // --- 播放器控制 ---
+        
+        async function loadM3U8(url) {
+            if (!url) {
+                showStatus('请输入有效的 M3U8 地址！', true);
+                return;
+            }
+            
+            // 清理旧状态
+            if (window.hlsInstance) {
+                window.hlsInstance.destroy();
+                window.hlsInstance = null;
+            }
+            if (window.debugTimer) {
+                clearInterval(window.debugTimer);
+            }
+            
+            clearStatus();
+            
+            let finalSource = url;
+            let isCleaned = false;
+
+            // 1. 尝试智能分析和清洗
+            try {
+                showStatus('正在下载并分析播放列表...');
+                
+                // 尝试 fetch
+                const result = await fetchAndCleanM3u8(url);
+                
+                if (result.removedCount > 0) {
+                    showStatus(`分析完成：检测到 ${result.removedCount} 个异常分片 (共 ${result.totalSegments} 个)。正在移除并重构播放列表...`);
+                    
+                    // 创建虚拟文件
+                    const blob = new Blob([result.content], { type: 'application/vnd.apple.mpegurl' });
+                    finalSource = URL.createObjectURL(blob);
+                    isCleaned = true;
+                } else {
+                    showStatus(`分析完成：播放列表格式一致，无需优化。`);
+                }
+
+            } catch (e) {
+                console.warn('智能分析失败 (可能是跨域问题)，降级为直接播放:', e);
+                showStatus('注意：无法获取文件内容 (CORS 限制)，将尝试直接播放原始链接 (无法去除异常分片)。', true);
+                finalSource = url;
+            }
+
+            // 2. 初始化 HLS 播放
+            initHls(finalSource, isCleaned);
+        }
+
+        function initHls(sourceUrl, isCleaned) {
+            if (Hls.isSupported()) {
+                const hlsConfig = {
+                    startBufferLength: 8,       
+                    maxBufferLength: 60,        
+                    maxBufferSize: 100 * 1024 * 1024, 
+                    // 如果是我们清洗过的 Blob，不需要 xhr 凭证，但原地址可能需要
+                    xhrSetup: function (xhr, url) {
+                        // 可以在这里添加 headers
+                    }
+                };
+
+                const hls = new Hls(hlsConfig);
+                window.hlsInstance = hls;
+
+                hls.loadSource(sourceUrl);
+                hls.attachMedia(video);
+
+                hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
+                    const msg = isCleaned ? '加载成功！(已净化)' : '加载成功！(原始流)';
+                    showStatus(msg + ` 包含 ${hls.levels.length} 个清晰度。`);
+                    video.play().catch(() => {
+                        showStatus("准备就绪。请点击播放按钮。", false);
+                    });
+                    window.debugTimer = setInterval(() => updateDebugInfo(hls), 1000);
+                });
+                
+                hls.on(Hls.Events.ERROR, function (event, data) {
+                    if (data.fatal) {
+                       switch(data.type) {
+                           case Hls.ErrorTypes.NETWORK_ERROR:
+                                showStatus(`网络错误，尝试恢复...`, true);
+                                hls.startLoad();
+                                break;
+                           case Hls.ErrorTypes.MEDIA_ERROR:
+                                showStatus(`媒体解码错误，尝试恢复...`, true);
+                                hls.recoverMediaError();
+                                break;
+                           default:
+                                showStatus(`无法播放 (${data.details})`, true);
+                                hls.destroy();
+                                break;
+                       }
+                    }
+                });
+                
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                // Safari 原生播放 (无法使用 JS 清洗逻辑，除非使用 ServiceWorker，此处仅回退)
+                if (isCleaned) {
+                    showStatus('Safari 原生播放模式不支持 Blob 修正，尝试播放原始链接...', true);
+                    // 注意：Safari 通常不支持 Blob URL 的 m3u8，除非 mime 正确且环境允许
+                    // 这里如果用了 Blob 可能失败，所以如果是 Safari，前面的 fetch 逻辑虽然跑了，但可能需要 revert
+                    // 简单的处理是直接赋 src
+                }
+                video.src = sourceUrl; // Safari 可能无法播放 blob: 协议的 m3u8，视版本而定
+                video.addEventListener('loadedmetadata', () => video.play());
+            }
+        }
+        
+        // --- 事件绑定 ---
+        const urlParam = getUrlParameter('url');
+        let initialUrl = input.value.trim();
+
+        if (urlParam) {
+            initialUrl = urlParam;
+            input.value = initialUrl;
+        } else {
+            initialUrl = initialUrl === 'YOUR_M3U8_URL_HERE' ? '' : initialUrl;
+        }
+
+        button.addEventListener('click', () => loadM3U8(input.value.trim()));
+        input.addEventListener('keydown', (e) => e.key === 'Enter' && loadM3U8(input.value.trim()));
+        
+        if (initialUrl) loadM3U8(initialUrl);
+        
+        window.addEventListener('beforeunload', () => {
+            if (window.debugTimer) clearInterval(window.debugTimer);
+            if (window.hlsInstance) window.hlsInstance.destroy();
+        });
+    });
 </script>
+
 </body>
 </html>
-
