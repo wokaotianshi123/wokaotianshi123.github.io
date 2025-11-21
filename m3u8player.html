@@ -64,6 +64,7 @@ h1{text-align:center;color:#2c3e50}
 
   /* ---------- M3U8 过滤 ---------- */
   /* 返回 Blob URL（过滤后） */
+   /* ---------- 修正版 过滤函数 ---------- */
   async function filterM3U8(rawUrl) {
     const text = await fetch(rawUrl).then(r => {
       if (!r.ok) throw new Error('网络错误 ' + r.status);
@@ -82,13 +83,14 @@ h1{text-align:center;color:#2c3e50}
       counter[prefix] = c;
       if (c > maxCnt) { maxCnt = c; maxKey = prefix; }
     }
-    if (!maxKey) return rawUrl; // 无 KEY 直接返回原地址
+    if (!maxKey) return rawUrl;          // 无 KEY 直接返回原地址
 
-    /* 2. 过滤 */
+    /* 2. 只保留与 maxKey 一致的分片，其余丢弃 */
     const out = [];
     let skip = false;
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
+      /* 遇到 KEY 行就决定是否跳过 */
       const km = line.match(/^#EXT-X-KEY:.*?URI="([^"]+)"/);
       if (km) {
         const prefix = km[1].split('/').slice(0, -1).join('/');
@@ -179,3 +181,4 @@ h1{text-align:center;color:#2c3e50}
 </script>
 </body>
 </html>
+
