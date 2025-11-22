@@ -81,6 +81,33 @@
             height: 100%;
         }
         
+        /* 投屏按钮样式 - 新增 */
+        #cast-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            display: none; /* 默认隐藏，JS检测支持后显示 */
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            z-index: 20;
+            transition: background-color 0.2s;
+        }
+        #cast-button:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        #cast-button svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
         /* 状态提示 */
         #status-message {
             margin-top: 15px;
@@ -150,7 +177,14 @@
     <div id="status-message"></div>
 
     <div id="video-container">
-        <video id="video" controls playsinline></video>
+        <button id="cast-button" title="投屏/AirPlay">
+            <svg viewBox="0 0 24 24">
+                <path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11zm9-7h-8v2h8c1.1 0 2 .9 2 2v12h2v-12c0-2.21-1.79-4-4-4z"/>
+            </svg>
+            <span>投屏</span>
+        </button>
+
+        <video id="video" controls playsinline x-webkit-airplay="allow" airplay="allow"></video>
         <div id="debug-info"></div> 
     </div>
 
@@ -164,6 +198,7 @@
         const button = document.getElementById('load-button');
         const statusDiv = document.getElementById('status-message');
         const debugDiv = document.getElementById('debug-info');
+        const castBtn = document.getElementById('cast-button');
         
         input.value = input.value === 'YOUR_M3U8_URL_HERE' ? '' : input.value;
 
@@ -202,6 +237,42 @@
             const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             const results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // --- 投屏功能实现 (新增) ---
+        function initCast() {
+            // 检测浏览器支持哪种投屏方式
+            const hasRemotePlayback = 'remote' in video; // Chrome/Edge/Android 原生投屏 API
+            const hasAirPlay = video.webkitShowPlaybackTargetPicker; // iOS/Safari AirPlay API
+
+            if (hasRemotePlayback || hasAirPlay) {
+                
+                // 如果是 Remote Playback API，监听可用性
+                if (hasRemotePlayback) {
+                    video.remote.watchAvailability(function(available) {
+                        castBtn.style.display = available ? 'flex' : 'none';
+                    }).catch(function() {
+                        // 某些浏览器不支持 watchAvailability 但支持 remote，默认显示
+                        castBtn.style.display = 'flex';
+                    });
+                } else {
+                    // AirPlay 直接显示
+                    castBtn.style.display = 'flex';
+                }
+
+                // 按钮点击事件
+                castBtn.addEventListener('click', function() {
+                    if (hasRemotePlayback) {
+                        // 调用 Chrome/Android 原生投屏选择菜单
+                        video.remote.prompt().catch(function(error) {
+                            console.log('投屏取消或失败:', error);
+                        });
+                    } else if (hasAirPlay) {
+                        // 调用 iOS AirPlay 菜单
+                        video.webkitShowPlaybackTargetPicker();
+                    }
+                });
+            }
         }
 
         // --- 核心：M3U8 强力清洗逻辑 ---
@@ -459,6 +530,9 @@
         }
         
         // --- 初始化 ---
+        // 启用投屏
+        initCast();
+
         const urlParam = getUrlParameter('url');
         let initialUrl = input.value.trim();
 
