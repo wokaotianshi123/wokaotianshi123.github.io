@@ -75,7 +75,7 @@
             font-size: 16px;
             font-weight: bold;
             transition: filter 0.3s;
-            display: none; /* 默认隐藏，检测到支持时显示 */
+            display: inline-flex; /* 强制常驻显示 */
             align-items: center;
             gap: 8px;
         }
@@ -214,63 +214,35 @@
         input.value = input.value === 'YOUR_M3U8_URL_HERE' ? '' : input.value;
 
         // --- 投屏功能集成 ---
-        let castType = null; // 'airplay' | 'googlecast'
+        
+        // 根据 UA 预判默认投屏类型，确保按钮立即可用
+        // iPad, iPhone, iPod 使用 AirPlay，其他设备默认尝试 Google Cast
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        let castType = isIOS ? 'airplay' : 'googlecast';
+        
+        console.log(`Initial Cast Mode: ${castType}`);
 
-        // 显示投屏按钮的辅助函数
-        function enableCastButton(type) {
-            // 避免重复设置
-            if (castButton.style.display !== 'none' && castType === type) return;
-
-            castButton.style.display = 'inline-flex';
-            castType = type;
-            console.log(`Cast enabled: ${type}`);
-            
-            // 如果是 Google Cast，更新文本提示用户可能需要点击搜索
-            if (type === 'googlecast') {
-                // 可选：在这里改变按钮样式以提示用户
-            }
-        }
-
-        // 1. 检测 AirPlay (iOS/Safari)
+        // 1. 检测 AirPlay (iOS/Safari) - 仅作为增强检测，不控制按钮显隐
         if (window.WebKitPlaybackTargetAvailabilityEvent) {
             video.addEventListener('webkitplaybacktargetavailabilitychanged', function(event) {
                 if (event.availability === 'available') {
-                    enableCastButton('airplay');
+                    castType = 'airplay';
+                    console.log('AirPlay detected available');
                 }
             });
         }
 
         // 2. 检测 Google Cast (Android/Chrome)
-        // 定义初始化逻辑
         function initGoogleCastUI() {
             if (!window.cast || !window.cast.framework) return;
-            
-            try {
-                const context = cast.framework.CastContext.getInstance();
-                
-                // 监听投屏状态变化
-                context.addEventListener(
-                    cast.framework.CastContextEventType.CAST_STATE_CHANGED,
-                    function(event) {
-                        if (event.castState !== cast.framework.CastState.NO_DEVICES_AVAILABLE) {
-                            enableCastButton('googlecast');
-                        }
-                    }
-                );
-                
-                // 只要 SDK 加载成功，就尝试显示按钮
-                // 即使当前 NO_DEVICES_AVAILABLE，用户点击时 Chrome 也会尝试搜索
-                enableCastButton('googlecast');
-
-            } catch (e) {
-                console.error('Cast UI Setup Error:', e);
-            }
+            // SDK 加载完成，确认模式
+            if (!isIOS) castType = 'googlecast';
         }
 
         // 监听来自 Head 的事件
         document.addEventListener('google-cast-ready', initGoogleCastUI);
 
-        // 双重保险：轮询检查 SDK 是否加载 (解决事件丢失或时序问题)
+        // 轮询检查 SDK 是否加载 (确保 Android 上能尽快响应)
         if (window.isGCastInitialized) {
             initGoogleCastUI();
         } else {
@@ -281,7 +253,6 @@
                     clearInterval(castTimer);
                     initGoogleCastUI();
                 }
-                // 10秒后停止检查
                 if (checkCount > 50) clearInterval(castTimer);
             }, 200);
         }
@@ -292,9 +263,17 @@
                 if (video.webkitShowPlaybackTargetPicker) {
                     video.webkitShowPlaybackTargetPicker();
                 } else {
-                    showStatus('AirPlay 暂不可用', 'error');
+                    showStatus('AirPlay 暂未就绪或不支持此设备', 'error');
                 }
             } else if (castType === 'googlecast') {
+                // 检查 SDK 是否就绪
+                if (!window.cast || !window.cast.framework) {
+                    showStatus('投屏服务正在初始化，请稍后再试...', 'info');
+                    // 尝试手动触发一次回调，以防万一
+                    if(window['__onGCastApiAvailable']) window['__onGCastApiAvailable'](true);
+                    return;
+                }
+
                 const castContext = cast.framework.CastContext.getInstance();
                 const session = castContext.getCurrentSession();
                 
@@ -307,9 +286,7 @@
                         }
                     });
                 } else {
-                    // 已经连接，打开控制菜单或断开
-                    // castContext.endCurrentSession(true);
-                    // 打开原生的 Cast 对话框
+                    // 已经连接，打开控制菜单
                     castContext.requestSession(); 
                 }
             }
