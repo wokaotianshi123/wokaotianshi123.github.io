@@ -7,7 +7,7 @@
     <title>M3U8 智能融合播放器</title>
     <link href="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.css" rel="stylesheet">
     <style>
-        /* --- 基础样式 (来自 m3player) --- */
+        /* --- 基础样式 --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -82,14 +82,17 @@
 
         /* --- 播放器容器 (关键融合部分) --- */
         #video-wrapper {
+            /* 桌面端默认样式：利用 flex 填充剩余空间，但保持合理比例 */
             flex-grow: 1;
-            min-height: 300px; /* 移动端最小高度 */
+            width: 100%;
+            position: relative;
             background-color: #000;
             border-radius: 8px;
             overflow: hidden;
-            position: relative;
             border: 1px solid #333;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            /* 默认 16:9 比例，防止初始高度塌陷 */
+            aspect-ratio: 16 / 9;
         }
 
         /* Artplayer 容器 */
@@ -111,7 +114,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s;
-            z-index: 5; /* 低于 Artplayer，但在显示时会提升 */
+            z-index: 5;
             background: #000;
         }
         
@@ -145,12 +148,48 @@
             border: 1px solid #4ade80 !important;
         }
 
-        /* 移动端优化 */
+        /* --- 移动端优化 (针对性修改) --- */
         @media (max-width: 600px) {
-            #app-container { padding: 10px; }
-            #control-panel { gap: 8px; }
-            #m3u8-input { width: 100%; }
-            .btn { flex-grow: 1; }
+            #app-container { 
+                padding: 10px; 
+                margin: 0;
+                border: none;
+                box-shadow: none;
+                /* 确保容器填满宽度，不留多余空白 */
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            #control-panel { 
+                gap: 8px; 
+            }
+            
+            #m3u8-input { 
+                width: 100%; 
+                /* 输入框字体放大一点，方便触摸 */
+                font-size: 16px; 
+                padding: 12px;
+            }
+            
+            .btn { 
+                flex-grow: 1; 
+                padding: 12px;
+            }
+            
+            h1 { 
+                font-size: 1.2rem; 
+                margin: 5px 0 15px 0; 
+            }
+
+            #video-wrapper {
+                /* 移动端强制 16:9，移除 flex-grow 以避免高度被拉伸得过长或压缩 */
+                flex-grow: 0;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                min-height: auto; /* 重置最小高度 */
+                border-radius: 4px;
+                border-color: #222;
+            }
         }
     </style>
     
@@ -186,7 +225,7 @@
 
     <div id="video-wrapper">
         <!-- 竞速解析模式的 Loading 提示 -->
-        <div id="loading-tip" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#888; display:none; z-index:1; text-align:center;">
+        <div id="loading-tip" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#888; display:none; z-index:1; text-align:center; width: 100%;">
             <p>正在竞速解析...</p>
             <p style="font-size:12px; color:#555;">后台正在尝试嗅探真实 M3U8 地址</p>
         </div>
@@ -203,18 +242,15 @@
 <script>
     // --- 配置区域 ---
     
-    // 解析源列表
     const apiArray = [
         { name: "线路1 (Ckplayer)", url: "https://www.ckplayer.vip/jiexi/?url=" },
         { name: "线路2 (M3u8TV)", url: "https://jx.m3u8.tv/jiexi/?url=" },
         { name: "线路3 (XMFLV)", url: "https://jx.xmflv.com/?url=" },
         { name: "线路4 (YParse)", url: "https://yparse.ik9.cc/index.php?url=" },
         { name: "线路5 (8090g)", url: "https://www.8090g.cn/jiexi/?url=" },
-        // 添加一个支持 JSON 返回的假设接口示例
-        { name: "线路X (JSON尝试)", url: "https://json.jiexi.com/?url=", type: 'json' } 
+        { name: "线路6 (JSON)", url: "https://json.jiexi.com/?url=", type: 'json' } 
     ];
 
-    // HLS 极限缓存配置
     const hlsConfig = {
         enableWorker: true,
         lowLatencyMode: false,
@@ -232,8 +268,8 @@
     let art = null; 
     let hlsInstance = null;
     let castType = 'googlecast'; 
-    let currentMode = 'idle'; // 'm3u8' 或 'iframe'
-    let isSniffed = false; // 是否已成功嗅探
+    let currentMode = 'idle';
+    let isSniffed = false;
 
     document.addEventListener('DOMContentLoaded', () => {
         const input = document.getElementById('m3u8-input');
@@ -243,7 +279,6 @@
         const wrapper = document.getElementById('video-wrapper');
         const loadingTip = document.getElementById('loading-tip');
 
-        // 初始化输入框
         const urlParam = getUrlParameter('url');
         input.value = urlParam || (input.value === 'YOUR_URL_HERE' ? '' : input.value);
 
@@ -253,12 +288,10 @@
 
             resetPlayer();
             
-            // 模式判断
             if (url.includes('.m3u8') || url.startsWith('blob:') || url.startsWith('http://127.0.0.1')) {
                 loadM3U8Mode(url);
             } else {
                 loadIframeMode(url);
-                // 启动后台嗅探
                 backgroundSniff(url);
             }
         }
@@ -268,9 +301,8 @@
             currentMode = 'm3u8';
             castBtn.disabled = false;
             isSniffed = true;
-            wrapper.classList.remove('sniff-success'); // 移除动画
+            wrapper.classList.remove('sniff-success');
             
-            // 如果是自动嗅探到的，给一个视觉反馈
             if (isAutoSniffed) {
                 showStatus('✅ 嗅探成功！已切换至增强模式 (已去广告/支持投屏)', 'success');
                 wrapper.classList.add('sniff-success');
@@ -281,7 +313,6 @@
 
             let finalUrl = url;
             try {
-                // 执行广告清洗
                 const cleanResult = await fetchAndCleanM3u8(url);
                 if (cleanResult.removedCount > 0) {
                     if (!isAutoSniffed) showStatus(`${cleanResult.log}\n正在生成纯净流...`, 'success');
@@ -304,9 +335,69 @@
                 type: 'm3u8',
                 theme: '#4ade80',
                 autoplay: true,
-                setting: true,
+                
+                // --- 播放器功能增强 ---
+                setting: true,     // 开启设置面板
+                miniProgressBar: true, // 移动端迷你进度条
                 fullscreen: true,
                 pip: true,
+                playbackRate: false, // 禁用默认倍速菜单，使用下方自定义的
+                
+                // 自定义设置菜单 (倍速 + 字幕)
+                settings: [
+                    {
+                        html: '播放速度',
+                        tooltip: '1.0x',
+                        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
+                        selector: [
+                            { html: '0.75x', value: 0.75 },
+                            { html: '1.0x', value: 1.0, default: true },
+                            { html: '1.5x', value: 1.5 },
+                            { html: '2.0x', value: 2.0 },
+                            { html: '5.0x', value: 5.0 }, // 极限倍速
+                        ],
+                        onSelect: function (item) {
+                            art.playbackRate = item.value;
+                            return item.html;
+                        },
+                    },
+                    {
+                        html: '字幕设置',
+                        tooltip: '调节',
+                        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>',
+                        selector: [
+                            { html: '字幕开关: 开启', value: 'on' },
+                            { html: '字幕开关: 关闭', value: 'off', default: true },
+                            { html: '调节字幕偏移', value: 'offset' }
+                        ],
+                        onSelect: function(item) {
+                            if(item.value === 'on') {
+                                art.subtitle.show = true;
+                                return '开启';
+                            }
+                            if(item.value === 'off') {
+                                art.subtitle.show = false;
+                                return '关闭';
+                            }
+                            if(item.value === 'offset') {
+                                art.subtitleOffset = true; // 唤起字幕偏移调整UI
+                                return '调节偏移';
+                            }
+                            return item.html;
+                        }
+                    }
+                ],
+                
+                subtitleOffset: true, // 启用字幕偏移功能
+                subtitle: {
+                    url: '', // 如有外挂字幕可在此配置
+                    type: 'srt',
+                    style: {
+                        color: '#fff',
+                        fontSize: '20px',
+                    },
+                },
+
                 customType: {
                     m3u8: function (video, url) {
                         if (Hls.isSupported()) {
@@ -344,18 +435,15 @@
             apiArray.forEach(api => {
                 const iframe = document.createElement('iframe');
                 iframe.className = 'temp-iframe';
-                // 关键修复：添加全屏属性和现代 Permissions Policy
+                // 全屏与权限策略
                 iframe.allowFullscreen = true; 
-                iframe.setAttribute('allowFullScreen', ''); // 兼容旧属性
+                iframe.setAttribute('allowFullScreen', '');
                 iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer";
-                iframe.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups allow-presentation";
                 iframe.src = api.url + url;
                 
                 const startTime = performance.now();
                 iframe.onload = function() {
-                    // 如果已经嗅探到了 m3u8，就不要再显示 iframe 了
                     if (isSniffed) return;
-
                     const loadTime = performance.now() - startTime;
                     if (loadTime < fastestTime && !hasWinner) {
                         fastestTime = loadTime;
@@ -368,13 +456,12 @@
         }
 
         function displayIframe(iframe, apiName) {
-            if (isSniffed) return; // 再次检查防止冲突
+            if (isSniffed) return;
             loadingTip.style.display = 'none';
             showStatus(`解析成功！当前线路: ${apiName} (暂未提取到直链，不支持投屏)`, 'info');
             document.getElementById('artplayer-container').style.display = 'none';
             iframe.classList.add('iframe-active');
             
-            // 添加一个手动输入 M3U8 的入口
             const manualBtn = document.createElement('span');
             manualBtn.innerHTML = " [我有M3U8地址]";
             manualBtn.style.cursor = 'pointer';
@@ -391,13 +478,10 @@
             console.log('启动后台嗅探任务...');
             const regex = /["'](https?:\/\/[^"']+\.m3u8[^"']*)["']/;
 
-            // 1. 尝试监听 postMessage (如果解析源友好)
             const msgHandler = (e) => {
                 if (e.data && typeof e.data === 'string') {
-                    // 检查消息中是否包含 m3u8
                     const match = e.data.match(regex);
                     if (match) {
-                        console.log('通过 postMessage 嗅探到地址:', match[1]);
                         window.removeEventListener('message', msgHandler);
                         loadM3U8Mode(match[1], true);
                     }
@@ -409,40 +493,32 @@
             };
             window.addEventListener('message', msgHandler);
             
-            // 2. 尝试直接 Fetch 解析接口 (需要 CORS 支持)
             for (const api of apiArray) {
                 if(isSniffed) break;
                 try {
                     const targetUrl = api.url + videoPageUrl;
-                    // 使用 fetch 尝试获取源码
-                    // 注意：大部分公共接口没有 CORS，这里主要针对自建或宽松接口
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5秒超时
+                    const timeoutId = setTimeout(() => controller.abort(), 5000);
                     
                     const response = await fetch(targetUrl, { 
                         method: 'GET',
                         signal: controller.signal
-                        // mode: 'cors' // 默认就是 cors，如果失败会抛出异常被 catch
                     });
                     clearTimeout(timeoutId);
 
                     if (response.ok) {
                         const text = await response.text();
-                        // 扫描源码中的 m3u8
                         const match = text.match(regex);
                         if (match && !isSniffed) {
-                            console.log(`从接口 [${api.name}] 源码中嗅探到 m3u8:`, match[1]);
                             loadM3U8Mode(match[1], true);
                             break; 
                         }
                     }
-                } catch (e) {
-                    // 跨域失败是预期的，静默处理
-                }
+                } catch (e) { }
             }
         }
 
-        // --- 广告清洗逻辑 ---
+        // --- 广告清洗逻辑 (复用 m3player 逻辑) ---
         async function fetchAndCleanM3u8(url) {
             const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch (e) { return p; } };
             const getFingerprint = (absUrl) => {
