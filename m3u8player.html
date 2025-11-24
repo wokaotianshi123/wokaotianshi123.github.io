@@ -260,21 +260,29 @@
     ];
 
     const hlsConfig = {
-        enableWorker: true,
+        enableWorker: true, // 启用 WebWorker 多线程解析
         lowLatencyMode: false,
-        startBufferLength: 10,
-        maxBufferLength: 60,
-        maxMaxBufferLength: 120,
-        maxBufferSize: 100 * 1024 * 1024,
+        
+        // --- 极限缓存与加载优化 (适配高码率/60帧) ---
+        startBufferLength: 20,           // 起播缓冲：增加到 20s，确保起播后不易卡顿
+        maxBufferLength: 120,            // 正常缓冲：增加到 120s
+        maxMaxBufferLength: 600,         // 最大缓冲：允许缓存 10分钟，尽可能利用带宽
+        maxBufferSize: 200 * 1024 * 1024, // 内存限制：提升至 200MB，防止高码率分片被频繁清理
         backBufferLength: 90,
         
-        // --- 画质与帧率优化配置 ---
+        // --- 网络加载策略 ---
+        fragLoadingTimeOut: 20000,
+        fragLoadingMaxRetry: 6,
+        manifestLoadingTimeOut: 20000,
+        levelLoadingTimeOut: 20000,
+        
+        // 允许更激进的加载，防止网络波动导致降级
+        maxLoadingDelay: 4, 
+        minAutoBitrate: 0, // 允许从最低开始，但配合 startLevel 策略优化
+        
         // 允许播放器加载比容器尺寸更大的画面 (例如在手机上加载4K/60fps)
         capLevelToPlayerSize: false, 
         autoStartLoad: true,
-        
-        fragLoadingTimeOut: 20000,
-        fragLoadingMaxRetry: 6,
         maxBufferHole: 0.5,
     };
 
@@ -309,6 +317,9 @@
                 backgroundSniff(url);
             }
         }
+        
+        loadBtn.addEventListener('click', startPlay);
+        input.addEventListener('keydown', (e) => e.key === 'Enter' && startPlay());
 
         // --- 模式 A: 本地 M3U8 增强模式 ---
         async function loadM3U8Mode(url, isAutoSniffed = false) {
@@ -594,101 +605,165 @@
 
         // --- 广告清洗逻辑 (进一步优化版) ---
         async function fetchAndCleanM3u8(url) {
-            const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch (e) { return p; } };
-            const getFingerprint = (absUrl) => {
-                try {
-                    const u = new URL(absUrl);
-                    const path = u.pathname.substring(0, u.pathname.lastIndexOf('/'));
-                    const ext = u.pathname.split('.').pop();
-                    return `${u.hostname}|${path}|${ext}`;
-                } catch { return 'err'; }
-            };
+            const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch(e) { return p; } };
 
-            // 6秒超时，避免长时间卡顿
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 6000);
-
-            try {
-                const response = await fetch(url, { signal: controller.signal });
-                clearTimeout(timeoutId); 
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const originalContent = await response.text();
+            
+            const lines = originalContent.split(/\r?\n/);
+            const segments = [];
+            const fingerprintCounts = {};
+            
+            // 1. 特征分析
+            lines.forEach((line, idx) => {
+                const trimmed = line.trim();
+                if(!trimmed || trimmed.startsWith('#')) return;
                 
-                if (!response.ok) throw new Error(response.status);
-                const text = await response.text();
+                const absUrl = toAbsolute(trimmed, url);
+                let u;
+                try { u = new URL(absUrl); } catch(e) { return; }
                 
-                const lines = text.split(/\r?\n/);
-                const counts = {};
-                const segments = [];
-
-                lines.forEach((line, idx) => {
-                    const trim = line.trim();
-                    if (!trim || trim.startsWith('#')) return;
-                    const abs = toAbsolute(trim, url);
-                    const fp = getFingerprint(abs);
-                    counts[fp] = (counts[fp] || 0) + 1;
-                    segments.push({ idx, fp, abs });
-                });
-
-                let domFp = '', max = 0;
-                for (const [fp, c] of Object.entries(counts)) { if (c > max) { max = c; domFp = fp; } }
+                const pathParts = u.pathname.split('/');
+                pathParts.pop();
+                const dir = pathParts.join('/');
+                const ext = u.pathname.split('.').pop();
+                const fp = `${u.hostname}|${dir}|${ext}`;
                 
-                if (segments.length > 0 && (max / segments.length) <= 0.5) return { removedCount: 0, content: text, log: '结构复杂未清洗' };
-                if (segments.length === 0) return { removedCount: 0, content: text, log: '无分片' };
-
-                const toRemove = new Set();
-                let removed = 0;
-                segments.forEach(s => {
-                    if (s.fp !== domFp) {
-                        toRemove.add(s.idx);
-                        removed++;
-                        let j = s.idx - 1;
-                        while (j >= 0) {
-                            const prev = lines[j].trim();
-                            if (prev.startsWith('#EXTINF') || prev.startsWith('#EXT-X-BYTERANGE')) {
-                                toRemove.add(j); j--;
-                            } else break;
-                        }
-                    }
-                });
-
-                const newLines = lines.filter((_, i) => !toRemove.has(i)).map(l => {
-                    const t = l.trim();
-                    if (t.startsWith('#')) {
-                        if (t.startsWith('#EXT-X-KEY') && t.includes('URI="')) {
-                            return t.replace(/URI="([^"]+)"/, (m, p1) => `URI="${toAbsolute(p1, url)}"`);
-                        }
-                        return t;
-                    }
-                    return toAbsolute(t, url);
-                });
-
-                return { content: newLines.join('\n'), removedCount: removed, log: `已移除 ${removed} 个广告分片` };
-            } catch (error) {
-                clearTimeout(timeoutId);
-                // 抛出错误，由外层 loadM3U8Mode 捕获并进行回退
-                throw error; 
+                if(!fingerprintCounts[fp]) fingerprintCounts[fp] = 0;
+                fingerprintCounts[fp]++;
+                
+                segments.push({ idx, fp });
+            });
+            
+            // 2. 查找主特征
+            let dominantFp = '', maxC = 0;
+            for(const [fp, c] of Object.entries(fingerprintCounts)) {
+                if(c > maxC) { maxC = c; dominantFp = fp; }
             }
+            
+            // 阈值判定：主特征占比 < 50% 则不清洗
+            if(segments.length === 0 || (maxC / segments.length) < 0.5) {
+                return { content: originalContent, removedCount: 0, log: '结构过于离散，未清洗' };
+            }
+
+            // 3. 构建新内容
+            const linesToRemove = new Set();
+            segments.forEach(seg => {
+                if(seg.fp !== dominantFp) {
+                    linesToRemove.add(seg.idx);
+                    // 回溯删除 EXTINF
+                    let j = seg.idx - 1;
+                    while(j >= 0) {
+                        const l = lines[j].trim();
+                        if(l.startsWith('#EXTINF') || l.startsWith('#EXT-X-BYTERANGE')) {
+                            linesToRemove.add(j);
+                            j--;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            });
+
+            const newLines = [];
+            lines.forEach((line, idx) => {
+                if(linesToRemove.has(idx)) return;
+                
+                let content = line.trim();
+                if(!content) return;
+                
+                // 修复 Blob 模式下的路径问题
+                if(content.startsWith('#')) {
+                    if(content.startsWith('#EXT-X-KEY') && content.includes('URI="')) {
+                        content = content.replace(/URI="([^"]+)"/, (match, p1) => {
+                             if(p1.startsWith('http') || p1.startsWith('//')) return match;
+                             return `URI="${toAbsolute(p1, url)}"`;
+                        });
+                    }
+                    newLines.push(content);
+                } else {
+                    newLines.push(toAbsolute(content, url));
+                }
+            });
+            
+            return {
+                content: newLines.join('\n'),
+                removedCount: segments.length - maxC,
+                log: `已移除 ${segments.length - maxC} 个异常分片`
+            };
         }
 
-        // --- 辅助功能 ---
+        // --- 投屏逻辑 ---
+        function setupCastButtonLogic(videoEl, cleanUrl) {
+            const castBtn = document.getElementById('cast-button');
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            
+            // 确定模式
+            let mode = isIOS ? 'airplay' : 'googlecast';
+            if (window.WebKitPlaybackTargetAvailabilityEvent) {
+                 videoEl.addEventListener('webkitplaybacktargetavailabilitychanged', e => {
+                     if (e.availability === 'available') mode = 'airplay';
+                 });
+            }
+
+            // 初始化 Google Cast
+            if(!isIOS && window.isGCastInitialized) {
+                castType = 'googlecast';
+            }
+
+            castBtn.onclick = () => {
+                if(mode === 'airplay') {
+                    if(videoEl.webkitShowPlaybackTargetPicker) {
+                        videoEl.webkitShowPlaybackTargetPicker();
+                    } else {
+                        showStatus('AirPlay 不可用', 'error');
+                    }
+                } else {
+                    // Google Cast
+                    if(!window.cast || !window.cast.framework) {
+                        return showStatus('投屏服务未就绪', 'warning');
+                    }
+                    const ctx = cast.framework.CastContext.getInstance();
+                    const session = ctx.getCurrentSession();
+                    if(!session) {
+                        ctx.requestSession().then(() => {
+                            const session = ctx.getCurrentSession();
+                            const mediaInfo = new chrome.cast.media.MediaInfo(cleanUrl, 'application/x-mpegurl');
+                            const request = new chrome.cast.media.LoadRequest(mediaInfo);
+                            session.loadMedia(request);
+                        }).catch(e => {
+                            if(e !== 'cancel') showStatus('投屏连接失败', 'error');
+                        });
+                    } else {
+                        // 已经连接，加载媒体
+                        const mediaInfo = new chrome.cast.media.MediaInfo(cleanUrl, 'application/x-mpegurl');
+                        const request = new chrome.cast.media.LoadRequest(mediaInfo);
+                        session.loadMedia(request);
+                    }
+                }
+            };
+        }
+        
+        // --- 工具函数 ---
         function resetPlayer() {
             if (art) { art.destroy(false); art = null; }
             if (hlsInstance) { hlsInstance.destroy(); hlsInstance = null; }
-            document.getElementById('artplayer-container').innerHTML = '';
             document.getElementById('artplayer-container').style.display = 'block';
             document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
-            loadingTip.style.display = 'none';
-            isSniffed = false;
-        }
-        
-        function clearStatus() {
-            statusDiv.style.display = 'none';
+            clearStatus();
         }
 
-        function showStatus(msg, type) {
-            statusDiv.textContent = msg;
-            statusDiv.style.display = 'block';
-            statusDiv.style.color = type === 'error' ? '#fca5a5' : (type === 'success' ? '#86efac' : (type === 'warning' ? '#fcd34d' : '#7dd3fc'));
-            statusDiv.style.backgroundColor = type === 'error' ? 'rgba(220,38,38,0.2)' : (type === 'success' ? 'rgba(22,163,74,0.2)' : (type === 'warning' ? 'rgba(251,191,36,0.1)' : '#2a3f4d'));
+        function showStatus(msg, type = 'info') {
+            const el = document.getElementById('status-message');
+            el.textContent = msg;
+            el.style.display = 'block';
+            el.style.color = type === 'error' ? '#fca5a5' : (type === 'success' ? '#86efac' : '#7dd3fc');
+            el.style.backgroundColor = type === 'error' ? 'rgba(220,38,38,0.2)' : (type === 'success' ? 'rgba(22,163,74,0.2)' : '#2a3f4d');
+        }
+
+        function clearStatus() {
+            document.getElementById('status-message').style.display = 'none';
         }
 
         function getUrlParameter(name) {
@@ -697,61 +772,11 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        // --- 投屏逻辑 ---
-        function setupCastButtonLogic(videoElement, sourceUrl) {
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            castType = isIOS ? 'airplay' : 'googlecast';
-
-            if (window.WebKitPlaybackTargetAvailabilityEvent) {
-                videoElement.addEventListener('webkitplaybacktargetavailabilitychanged', function(event) {
-                    if (event.availability === 'available') castType = 'airplay';
-                });
-            }
-
-            function tryInitCast() {
-                if (!isIOS && window.cast && window.cast.framework) castType = 'googlecast';
-            }
-            if (window.isGCastInitialized) tryInitCast();
-            document.addEventListener('google-cast-ready', tryInitCast);
-
-            castBtn.onclick = () => {
-                if (currentMode !== 'm3u8') {
-                    showStatus('请等待嗅探成功或手动输入 M3U8 地址后再投屏', 'error');
-                    return;
-                }
-                if (castType === 'airplay') {
-                    videoElement.webkitShowPlaybackTargetPicker ? videoElement.webkitShowPlaybackTargetPicker() : showStatus('AirPlay 未就绪', 'error');
-                } else {
-                    if (!window.cast || !window.cast.framework) return showStatus('投屏初始化中...', 'info');
-                    const session = cast.framework.CastContext.getInstance().getCurrentSession();
-                    if (!session) {
-                        cast.framework.CastContext.getInstance().requestSession()
-                            .then(() => performCast(sourceUrl))
-                            .catch(e => { if(e !== 'cancel') showStatus('投屏连接失败: ' + e, 'error'); });
-                    } else {
-                        performCast(sourceUrl);
-                    }
-                }
-            };
+        if(getUrlParameter('url')) {
+            setTimeout(startPlay, 500);
         }
-
-        function performCast(url) {
-            const session = cast.framework.CastContext.getInstance().getCurrentSession();
-            if (!session) return;
-            const mediaInfo = new chrome.cast.media.MediaInfo(url, 'application/x-mpegurl');
-            mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
-            mediaInfo.metadata.title = 'Web Video Cast';
-            const request = new chrome.cast.media.LoadRequest(mediaInfo);
-            session.loadMedia(request).then(
-                () => showStatus('正在投屏中...', 'success'),
-                (e) => showStatus('投屏加载失败: ' + e, 'error')
-            );
-        }
-
-        loadBtn.addEventListener('click', startPlay);
-        input.addEventListener('keydown', (e) => e.key === 'Enter' && startPlay());
-        if (input.value && input.value !== 'YOUR_URL_HERE') startPlay();
     });
 </script>
+
 </body>
 </html>
