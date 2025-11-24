@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 播放器 (强力去广告版)</title>
+    <title>M3U8 播放器 (强力去广告版 + 投屏)</title>
     <style>
         /* 基础样式和布局 */
         body {
@@ -65,6 +65,22 @@
         }
         #load-button:hover { filter: brightness(1.1); }
 
+        #cast-button {
+            padding: 12px 20px;
+            background-color: #3b82f6; /* 蓝色投屏按钮 */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: filter 0.3s;
+            display: none; /* 默认隐藏，检测到支持时显示 */
+            align-items: center;
+            gap: 8px;
+        }
+        #cast-button:hover { filter: brightness(1.1); }
+
         /* 播放器区域 */
         #video-container {
             width: 100%;
@@ -81,33 +97,6 @@
             height: 100%;
         }
         
-        /* 投屏按钮样式 - 新增 */
-        #cast-button {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #fff;
-            border-radius: 6px;
-            padding: 8px 12px;
-            cursor: pointer;
-            display: none; /* 默认隐藏，JS检测支持后显示 */
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            z-index: 20;
-            transition: background-color 0.2s;
-        }
-        #cast-button:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-        }
-        #cast-button svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
         /* 状态提示 */
         #status-message {
             margin-top: 15px;
@@ -138,7 +127,7 @@
         /* 移动端优化 */
         @media (max-width: 600px) {
             #control-panel { flex-direction: column; gap: 10px; }
-            #m3u8-input, #load-button { width: 100%; box-sizing: border-box; }
+            #m3u8-input, #load-button, #cast-button { width: 100%; box-sizing: border-box; }
         }
     </style>
 <script type="importmap">
@@ -152,6 +141,8 @@
   }
 }
 </script>
+<!-- Google Cast SDK -->
+<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 </head>
 <body>
 
@@ -159,7 +150,7 @@
     
     <h1>M3U8 播放器 (强力净化版)</h1>
     <p style="text-align: center; color: #888; font-size: 0.9rem;">
-        智能移除广告分片 | 路径一致性检测 | 极限缓存优化
+        智能移除广告分片 | 路径一致性检测 | 极限缓存优化 | 支持投屏
     </p>
 
     <div id="control-panel">
@@ -172,19 +163,16 @@
         <button id="load-button">
             ⚡️ 净化并播放
         </button>
+        <button id="cast-button">
+            📺 投屏
+        </button>
     </div>
     
     <div id="status-message"></div>
 
     <div id="video-container">
-        <button id="cast-button" title="投屏/AirPlay">
-            <svg viewBox="0 0 24 24">
-                <path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11zm9-7h-8v2h8c1.1 0 2 .9 2 2v12h2v-12c0-2.21-1.79-4-4-4z"/>
-            </svg>
-            <span>投屏</span>
-        </button>
-
-        <video id="video" controls playsinline x-webkit-airplay="allow" airplay="allow"></video>
+        <!-- x-webkit-airplay="allow" 用于 iOS AirPlay 支持 -->
+        <video id="video" controls playsinline x-webkit-airplay="allow"></video>
         <div id="debug-info"></div> 
     </div>
 
@@ -192,15 +180,83 @@
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
+    // Google Cast 初始化回调 (必须在 DOMContentLoaded 之前定义或全局定义)
+    window['__onGCastApiAvailable'] = function(isAvailable) {
+        if (isAvailable) {
+            cast.framework.CastContext.getInstance().setOptions({
+                receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+                autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+            });
+            // 触发自定义事件通知 UI
+            document.dispatchEvent(new Event('google-cast-available'));
+        }
+    };
+
     document.addEventListener('DOMContentLoaded', () => {
         const video = document.getElementById('video');
         const input = document.getElementById('m3u8-input');
         const button = document.getElementById('load-button');
+        const castButton = document.getElementById('cast-button');
         const statusDiv = document.getElementById('status-message');
         const debugDiv = document.getElementById('debug-info');
-        const castBtn = document.getElementById('cast-button');
         
         input.value = input.value === 'YOUR_M3U8_URL_HERE' ? '' : input.value;
+
+        // --- 投屏功能集成 ---
+        let castType = null; // 'airplay' | 'googlecast'
+
+        // 1. 检测 AirPlay (iOS/Safari)
+        if (window.WebKitPlaybackTargetAvailabilityEvent) {
+            video.addEventListener('webkitplaybacktargetavailabilitychanged', function(event) {
+                if (event.availability === 'available') {
+                    castButton.style.display = 'inline-flex';
+                    castType = 'airplay';
+                }
+            });
+        }
+
+        // 2. 检测 Google Cast (Android/Chrome)
+        document.addEventListener('google-cast-available', () => {
+            castButton.style.display = 'inline-flex';
+            castType = 'googlecast';
+        });
+        // 如果脚本加载极快，事件可能已经错过，再次检查
+        if (window.cast && window.cast.framework) {
+             castButton.style.display = 'inline-flex';
+             castType = 'googlecast';
+        }
+
+        castButton.addEventListener('click', () => {
+            if (castType === 'airplay') {
+                video.webkitShowPlaybackTargetPicker();
+            } else if (castType === 'googlecast') {
+                const castContext = cast.framework.CastContext.getInstance();
+                const session = castContext.getCurrentSession();
+                
+                if (!session) {
+                    castContext.requestSession().then(startCastSession).catch(err => console.error('Cast Error:', err));
+                } else {
+                    // 已经连接，打开控制菜单 (如果使用默认UI) 或 断开
+                     castContext.endCurrentSession(true);
+                }
+            }
+        });
+
+        function startCastSession(session) {
+            const mediaUrl = input.value.trim(); // 投屏必须使用原始 URL，因为 TV 无法访问本地 Blob
+            if (!mediaUrl) return;
+
+            const mediaInfo = new chrome.cast.media.MediaInfo(mediaUrl, 'application/x-mpegurl');
+            mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
+            mediaInfo.metadata.title = 'M3U8 Stream';
+
+            const request = new chrome.cast.media.LoadRequest(mediaInfo);
+            
+            session.loadMedia(request).then(
+                function() { console.log('Cast load success'); },
+                function(errorCode) { console.error('Cast load error', errorCode); }
+            );
+        }
 
         // --- UI 工具 ---
         function showStatus(message, type = 'info') {
@@ -237,42 +293,6 @@
             const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             const results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-        // --- 投屏功能实现 (新增) ---
-        function initCast() {
-            // 检测浏览器支持哪种投屏方式
-            const hasRemotePlayback = 'remote' in video; // Chrome/Edge/Android 原生投屏 API
-            const hasAirPlay = video.webkitShowPlaybackTargetPicker; // iOS/Safari AirPlay API
-
-            if (hasRemotePlayback || hasAirPlay) {
-                
-                // 如果是 Remote Playback API，监听可用性
-                if (hasRemotePlayback) {
-                    video.remote.watchAvailability(function(available) {
-                        castBtn.style.display = available ? 'flex' : 'none';
-                    }).catch(function() {
-                        // 某些浏览器不支持 watchAvailability 但支持 remote，默认显示
-                        castBtn.style.display = 'flex';
-                    });
-                } else {
-                    // AirPlay 直接显示
-                    castBtn.style.display = 'flex';
-                }
-
-                // 按钮点击事件
-                castBtn.addEventListener('click', function() {
-                    if (hasRemotePlayback) {
-                        // 调用 Chrome/Android 原生投屏选择菜单
-                        video.remote.prompt().catch(function(error) {
-                            console.log('投屏取消或失败:', error);
-                        });
-                    } else if (hasAirPlay) {
-                        // 调用 iOS AirPlay 菜单
-                        video.webkitShowPlaybackTargetPicker();
-                    }
-                });
-            }
         }
 
         // --- 核心：M3U8 强力清洗逻辑 ---
@@ -530,9 +550,6 @@
         }
         
         // --- 初始化 ---
-        // 启用投屏
-        initCast();
-
         const urlParam = getUrlParameter('url');
         let initialUrl = input.value.trim();
 
