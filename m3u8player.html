@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>M3U8 智能融合播放器</title>
-    <link href="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.css" rel="stylesheet">
+    <!-- 解决 Favicon 404 报错 -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
+    <!-- 添加 crossorigin="anonymous" 以减少 Safari 追踪防护警告 -->
+    <link href="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.css" rel="stylesheet" crossorigin="anonymous">
     <style>
         /* --- 基础样式 --- */
         body {
@@ -148,14 +151,13 @@
             border: 1px solid #4ade80 !important;
         }
 
-        /* --- 移动端优化 (针对性修改) --- */
+        /* --- 移动端优化 --- */
         @media (max-width: 600px) {
             #app-container { 
                 padding: 10px; 
                 margin: 0;
                 border: none;
                 box-shadow: none;
-                /* 确保容器填满宽度，不留多余空白 */
                 width: 100%;
                 max-width: 100%;
             }
@@ -166,7 +168,6 @@
             
             #m3u8-input { 
                 width: 100%; 
-                /* 输入框字体放大一点，方便触摸 */
                 font-size: 16px; 
                 padding: 12px;
             }
@@ -182,11 +183,10 @@
             }
 
             #video-wrapper {
-                /* 移动端强制 16:9，移除 flex-grow 以避免高度被拉伸得过长或压缩 */
                 flex-grow: 0;
                 width: 100%;
                 aspect-ratio: 16 / 9;
-                min-height: auto; /* 重置最小高度 */
+                min-height: auto;
                 border-radius: 4px;
                 border-color: #222;
             }
@@ -235,9 +235,9 @@
     </div>
 </div>
 
-<!-- 库引入 -->
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.js"></script>
+<!-- 库引入，添加 crossorigin="anonymous" -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.js" crossorigin="anonymous"></script>
 
 <script>
     // --- 配置区域 ---
@@ -314,13 +314,25 @@
             let finalUrl = url;
             try {
                 const cleanResult = await fetchAndCleanM3u8(url);
+                
                 if (cleanResult.removedCount > 0) {
                     if (!isAutoSniffed) showStatus(`${cleanResult.log}\n正在生成纯净流...`, 'success');
                     const blob = new Blob([cleanResult.content], { type: 'application/vnd.apple.mpegurl' });
                     finalUrl = URL.createObjectURL(blob);
+                } else {
+                    if (!isAutoSniffed) showStatus('无需清洗，准备播放...', 'info');
                 }
+
             } catch (e) {
-                if (!isAutoSniffed) showStatus('无法清洗(跨域)，尝试直接播放', 'warning');
+                // 这里的日志仅在控制台显示，方便排查，界面上给用户更友好的提示
+                console.warn('清洗跳过:', e);
+                if (!isAutoSniffed) {
+                    // 区分是超时还是跨域
+                    const msg = e.name === 'AbortError' 
+                        ? '⚠️ 广告分析超时，跳过清洗直接播放...' 
+                        : '⚠️ 目标资源禁止跨域访问，无法去广告，将尝试直接播放...';
+                    showStatus(msg, 'warning');
+                }
             }
 
             initArtplayer(finalUrl, url);
@@ -336,14 +348,15 @@
                 theme: '#4ade80',
                 autoplay: true,
                 
-                // --- 播放器功能增强 ---
-                setting: true,     // 开启设置面板
-                miniProgressBar: true, // 移动端迷你进度条
+                // 添加 ID 以优化本地存储键值，减少冲突
+                id: 'm3u8-smart-player',
+                
+                setting: true,
+                miniProgressBar: true,
                 fullscreen: true,
                 pip: true,
-                playbackRate: false, // 禁用默认倍速菜单，使用下方自定义的
+                playbackRate: false, 
                 
-                // 自定义设置菜单 (倍速 + 字幕)
                 settings: [
                     {
                         html: '播放速度',
@@ -354,7 +367,7 @@
                             { html: '1.0x', value: 1.0, default: true },
                             { html: '1.5x', value: 1.5 },
                             { html: '2.0x', value: 2.0 },
-                            { html: '5.0x', value: 5.0 }, // 极限倍速
+                            { html: '5.0x', value: 5.0 },
                         ],
                         onSelect: function (item) {
                             art.playbackRate = item.value;
@@ -380,7 +393,7 @@
                                 return '关闭';
                             }
                             if(item.value === 'offset') {
-                                art.subtitleOffset = true; // 唤起字幕偏移调整UI
+                                art.subtitleOffset = true; 
                                 return '调节偏移';
                             }
                             return item.html;
@@ -388,14 +401,11 @@
                     }
                 ],
                 
-                subtitleOffset: true, // 启用字幕偏移功能
+                subtitleOffset: true, 
                 subtitle: {
-                    url: '', // 如有外挂字幕可在此配置
+                    url: '',
                     type: 'srt',
-                    style: {
-                        color: '#fff',
-                        fontSize: '20px',
-                    },
+                    style: { color: '#fff', fontSize: '20px' },
                 },
 
                 customType: {
@@ -405,6 +415,23 @@
                             hlsInstance = new Hls(hlsConfig);
                             hlsInstance.loadSource(url);
                             hlsInstance.attachMedia(video);
+                            
+                            hlsInstance.on(Hls.Events.ERROR, function (event, data) {
+                                if (data.fatal) {
+                                    switch(data.type) {
+                                        case Hls.ErrorTypes.NETWORK_ERROR:
+                                            hlsInstance.startLoad();
+                                            break;
+                                        case Hls.ErrorTypes.MEDIA_ERROR:
+                                            hlsInstance.recoverMediaError();
+                                            break;
+                                        default:
+                                            showStatus('❌ 播放失败: 无法加载视频流 (可能是跨域限制)', 'error');
+                                            hlsInstance.destroy();
+                                            break;
+                                    }
+                                }
+                            });
                         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                             video.src = url;
                         } else {
@@ -415,7 +442,14 @@
             });
 
             art.on('ready', () => {
+                showStatus('✅ 播放就绪', 'success');
+                setTimeout(() => clearStatus(), 2000); 
                 setupCastButtonLogic(art.video, originalUrl);
+            });
+            
+            art.on('error', (err) => {
+                 console.error('Artplayer Error:', err);
+                 showStatus('❌ 播放器错误: ' + (err.message || '资源无法加载'), 'error');
             });
         }
 
@@ -435,7 +469,6 @@
             apiArray.forEach(api => {
                 const iframe = document.createElement('iframe');
                 iframe.className = 'temp-iframe';
-                // 全屏与权限策略
                 iframe.allowFullscreen = true; 
                 iframe.setAttribute('allowFullScreen', '');
                 iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer";
@@ -518,7 +551,7 @@
             }
         }
 
-        // --- 广告清洗逻辑 (复用 m3player 逻辑) ---
+        // --- 广告清洗逻辑 (进一步优化版) ---
         async function fetchAndCleanM3u8(url) {
             const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch (e) { return p; } };
             const getFingerprint = (absUrl) => {
@@ -530,55 +563,69 @@
                 } catch { return 'err'; }
             };
 
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(response.status);
-            const text = await response.text();
-            const lines = text.split(/\r?\n/);
-            const counts = {};
-            const segments = [];
+            // 6秒超时，避免长时间卡顿
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 6000);
 
-            lines.forEach((line, idx) => {
-                const trim = line.trim();
-                if (!trim || trim.startsWith('#')) return;
-                const abs = toAbsolute(trim, url);
-                const fp = getFingerprint(abs);
-                counts[fp] = (counts[fp] || 0) + 1;
-                segments.push({ idx, fp, abs });
-            });
+            try {
+                const response = await fetch(url, { signal: controller.signal });
+                clearTimeout(timeoutId); 
+                
+                if (!response.ok) throw new Error(response.status);
+                const text = await response.text();
+                
+                const lines = text.split(/\r?\n/);
+                const counts = {};
+                const segments = [];
 
-            let domFp = '', max = 0;
-            for (const [fp, c] of Object.entries(counts)) { if (c > max) { max = c; domFp = fp; } }
-            
-            if ((max / segments.length) <= 0.5) return { removedCount: 0, content: text, log: '结构复杂未清洗' };
+                lines.forEach((line, idx) => {
+                    const trim = line.trim();
+                    if (!trim || trim.startsWith('#')) return;
+                    const abs = toAbsolute(trim, url);
+                    const fp = getFingerprint(abs);
+                    counts[fp] = (counts[fp] || 0) + 1;
+                    segments.push({ idx, fp, abs });
+                });
 
-            const toRemove = new Set();
-            let removed = 0;
-            segments.forEach(s => {
-                if (s.fp !== domFp) {
-                    toRemove.add(s.idx);
-                    removed++;
-                    let j = s.idx - 1;
-                    while (j >= 0) {
-                        const prev = lines[j].trim();
-                        if (prev.startsWith('#EXTINF') || prev.startsWith('#EXT-X-BYTERANGE')) {
-                            toRemove.add(j); j--;
-                        } else break;
+                let domFp = '', max = 0;
+                for (const [fp, c] of Object.entries(counts)) { if (c > max) { max = c; domFp = fp; } }
+                
+                if (segments.length > 0 && (max / segments.length) <= 0.5) return { removedCount: 0, content: text, log: '结构复杂未清洗' };
+                if (segments.length === 0) return { removedCount: 0, content: text, log: '无分片' };
+
+                const toRemove = new Set();
+                let removed = 0;
+                segments.forEach(s => {
+                    if (s.fp !== domFp) {
+                        toRemove.add(s.idx);
+                        removed++;
+                        let j = s.idx - 1;
+                        while (j >= 0) {
+                            const prev = lines[j].trim();
+                            if (prev.startsWith('#EXTINF') || prev.startsWith('#EXT-X-BYTERANGE')) {
+                                toRemove.add(j); j--;
+                            } else break;
+                        }
                     }
-                }
-            });
+                });
 
-            const newLines = lines.filter((_, i) => !toRemove.has(i)).map(l => {
-                const t = l.trim();
-                if (t.startsWith('#')) {
-                    if (t.startsWith('#EXT-X-KEY') && t.includes('URI="')) {
-                        return t.replace(/URI="([^"]+)"/, (m, p1) => `URI="${toAbsolute(p1, url)}"`);
+                const newLines = lines.filter((_, i) => !toRemove.has(i)).map(l => {
+                    const t = l.trim();
+                    if (t.startsWith('#')) {
+                        if (t.startsWith('#EXT-X-KEY') && t.includes('URI="')) {
+                            return t.replace(/URI="([^"]+)"/, (m, p1) => `URI="${toAbsolute(p1, url)}"`);
+                        }
+                        return t;
                     }
-                    return t;
-                }
-                return toAbsolute(t, url);
-            });
+                    return toAbsolute(t, url);
+                });
 
-            return { content: newLines.join('\n'), removedCount: removed, log: `已移除 ${removed} 个广告分片` };
+                return { content: newLines.join('\n'), removedCount: removed, log: `已移除 ${removed} 个广告分片` };
+            } catch (error) {
+                clearTimeout(timeoutId);
+                // 抛出错误，由外层 loadM3U8Mode 捕获并进行回退
+                throw error; 
+            }
         }
 
         // --- 辅助功能 ---
@@ -591,12 +638,16 @@
             loadingTip.style.display = 'none';
             isSniffed = false;
         }
+        
+        function clearStatus() {
+            statusDiv.style.display = 'none';
+        }
 
         function showStatus(msg, type) {
             statusDiv.textContent = msg;
             statusDiv.style.display = 'block';
-            statusDiv.style.color = type === 'error' ? '#fca5a5' : (type === 'success' ? '#86efac' : '#7dd3fc');
-            statusDiv.style.backgroundColor = type === 'error' ? 'rgba(220,38,38,0.2)' : (type === 'success' ? 'rgba(22,163,74,0.2)' : '#2a3f4d');
+            statusDiv.style.color = type === 'error' ? '#fca5a5' : (type === 'success' ? '#86efac' : (type === 'warning' ? '#fcd34d' : '#7dd3fc'));
+            statusDiv.style.backgroundColor = type === 'error' ? 'rgba(220,38,38,0.2)' : (type === 'success' ? 'rgba(22,163,74,0.2)' : (type === 'warning' ? 'rgba(251,191,36,0.1)' : '#2a3f4d'));
         }
 
         function getUrlParameter(name) {
