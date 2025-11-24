@@ -106,6 +106,14 @@
             top: 0; left: 0;
             z-index: 10;
         }
+        
+        /* 强制视频元素硬件加速，辅助提升流畅度 */
+        #artplayer-container video {
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
+            will-change: transform;
+            backface-visibility: hidden;
+        }
 
         /* Iframe 竞速容器 */
         .temp-iframe {
@@ -259,6 +267,12 @@
         maxMaxBufferLength: 120,
         maxBufferSize: 100 * 1024 * 1024,
         backBufferLength: 90,
+        
+        // --- 画质与帧率优化配置 ---
+        // 允许播放器加载比容器尺寸更大的画面 (例如在手机上加载4K/60fps)
+        capLevelToPlayerSize: false, 
+        autoStartLoad: true,
+        
         fragLoadingTimeOut: 20000,
         fragLoadingMaxRetry: 6,
         maxBufferHole: 0.5,
@@ -358,6 +372,33 @@
                 playbackRate: false, 
                 
                 settings: [
+                    {
+                        html: '画质模式',
+                        tooltip: '自动',
+                        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>',
+                        selector: [
+                            { html: '默认 (自动)', value: 'auto', default: true },
+                            { html: '🚀 强制60帧 (画质优先)', value: 'high' }
+                        ],
+                        onSelect: function(item) {
+                            if (!hlsInstance) return '不支持';
+                            if (item.value === 'high') {
+                                // 策略：锁定到最高 Level (通常包含高帧率/高码率)
+                                const levels = hlsInstance.levels;
+                                if(levels && levels.length > 0) {
+                                    // HLS.js 默认按带宽从小到大排序，最后一个通常是最高画质
+                                    hlsInstance.currentLevel = levels.length - 1;
+                                    hlsInstance.capLevelToPlayerSize = false; // 强制忽略屏幕尺寸限制
+                                    showStatus('已切换至最高画质 (优先匹配60帧源)', 'success');
+                                }
+                                return '强制60帧';
+                            } else {
+                                hlsInstance.currentLevel = -1; // 自动切换
+                                showStatus('已切换至自动画质', 'info');
+                                return '自动';
+                            }
+                        }
+                    },
                     {
                         html: '播放速度',
                         tooltip: '1.0x',
