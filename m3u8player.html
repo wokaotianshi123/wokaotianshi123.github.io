@@ -2,629 +2,583 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 播放器 (强力去广告版 + 投屏)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>M3U8 智能融合播放器</title>
+    <link href="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.css" rel="stylesheet">
     <style>
-        /* 基础样式和布局 */
+        /* --- 基础样式 (来自 m3player) --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #1a1a1a; /* 深色模式背景 */
+            padding: 0;
+            background-color: #1a1a1a;
             color: #e0e0e0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         #app-container {
             max-width: 1000px;
-            margin: 40px auto;
+            width: 100%;
+            margin: 0 auto;
             padding: 20px;
-            background-color: #2d2d2d;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            border: 1px solid #3d3d3d;
+            box-sizing: border-box;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         h1 {
-            color: #4ade80; /* 绿色主题 */
+            color: #4ade80;
             text-align: center;
-            margin-bottom: 10px;
+            margin: 10px 0 20px 0;
+            font-size: 1.5rem;
         }
 
-        /* 控制面板样式 */
+        /* --- 控制面板 --- */
         #control-panel {
             display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 10px;
+            margin-bottom: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         #m3u8-input {
             flex-grow: 1;
-            padding: 12px 15px;
+            padding: 10px 15px;
             border: 1px solid #444;
-            background-color: #1a1a1a;
+            background-color: #2d2d2d;
             color: #fff;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            min-width: 200px;
         }
         #m3u8-input:focus {
             outline: none;
             border-color: #4ade80;
         }
 
-        #load-button {
-            padding: 12px 25px;
-            background-color: #4ade80; 
-            color: #000;
+        .btn {
+            padding: 10px 20px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
-            transition: filter 0.3s;
+            transition: all 0.2s;
+            color: #fff;
+            white-space: nowrap;
         }
+
+        #load-button { background-color: #4ade80; color: #000; }
         #load-button:hover { filter: brightness(1.1); }
 
-        #cast-button {
-            padding: 12px 20px;
-            background-color: #3b82f6; /* 蓝色投屏按钮 */
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: filter 0.3s;
-            display: inline-flex; /* 强制常驻显示 */
-            align-items: center;
-            gap: 8px;
-        }
+        #cast-button { background-color: #3b82f6; display: inline-flex; align-items: center; gap: 6px; }
         #cast-button:hover { filter: brightness(1.1); }
+        #cast-button:disabled { background-color: #555; color: #888; cursor: not-allowed; }
 
-        /* 播放器区域 */
-        #video-container {
-            width: 100%;
-            aspect-ratio: 16 / 9; 
+        /* --- 播放器容器 (关键融合部分) --- */
+        #video-wrapper {
+            flex-grow: 1;
+            min-height: 300px; /* 移动端最小高度 */
             background-color: #000;
             border-radius: 8px;
             overflow: hidden;
             position: relative;
             border: 1px solid #333;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        #video {
+        /* Artplayer 容器 */
+        #artplayer-container {
             width: 100%;
             height: 100%;
-        }
-        
-        /* 状态提示 */
-        #status-message {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 6px;
-            background-color: #2a3f4d;
-            color: #7dd3fc;
-            font-size: 14px;
-            line-height: 1.5;
-            display: none;
-            white-space: pre-line; /* 支持换行 */
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 10;
         }
 
-        /* 调试信息 */
-        #debug-info {
+        /* Iframe 竞速容器 */
+        .temp-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
             position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #4ade80;
-            padding: 4px 8px;
-            font-size: 12px;
-            border-radius: 4px;
-            z-index: 10;
-            font-family: monospace;
+            top: 0; left: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+            z-index: 5; /* 低于 Artplayer，但在显示时会提升 */
+            background: #000;
         }
         
+        .iframe-active {
+            z-index: 20;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* --- 状态提示 --- */
+        #status-message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background-color: #2a3f4d;
+            color: #7dd3fc;
+            font-size: 13px;
+            display: none;
+            white-space: pre-line;
+            overflow-wrap: break-word;
+        }
+
+        /* 嗅探成功动画 */
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+        .sniff-success {
+            animation: pulse-green 1.5s infinite;
+            border: 1px solid #4ade80 !important;
+        }
+
         /* 移动端优化 */
         @media (max-width: 600px) {
-            #control-panel { flex-direction: column; gap: 10px; }
-            #m3u8-input, #load-button, #cast-button { width: 100%; box-sizing: border-box; }
+            #app-container { padding: 10px; }
+            #control-panel { gap: 8px; }
+            #m3u8-input { width: 100%; }
+            .btn { flex-grow: 1; }
         }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "hls.js": "https://aistudiocdn.com/hls.js@^1.6.15",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
-  }
-}
-</script>
-<!-- Google Cast 初始化回调 (必须在 SDK 之前) -->
-<script>
-    window['__onGCastApiAvailable'] = function(isAvailable) {
-        if (isAvailable) {
-            try {
-                // 初始化 Context
-                cast.framework.CastContext.getInstance().setOptions({
-                    receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
-                    autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
-                });
-                console.log('Google Cast SDK Initialized via callback');
-                
-                // 标记全局状态
-                window.isGCastInitialized = true;
-                
-                // 派发自定义事件，通知应用层
-                document.dispatchEvent(new Event('google-cast-ready'));
-            } catch (e) {
-                console.error('GCast Init Error:', e);
+    
+    <!-- Google Cast 初始化 -->
+    <script>
+        window['__onGCastApiAvailable'] = function(isAvailable) {
+            if (isAvailable) {
+                try {
+                    cast.framework.CastContext.getInstance().setOptions({
+                        receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+                        autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+                    });
+                    window.isGCastInitialized = true;
+                    document.dispatchEvent(new Event('google-cast-ready'));
+                } catch (e) { console.error('GCast Init Error:', e); }
             }
-        }
-    };
-</script>
-<!-- Google Cast SDK -->
-<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+        };
+    </script>
+    <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 </head>
 <body>
 
 <div id="app-container">
+    <h1>M3U8 智能融合播放器</h1>
     
-    <h1>M3U8 播放器 (强力净化版)</h1>
-    <p style="text-align: center; color: #888; font-size: 0.9rem;">
-        智能移除广告分片 | 路径一致性检测 | 极限缓存优化 | 支持投屏
-    </p>
-
     <div id="control-panel">
-        <input 
-            type="url" 
-            id="m3u8-input" 
-            placeholder="在此粘贴 M3U8 地址，或使用 ?url= 参数"
-            value="YOUR_M3U8_URL_HERE"
-        >
-        <button id="load-button">
-            ⚡️ 净化并播放
-        </button>
-        <button id="cast-button">
-            📺 投屏
-        </button>
+        <input type="url" id="m3u8-input" placeholder="输入 M3U8 直链或视频网站地址" value="YOUR_URL_HERE">
+        <button id="load-button" class="btn">⚡️ 智能播放</button>
+        <button id="cast-button" class="btn">📺 投屏</button>
     </div>
-    
+
     <div id="status-message"></div>
 
-    <div id="video-container">
-        <!-- x-webkit-airplay="allow" 用于 iOS AirPlay 支持 -->
-        <video id="video" controls playsinline x-webkit-airplay="allow"></video>
-        <div id="debug-info"></div> 
+    <div id="video-wrapper">
+        <!-- 竞速解析模式的 Loading 提示 -->
+        <div id="loading-tip" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#888; display:none; z-index:1; text-align:center;">
+            <p>正在竞速解析...</p>
+            <p style="font-size:12px; color:#555;">后台正在尝试嗅探真实 M3U8 地址</p>
+        </div>
+        <!-- 本地播放器容器 -->
+        <div id="artplayer-container"></div>
+        <!-- Iframe 容器将动态添加到这里 -->
     </div>
-
 </div>
 
+<!-- 库引入 -->
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.js"></script>
+
 <script>
+    // --- 配置区域 ---
+    
+    // 解析源列表
+    const apiArray = [
+        { name: "线路1 (Ckplayer)", url: "https://www.ckplayer.vip/jiexi/?url=" },
+        { name: "线路2 (M3u8TV)", url: "https://jx.m3u8.tv/jiexi/?url=" },
+        { name: "线路3 (XMFLV)", url: "https://jx.xmflv.com/?url=" },
+        { name: "线路4 (YParse)", url: "https://yparse.ik9.cc/index.php?url=" },
+        { name: "线路5 (8090g)", url: "https://www.8090g.cn/jiexi/?url=" },
+        // 添加一个支持 JSON 返回的假设接口示例
+        { name: "线路X (JSON尝试)", url: "https://json.jiexi.com/?url=", type: 'json' } 
+    ];
+
+    // HLS 极限缓存配置
+    const hlsConfig = {
+        enableWorker: true,
+        lowLatencyMode: false,
+        startBufferLength: 10,
+        maxBufferLength: 60,
+        maxMaxBufferLength: 120,
+        maxBufferSize: 100 * 1024 * 1024,
+        backBufferLength: 90,
+        fragLoadingTimeOut: 20000,
+        fragLoadingMaxRetry: 6,
+        maxBufferHole: 0.5,
+    };
+
+    // --- 全局变量 ---
+    let art = null; 
+    let hlsInstance = null;
+    let castType = 'googlecast'; 
+    let currentMode = 'idle'; // 'm3u8' 或 'iframe'
+    let isSniffed = false; // 是否已成功嗅探
+
     document.addEventListener('DOMContentLoaded', () => {
-        const video = document.getElementById('video');
         const input = document.getElementById('m3u8-input');
-        const button = document.getElementById('load-button');
-        const castButton = document.getElementById('cast-button');
+        const loadBtn = document.getElementById('load-button');
+        const castBtn = document.getElementById('cast-button');
         const statusDiv = document.getElementById('status-message');
-        const debugDiv = document.getElementById('debug-info');
-        
-        input.value = input.value === 'YOUR_M3U8_URL_HERE' ? '' : input.value;
+        const wrapper = document.getElementById('video-wrapper');
+        const loadingTip = document.getElementById('loading-tip');
 
-        // --- 投屏功能集成 ---
-        
-        // 根据 UA 预判默认投屏类型，确保按钮立即可用
-        // iPad, iPhone, iPod 使用 AirPlay，其他设备默认尝试 Google Cast
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        let castType = isIOS ? 'airplay' : 'googlecast';
-        
-        console.log(`Initial Cast Mode: ${castType}`);
+        // 初始化输入框
+        const urlParam = getUrlParameter('url');
+        input.value = urlParam || (input.value === 'YOUR_URL_HERE' ? '' : input.value);
 
-        // 1. 检测 AirPlay (iOS/Safari) - 仅作为增强检测，不控制按钮显隐
-        if (window.WebKitPlaybackTargetAvailabilityEvent) {
-            video.addEventListener('webkitplaybacktargetavailabilitychanged', function(event) {
-                if (event.availability === 'available') {
-                    castType = 'airplay';
-                    console.log('AirPlay detected available');
+        function startPlay() {
+            const url = input.value.trim();
+            if (!url) return showStatus('请输入视频地址', 'error');
+
+            resetPlayer();
+            
+            // 模式判断
+            if (url.includes('.m3u8') || url.startsWith('blob:') || url.startsWith('http://127.0.0.1')) {
+                loadM3U8Mode(url);
+            } else {
+                loadIframeMode(url);
+                // 启动后台嗅探
+                backgroundSniff(url);
+            }
+        }
+
+        // --- 模式 A: 本地 M3U8 增强模式 ---
+        async function loadM3U8Mode(url, isAutoSniffed = false) {
+            currentMode = 'm3u8';
+            castBtn.disabled = false;
+            isSniffed = true;
+            wrapper.classList.remove('sniff-success'); // 移除动画
+            
+            // 如果是自动嗅探到的，给一个视觉反馈
+            if (isAutoSniffed) {
+                showStatus('✅ 嗅探成功！已切换至增强模式 (已去广告/支持投屏)', 'success');
+                wrapper.classList.add('sniff-success');
+                setTimeout(() => wrapper.classList.remove('sniff-success'), 2000);
+            } else {
+                showStatus('正在进行深度清洗与加载...', 'info');
+            }
+
+            let finalUrl = url;
+            try {
+                // 执行广告清洗
+                const cleanResult = await fetchAndCleanM3u8(url);
+                if (cleanResult.removedCount > 0) {
+                    if (!isAutoSniffed) showStatus(`${cleanResult.log}\n正在生成纯净流...`, 'success');
+                    const blob = new Blob([cleanResult.content], { type: 'application/vnd.apple.mpegurl' });
+                    finalUrl = URL.createObjectURL(blob);
                 }
+            } catch (e) {
+                if (!isAutoSniffed) showStatus('无法清洗(跨域)，尝试直接播放', 'warning');
+            }
+
+            initArtplayer(finalUrl, url);
+        }
+
+        function initArtplayer(videoUrl, originalUrl) {
+            if (art) art.destroy(false);
+            
+            art = new Artplayer({
+                container: '#artplayer-container',
+                url: videoUrl,
+                type: 'm3u8',
+                theme: '#4ade80',
+                autoplay: true,
+                setting: true,
+                fullscreen: true,
+                pip: true,
+                customType: {
+                    m3u8: function (video, url) {
+                        if (Hls.isSupported()) {
+                            if (hlsInstance) hlsInstance.destroy();
+                            hlsInstance = new Hls(hlsConfig);
+                            hlsInstance.loadSource(url);
+                            hlsInstance.attachMedia(video);
+                        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                            video.src = url;
+                        } else {
+                            art.notice.show = '不支持 HLS 播放';
+                        }
+                    },
+                },
+            });
+
+            art.on('ready', () => {
+                setupCastButtonLogic(art.video, originalUrl);
             });
         }
 
-        // 2. 检测 Google Cast (Android/Chrome)
-        function initGoogleCastUI() {
-            if (!window.cast || !window.cast.framework) return;
-            // SDK 加载完成，确认模式
-            if (!isIOS) castType = 'googlecast';
-        }
+        // --- 模式 B: Iframe 竞速解析模式 ---
+        function loadIframeMode(url) {
+            currentMode = 'iframe';
+            castBtn.disabled = true; 
+            isSniffed = false;
+            showStatus('识别为网页链接，正在竞速解析... (稍后若出现投屏按钮说明嗅探成功)', 'info');
+            loadingTip.style.display = 'block';
 
-        // 监听来自 Head 的事件
-        document.addEventListener('google-cast-ready', initGoogleCastUI);
+            let fastestTime = Infinity;
+            let hasWinner = false;
 
-        // 轮询检查 SDK 是否加载 (确保 Android 上能尽快响应)
-        if (window.isGCastInitialized) {
-            initGoogleCastUI();
-        } else {
-            let checkCount = 0;
-            const castTimer = setInterval(() => {
-                checkCount++;
-                if (window.isGCastInitialized || (window.cast && window.cast.framework)) {
-                    clearInterval(castTimer);
-                    initGoogleCastUI();
-                }
-                if (checkCount > 50) clearInterval(castTimer);
-            }, 200);
-        }
+            document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
 
-        // 投屏按钮点击事件
-        castButton.addEventListener('click', () => {
-            if (castType === 'airplay') {
-                if (video.webkitShowPlaybackTargetPicker) {
-                    video.webkitShowPlaybackTargetPicker();
-                } else {
-                    showStatus('AirPlay 暂未就绪或不支持此设备', 'error');
-                }
-            } else if (castType === 'googlecast') {
-                // 检查 SDK 是否就绪
-                if (!window.cast || !window.cast.framework) {
-                    showStatus('投屏服务正在初始化，请稍后再试...', 'info');
-                    // 尝试手动触发一次回调，以防万一
-                    if(window['__onGCastApiAvailable']) window['__onGCastApiAvailable'](true);
-                    return;
-                }
-
-                const castContext = cast.framework.CastContext.getInstance();
-                const session = castContext.getCurrentSession();
+            apiArray.forEach(api => {
+                const iframe = document.createElement('iframe');
+                iframe.className = 'temp-iframe';
+                iframe.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups";
+                iframe.src = api.url + url;
                 
-                if (!session) {
-                    // 请求开始投屏会话
-                    castContext.requestSession().then(startCastSession).catch(err => {
-                        console.error('Cast Error:', err);
-                        if (err !== 'cancel') {
-                             showStatus('投屏连接失败: ' + err, 'error');
-                        }
+                const startTime = performance.now();
+                iframe.onload = function() {
+                    // 如果已经嗅探到了 m3u8，就不要再显示 iframe 了
+                    if (isSniffed) return;
+
+                    const loadTime = performance.now() - startTime;
+                    if (loadTime < fastestTime && !hasWinner) {
+                        fastestTime = loadTime;
+                        hasWinner = true;
+                        displayIframe(this, api.name);
+                    }
+                };
+                wrapper.appendChild(iframe);
+            });
+        }
+
+        function displayIframe(iframe, apiName) {
+            if (isSniffed) return; // 再次检查防止冲突
+            loadingTip.style.display = 'none';
+            showStatus(`解析成功！当前线路: ${apiName} (暂未提取到直链，不支持投屏)`, 'info');
+            document.getElementById('artplayer-container').style.display = 'none';
+            iframe.classList.add('iframe-active');
+            
+            // 添加一个手动输入 M3U8 的入口
+            const manualBtn = document.createElement('span');
+            manualBtn.innerHTML = " [我有M3U8地址]";
+            manualBtn.style.cursor = 'pointer';
+            manualBtn.style.color = '#4ade80';
+            manualBtn.onclick = () => {
+                const manualUrl = prompt("如果您抓包到了 M3U8 地址，请粘贴在这里以开启投屏和加速：");
+                if(manualUrl && manualUrl.includes('.m3u8')) loadM3U8Mode(manualUrl, true);
+            };
+            statusDiv.appendChild(manualBtn);
+        }
+
+        // --- 核心增强：后台嗅探逻辑 ---
+        async function backgroundSniff(videoPageUrl) {
+            console.log('启动后台嗅探任务...');
+            const regex = /["'](https?:\/\/[^"']+\.m3u8[^"']*)["']/;
+
+            // 1. 尝试监听 postMessage (如果解析源友好)
+            const msgHandler = (e) => {
+                if (e.data && typeof e.data === 'string') {
+                    // 检查消息中是否包含 m3u8
+                    const match = e.data.match(regex);
+                    if (match) {
+                        console.log('通过 postMessage 嗅探到地址:', match[1]);
+                        window.removeEventListener('message', msgHandler);
+                        loadM3U8Mode(match[1], true);
+                    }
+                }
+                if (e.data && e.data.type === 'video_url' && e.data.url) {
+                     window.removeEventListener('message', msgHandler);
+                     loadM3U8Mode(e.data.url, true);
+                }
+            };
+            window.addEventListener('message', msgHandler);
+            
+            // 2. 尝试直接 Fetch 解析接口 (需要 CORS 支持)
+            for (const api of apiArray) {
+                if(isSniffed) break;
+                try {
+                    const targetUrl = api.url + videoPageUrl;
+                    // 使用 fetch 尝试获取源码
+                    // 注意：大部分公共接口没有 CORS，这里主要针对自建或宽松接口
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5秒超时
+                    
+                    const response = await fetch(targetUrl, { 
+                        method: 'GET',
+                        signal: controller.signal
+                        // mode: 'cors' // 默认就是 cors，如果失败会抛出异常被 catch
                     });
-                } else {
-                    // 已经连接，打开控制菜单
-                    castContext.requestSession(); 
+                    clearTimeout(timeoutId);
+
+                    if (response.ok) {
+                        const text = await response.text();
+                        // 扫描源码中的 m3u8
+                        const match = text.match(regex);
+                        if (match && !isSniffed) {
+                            console.log(`从接口 [${api.name}] 源码中嗅探到 m3u8:`, match[1]);
+                            loadM3U8Mode(match[1], true);
+                            break; 
+                        }
+                    }
+                } catch (e) {
+                    // 跨域失败是预期的，静默处理
                 }
             }
-        });
-
-        function startCastSession(session) {
-            const mediaUrl = input.value.trim(); // 投屏必须使用原始 URL
-            if (!mediaUrl) {
-                showStatus('无法投屏：没有有效的视频地址', 'error');
-                return;
-            }
-
-            const mediaInfo = new chrome.cast.media.MediaInfo(mediaUrl, 'application/x-mpegurl');
-            mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
-            mediaInfo.metadata.title = 'M3U8 Stream';
-            mediaInfo.metadata.subtitle = mediaUrl;
-
-            const request = new chrome.cast.media.LoadRequest(mediaInfo);
-            
-            session.loadMedia(request).then(
-                function() { console.log('Cast load success'); showStatus('正在投屏到设备...', 'success'); },
-                function(errorCode) { console.error('Cast load error', errorCode); showStatus('投屏加载失败 code:' + errorCode, 'error'); }
-            );
         }
 
-        // --- UI 工具 ---
-        function showStatus(message, type = 'info') {
-            statusDiv.textContent = message;
+        // --- 广告清洗逻辑 ---
+        async function fetchAndCleanM3u8(url) {
+            const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch (e) { return p; } };
+            const getFingerprint = (absUrl) => {
+                try {
+                    const u = new URL(absUrl);
+                    const path = u.pathname.substring(0, u.pathname.lastIndexOf('/'));
+                    const ext = u.pathname.split('.').pop();
+                    return `${u.hostname}|${path}|${ext}`;
+                } catch { return 'err'; }
+            };
+
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(response.status);
+            const text = await response.text();
+            const lines = text.split(/\r?\n/);
+            const counts = {};
+            const segments = [];
+
+            lines.forEach((line, idx) => {
+                const trim = line.trim();
+                if (!trim || trim.startsWith('#')) return;
+                const abs = toAbsolute(trim, url);
+                const fp = getFingerprint(abs);
+                counts[fp] = (counts[fp] || 0) + 1;
+                segments.push({ idx, fp, abs });
+            });
+
+            let domFp = '', max = 0;
+            for (const [fp, c] of Object.entries(counts)) { if (c > max) { max = c; domFp = fp; } }
+            
+            if ((max / segments.length) <= 0.5) return { removedCount: 0, content: text, log: '结构复杂未清洗' };
+
+            const toRemove = new Set();
+            let removed = 0;
+            segments.forEach(s => {
+                if (s.fp !== domFp) {
+                    toRemove.add(s.idx);
+                    removed++;
+                    let j = s.idx - 1;
+                    while (j >= 0) {
+                        const prev = lines[j].trim();
+                        if (prev.startsWith('#EXTINF') || prev.startsWith('#EXT-X-BYTERANGE')) {
+                            toRemove.add(j); j--;
+                        } else break;
+                    }
+                }
+            });
+
+            const newLines = lines.filter((_, i) => !toRemove.has(i)).map(l => {
+                const t = l.trim();
+                if (t.startsWith('#')) {
+                    if (t.startsWith('#EXT-X-KEY') && t.includes('URI="')) {
+                        return t.replace(/URI="([^"]+)"/, (m, p1) => `URI="${toAbsolute(p1, url)}"`);
+                    }
+                    return t;
+                }
+                return toAbsolute(t, url);
+            });
+
+            return { content: newLines.join('\n'), removedCount: removed, log: `已移除 ${removed} 个广告分片` };
+        }
+
+        // --- 辅助功能 ---
+        function resetPlayer() {
+            if (art) { art.destroy(false); art = null; }
+            if (hlsInstance) { hlsInstance.destroy(); hlsInstance = null; }
+            document.getElementById('artplayer-container').innerHTML = '';
+            document.getElementById('artplayer-container').style.display = 'block';
+            document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
+            loadingTip.style.display = 'none';
+            isSniffed = false;
+        }
+
+        function showStatus(msg, type) {
+            statusDiv.textContent = msg;
             statusDiv.style.display = 'block';
-            
-            if (type === 'error') {
-                statusDiv.style.backgroundColor = 'rgba(220, 38, 38, 0.2)';
-                statusDiv.style.color = '#fca5a5';
-            } else if (type === 'success') {
-                statusDiv.style.backgroundColor = 'rgba(22, 163, 74, 0.2)';
-                statusDiv.style.color = '#86efac';
-            } else {
-                statusDiv.style.backgroundColor = '#2a3f4d';
-                statusDiv.style.color = '#7dd3fc';
-            }
-        }
-        
-        function clearStatus() {
-            statusDiv.style.display = 'none';
-        }
-
-        function updateDebugInfo(hls) {
-            if (!hls || !hls.currentLevel || !hls.levels[hls.currentLevel]) return;
-            // 计算缓冲
-            const buffer = video.buffered.length > 0 ? (video.buffered.end(video.buffered.length - 1) - video.currentTime).toFixed(1) : '0.0';
-            const currentLevel = hls.levels[hls.currentLevel];
-            const bitrate = currentLevel.bitrate ? (currentLevel.bitrate / 1000).toFixed(0) : 'Auto';
-            debugDiv.textContent = `Buf: ${buffer}s | ${bitrate} kbps | ${currentLevel.width || '?'}x${currentLevel.height || '?'}`;
+            statusDiv.style.color = type === 'error' ? '#fca5a5' : (type === 'success' ? '#86efac' : '#7dd3fc');
+            statusDiv.style.backgroundColor = type === 'error' ? 'rgba(220,38,38,0.2)' : (type === 'success' ? 'rgba(22,163,74,0.2)' : '#2a3f4d');
         }
 
         function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             const results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        // --- 核心：M3U8 强力清洗逻辑 ---
-        
-        // 将任何路径转换为绝对路径 (用于分析对比)
-        function toAbsolute(url, base) {
-            try {
-                return new URL(url, base).href;
-            } catch (e) {
-                return url;
-            }
-        }
+        // --- 投屏逻辑 ---
+        function setupCastButtonLogic(videoElement, sourceUrl) {
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            castType = isIOS ? 'airplay' : 'googlecast';
 
-        /**
-         * 提取路径特征指纹
-         * 指纹格式: "Hostname | DirectoryPath | Extension"
-         * 这样即使广告是 .ts，只要它在不同的文件夹下，也会被识别出来。
-         */
-        function getSegmentFingerprint(absUrl) {
-            try {
-                const u = new URL(absUrl);
-                const pathParts = u.pathname.split('/');
-                pathParts.pop(); // 移除文件名，只保留目录路径
-                const directory = pathParts.join('/');
-                
-                // 获取后缀 (处理 query 参数)
-                const cleanPath = u.pathname;
-                const parts = cleanPath.split('.');
-                const ext = parts.length > 1 ? parts.pop().toLowerCase() : 'unknown';
-
-                // 指纹: 主机 + 目录 + 后缀
-                return `${u.hostname}|${directory}|${ext}`;
-            } catch (e) {
-                return 'invalid|url';
-            }
-        }
-
-        async function fetchAndCleanM3u8(url) {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const originalContent = await response.text();
-
-            const lines = originalContent.split(/\r?\n/);
-            const segments = [];
-            const fingerprintCounts = {};
-
-            // 1. 第一次扫描：收集所有分片的特征
-            lines.forEach((line, index) => {
-                const trimmed = line.trim();
-                if (!trimmed || trimmed.startsWith('#')) return;
-
-                // 关键：先转绝对路径，确保相对路径也能正确提取目录结构
-                const absUrl = toAbsolute(trimmed, url);
-                const fingerprint = getSegmentFingerprint(absUrl);
-                
-                if (!fingerprintCounts[fingerprint]) fingerprintCounts[fingerprint] = 0;
-                fingerprintCounts[fingerprint]++;
-
-                segments.push({
-                    lineIndex: index,
-                    fingerprint: fingerprint,
-                    absUrl: absUrl
+            if (window.WebKitPlaybackTargetAvailabilityEvent) {
+                videoElement.addEventListener('webkitplaybacktargetavailabilitychanged', function(event) {
+                    if (event.availability === 'available') castType = 'airplay';
                 });
-            });
-
-            // 2. 找出“统治地位”的特征 (正片通常占比最大)
-            let dominantFingerprint = '';
-            let maxCount = 0;
-            const totalSegments = segments.length;
-
-            for (const [fp, count] of Object.entries(fingerprintCounts)) {
-                if (count > maxCount) {
-                    maxCount = count;
-                    dominantFingerprint = fp;
-                }
-            }
-            
-            // 安全阈值：如果最主要的特征占比不到 50%，说明文件可能非常碎片化，不建议清洗，防止误删
-            const dominantRatio = totalSegments > 0 ? (maxCount / totalSegments) : 0;
-            const isSafeToClean = dominantRatio > 0.5;
-
-            if (!isSafeToClean) {
-                return { 
-                    content: originalContent, 
-                    removedCount: 0, 
-                    totalSegments,
-                    log: `未进行清洗：主特征占比过低 (${(dominantRatio*100).toFixed(1)}%)，无法区分广告与正片。`
-                };
             }
 
-            // 3. 标记需要删除的行
-            const linesToRemove = new Set();
-            let removedCount = 0;
+            function tryInitCast() {
+                if (!isIOS && window.cast && window.cast.framework) castType = 'googlecast';
+            }
+            if (window.isGCastInitialized) tryInitCast();
+            document.addEventListener('google-cast-ready', tryInitCast);
 
-            segments.forEach(seg => {
-                // 只要指纹不匹配，就视为广告/杂质
-                if (seg.fingerprint !== dominantFingerprint) {
-                    linesToRemove.add(seg.lineIndex);
-                    removedCount++;
-
-                    // 向前回溯删除相关的元数据 (EXTINF, EXT-X-BYTERANGE)
-                    let j = seg.lineIndex - 1;
-                    while (j >= 0) {
-                        const prevLine = lines[j].trim();
-                        if (prevLine.startsWith('#EXTINF') || prevLine.startsWith('#EXT-X-BYTERANGE')) {
-                            linesToRemove.add(j);
-                            j--;
-                        } else {
-                            // 遇到其他标签停止，避免误删 #EXT-X-KEY 等全局配置
-                            break;
-                        }
-                    }
+            castBtn.onclick = () => {
+                if (currentMode !== 'm3u8') {
+                    showStatus('请等待嗅探成功或手动输入 M3U8 地址后再投屏', 'error');
+                    return;
                 }
-            });
-
-            // 4. 重构内容 & 修复 Key 路径
-            const newLines = [];
-            lines.forEach((line, index) => {
-                if (linesToRemove.has(index)) return;
-                
-                let content = line.trim();
-                if (!content) return;
-
-                if (content.startsWith('#')) {
-                    // 修复加密 Key 的相对路径问题
-                    // Blob URL 模式下，相对路径的 Key 会加载失败，必须转为绝对路径
-                    if (content.startsWith('#EXT-X-KEY') && content.includes('URI="')) {
-                        content = content.replace(/URI="([^"]+)"/, (match, p1) => {
-                            if (p1.startsWith('http') || p1.startsWith('//')) return match;
-                            return `URI="${toAbsolute(p1, url)}"`;
-                        });
-                    }
-                    newLines.push(content);
+                if (castType === 'airplay') {
+                    videoElement.webkitShowPlaybackTargetPicker ? videoElement.webkitShowPlaybackTargetPicker() : showStatus('AirPlay 未就绪', 'error');
                 } else {
-                    // 分片链接：统一转为绝对路径，确保 Blob 环境下能访问
-                    newLines.push(toAbsolute(content, url));
+                    if (!window.cast || !window.cast.framework) return showStatus('投屏初始化中...', 'info');
+                    const session = cast.framework.CastContext.getInstance().getCurrentSession();
+                    if (!session) {
+                        cast.framework.CastContext.getInstance().requestSession()
+                            .then(() => performCast(sourceUrl))
+                            .catch(e => { if(e !== 'cancel') showStatus('投屏连接失败: ' + e, 'error'); });
+                    } else {
+                        performCast(sourceUrl);
+                    }
                 }
-            });
-
-            // 调试日志：显示主要特征是什么
-            const cleanLog = `分析完毕。\n总分片: ${totalSegments}\n主特征(正片): [${dominantFingerprint.split('|')[1]}]\n移除异常分片: ${removedCount} 个`;
-
-            return {
-                content: newLines.join('\n'),
-                removedCount: removedCount,
-                totalSegments: segments.length,
-                log: cleanLog
             };
         }
 
-
-        // --- 播放控制 ---
-        
-        async function loadM3U8(url) {
-            if (!url) {
-                showStatus('请输入有效的 M3U8 地址！', 'error');
-                return;
-            }
-            
-            if (window.hlsInstance) {
-                window.hlsInstance.destroy();
-                window.hlsInstance = null;
-            }
-            if (window.debugTimer) clearInterval(window.debugTimer);
-            
-            clearStatus();
-            showStatus('正在下载并深度分析播放列表...', 'info');
-            
-            let finalSource = url;
-            let isCleaned = false;
-
-            try {
-                // 执行清洗
-                const result = await fetchAndCleanM3u8(url);
-                
-                if (result.removedCount > 0) {
-                    showStatus(`${result.log}\n\n正在生成纯净流...`, 'success');
-                    const blob = new Blob([result.content], { type: 'application/vnd.apple.mpegurl' });
-                    finalSource = URL.createObjectURL(blob);
-                    isCleaned = true;
-                } else {
-                    showStatus(`${result.log}\n\n播放列表非常整洁，无需净化。`, 'info');
-                }
-
-            } catch (e) {
-                console.warn('分析失败:', e);
-                showStatus(`无法获取文件内容 (CORS 限制或网络错误)，将尝试直接播放原始链接。\n注意：此时无法去除广告分片。`, 'error');
-                finalSource = url;
-            }
-
-            initHls(finalSource, isCleaned);
+        function performCast(url) {
+            const session = cast.framework.CastContext.getInstance().getCurrentSession();
+            if (!session) return;
+            const mediaInfo = new chrome.cast.media.MediaInfo(url, 'application/x-mpegurl');
+            mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
+            mediaInfo.metadata.title = 'Web Video Cast';
+            const request = new chrome.cast.media.LoadRequest(mediaInfo);
+            session.loadMedia(request).then(
+                () => showStatus('正在投屏中...', 'success'),
+                (e) => showStatus('投屏加载失败: ' + e, 'error')
+            );
         }
 
-        function initHls(sourceUrl, isCleaned) {
-            if (Hls.isSupported()) {
-                // 配置 HLS 极限缓存与网络优化参数
-                const hlsConfig = {
-                    enableWorker: true,            // 启用 Web Worker 多线程
-                    lowLatencyMode: false,         // 关闭低延迟模式以换取稳定性 (点播场景)
-                    
-                    // --- 缓冲区配置 (极限缓存) ---
-                    startBufferLength: 10,           // 起始缓冲时长 (秒)
-                    maxBufferLength: 60,            // 最大缓冲时长 (秒)
-                    maxMaxBufferLength: 120,        // 允许的最大最大缓冲时长 (秒)
-                    maxBufferSize: 100 * 1024 * 1024, // 最大缓冲区内存大小 (100MB)
-                    backBufferLength: 90,           // 保留后向缓冲时长 (秒)
-                    
-                    // --- 网络加载与重试 (增强鲁棒性) ---
-                    fragLoadingTimeOut: 20000,      // 分片加载超时时间 20s
-                    fragLoadingMaxRetry: 6,         // 分片加载失败最大重试次数
-                    levelLoadingTimeOut: 20000,     // 播放列表加载超时
-                    manifestLoadingTimeOut: 20000,  // 主播放列表加载超时
-                    
-                    // --- 并行下载与起播优化 ---
-                    // 注意: HLS.js 默认策略通常是串行下载以保证顺序，但增大 buffer 会触发预加载
-                    // 某些配置如 maxBufferHole 可以帮助跳过小错误
-                    maxBufferHole: 0.5,             // 允许最大0.5秒的空洞跳过
-                };
-
-                const hls = new Hls(hlsConfig);
-                window.hlsInstance = hls;
-
-                hls.loadSource(sourceUrl);
-                hls.attachMedia(video);
-
-                hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                    video.play().catch(() => showStatus("注意：浏览器已阻止自动播放，请手动点击播放。", 'info'));
-                    window.debugTimer = setInterval(() => updateDebugInfo(hls), 1000);
-                });
-                
-                hls.on(Hls.Events.ERROR, function (event, data) {
-                    if (data.fatal) {
-                       switch(data.type) {
-                           case Hls.ErrorTypes.NETWORK_ERROR:
-                                showStatus("网络错误，尝试重新连接...", 'error');
-                                hls.startLoad();
-                                break;
-                           case Hls.ErrorTypes.MEDIA_ERROR:
-                                console.log("媒体解码错误，尝试恢复...");
-                                hls.recoverMediaError();
-                                break;
-                           default:
-                                showStatus(`播放器致命错误: ${data.details}`, 'error');
-                                hls.destroy();
-                                break;
-                       }
-                    }
-                });
-                
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                // Safari 原生支持
-                video.src = sourceUrl;
-                video.addEventListener('loadedmetadata', () => video.play());
-            }
-        }
-        
-        // --- 初始化 ---
-        const urlParam = getUrlParameter('url');
-        let initialUrl = input.value.trim();
-
-        if (urlParam) {
-            initialUrl = urlParam;
-            input.value = initialUrl;
-        } else {
-            initialUrl = initialUrl === 'YOUR_M3U8_URL_HERE' ? '' : initialUrl;
-        }
-
-        button.addEventListener('click', () => loadM3U8(input.value.trim()));
-        input.addEventListener('keydown', (e) => e.key === 'Enter' && loadM3U8(input.value.trim()));
-        
-        if (initialUrl) loadM3U8(initialUrl);
-        
-        window.addEventListener('beforeunload', () => {
-            if (window.debugTimer) clearInterval(window.debugTimer);
-            if (window.hlsInstance) window.hlsInstance.destroy();
-        });
+        loadBtn.addEventListener('click', startPlay);
+        input.addEventListener('keydown', (e) => e.key === 'Enter' && startPlay());
+        if (input.value && input.value !== 'YOUR_URL_HERE') startPlay();
     });
 </script>
-
 </body>
 </html>
