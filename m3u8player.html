@@ -141,6 +141,19 @@
   }
 }
 </script>
+<!-- 必须在加载 SDK 之前定义回调 -->
+<script>
+    window['__onGCastApiAvailable'] = function(isAvailable) {
+        if (isAvailable) {
+            cast.framework.CastContext.getInstance().setOptions({
+                receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+                autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+            });
+            window.isGCastAvailable = true; // 标记可用
+            document.dispatchEvent(new Event('google-cast-available'));
+        }
+    };
+</script>
 <!-- Google Cast SDK -->
 <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 </head>
@@ -180,18 +193,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
-    // Google Cast 初始化回调 (必须在 DOMContentLoaded 之前定义或全局定义)
-    window['__onGCastApiAvailable'] = function(isAvailable) {
-        if (isAvailable) {
-            cast.framework.CastContext.getInstance().setOptions({
-                receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
-                autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
-            });
-            // 触发自定义事件通知 UI
-            document.dispatchEvent(new Event('google-cast-available'));
-        }
-    };
-
     document.addEventListener('DOMContentLoaded', () => {
         const video = document.getElementById('video');
         const input = document.getElementById('m3u8-input');
@@ -205,38 +206,53 @@
         // --- 投屏功能集成 ---
         let castType = null; // 'airplay' | 'googlecast'
 
+        // 显示投屏按钮的辅助函数
+        function enableCastButton(type) {
+            castButton.style.display = 'inline-flex';
+            castType = type;
+            console.log(`Cast enabled: ${type}`);
+        }
+
         // 1. 检测 AirPlay (iOS/Safari)
         if (window.WebKitPlaybackTargetAvailabilityEvent) {
             video.addEventListener('webkitplaybacktargetavailabilitychanged', function(event) {
                 if (event.availability === 'available') {
-                    castButton.style.display = 'inline-flex';
-                    castType = 'airplay';
+                    enableCastButton('airplay');
                 }
             });
         }
 
         // 2. 检测 Google Cast (Android/Chrome)
+        // 监听事件 (如果脚本后加载)
         document.addEventListener('google-cast-available', () => {
-            castButton.style.display = 'inline-flex';
-            castType = 'googlecast';
+            enableCastButton('googlecast');
         });
-        // 如果脚本加载极快，事件可能已经错过，再次检查
-        if (window.cast && window.cast.framework) {
-             castButton.style.display = 'inline-flex';
-             castType = 'googlecast';
+
+        // 检查全局标记 (如果事件已错过)
+        if (window.isGCastAvailable || (window.cast && window.cast.framework)) {
+             enableCastButton('googlecast');
         }
 
         castButton.addEventListener('click', () => {
             if (castType === 'airplay') {
-                video.webkitShowPlaybackTargetPicker();
+                if (video.webkitShowPlaybackTargetPicker) {
+                    video.webkitShowPlaybackTargetPicker();
+                } else {
+                    showStatus('AirPlay 暂不可用', 'error');
+                }
             } else if (castType === 'googlecast') {
                 const castContext = cast.framework.CastContext.getInstance();
                 const session = castContext.getCurrentSession();
                 
                 if (!session) {
-                    castContext.requestSession().then(startCastSession).catch(err => console.error('Cast Error:', err));
+                    castContext.requestSession().then(startCastSession).catch(err => {
+                        console.error('Cast Error:', err);
+                        if (err !== 'cancel') {
+                             showStatus('投屏连接失败: ' + err, 'error');
+                        }
+                    });
                 } else {
-                    // 已经连接，打开控制菜单 (如果使用默认UI) 或 断开
+                    // 已经连接，断开
                      castContext.endCurrentSession(true);
                 }
             }
@@ -244,17 +260,21 @@
 
         function startCastSession(session) {
             const mediaUrl = input.value.trim(); // 投屏必须使用原始 URL，因为 TV 无法访问本地 Blob
-            if (!mediaUrl) return;
+            if (!mediaUrl) {
+                showStatus('无法投屏：没有有效的视频地址', 'error');
+                return;
+            }
 
             const mediaInfo = new chrome.cast.media.MediaInfo(mediaUrl, 'application/x-mpegurl');
             mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
             mediaInfo.metadata.title = 'M3U8 Stream';
+            mediaInfo.metadata.subtitle = mediaUrl;
 
             const request = new chrome.cast.media.LoadRequest(mediaInfo);
             
             session.loadMedia(request).then(
-                function() { console.log('Cast load success'); },
-                function(errorCode) { console.error('Cast load error', errorCode); }
+                function() { console.log('Cast load success'); showStatus('正在投屏到设备...', 'success'); },
+                function(errorCode) { console.error('Cast load error', errorCode); showStatus('投屏加载失败 code:' + errorCode, 'error'); }
             );
         }
 
