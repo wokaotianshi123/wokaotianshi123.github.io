@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -343,7 +344,11 @@
             apiArray.forEach(api => {
                 const iframe = document.createElement('iframe');
                 iframe.className = 'temp-iframe';
-                iframe.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups";
+                // 关键修复：添加全屏属性和现代 Permissions Policy
+                iframe.allowFullscreen = true; 
+                iframe.setAttribute('allowFullScreen', ''); // 兼容旧属性
+                iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer";
+                iframe.sandbox = "allow-scripts allow-same-origin allow-forms allow-popups allow-presentation";
                 iframe.src = api.url + url;
                 
                 const startTime = performance.now();
