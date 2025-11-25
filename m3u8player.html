@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>M3U8 智能融合播放器</title>
+    <title>M3U8 智能融合播放器 (DPlayer版)</title>
     <!-- 解决 Favicon 404 报错 -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
-    <!-- 添加 crossorigin="anonymous" 以减少 Safari 追踪防护警告 -->
-    <link href="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.css" rel="stylesheet" crossorigin="anonymous">
     <style>
         /* --- 基础样式 --- */
         body {
@@ -33,7 +31,7 @@
         }
 
         h1 {
-            color: #4ade80;
+            color: #00ccff; /* DPlayer 主题色 */
             text-align: center;
             margin: 10px 0 20px 0;
             font-size: 1.5rem;
@@ -60,7 +58,7 @@
         }
         #m3u8-input:focus {
             outline: none;
-            border-color: #4ade80;
+            border-color: #00ccff;
         }
 
         .btn {
@@ -75,7 +73,7 @@
             white-space: nowrap;
         }
 
-        #load-button { background-color: #4ade80; color: #000; }
+        #load-button { background-color: #00ccff; color: #000; }
         #load-button:hover { filter: brightness(1.1); }
 
         #cast-button { background-color: #3b82f6; display: inline-flex; align-items: center; gap: 6px; }
@@ -84,7 +82,6 @@
 
         /* --- 播放器容器 (关键融合部分) --- */
         #video-wrapper {
-            /* 桌面端默认样式：利用 flex 填充剩余空间，但保持合理比例 */
             flex-grow: 1;
             width: 100%;
             position: relative;
@@ -93,12 +90,11 @@
             overflow: hidden;
             border: 1px solid #333;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            /* 默认 16:9 比例，防止初始高度塌陷 */
             aspect-ratio: 16 / 9;
         }
 
-        /* Artplayer 容器 */
-        #artplayer-container {
+        /* DPlayer 容器 */
+        #dplayer-container {
             width: 100%;
             height: 100%;
             position: absolute;
@@ -106,12 +102,32 @@
             z-index: 10;
         }
         
-        /* 强制视频元素硬件加速，辅助提升流畅度 */
-        #artplayer-container video {
+        /* 强制视频元素硬件加速 */
+        #dplayer-container video {
             transform: translate3d(0, 0, 0);
             -webkit-transform: translate3d(0, 0, 0);
             will-change: transform;
             backface-visibility: hidden;
+        }
+
+        /* 自定义统计面板 (覆盖在DPlayer之上) */
+        #custom-stats {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #eee;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.6;
+            z-index: 100;
+            pointer-events: none; /* 点击穿透 */
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            font-family: Consolas, monospace;
+            min-width: 200px;
+            display: none;
         }
 
         /* Iframe 竞速容器 */
@@ -168,27 +184,10 @@
                 width: 100%;
                 max-width: 100%;
             }
-            
-            #control-panel { 
-                gap: 8px; 
-            }
-            
-            #m3u8-input { 
-                width: 100%; 
-                font-size: 16px; 
-                padding: 12px;
-            }
-            
-            .btn { 
-                flex-grow: 1; 
-                padding: 12px;
-            }
-            
-            h1 { 
-                font-size: 1.2rem; 
-                margin: 5px 0 15px 0; 
-            }
-
+            #control-panel { gap: 8px; }
+            #m3u8-input { width: 100%; font-size: 16px; padding: 12px; }
+            .btn { flex-grow: 1; padding: 12px; }
+            h1 { font-size: 1.2rem; margin: 5px 0 15px 0; }
             #video-wrapper {
                 flex-grow: 0;
                 width: 100%;
@@ -236,19 +235,22 @@
             <p>正在竞速解析...</p>
             <p style="font-size:12px; color:#555;">后台正在尝试嗅探真实 M3U8 地址</p>
         </div>
-        <!-- 本地播放器容器 -->
-        <div id="artplayer-container"></div>
+        
+        <!-- DPlayer 容器 -->
+        <div id="dplayer-container"></div>
+        <!-- 自定义统计面板 -->
+        <div id="custom-stats"></div>
+        
         <!-- Iframe 容器将动态添加到这里 -->
     </div>
 </div>
 
-<!-- 库引入，添加 crossorigin="anonymous" -->
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.min.js" crossorigin="anonymous"></script>
+<!-- 库引入: hls.js + DPlayer -->
+<script src="https://s4.zstatic.net/ajax/libs/hls.js/1.5.6/hls.min.js" crossorigin="anonymous"></script>
+<script src="https://s4.zstatic.net/ajax/libs/dplayer/1.26.0/DPlayer.min.js" crossorigin="anonymous"></script>
 
 <script>
     // --- 配置区域 ---
-    
     const apiArray = [
         { name: "线路1 (Ckplayer)", url: "https://www.ckplayer.vip/jiexi/?url=" },
         { name: "线路2 (M3u8TV)", url: "https://jx.m3u8.tv/jiexi/?url=" },
@@ -258,40 +260,33 @@
         { name: "线路6 (JSON)", url: "https://json.jiexi.com/?url=", type: 'json' } 
     ];
 
+    // 高性能 HLS 配置 (保留您的优化配置)
     const hlsConfig = {
-        enableWorker: true, // 启用 WebWorker 多线程解析
+        enableWorker: true,
         lowLatencyMode: false,
-        
-        // --- 极限缓存与加载优化 (适配高码率/60帧) ---
-        startBufferLength: 20,           // 起播缓冲：增加到 20s
-        maxBufferLength: 120,            // 正常缓冲：增加到 120s
-        maxMaxBufferLength: 600,         // 最大缓冲：允许缓存 10分钟
-        maxBufferSize: 200 * 1024 * 1024, // 内存限制：200MB
+        startBufferLength: 20,
+        maxBufferLength: 120,
+        maxMaxBufferLength: 600,
+        maxBufferSize: 200 * 1024 * 1024,
         backBufferLength: 90,
-        
-        // --- 网络加载策略 ---
         fragLoadingTimeOut: 20000,
         fragLoadingMaxRetry: 6,
         manifestLoadingTimeOut: 20000,
         levelLoadingTimeOut: 20000,
-        
-        // 允许更激进的加载
         maxLoadingDelay: 4, 
         minAutoBitrate: 0, 
-        
         capLevelToPlayerSize: false, 
         autoStartLoad: true,
         maxBufferHole: 0.5,
     };
 
     // --- 全局变量 ---
-    let art = null; 
+    let dp = null; 
     let hlsInstance = null;
     let castType = 'googlecast'; 
     let currentMode = 'idle';
     let isSniffed = false;
     let statsTimer = null; 
-    let statsLoopActive = false; // 控制统计循环
     
     // FPS 计算变量
     let frameCount = 0;
@@ -363,248 +358,161 @@
                 }
             }
 
-            initArtplayer(finalUrl, url);
+            initDPlayer(finalUrl, url);
         }
 
-        function initArtplayer(videoUrl, originalUrl) {
-            if (art) art.destroy(false);
+        // --- 初始化 DPlayer (替代 Artplayer) ---
+        function initDPlayer(videoUrl, originalUrl) {
+            if (dp) dp.destroy();
             stopStatsLoop();
             
-            art = new Artplayer({
-                container: '#artplayer-container',
-                url: videoUrl,
-                type: 'm3u8',
-                theme: '#4ade80',
+            dp = new DPlayer({
+                container: document.getElementById('dplayer-container'),
                 autoplay: true,
-                
-                id: 'm3u8-smart-player',
-                
-                setting: true,
-                miniProgressBar: true,
-                fullscreen: true,
-                pip: true,
-                playbackRate: false, 
-                
-                // --- 修复菜单报错：直接在此定义 ---
+                theme: '#00ccff',
+                lang: 'zh-cn',
+                screenshot: true,
+                hotkey: true,
+                airplay: true,
+                chromecast: true,
+                volume: 0.7,
+                video: {
+                    url: videoUrl,
+                    type: 'customHls', 
+                    customType: {
+                        customHls: function(video, player) {
+                            if (Hls.isSupported()) {
+                                if (hlsInstance) hlsInstance.destroy();
+                                hlsInstance = new Hls(hlsConfig);
+                                hlsInstance.loadSource(videoUrl);
+                                hlsInstance.attachMedia(video);
+                                
+                                hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
+                                    // 自动锁定最高画质 (模拟60fps优先)
+                                    if(hlsInstance.levels.length > 0) {
+                                        hlsInstance.currentLevel = hlsInstance.levels.length - 1;
+                                        hlsInstance.capLevelToPlayerSize = false;
+                                        console.log('已自动锁定至最高画质/帧率');
+                                        showStatus('🚀 画质增强：已锁定最高码率/帧率', 'success');
+                                    }
+                                    startStatsLoop(video, hlsInstance);
+                                    video.play().catch(e => console.warn('Autoplay blocked', e));
+                                });
+
+                                hlsInstance.on(Hls.Events.ERROR, function(event, data) {
+                                    if (data.fatal) {
+                                        switch(data.type) {
+                                            case Hls.ErrorTypes.NETWORK_ERROR:
+                                                hlsInstance.startLoad();
+                                                break;
+                                            case Hls.ErrorTypes.MEDIA_ERROR:
+                                                hlsInstance.recoverMediaError();
+                                                break;
+                                            default:
+                                                showStatus('❌ 播放失败: 无法加载视频流', 'error');
+                                                hlsInstance.destroy();
+                                                break;
+                                        }
+                                    }
+                                });
+                            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                                video.src = videoUrl;
+                                startStatsLoop(video, null);
+                            }
+                        }
+                    }
+                },
                 contextmenu: [
                     {
-                        html: '统计信息 (实时FPS)',
-                        click: function (contextmenu) {
-                            const layer = document.querySelector('.art-layer-stats');
-                            if (layer) {
-                                const isHidden = layer.style.display === 'none';
-                                layer.style.display = isHidden ? 'block' : 'none';
-                                art.notice.show = isHidden ? '统计面板: 开' : '统计面板: 关';
-                            }
-                            contextmenu.show = false; 
-                        }
-                    }
-                ],
-                
-                layers: [
-                    {
-                        name: 'stats',
-                        html: '',
-                        style: {
-                            display: 'none',
-                            position: 'absolute',
-                            top: '20px',
-                            left: '20px',
-                            padding: '15px',
-                            background: 'rgba(0, 0, 0, 0.8)',
-                            color: '#eee',
-                            borderRadius: '8px',
-                            fontSize: '13px',
-                            lineHeight: '1.8',
-                            zIndex: '50',
-                            pointerEvents: 'none',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            backdropFilter: 'blur(5px)',
-                            fontFamily: 'Consolas, monospace',
-                            minWidth: '220px'
-                        }
-                    }
-                ],
-
-                settings: [
-                    {
-                        html: '画质模式',
-                        tooltip: '强制60帧',
-                        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>',
-                        selector: [
-                            { html: '自动 (Auto)', value: 'auto' },
-                            { html: '🚀 强制60帧 (画质优先)', value: 'high', default: true }
-                        ],
-                        onSelect: function(item) {
-                            if (!hlsInstance) return '不支持';
-                            if (item.value === 'high') {
-                                const levels = hlsInstance.levels;
-                                if(levels && levels.length > 0) {
-                                    hlsInstance.currentLevel = levels.length - 1;
-                                    hlsInstance.capLevelToPlayerSize = false; 
-                                    showStatus('已切换至最高画质 (优先匹配60帧源)', 'success');
-                                }
-                                return '强制60帧';
-                            } else {
-                                hlsInstance.currentLevel = -1; 
-                                showStatus('已切换至自动画质', 'info');
-                                return '自动';
-                            }
+                        text: '统计信息开关',
+                        click: (player) => {
+                            const stats = document.getElementById('custom-stats');
+                            stats.style.display = stats.style.display === 'none' ? 'block' : 'none';
                         }
                     },
                     {
-                        html: '播放速度',
-                        tooltip: '1.0x',
-                        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
-                        selector: [
-                            { html: '0.75x', value: 0.75 },
-                            { html: '1.0x', value: 1.0, default: true },
-                            { html: '1.5x', value: 1.5 },
-                            { html: '2.0x', value: 2.0 },
-                            { html: '5.0x', value: 5.0 },
-                        ],
-                        onSelect: function (item) {
-                            art.playbackRate = item.value;
-                            return item.html;
-                        },
-                    },
-                    {
-                        html: '字幕设置',
-                        tooltip: '调节',
-                        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>',
-                        selector: [
-                            { html: '字幕开关: 开启', value: 'on' },
-                            { html: '字幕开关: 关闭', value: 'off', default: true },
-                            { html: '调节字幕偏移', value: 'offset' }
-                        ],
-                        onSelect: function(item) {
-                            if(item.value === 'on') {
-                                art.subtitle.show = true;
-                                return '开启';
-                            }
-                            if(item.value === 'off') {
-                                art.subtitle.show = false;
-                                return '关闭';
-                            }
-                            if(item.value === 'offset') {
-                                art.subtitleOffset = true; 
-                                return '调节偏移';
-                            }
-                            return item.html;
-                        }
+                        text: '关于 M3U8 融合播放器',
+                        link: 'javascript:void(0);'
                     }
-                ],
-                
-                subtitleOffset: true, 
-                subtitle: {
-                    url: '',
-                    type: 'srt',
-                    style: { color: '#fff', fontSize: '20px' },
-                },
-
-                customType: {
-                    m3u8: function (video, url) {
-                        if (Hls.isSupported()) {
-                            if (hlsInstance) hlsInstance.destroy();
-                            hlsInstance = new Hls(hlsConfig);
-                            hlsInstance.loadSource(url);
-                            hlsInstance.attachMedia(video);
-                            
-                            hlsInstance.on(Hls.Events.MANIFEST_PARSED, function () {
-                                if(hlsInstance.levels.length > 0) {
-                                    hlsInstance.currentLevel = hlsInstance.levels.length - 1;
-                                    hlsInstance.capLevelToPlayerSize = false;
-                                    console.log('已自动锁定至最高画质');
-                                }
-                                startStatsLoop(art, hlsInstance);
-                            });
-
-                            hlsInstance.on(Hls.Events.ERROR, function (event, data) {
-                                if (data.fatal) {
-                                    switch(data.type) {
-                                        case Hls.ErrorTypes.NETWORK_ERROR:
-                                            hlsInstance.startLoad();
-                                            break;
-                                        case Hls.ErrorTypes.MEDIA_ERROR:
-                                            hlsInstance.recoverMediaError();
-                                            break;
-                                        default:
-                                            showStatus('❌ 播放失败: 无法加载视频流 (可能是跨域限制)', 'error');
-                                            hlsInstance.destroy();
-                                            break;
-                                    }
-                                }
-                            });
-                        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                            video.src = url;
-                            startStatsLoop(art, null);
-                        } else {
-                            art.notice.show = '不支持 HLS 播放';
-                        }
-                    },
-                },
+                ]
             });
 
-            art.on('ready', () => {
-                showStatus('✅ 播放就绪', 'success');
-                setTimeout(() => clearStatus(), 2000); 
-                setupCastButtonLogic(art.video, originalUrl);
-            });
+            // 投屏按钮逻辑绑定
+            // 注意：Chromecast 不支持 blob: URL。如果清洗过(是Blob)，则投屏时优先使用原始URL
+            // 这里我们传入 originalUrl 给投屏逻辑，虽然会有广告，但能保证投屏成功
+            setupCastButtonLogic(dp.video, originalUrl);
             
-            art.on('error', (err) => {
-                 console.error('Artplayer Error:', err);
-                 showStatus('❌ 播放器错误: ' + (err.message || '资源无法加载'), 'error');
+            // 移动端优化：长按呼出菜单 (模拟右键)
+            setupMobileLongPress(dp);
+            
+            dp.on('canplay', () => {
+                 setTimeout(() => clearStatus(), 3000);
             });
         }
         
-        function stopStatsLoop() {
-             statsLoopActive = false;
-             if(statsTimer) clearInterval(statsTimer);
-             statsTimer = null;
+        // --- 移动端长按模拟右键 ---
+        function setupMobileLongPress(player) {
+            const container = player.container;
+            let timer = null;
+            
+            container.addEventListener('touchstart', (e) => {
+                if(e.touches.length > 1) return;
+                timer = setTimeout(() => {
+                    // 触发长按：显示统计面板或 DPlayer 菜单
+                    // 这里我们简单切换统计面板显示，给用户反馈
+                    const stats = document.getElementById('custom-stats');
+                    stats.style.display = stats.style.display === 'none' ? 'block' : 'none';
+                    if(navigator.vibrate) navigator.vibrate(50);
+                    
+                    // 也可以尝试模拟右键事件触发 DPlayer 菜单，但原生菜单在移动端兼容性不一
+                    // const evt = new MouseEvent('contextmenu', {
+                    //     bubbles: true, cancelable: true,
+                    //     view: window, clientX: e.touches[0].clientX, clientY: e.touches[0].clientY
+                    // });
+                    // container.dispatchEvent(evt);
+                    
+                    showStatus(stats.style.display === 'block' ? '📊 统计面板已开启' : '📊 统计面板已关闭', 'info');
+                }, 600); // 600ms 长按
+            }, {passive: true});
+            
+            const clear = () => { if(timer) clearTimeout(timer); };
+            container.addEventListener('touchend', clear);
+            container.addEventListener('touchmove', clear);
         }
 
-        // --- 统计信息逻辑 (FPS 精准修复版) ---
-        function startStatsLoop(art, hls) {
-            stopStatsLoop();
-            statsLoopActive = true;
-            const video = art.video;
+        function stopStatsLoop() {
+             if(statsTimer) clearInterval(statsTimer);
+             statsTimer = null;
+             document.getElementById('custom-stats').style.display = 'none';
+        }
+
+        // --- 统计信息逻辑 ---
+        function startStatsLoop(video, hls) {
+            if(statsTimer) clearInterval(statsTimer);
             
-            // --- FPS 计算 (使用 requestVideoFrameCallback) ---
+            // FPS 计算
             frameCount = 0;
             currentFPS = 0;
             lastFrameTime = performance.now();
 
             const frameCallback = (now, metadata) => {
-                if(!statsLoopActive) return;
-                
-                // 累计帧数
                 frameCount++;
                 const elapsed = now - lastFrameTime;
-                
-                // 每秒更新一次 FPS 计数
                 if (elapsed >= 1000) {
                     currentFPS = frameCount; 
                     frameCount = 0;
                     lastFrameTime = now;
                 }
-                
-                // 递归调用
-                if(video.requestVideoFrameCallback) {
-                     video.requestVideoFrameCallback(frameCallback);
-                }
+                if(video.requestVideoFrameCallback) video.requestVideoFrameCallback(frameCallback);
             };
-            
-            // 启动帧率监听 (如果在支持的浏览器中)
-            if ('requestVideoFrameCallback' in video) {
-                video.requestVideoFrameCallback(frameCallback);
-            }
+            if ('requestVideoFrameCallback' in video) video.requestVideoFrameCallback(frameCallback);
 
-            // --- UI 更新循环 (每500ms更新一次面板显示) ---
+            const statsEl = document.getElementById('custom-stats');
+
             const updateStatsUI = () => {
-                const layer = document.querySelector('.art-layer-stats');
-                if(!layer || layer.style.display === 'none') return;
+                if(statsEl.style.display === 'none') return;
                 
-                // 1. 获取分辨率和码率
+                // 分辨率/码率
                 let resolution = `${video.videoWidth} x ${video.videoHeight}`;
                 let bitrate = 'N/A';
                 
@@ -612,43 +520,25 @@
                     const levelIndex = hls.currentLevel === -1 ? (hls.autoLevelEnabled ? hls.nextAutoLevel : -1) : hls.currentLevel;
                     const level = hls.levels[levelIndex];
                     if (level) {
-                        if (level.width && level.height) resolution = `${level.width} x ${level.height}`;
+                        if (level.width) resolution = `${level.width} x ${level.height}`;
                         if (level.bitrate) bitrate = (level.bitrate / 1000).toFixed(0) + ' kbps';
                     }
                 }
 
-                // 2. 缓冲与丢帧
                 const buffer = video.buffered.length ? (video.buffered.end(video.buffered.length-1) - video.currentTime).toFixed(1) : 0;
                 let dropped = 0;
-                
-                // 3. FPS 显示策略
                 let displayFPS = currentFPS;
-                // 如果 API 不支持，使用回退策略 (Safari Webkit)
-                if (!('requestVideoFrameCallback' in video)) {
-                    if (video.getVideoPlaybackQuality) {
-                        dropped = video.getVideoPlaybackQuality().droppedVideoFrames;
-                    } else if (video.webkitDroppedFrameCount) {
-                         dropped = video.webkitDroppedFrameCount || 0;
-                    }
-                    // 无法获取精确 FPS，显示占位符或 N/A
-                    displayFPS = 'API N/A';
-                } else {
-                     if (video.getVideoPlaybackQuality) {
-                        dropped = video.getVideoPlaybackQuality().droppedVideoFrames;
-                     }
-                }
+                
+                if (video.getVideoPlaybackQuality) dropped = video.getVideoPlaybackQuality().droppedVideoFrames;
+                if (video.paused) displayFPS = 0;
 
-                // 修正：如果视频暂停，FPS 应为 0
-                if (video.paused && typeof displayFPS === 'number') displayFPS = 0;
-
-                layer.innerHTML = `
-                    <div style="font-weight:bold; color:#4ade80; border-bottom:1px solid #444; margin-bottom:6px; padding-bottom:2px;">📊 实时监控 (Live)</div>
-                    <div style="display:flex; justify-content:space-between;"><span>分辨率:</span> <span>${resolution}</span></div>
-                    <div style="display:flex; justify-content:space-between;"><span>帧率:</span> <span style="color:${displayFPS >= 50 ? '#4ade80' : '#fff'}">${displayFPS} ${typeof displayFPS === 'number' ? 'FPS' : ''}</span></div>
-                    <div style="display:flex; justify-content:space-between;"><span>码率:</span> <span>${bitrate}</span></div>
-                    <div style="display:flex; justify-content:space-between;"><span>缓冲:</span> <span>${buffer} s</span></div>
-                    <div style="display:flex; justify-content:space-between;"><span>丢帧:</span> <span>${dropped}</span></div>
-                    <div style="margin-top:4px; font-size:11px; color:#888;">Engine: Hls.js v${Hls.version}</div>
+                statsEl.innerHTML = `
+                    <div style="color:#00ccff;border-bottom:1px solid #555;margin-bottom:5px;">📊 实时监控 (DPlayer)</div>
+                    <div>FPS: <span style="color:${displayFPS >= 50 ? '#00ccff' : '#fff'}">${displayFPS}</span></div>
+                    <div>RES: ${resolution}</div>
+                    <div>BIT: ${bitrate}</div>
+                    <div>BUF: ${buffer} s</div>
+                    <div>DRP: ${dropped}</div>
                 `;
             };
             
@@ -664,9 +554,8 @@
             showStatus('识别为网页链接，正在竞速解析... (稍后若出现投屏按钮说明嗅探成功)', 'info');
             loadingTip.style.display = 'block';
 
-            let hasWinner = false; // 标记是否已有线路成功加载
+            let hasWinner = false; 
 
-            // 清理旧的 Iframe
             document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
 
             apiArray.forEach(api => {
@@ -679,23 +568,20 @@
                 
                 iframe.onload = function() {
                     if (isSniffed) return;
-                    if (hasWinner) return; // 已经有胜者，忽略后续
+                    if (hasWinner) return; 
 
                     hasWinner = true;
                     
-                    // 赢家通吃：立即销毁其他所有 Iframe
                     const allIframes = document.querySelectorAll('.temp-iframe');
                     allIframes.forEach(el => {
                         if (el !== iframe) {
-                            el.src = 'about:blank'; // 停止网络请求
-                            el.remove(); // 从 DOM 移除
+                            el.src = 'about:blank'; 
+                            el.remove(); 
                         }
                     });
 
                     displayIframe(this, api.name);
                 };
-                
-                // 为了防止某个线路卡死，如果它加载太慢，也应该被标记为"输" (通过赢家逻辑自动处理)
                 wrapper.appendChild(iframe);
             });
         }
@@ -704,13 +590,13 @@
             if (isSniffed) return;
             loadingTip.style.display = 'none';
             showStatus(`解析成功！当前线路: ${apiName} (暂未提取到直链，不支持投屏)`, 'info');
-            document.getElementById('artplayer-container').style.display = 'none';
+            document.getElementById('dplayer-container').style.display = 'none';
             iframe.classList.add('iframe-active');
             
             const manualBtn = document.createElement('span');
             manualBtn.innerHTML = " [我有M3U8地址]";
             manualBtn.style.cursor = 'pointer';
-            manualBtn.style.color = '#4ade80';
+            manualBtn.style.color = '#00ccff';
             manualBtn.onclick = () => {
                 const manualUrl = prompt("如果您抓包到了 M3U8 地址，请粘贴在这里以开启投屏和加速：");
                 if(manualUrl && manualUrl.includes('.m3u8')) loadM3U8Mode(manualUrl, true);
@@ -738,13 +624,12 @@
             };
             window.addEventListener('message', msgHandler);
             
-            // 简单的后台 Fetch 尝试 (针对部分未加密网站)
             for (const api of apiArray) {
                 if(isSniffed) break;
                 try {
                     const targetUrl = api.url + videoPageUrl;
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5秒超时
+                    const timeoutId = setTimeout(() => controller.abort(), 5000); 
                     
                     const response = await fetch(targetUrl, { 
                         method: 'GET',
@@ -830,11 +715,9 @@
             const newLines = [];
             lines.forEach((line, idx) => {
                 if(linesToRemove.has(idx)) return;
-                
                 let content = line.trim();
                 if(!content) return;
                 
-                // 修复 Blob 模式下的路径问题
                 if(content.startsWith('#')) {
                     if(content.startsWith('#EXT-X-KEY') && content.includes('URI="')) {
                         content = content.replace(/URI="([^"]+)"/, (match, p1) => {
@@ -856,11 +739,10 @@
         }
 
         // --- 投屏逻辑 ---
-        function setupCastButtonLogic(videoEl, cleanUrl) {
+        function setupCastButtonLogic(videoEl, originalUrl) {
             const castBtn = document.getElementById('cast-button');
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             
-            // 确定模式
             let mode = isIOS ? 'airplay' : 'googlecast';
             if (window.WebKitPlaybackTargetAvailabilityEvent) {
                  videoEl.addEventListener('webkitplaybacktargetavailabilitychanged', e => {
@@ -868,7 +750,6 @@
                  });
             }
 
-            // 初始化 Google Cast
             if(!isIOS && window.isGCastInitialized) {
                 castType = 'googlecast';
             }
@@ -881,7 +762,6 @@
                         showStatus('AirPlay 不可用', 'error');
                     }
                 } else {
-                    // Google Cast
                     if(!window.cast || !window.cast.framework) {
                         return showStatus('投屏服务未就绪 (请确保能访问 Google 服务)', 'warning');
                     }
@@ -890,15 +770,14 @@
                     if(!session) {
                         ctx.requestSession().then(() => {
                             const session = ctx.getCurrentSession();
-                            const mediaInfo = new chrome.cast.media.MediaInfo(cleanUrl, 'application/x-mpegurl');
+                            const mediaInfo = new chrome.cast.media.MediaInfo(originalUrl, 'application/x-mpegurl');
                             const request = new chrome.cast.media.LoadRequest(mediaInfo);
                             session.loadMedia(request);
                         }).catch(e => {
                             if(e !== 'cancel') showStatus('投屏连接失败', 'error');
                         });
                     } else {
-                        // 已经连接，加载媒体
-                        const mediaInfo = new chrome.cast.media.MediaInfo(cleanUrl, 'application/x-mpegurl');
+                        const mediaInfo = new chrome.cast.media.MediaInfo(originalUrl, 'application/x-mpegurl');
                         const request = new chrome.cast.media.LoadRequest(mediaInfo);
                         session.loadMedia(request);
                     }
@@ -908,10 +787,10 @@
         
         // --- 工具函数 ---
         function resetPlayer() {
-            if (art) { art.destroy(false); art = null; }
+            if (dp) { dp.destroy(); dp = null; }
             if (hlsInstance) { hlsInstance.destroy(); hlsInstance = null; }
             stopStatsLoop();
-            document.getElementById('artplayer-container').style.display = 'block';
+            document.getElementById('dplayer-container').style.display = 'block';
             document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
             clearStatus();
         }
