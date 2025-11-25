@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>M3U8 智能融合播放器 (DPlayer版)</title>
+    <title>M3U8 智能融合播放器 (DLNA增强版)</title>
     <!-- 解决 Favicon 404 报错 -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
     <style>
@@ -174,6 +174,62 @@
             border: 1px solid #4ade80 !important;
         }
 
+        /* --- 投屏模态框样式 --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .modal-active { display: flex !important; opacity: 1 !important; }
+        
+        .cast-modal {
+            background: #252525;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid #444;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+        .modal-active .cast-modal { transform: translateY(0); }
+
+        .cast-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 10px;
+        }
+        .cast-title { font-size: 18px; font-weight: bold; color: #fff; }
+        .cast-close { background: none; border: none; color: #888; font-size: 24px; cursor: pointer; }
+        
+        .cast-group { margin-bottom: 15px; }
+        .cast-group-title { font-size: 12px; color: #888; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .cast-option {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px;
+            background: #333;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            color: #fff;
+        }
+        .cast-option:hover { background: #444; }
+        .cast-icon { font-size: 20px; width: 24px; text-align: center; }
+        .cast-info { display: flex; flex-direction: column; }
+        .cast-name { font-size: 15px; font-weight: 500; }
+        .cast-desc { font-size: 12px; color: #aaa; }
+        
+        .tag-recommend { background: #00ccff; color: #000; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-left: 5px; font-weight: bold; }
+
         /* --- 移动端优化 --- */
         @media (max-width: 600px) {
             #app-container { 
@@ -224,7 +280,7 @@
     <div id="control-panel">
         <input type="url" id="m3u8-input" placeholder="输入 M3U8 直链或视频网站地址" value="YOUR_URL_HERE">
         <button id="load-button" class="btn">⚡️ 智能播放</button>
-        <button id="cast-button" class="btn">📺 投屏</button>
+        <button id="cast-button" class="btn">📺 投屏/DLNA</button>
     </div>
 
     <div id="status-message"></div>
@@ -245,6 +301,19 @@
     </div>
 </div>
 
+<!-- 投屏选择模态框 -->
+<div id="cast-modal-overlay" class="modal-overlay">
+    <div class="cast-modal">
+        <div class="cast-header">
+            <div class="cast-title">选择投屏或播放方式</div>
+            <button class="cast-close" id="close-cast-modal">×</button>
+        </div>
+        <div id="cast-options-container">
+            <!-- 选项将通过 JS 动态生成 -->
+        </div>
+    </div>
+</div>
+
 <!-- 库引入: hls.js + DPlayer -->
 <script src="https://s4.zstatic.net/ajax/libs/hls.js/1.5.6/hls.min.js" crossorigin="anonymous"></script>
 <script src="https://s4.zstatic.net/ajax/libs/dplayer/1.26.0/DPlayer.min.js" crossorigin="anonymous"></script>
@@ -260,7 +329,7 @@
         { name: "线路6 (JSON)", url: "https://json.jiexi.com/?url=", type: 'json' } 
     ];
 
-    // 高性能 HLS 配置 (保留您的优化配置)
+    // 高性能 HLS 配置
     const hlsConfig = {
         enableWorker: true,
         lowLatencyMode: false,
@@ -283,7 +352,6 @@
     // --- 全局变量 ---
     let dp = null; 
     let hlsInstance = null;
-    let castType = 'googlecast'; 
     let currentMode = 'idle';
     let isSniffed = false;
     let statsTimer = null; 
@@ -293,6 +361,10 @@
     let currentFPS = 0;
     let lastFrameTime = 0;
 
+    // 当前播放的真实URL（如果是Blob则此变量存储Blob，如果是原始则存储原始）
+    // 为了投屏，我们还需要始终记录一个原始网络URL
+    let currentNetworkUrl = "";
+
     document.addEventListener('DOMContentLoaded', () => {
         const input = document.getElementById('m3u8-input');
         const loadBtn = document.getElementById('load-button');
@@ -300,6 +372,10 @@
         const statusDiv = document.getElementById('status-message');
         const wrapper = document.getElementById('video-wrapper');
         const loadingTip = document.getElementById('loading-tip');
+        
+        // 模态框相关
+        const modalOverlay = document.getElementById('cast-modal-overlay');
+        const closeCastBtn = document.getElementById('close-cast-modal');
 
         const urlParam = getUrlParameter('url');
         input.value = urlParam || (input.value === 'YOUR_URL_HERE' ? '' : input.value);
@@ -307,6 +383,9 @@
         function startPlay() {
             const url = input.value.trim();
             if (!url) return showStatus('请输入视频地址', 'error');
+
+            // 更新当前网络URL，用于投屏（因为Blob URL不能投屏）
+            currentNetworkUrl = url; 
 
             resetPlayer();
             
@@ -320,6 +399,14 @@
         
         loadBtn.addEventListener('click', startPlay);
         input.addEventListener('keydown', (e) => e.key === 'Enter' && startPlay());
+        
+        // 绑定模态框关闭
+        closeCastBtn.onclick = () => {
+            modalOverlay.classList.remove('modal-active');
+        };
+        modalOverlay.onclick = (e) => {
+            if(e.target === modalOverlay) modalOverlay.classList.remove('modal-active');
+        };
 
         // --- 模式 A: 本地 M3U8 增强模式 ---
         async function loadM3U8Mode(url, isAutoSniffed = false) {
@@ -328,6 +415,9 @@
             isSniffed = true;
             wrapper.classList.remove('sniff-success');
             
+            // 如果是嗅探到的，更新网络地址用于投屏
+            if(isAutoSniffed) currentNetworkUrl = url;
+
             if (isAutoSniffed) {
                 showStatus('✅ 嗅探成功！已切换至增强模式 (已去广告/支持投屏)', 'success');
                 wrapper.classList.add('sniff-success');
@@ -358,11 +448,11 @@
                 }
             }
 
-            initDPlayer(finalUrl, url);
+            initDPlayer(finalUrl);
         }
 
-        // --- 初始化 DPlayer (替代 Artplayer) ---
-        function initDPlayer(videoUrl, originalUrl) {
+        // --- 初始化 DPlayer ---
+        function initDPlayer(videoUrl) {
             if (dp) dp.destroy();
             stopStatsLoop();
             
@@ -373,8 +463,8 @@
                 lang: 'zh-cn',
                 screenshot: true,
                 hotkey: true,
-                airplay: true,
-                chromecast: true,
+                airplay: false, // 禁用自带 AirPlay 按钮，使用统一投屏菜单
+                chromecast: false, // 禁用自带 Chromecast，使用统一投屏菜单
                 volume: 0.7,
                 video: {
                     url: videoUrl,
@@ -388,30 +478,21 @@
                                 hlsInstance.attachMedia(video);
                                 
                                 hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
-                                    // 自动锁定最高画质 (模拟60fps优先)
                                     if(hlsInstance.levels.length > 0) {
                                         hlsInstance.currentLevel = hlsInstance.levels.length - 1;
                                         hlsInstance.capLevelToPlayerSize = false;
-                                        console.log('已自动锁定至最高画质/帧率');
                                         showStatus('🚀 画质增强：已锁定最高码率/帧率', 'success');
                                     }
                                     startStatsLoop(video, hlsInstance);
                                     video.play().catch(e => console.warn('Autoplay blocked', e));
                                 });
-
+                                // Error handling...
                                 hlsInstance.on(Hls.Events.ERROR, function(event, data) {
                                     if (data.fatal) {
                                         switch(data.type) {
-                                            case Hls.ErrorTypes.NETWORK_ERROR:
-                                                hlsInstance.startLoad();
-                                                break;
-                                            case Hls.ErrorTypes.MEDIA_ERROR:
-                                                hlsInstance.recoverMediaError();
-                                                break;
-                                            default:
-                                                showStatus('❌ 播放失败: 无法加载视频流', 'error');
-                                                hlsInstance.destroy();
-                                                break;
+                                            case Hls.ErrorTypes.NETWORK_ERROR: hlsInstance.startLoad(); break;
+                                            case Hls.ErrorTypes.MEDIA_ERROR: hlsInstance.recoverMediaError(); break;
+                                            default: hlsInstance.destroy(); break;
                                         }
                                     }
                                 });
@@ -429,52 +510,167 @@
                             const stats = document.getElementById('custom-stats');
                             stats.style.display = stats.style.display === 'none' ? 'block' : 'none';
                         }
-                    },
-                    {
-                        text: '关于 M3U8 融合播放器',
-                        link: 'javascript:void(0);'
                     }
                 ]
             });
 
-            // 投屏按钮逻辑绑定
-            // 注意：Chromecast 不支持 blob: URL。如果清洗过(是Blob)，则投屏时优先使用原始URL
-            // 这里我们传入 originalUrl 给投屏逻辑，虽然会有广告，但能保证投屏成功
-            setupCastButtonLogic(dp.video, originalUrl);
-            
-            // 移动端优化：长按呼出菜单 (模拟右键)
+            // 绑定新版投屏逻辑
+            setupCastButtonLogic(dp.video);
             setupMobileLongPress(dp);
             
-            dp.on('canplay', () => {
-                 setTimeout(() => clearStatus(), 3000);
-            });
+            dp.on('canplay', () => { setTimeout(() => clearStatus(), 3000); });
         }
         
-        // --- 移动端长按模拟右键 ---
+        // --- 核心：新版投屏逻辑 ---
+        function setupCastButtonLogic(videoEl) {
+            castBtn.onclick = () => {
+                renderCastOptions(videoEl);
+                modalOverlay.classList.add('modal-active');
+            };
+        }
+
+        function renderCastOptions(videoEl) {
+            const container = document.getElementById('cast-options-container');
+            container.innerHTML = '';
+            
+            const ua = navigator.userAgent.toLowerCase();
+            const isIOS = /iphone|ipad|ipod/.test(ua);
+            const isAndroid = /android/.test(ua);
+            const isMac = /mac os/.test(ua) && !isIOS;
+            const isWin = /windows/.test(ua);
+
+            // 辅助函数：创建选项
+            const createOption = (icon, title, desc, onClick, tag = '') => {
+                const div = document.createElement('div');
+                div.className = 'cast-option';
+                div.innerHTML = `
+                    <div class="cast-icon">${icon}</div>
+                    <div class="cast-info">
+                        <div class="cast-name">${title} ${tag ? `<span class="tag-recommend">${tag}</span>` : ''}</div>
+                        <div class="cast-desc">${desc}</div>
+                    </div>
+                `;
+                div.onclick = () => {
+                    onClick();
+                    // 除了 AirPlay/GoogleCast 这种需要留在页面的，其他 DeepLink 跳转后可以关闭模态框
+                    if(!title.includes('AirPlay') && !title.includes('Chromecast')) {
+                        // modalOverlay.classList.remove('modal-active');
+                    }
+                };
+                return div;
+            };
+
+            const addGroup = (title) => {
+                const div = document.createElement('div');
+                div.className = 'cast-group-title';
+                div.innerText = title;
+                container.appendChild(div);
+            };
+
+            // 1. 浏览器原生投屏 (AirPlay / Chromecast)
+            addGroup('无线投屏');
+            
+            // AirPlay 检测
+            let airplayAvailable = false;
+            if (window.WebKitPlaybackTargetAvailabilityEvent) {
+                videoEl.addEventListener('webkitplaybacktargetavailabilitychanged', e => {
+                    if (e.availability === 'available') airplayAvailable = true;
+                });
+            }
+            // iOS 默认认为支持，Mac Safari 也支持
+            if(isIOS || (isMac && /safari/.test(ua) && !/chrome/.test(ua))) {
+                 container.appendChild(createOption('🍏', 'AirPlay', '投射到 Apple TV 或支持 AirPlay 的电视', () => {
+                     if(videoEl.webkitShowPlaybackTargetPicker) {
+                         videoEl.webkitShowPlaybackTargetPicker();
+                     } else {
+                         showStatus('请在播放器控制栏点击 AirPlay 图标', 'info');
+                     }
+                 }));
+            }
+
+            // Google Cast
+            if(window.chrome && !isIOS) {
+                container.appendChild(createOption('📡', 'Google Cast', '投射到 Chromecast 或 Android TV', () => {
+                    if(window.cast && window.cast.framework) {
+                        const ctx = cast.framework.CastContext.getInstance();
+                        const session = ctx.getCurrentSession();
+                        const mediaInfo = new chrome.cast.media.MediaInfo(currentNetworkUrl, 'application/x-mpegurl');
+                        const request = new chrome.cast.media.LoadRequest(mediaInfo);
+                        
+                        if(!session) {
+                            ctx.requestSession().then(() => {
+                                ctx.getCurrentSession().loadMedia(request);
+                            }).catch(e => console.error(e));
+                        } else {
+                            session.loadMedia(request);
+                        }
+                    } else {
+                        showStatus('Chromecast 服务未就绪', 'warning');
+                    }
+                }));
+            }
+
+            // 2. DLNA / 投屏 App (Deep Links)
+            // 这是解决浏览器无法直接 DLNA 的核心方案
+            addGroup('DLNA / 第三方投屏');
+
+            if (isAndroid || isIOS) {
+                // Web Video Caster - 最强投屏神器
+                const wvcUrl = `wvc-x-callback://open?url=${encodeURIComponent(currentNetworkUrl)}&secure_uri=true`;
+                container.appendChild(createOption('🚀', 'Web Video Caster', '推荐！支持 DLNA/投屏到几乎所有电视', () => {
+                    window.location.href = wvcUrl;
+                }, '推荐'));
+
+                // 通用协议
+                container.appendChild(createOption('📺', '通用投屏助手', '尝试唤起手机内安装的投屏软件', () => {
+                    window.location.href = `video-cast://${currentNetworkUrl}`;
+                }));
+            }
+
+            // 3. 本地播放器 (PC/Mac/Mobile)
+            addGroup('本地应用播放');
+            
+            // VLC
+            container.appendChild(createOption('🟠', 'VLC 播放器', '在 VLC 中打开 (解码强/支持串流)', () => {
+                window.location.href = `vlc://${currentNetworkUrl}`;
+            }));
+
+            // IINA (Mac Only)
+            if(isMac) {
+                container.appendChild(createOption('🎞️', 'IINA', 'Mac 最佳播放器', () => {
+                    window.location.href = `iina://weblink?url=${currentNetworkUrl}`;
+                }, 'Mac首选'));
+            }
+
+            // PotPlayer (Windows Only)
+            if(isWin) {
+                container.appendChild(createOption('🟦', 'PotPlayer', 'Windows 全能播放器', () => {
+                    window.location.href = `potplayer://${currentNetworkUrl}`;
+                }, 'Win首选'));
+            }
+            
+            // 4. 复制链接
+            addGroup('其他');
+            container.appendChild(createOption('🔗', '复制视频链接', '手动粘贴到其他播放器或下载工具', () => {
+                navigator.clipboard.writeText(currentNetworkUrl).then(() => {
+                    showStatus('✅ 链接已复制', 'success');
+                    modalOverlay.classList.remove('modal-active');
+                });
+            }));
+        }
+
         function setupMobileLongPress(player) {
             const container = player.container;
             let timer = null;
-            
             container.addEventListener('touchstart', (e) => {
                 if(e.touches.length > 1) return;
                 timer = setTimeout(() => {
-                    // 触发长按：显示统计面板或 DPlayer 菜单
-                    // 这里我们简单切换统计面板显示，给用户反馈
                     const stats = document.getElementById('custom-stats');
                     stats.style.display = stats.style.display === 'none' ? 'block' : 'none';
                     if(navigator.vibrate) navigator.vibrate(50);
-                    
-                    // 也可以尝试模拟右键事件触发 DPlayer 菜单，但原生菜单在移动端兼容性不一
-                    // const evt = new MouseEvent('contextmenu', {
-                    //     bubbles: true, cancelable: true,
-                    //     view: window, clientX: e.touches[0].clientX, clientY: e.touches[0].clientY
-                    // });
-                    // container.dispatchEvent(evt);
-                    
                     showStatus(stats.style.display === 'block' ? '📊 统计面板已开启' : '📊 统计面板已关闭', 'info');
-                }, 600); // 600ms 长按
+                }, 600); 
             }, {passive: true});
-            
             const clear = () => { if(timer) clearTimeout(timer); };
             container.addEventListener('touchend', clear);
             container.addEventListener('touchmove', clear);
@@ -486,67 +682,43 @@
              document.getElementById('custom-stats').style.display = 'none';
         }
 
-        // --- 统计信息逻辑 ---
         function startStatsLoop(video, hls) {
             if(statsTimer) clearInterval(statsTimer);
-            
-            // FPS 计算
-            frameCount = 0;
-            currentFPS = 0;
-            lastFrameTime = performance.now();
-
-            const frameCallback = (now, metadata) => {
+            frameCount = 0; currentFPS = 0; lastFrameTime = performance.now();
+            const frameCallback = (now) => {
                 frameCount++;
-                const elapsed = now - lastFrameTime;
-                if (elapsed >= 1000) {
-                    currentFPS = frameCount; 
-                    frameCount = 0;
-                    lastFrameTime = now;
-                }
+                if (now - lastFrameTime >= 1000) { currentFPS = frameCount; frameCount = 0; lastFrameTime = now; }
                 if(video.requestVideoFrameCallback) video.requestVideoFrameCallback(frameCallback);
             };
             if ('requestVideoFrameCallback' in video) video.requestVideoFrameCallback(frameCallback);
 
             const statsEl = document.getElementById('custom-stats');
-
             const updateStatsUI = () => {
                 if(statsEl.style.display === 'none') return;
-                
-                // 分辨率/码率
                 let resolution = `${video.videoWidth} x ${video.videoHeight}`;
                 let bitrate = 'N/A';
-                
                 if (hls && hls.levels) {
-                    const levelIndex = hls.currentLevel === -1 ? (hls.autoLevelEnabled ? hls.nextAutoLevel : -1) : hls.currentLevel;
-                    const level = hls.levels[levelIndex];
+                    const level = hls.levels[hls.currentLevel === -1 ? hls.nextAutoLevel : hls.currentLevel];
                     if (level) {
                         if (level.width) resolution = `${level.width} x ${level.height}`;
                         if (level.bitrate) bitrate = (level.bitrate / 1000).toFixed(0) + ' kbps';
                     }
                 }
-
                 const buffer = video.buffered.length ? (video.buffered.end(video.buffered.length-1) - video.currentTime).toFixed(1) : 0;
-                let dropped = 0;
-                let displayFPS = currentFPS;
-                
-                if (video.getVideoPlaybackQuality) dropped = video.getVideoPlaybackQuality().droppedVideoFrames;
-                if (video.paused) displayFPS = 0;
-
+                let displayFPS = video.paused ? 0 : currentFPS;
                 statsEl.innerHTML = `
                     <div style="color:#00ccff;border-bottom:1px solid #555;margin-bottom:5px;">📊 实时监控 (DPlayer)</div>
                     <div>FPS: <span style="color:${displayFPS >= 50 ? '#00ccff' : '#fff'}">${displayFPS}</span></div>
                     <div>RES: ${resolution}</div>
                     <div>BIT: ${bitrate}</div>
                     <div>BUF: ${buffer} s</div>
-                    <div>DRP: ${dropped}</div>
                 `;
             };
-            
             statsTimer = setInterval(updateStatsUI, 500);
             updateStatsUI();
         }
 
-        // --- 模式 B: Iframe 竞速解析模式 (赢家通吃优化) ---
+        // --- 模式 B: Iframe 竞速解析 ---
         function loadIframeMode(url) {
             currentMode = 'iframe';
             castBtn.disabled = true; 
@@ -555,31 +727,17 @@
             loadingTip.style.display = 'block';
 
             let hasWinner = false; 
-
             document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
 
             apiArray.forEach(api => {
                 const iframe = document.createElement('iframe');
                 iframe.className = 'temp-iframe';
                 iframe.allowFullscreen = true; 
-                iframe.setAttribute('allowFullScreen', '');
-                iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer";
                 iframe.src = api.url + url;
-                
                 iframe.onload = function() {
-                    if (isSniffed) return;
-                    if (hasWinner) return; 
-
+                    if (isSniffed || hasWinner) return;
                     hasWinner = true;
-                    
-                    const allIframes = document.querySelectorAll('.temp-iframe');
-                    allIframes.forEach(el => {
-                        if (el !== iframe) {
-                            el.src = 'about:blank'; 
-                            el.remove(); 
-                        }
-                    });
-
+                    document.querySelectorAll('.temp-iframe').forEach(el => { if (el !== iframe) { el.src = 'about:blank'; el.remove(); } });
                     displayIframe(this, api.name);
                 };
                 wrapper.appendChild(iframe);
@@ -595,48 +753,47 @@
             
             const manualBtn = document.createElement('span');
             manualBtn.innerHTML = " [我有M3U8地址]";
-            manualBtn.style.cursor = 'pointer';
-            manualBtn.style.color = '#00ccff';
+            manualBtn.style.cursor = 'pointer'; manualBtn.style.color = '#00ccff';
             manualBtn.onclick = () => {
-                const manualUrl = prompt("如果您抓包到了 M3U8 地址，请粘贴在这里以开启投屏和加速：");
-                if(manualUrl && manualUrl.includes('.m3u8')) loadM3U8Mode(manualUrl, true);
+                const manualUrl = prompt("请输入 M3U8 地址：");
+                if(manualUrl && manualUrl.includes('.m3u8')) {
+                    input.value = manualUrl;
+                    startPlay();
+                }
             };
             statusDiv.appendChild(manualBtn);
         }
 
-        // --- 核心增强：后台嗅探逻辑 ---
+        // --- 后台嗅探 ---
         async function backgroundSniff(videoPageUrl) {
             console.log('启动后台嗅探任务...');
             const regex = /["'](https?:\/\/[^"']+\.m3u8[^"']*)["']/;
-
+            
+            // 监听 iframe postMessage (部分解析接口会回传 url)
             const msgHandler = (e) => {
+                let foundUrl = null;
                 if (e.data && typeof e.data === 'string') {
                     const match = e.data.match(regex);
-                    if (match) {
-                        window.removeEventListener('message', msgHandler);
-                        loadM3U8Mode(match[1], true);
-                    }
+                    if (match) foundUrl = match[1];
+                } else if (e.data && e.data.type === 'video_url' && e.data.url) {
+                    foundUrl = e.data.url;
                 }
-                if (e.data && e.data.type === 'video_url' && e.data.url) {
-                     window.removeEventListener('message', msgHandler);
-                     loadM3U8Mode(e.data.url, true);
+
+                if(foundUrl) {
+                    window.removeEventListener('message', msgHandler);
+                    loadM3U8Mode(foundUrl, true);
                 }
             };
             window.addEventListener('message', msgHandler);
             
+            // 主动 Fetch 尝试
             for (const api of apiArray) {
                 if(isSniffed) break;
                 try {
-                    const targetUrl = api.url + videoPageUrl;
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 5000); 
-                    
-                    const response = await fetch(targetUrl, { 
-                        method: 'GET',
-                        signal: controller.signal
-                    });
+                    const timeoutId = setTimeout(() => controller.abort(), 4000); 
+                    const response = await fetch(api.url + videoPageUrl, { method: 'GET', signal: controller.signal });
                     clearTimeout(timeoutId);
-
                     if (response.ok) {
                         const text = await response.text();
                         const match = text.match(regex);
@@ -649,10 +806,9 @@
             }
         }
 
-        // --- 广告清洗逻辑 ---
+        // --- 广告清洗 ---
         async function fetchAndCleanM3u8(url) {
             const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch(e) { return p; } };
-
             const response = await fetch(url);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const originalContent = await response.text();
@@ -661,53 +817,31 @@
             const segments = [];
             const fingerprintCounts = {};
             
-            // 1. 特征分析
             lines.forEach((line, idx) => {
                 const trimmed = line.trim();
                 if(!trimmed || trimmed.startsWith('#')) return;
-                
                 const absUrl = toAbsolute(trimmed, url);
-                let u;
-                try { u = new URL(absUrl); } catch(e) { return; }
-                
-                const pathParts = u.pathname.split('/');
-                pathParts.pop();
-                const dir = pathParts.join('/');
-                const ext = u.pathname.split('.').pop();
-                const fp = `${u.hostname}|${dir}|${ext}`;
-                
+                let u; try { u = new URL(absUrl); } catch(e) { return; }
+                const pathParts = u.pathname.split('/'); pathParts.pop();
+                const fp = `${u.hostname}|${pathParts.join('/')}|${u.pathname.split('.').pop()}`;
                 if(!fingerprintCounts[fp]) fingerprintCounts[fp] = 0;
                 fingerprintCounts[fp]++;
-                
                 segments.push({ idx, fp });
             });
             
-            // 2. 查找主特征
             let dominantFp = '', maxC = 0;
-            for(const [fp, c] of Object.entries(fingerprintCounts)) {
-                if(c > maxC) { maxC = c; dominantFp = fp; }
-            }
+            for(const [fp, c] of Object.entries(fingerprintCounts)) { if(c > maxC) { maxC = c; dominantFp = fp; } }
             
-            // 阈值判定：主特征占比 < 50% 则不清洗
-            if(segments.length === 0 || (maxC / segments.length) < 0.5) {
-                return { content: originalContent, removedCount: 0, log: '结构过于离散，未清洗' };
-            }
+            if(segments.length === 0 || (maxC / segments.length) < 0.5) return { content: originalContent, removedCount: 0, log: '未清洗' };
 
-            // 3. 构建新内容
             const linesToRemove = new Set();
             segments.forEach(seg => {
                 if(seg.fp !== dominantFp) {
                     linesToRemove.add(seg.idx);
-                    // 回溯删除 EXTINF
                     let j = seg.idx - 1;
                     while(j >= 0) {
                         const l = lines[j].trim();
-                        if(l.startsWith('#EXTINF') || l.startsWith('#EXT-X-BYTERANGE')) {
-                            linesToRemove.add(j);
-                            j--;
-                        } else {
-                            break;
-                        }
+                        if(l.startsWith('#EXTINF') || l.startsWith('#EXT-X-BYTERANGE')) { linesToRemove.add(j); j--; } else break;
                     }
                 }
             });
@@ -717,13 +851,9 @@
                 if(linesToRemove.has(idx)) return;
                 let content = line.trim();
                 if(!content) return;
-                
                 if(content.startsWith('#')) {
                     if(content.startsWith('#EXT-X-KEY') && content.includes('URI="')) {
-                        content = content.replace(/URI="([^"]+)"/, (match, p1) => {
-                             if(p1.startsWith('http') || p1.startsWith('//')) return match;
-                             return `URI="${toAbsolute(p1, url)}"`;
-                        });
+                        content = content.replace(/URI="([^"]+)"/, (m, p1) => `URI="${toAbsolute(p1, url)}"`);
                     }
                     newLines.push(content);
                 } else {
@@ -731,60 +861,9 @@
                 }
             });
             
-            return {
-                content: newLines.join('\n'),
-                removedCount: segments.length - maxC,
-                log: `已移除 ${segments.length - maxC} 个异常分片`
-            };
+            return { content: newLines.join('\n'), removedCount: segments.length - maxC, log: `已移除 ${segments.length - maxC} 个广告分片` };
         }
 
-        // --- 投屏逻辑 ---
-        function setupCastButtonLogic(videoEl, originalUrl) {
-            const castBtn = document.getElementById('cast-button');
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            
-            let mode = isIOS ? 'airplay' : 'googlecast';
-            if (window.WebKitPlaybackTargetAvailabilityEvent) {
-                 videoEl.addEventListener('webkitplaybacktargetavailabilitychanged', e => {
-                     if (e.availability === 'available') mode = 'airplay';
-                 });
-            }
-
-            if(!isIOS && window.isGCastInitialized) {
-                castType = 'googlecast';
-            }
-
-            castBtn.onclick = () => {
-                if(mode === 'airplay') {
-                    if(videoEl.webkitShowPlaybackTargetPicker) {
-                        videoEl.webkitShowPlaybackTargetPicker();
-                    } else {
-                        showStatus('AirPlay 不可用', 'error');
-                    }
-                } else {
-                    if(!window.cast || !window.cast.framework) {
-                        return showStatus('投屏服务未就绪 (请确保能访问 Google 服务)', 'warning');
-                    }
-                    const ctx = cast.framework.CastContext.getInstance();
-                    const session = ctx.getCurrentSession();
-                    if(!session) {
-                        ctx.requestSession().then(() => {
-                            const session = ctx.getCurrentSession();
-                            const mediaInfo = new chrome.cast.media.MediaInfo(originalUrl, 'application/x-mpegurl');
-                            const request = new chrome.cast.media.LoadRequest(mediaInfo);
-                            session.loadMedia(request);
-                        }).catch(e => {
-                            if(e !== 'cancel') showStatus('投屏连接失败', 'error');
-                        });
-                    } else {
-                        const mediaInfo = new chrome.cast.media.MediaInfo(originalUrl, 'application/x-mpegurl');
-                        const request = new chrome.cast.media.LoadRequest(mediaInfo);
-                        session.loadMedia(request);
-                    }
-                }
-            };
-        }
-        
         // --- 工具函数 ---
         function resetPlayer() {
             if (dp) { dp.destroy(); dp = null; }
@@ -803,19 +882,14 @@
             el.style.backgroundColor = type === 'error' ? 'rgba(220,38,38,0.2)' : (type === 'success' ? 'rgba(22,163,74,0.2)' : '#2a3f4d');
         }
 
-        function clearStatus() {
-            document.getElementById('status-message').style.display = 'none';
-        }
-
+        function clearStatus() { document.getElementById('status-message').style.display = 'none'; }
+        
         function getUrlParameter(name) {
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(location.search);
+            const results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        if(getUrlParameter('url')) {
-            setTimeout(startPlay, 500);
-        }
+        if(getUrlParameter('url')) { setTimeout(startPlay, 500); }
     });
 </script>
 
