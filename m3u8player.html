@@ -291,12 +291,12 @@
     let currentMode = 'idle';
     let isSniffed = false;
     let statsTimer = null; 
-    let statsLoopActive = false;
+    let statsLoopActive = false; // 控制统计循环
     
     // FPS 计算变量
-    let lastFrameTime = 0;
     let frameCount = 0;
     let currentFPS = 0;
+    let lastFrameTime = 0;
 
     document.addEventListener('DOMContentLoaded', () => {
         const input = document.getElementById('m3u8-input');
@@ -368,7 +368,7 @@
 
         function initArtplayer(videoUrl, originalUrl) {
             if (art) art.destroy(false);
-            stopStatsLoop(); // 停止旧的统计循环
+            stopStatsLoop();
             
             art = new Artplayer({
                 container: '#artplayer-container',
@@ -385,8 +385,7 @@
                 pip: true,
                 playbackRate: false, 
                 
-                // --- 1. 定义右键菜单 (解决报错问题) ---
-                // 直接在这里配置，不要在 ready 中去 forEach 修改
+                // --- 修复菜单报错：直接在此定义 ---
                 contextmenu: [
                     {
                         html: '统计信息 (实时FPS)',
@@ -402,7 +401,6 @@
                     }
                 ],
                 
-                // 定义统计信息层
                 layers: [
                     {
                         name: 'stats',
@@ -565,38 +563,38 @@
              statsTimer = null;
         }
 
-        // --- 统计信息逻辑 (修复版) ---
+        // --- 统计信息逻辑 (FPS 精准修复版) ---
         function startStatsLoop(art, hls) {
             stopStatsLoop();
             statsLoopActive = true;
             const video = art.video;
             
             // --- FPS 计算 (使用 requestVideoFrameCallback) ---
-            // 现代浏览器标准 API，每当新帧呈现到屏幕时触发
             frameCount = 0;
             currentFPS = 0;
-            let lastTime = performance.now();
+            lastFrameTime = performance.now();
 
             const frameCallback = (now, metadata) => {
                 if(!statsLoopActive) return;
                 
-                // 计算帧率
+                // 累计帧数
                 frameCount++;
-                const elapsed = now - lastTime;
+                const elapsed = now - lastFrameTime;
                 
+                // 每秒更新一次 FPS 计数
                 if (elapsed >= 1000) {
-                    currentFPS = frameCount; // 过去一秒的帧数
+                    currentFPS = frameCount; 
                     frameCount = 0;
-                    lastTime = now;
+                    lastFrameTime = now;
                 }
                 
-                // 继续监听下一帧
+                // 递归调用
                 if(video.requestVideoFrameCallback) {
                      video.requestVideoFrameCallback(frameCallback);
                 }
             };
             
-            // 启动帧率监听
+            // 启动帧率监听 (如果在支持的浏览器中)
             if ('requestVideoFrameCallback' in video) {
                 video.requestVideoFrameCallback(frameCallback);
             }
@@ -623,21 +621,17 @@
                 const buffer = video.buffered.length ? (video.buffered.end(video.buffered.length-1) - video.currentTime).toFixed(1) : 0;
                 let dropped = 0;
                 
-                // 3. FPS 回退方案 (如果不支持 requestVideoFrameCallback)
+                // 3. FPS 显示策略
                 let displayFPS = currentFPS;
+                // 如果 API 不支持，使用回退策略 (Safari Webkit)
                 if (!('requestVideoFrameCallback' in video)) {
-                    // 回退到 Webkit 计数器或估算
                     if (video.getVideoPlaybackQuality) {
-                        const q = video.getVideoPlaybackQuality();
-                        dropped = q.droppedVideoFrames;
-                        // 简单的估算：如果 totalVideoFrames 在增加，假定为 30 或 60? 
-                        // 这里我们仅显示 "N/A (API不支持)" 或者尝试计算 delta
-                        // 简单的 delta 计算:
-                        // (在 interval 外部维护 oldTotalFrames)
-                    } else if (video.webkitDecodedFrameCount) {
-                         // Safari 旧版
+                        dropped = video.getVideoPlaybackQuality().droppedVideoFrames;
+                    } else if (video.webkitDroppedFrameCount) {
                          dropped = video.webkitDroppedFrameCount || 0;
                     }
+                    // 无法获取精确 FPS，显示占位符或 N/A
+                    displayFPS = 'API N/A';
                 } else {
                      if (video.getVideoPlaybackQuality) {
                         dropped = video.getVideoPlaybackQuality().droppedVideoFrames;
@@ -645,12 +639,12 @@
                 }
 
                 // 修正：如果视频暂停，FPS 应为 0
-                if (video.paused) displayFPS = 0;
+                if (video.paused && typeof displayFPS === 'number') displayFPS = 0;
 
                 layer.innerHTML = `
                     <div style="font-weight:bold; color:#4ade80; border-bottom:1px solid #444; margin-bottom:6px; padding-bottom:2px;">📊 实时监控 (Live)</div>
                     <div style="display:flex; justify-content:space-between;"><span>分辨率:</span> <span>${resolution}</span></div>
-                    <div style="display:flex; justify-content:space-between;"><span>帧率:</span> <span style="color:${displayFPS >= 50 ? '#4ade80' : '#fff'}">${displayFPS} FPS</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span>帧率:</span> <span style="color:${displayFPS >= 50 ? '#4ade80' : '#fff'}">${displayFPS} ${typeof displayFPS === 'number' ? 'FPS' : ''}</span></div>
                     <div style="display:flex; justify-content:space-between;"><span>码率:</span> <span>${bitrate}</span></div>
                     <div style="display:flex; justify-content:space-between;"><span>缓冲:</span> <span>${buffer} s</span></div>
                     <div style="display:flex; justify-content:space-between;"><span>丢帧:</span> <span>${dropped}</span></div>
@@ -662,7 +656,7 @@
             updateStatsUI();
         }
 
-        // --- 模式 B: Iframe 竞速解析模式 ---
+        // --- 模式 B: Iframe 竞速解析模式 (赢家通吃优化) ---
         function loadIframeMode(url) {
             currentMode = 'iframe';
             castBtn.disabled = true; 
@@ -670,9 +664,9 @@
             showStatus('识别为网页链接，正在竞速解析... (稍后若出现投屏按钮说明嗅探成功)', 'info');
             loadingTip.style.display = 'block';
 
-            let fastestTime = Infinity;
-            let hasWinner = false;
+            let hasWinner = false; // 标记是否已有线路成功加载
 
+            // 清理旧的 Iframe
             document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
 
             apiArray.forEach(api => {
@@ -683,16 +677,25 @@
                 iframe.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer";
                 iframe.src = api.url + url;
                 
-                const startTime = performance.now();
                 iframe.onload = function() {
                     if (isSniffed) return;
-                    const loadTime = performance.now() - startTime;
-                    if (loadTime < fastestTime && !hasWinner) {
-                        fastestTime = loadTime;
-                        hasWinner = true;
-                        displayIframe(this, api.name);
-                    }
+                    if (hasWinner) return; // 已经有胜者，忽略后续
+
+                    hasWinner = true;
+                    
+                    // 赢家通吃：立即销毁其他所有 Iframe
+                    const allIframes = document.querySelectorAll('.temp-iframe');
+                    allIframes.forEach(el => {
+                        if (el !== iframe) {
+                            el.src = 'about:blank'; // 停止网络请求
+                            el.remove(); // 从 DOM 移除
+                        }
+                    });
+
+                    displayIframe(this, api.name);
                 };
+                
+                // 为了防止某个线路卡死，如果它加载太慢，也应该被标记为"输" (通过赢家逻辑自动处理)
                 wrapper.appendChild(iframe);
             });
         }
@@ -735,12 +738,13 @@
             };
             window.addEventListener('message', msgHandler);
             
+            // 简单的后台 Fetch 尝试 (针对部分未加密网站)
             for (const api of apiArray) {
                 if(isSniffed) break;
                 try {
                     const targetUrl = api.url + videoPageUrl;
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 5000);
+                    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5秒超时
                     
                     const response = await fetch(targetUrl, { 
                         method: 'GET',
@@ -760,7 +764,7 @@
             }
         }
 
-        // --- 广告清洗逻辑 (进一步优化版) ---
+        // --- 广告清洗逻辑 ---
         async function fetchAndCleanM3u8(url) {
             const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch(e) { return p; } };
 
