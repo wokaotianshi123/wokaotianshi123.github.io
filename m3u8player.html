@@ -362,7 +362,6 @@
     let lastFrameTime = 0;
 
     // 当前播放的真实URL（如果是Blob则此变量存储Blob，如果是原始则存储原始）
-    // 为了投屏，我们还需要始终记录一个原始网络URL
     let currentNetworkUrl = "";
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -384,16 +383,15 @@
             const url = input.value.trim();
             if (!url) return showStatus('请输入视频地址', 'error');
 
-            // 更新当前网络URL，用于投屏（因为Blob URL不能投屏）
             currentNetworkUrl = url; 
-
             resetPlayer();
             
             if (url.includes('.m3u8') || url.startsWith('blob:') || url.startsWith('http://127.0.0.1')) {
                 loadM3U8Mode(url);
             } else {
                 loadIframeMode(url);
-                backgroundSniff(url);
+                // 启动全局嗅探（即使竞速中，也在所有线路尝试嗅探）
+                startGlobalSniffing(url);
             }
         }
         
@@ -412,14 +410,13 @@
         async function loadM3U8Mode(url, isAutoSniffed = false) {
             currentMode = 'm3u8';
             castBtn.disabled = false;
-            isSniffed = true;
+            isSniffed = true; // 标记已嗅探到
             wrapper.classList.remove('sniff-success');
             
-            // 如果是嗅探到的，更新网络地址用于投屏
             if(isAutoSniffed) currentNetworkUrl = url;
 
             if (isAutoSniffed) {
-                showStatus('✅ 嗅探成功！已切换至增强模式 (已去广告/支持投屏)', 'success');
+                showStatus('✅ 深度嗅探成功！已切换至增强模式 (已去广告/支持投屏)', 'success');
                 wrapper.classList.add('sniff-success');
                 setTimeout(() => wrapper.classList.remove('sniff-success'), 2000);
             } else {
@@ -437,7 +434,6 @@
                 } else {
                     if (!isAutoSniffed) showStatus('无需清洗，准备播放...', 'info');
                 }
-
             } catch (e) {
                 console.warn('清洗跳过:', e);
                 if (!isAutoSniffed) {
@@ -456,6 +452,10 @@
             if (dp) dp.destroy();
             stopStatsLoop();
             
+            // 确保显示播放器容器，隐藏Iframe
+            document.getElementById('dplayer-container').style.display = 'block';
+            document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
+
             dp = new DPlayer({
                 container: document.getElementById('dplayer-container'),
                 autoplay: true,
@@ -463,8 +463,8 @@
                 lang: 'zh-cn',
                 screenshot: true,
                 hotkey: true,
-                airplay: false, // 禁用自带 AirPlay 按钮，使用统一投屏菜单
-                chromecast: false, // 禁用自带 Chromecast，使用统一投屏菜单
+                airplay: false, 
+                chromecast: false,
                 volume: 0.7,
                 video: {
                     url: videoUrl,
@@ -486,7 +486,6 @@
                                     startStatsLoop(video, hlsInstance);
                                     video.play().catch(e => console.warn('Autoplay blocked', e));
                                 });
-                                // Error handling...
                                 hlsInstance.on(Hls.Events.ERROR, function(event, data) {
                                     if (data.fatal) {
                                         switch(data.type) {
@@ -514,7 +513,6 @@
                 ]
             });
 
-            // 绑定新版投屏逻辑
             setupCastButtonLogic(dp.video);
             setupMobileLongPress(dp);
             
@@ -539,7 +537,6 @@
             const isMac = /mac os/.test(ua) && !isIOS;
             const isWin = /windows/.test(ua);
 
-            // 辅助函数：创建选项
             const createOption = (icon, title, desc, onClick, tag = '') => {
                 const div = document.createElement('div');
                 div.className = 'cast-option';
@@ -552,7 +549,6 @@
                 `;
                 div.onclick = () => {
                     onClick();
-                    // 除了 AirPlay/GoogleCast 这种需要留在页面的，其他 DeepLink 跳转后可以关闭模态框
                     if(!title.includes('AirPlay') && !title.includes('Chromecast')) {
                         // modalOverlay.classList.remove('modal-active');
                     }
@@ -567,17 +563,9 @@
                 container.appendChild(div);
             };
 
-            // 1. 浏览器原生投屏 (AirPlay / Chromecast)
             addGroup('无线投屏');
             
-            // AirPlay 检测
-            let airplayAvailable = false;
-            if (window.WebKitPlaybackTargetAvailabilityEvent) {
-                videoEl.addEventListener('webkitplaybacktargetavailabilitychanged', e => {
-                    if (e.availability === 'available') airplayAvailable = true;
-                });
-            }
-            // iOS 默认认为支持，Mac Safari 也支持
+            // AirPlay
             if(isIOS || (isMac && /safari/.test(ua) && !/chrome/.test(ua))) {
                  container.appendChild(createOption('🍏', 'AirPlay', '投射到 Apple TV 或支持 AirPlay 的电视', () => {
                      if(videoEl.webkitShowPlaybackTargetPicker) {
@@ -596,7 +584,6 @@
                         const session = ctx.getCurrentSession();
                         const mediaInfo = new chrome.cast.media.MediaInfo(currentNetworkUrl, 'application/x-mpegurl');
                         const request = new chrome.cast.media.LoadRequest(mediaInfo);
-                        
                         if(!session) {
                             ctx.requestSession().then(() => {
                                 ctx.getCurrentSession().loadMedia(request);
@@ -610,46 +597,37 @@
                 }));
             }
 
-            // 2. DLNA / 投屏 App (Deep Links)
-            // 这是解决浏览器无法直接 DLNA 的核心方案
             addGroup('DLNA / 第三方投屏');
 
             if (isAndroid || isIOS) {
-                // Web Video Caster - 最强投屏神器
                 const wvcUrl = `wvc-x-callback://open?url=${encodeURIComponent(currentNetworkUrl)}&secure_uri=true`;
                 container.appendChild(createOption('🚀', 'Web Video Caster', '推荐！支持 DLNA/投屏到几乎所有电视', () => {
                     window.location.href = wvcUrl;
                 }, '推荐'));
 
-                // 通用协议
                 container.appendChild(createOption('📺', '通用投屏助手', '尝试唤起手机内安装的投屏软件', () => {
                     window.location.href = `video-cast://${currentNetworkUrl}`;
                 }));
             }
 
-            // 3. 本地播放器 (PC/Mac/Mobile)
             addGroup('本地应用播放');
             
-            // VLC
             container.appendChild(createOption('🟠', 'VLC 播放器', '在 VLC 中打开 (解码强/支持串流)', () => {
                 window.location.href = `vlc://${currentNetworkUrl}`;
             }));
 
-            // IINA (Mac Only)
             if(isMac) {
                 container.appendChild(createOption('🎞️', 'IINA', 'Mac 最佳播放器', () => {
                     window.location.href = `iina://weblink?url=${currentNetworkUrl}`;
                 }, 'Mac首选'));
             }
 
-            // PotPlayer (Windows Only)
             if(isWin) {
                 container.appendChild(createOption('🟦', 'PotPlayer', 'Windows 全能播放器', () => {
                     window.location.href = `potplayer://${currentNetworkUrl}`;
                 }, 'Win首选'));
             }
             
-            // 4. 复制链接
             addGroup('其他');
             container.appendChild(createOption('🔗', '复制视频链接', '手动粘贴到其他播放器或下载工具', () => {
                 navigator.clipboard.writeText(currentNetworkUrl).then(() => {
@@ -718,12 +696,12 @@
             updateStatsUI();
         }
 
-        // --- 模式 B: Iframe 竞速解析 ---
+        // --- 模式 B: Iframe 竞速解析 + 二次嗅探 ---
         function loadIframeMode(url) {
             currentMode = 'iframe';
             castBtn.disabled = true; 
             isSniffed = false;
-            showStatus('识别为网页链接，正在竞速解析... (稍后若出现投屏按钮说明嗅探成功)', 'info');
+            showStatus('识别为网页链接，正在竞速解析...', 'info');
             loadingTip.style.display = 'block';
 
             let hasWinner = false; 
@@ -736,19 +714,85 @@
                 iframe.src = api.url + url;
                 iframe.onload = function() {
                     if (isSniffed || hasWinner) return;
+                    
+                    // 标记找到赢家，但暂不显示，尝试深度嗅探
                     hasWinner = true;
-                    document.querySelectorAll('.temp-iframe').forEach(el => { if (el !== iframe) { el.src = 'about:blank'; el.remove(); } });
-                    displayIframe(this, api.name);
+                    handleWinner(this, api, url);
                 };
                 wrapper.appendChild(iframe);
             });
         }
+        
+        // 处理竞速赢家：尝试提取M3U8，提取不到则回退
+        async function handleWinner(iframe, api, videoUrl) {
+            if (isSniffed) return;
+            
+            showStatus(`线路 ${api.name} 响应最快，正在尝试深度提取直链...`, 'info');
+            
+            // 设定一个短暂的超时，防止用户等待过久
+            let sniffSuccess = false;
+            const sniffTimeout = setTimeout(() => {
+                if (!isSniffed) {
+                    console.log('深度嗅探超时，回退到 Iframe 播放');
+                    displayIframe(iframe, api.name);
+                }
+            }, 2500); // 2.5秒内没提取出来就放弃
+
+            try {
+                // 尝试针对这个赢家接口进行深度请求
+                const targetUrl = api.url + videoUrl;
+                const deepUrl = await tryDeepSniff(targetUrl);
+                
+                if (deepUrl && !isSniffed) {
+                    clearTimeout(sniffTimeout);
+                    sniffSuccess = true;
+                    loadM3U8Mode(deepUrl, true);
+                }
+            } catch (e) {
+                console.warn('深度提取失败:', e);
+            }
+        }
+        
+        // 尝试深度嗅探 (针对特定URL)
+        async function tryDeepSniff(targetUrl) {
+            try {
+                const controller = new AbortController();
+                setTimeout(() => controller.abort(), 2000); // 请求本身2秒超时
+                
+                const response = await fetch(targetUrl, { method: 'GET', signal: controller.signal });
+                if (!response.ok) return null;
+                
+                const text = await response.text();
+                
+                // 1. 尝试 JSON 解析
+                try {
+                    const json = JSON.parse(text);
+                    if (json.url && json.url.includes('.m3u8')) return json.url;
+                } catch (e) {}
+                
+                // 2. 尝试正则匹配
+                const regex = /["'](https?:\/\/[^"']+\.m3u8[^"']*)["']/;
+                const match = text.match(regex);
+                if (match) return match[1];
+                
+                return null;
+            } catch (e) {
+                return null;
+            }
+        }
 
         function displayIframe(iframe, apiName) {
-            if (isSniffed) return;
+            if (isSniffed) return; // 如果期间被全局嗅探找到了，就不要显示iframe了
+            
             loadingTip.style.display = 'none';
             showStatus(`解析成功！当前线路: ${apiName} (暂未提取到直链，不支持投屏)`, 'info');
+            
             document.getElementById('dplayer-container').style.display = 'none';
+            
+            // 只显示赢家 iframe
+            document.querySelectorAll('.temp-iframe').forEach(el => {
+                if (el !== iframe) { el.src = 'about:blank'; el.remove(); }
+            });
             iframe.classList.add('iframe-active');
             
             const manualBtn = document.createElement('span');
@@ -764,12 +808,12 @@
             statusDiv.appendChild(manualBtn);
         }
 
-        // --- 后台嗅探 ---
-        async function backgroundSniff(videoPageUrl) {
-            console.log('启动后台嗅探任务...');
+        // --- 全局嗅探 (备用) ---
+        // 即使在竞速中，也在后台尝试所有接口，万一某个慢的接口反而能提取出地址呢
+        function startGlobalSniffing(videoPageUrl) {
+            console.log('启动全局嗅探任务...');
             const regex = /["'](https?:\/\/[^"']+\.m3u8[^"']*)["']/;
             
-            // 监听 iframe postMessage (部分解析接口会回传 url)
             const msgHandler = (e) => {
                 let foundUrl = null;
                 if (e.data && typeof e.data === 'string') {
@@ -779,31 +823,23 @@
                     foundUrl = e.data.url;
                 }
 
-                if(foundUrl) {
+                if(foundUrl && !isSniffed) {
                     window.removeEventListener('message', msgHandler);
                     loadM3U8Mode(foundUrl, true);
                 }
             };
             window.addEventListener('message', msgHandler);
             
-            // 主动 Fetch 尝试
-            for (const api of apiArray) {
-                if(isSniffed) break;
+            // 遍历所有接口尝试 Fetch
+            apiArray.forEach(async (api) => {
+                if(isSniffed) return;
                 try {
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 4000); 
-                    const response = await fetch(api.url + videoPageUrl, { method: 'GET', signal: controller.signal });
-                    clearTimeout(timeoutId);
-                    if (response.ok) {
-                        const text = await response.text();
-                        const match = text.match(regex);
-                        if (match && !isSniffed) {
-                            loadM3U8Mode(match[1], true);
-                            break; 
-                        }
+                    const found = await tryDeepSniff(api.url + videoPageUrl);
+                    if(found && !isSniffed) {
+                        loadM3U8Mode(found, true);
                     }
-                } catch (e) { }
-            }
+                } catch(e) {}
+            });
         }
 
         // --- 广告清洗 ---
