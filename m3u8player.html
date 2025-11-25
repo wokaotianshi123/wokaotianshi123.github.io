@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -264,10 +263,10 @@
         lowLatencyMode: false,
         
         // --- 极限缓存与加载优化 (适配高码率/60帧) ---
-        startBufferLength: 20,           // 起播缓冲：增加到 20s，确保起播后不易卡顿
+        startBufferLength: 20,           // 起播缓冲：增加到 20s
         maxBufferLength: 120,            // 正常缓冲：增加到 120s
-        maxMaxBufferLength: 600,         // 最大缓冲：允许缓存 10分钟，尽可能利用带宽
-        maxBufferSize: 200 * 1024 * 1024, // 内存限制：提升至 200MB，防止高码率分片被频繁清理
+        maxMaxBufferLength: 600,         // 最大缓冲：允许缓存 10分钟
+        maxBufferSize: 200 * 1024 * 1024, // 内存限制：200MB
         backBufferLength: 90,
         
         // --- 网络加载策略 ---
@@ -276,11 +275,10 @@
         manifestLoadingTimeOut: 20000,
         levelLoadingTimeOut: 20000,
         
-        // 允许更激进的加载，防止网络波动导致降级
+        // 允许更激进的加载
         maxLoadingDelay: 4, 
-        minAutoBitrate: 0, // 允许从最低开始，但配合 startLevel 策略优化
+        minAutoBitrate: 0, 
         
-        // 允许播放器加载比容器尺寸更大的画面 (例如在手机上加载4K/60fps)
         capLevelToPlayerSize: false, 
         autoStartLoad: true,
         maxBufferHole: 0.5,
@@ -292,6 +290,13 @@
     let castType = 'googlecast'; 
     let currentMode = 'idle';
     let isSniffed = false;
+    let statsTimer = null; 
+    let statsLoopActive = false;
+    
+    // FPS 计算变量
+    let lastFrameTime = 0;
+    let frameCount = 0;
+    let currentFPS = 0;
 
     document.addEventListener('DOMContentLoaded', () => {
         const input = document.getElementById('m3u8-input');
@@ -349,10 +354,8 @@
                 }
 
             } catch (e) {
-                // 这里的日志仅在控制台显示，方便排查，界面上给用户更友好的提示
                 console.warn('清洗跳过:', e);
                 if (!isAutoSniffed) {
-                    // 区分是超时还是跨域
                     const msg = e.name === 'AbortError' 
                         ? '⚠️ 广告分析超时，跳过清洗直接播放...' 
                         : '⚠️ 目标资源禁止跨域访问，无法去广告，将尝试直接播放...';
@@ -365,6 +368,7 @@
 
         function initArtplayer(videoUrl, originalUrl) {
             if (art) art.destroy(false);
+            stopStatsLoop(); // 停止旧的统计循环
             
             art = new Artplayer({
                 container: '#artplayer-container',
@@ -373,7 +377,6 @@
                 theme: '#4ade80',
                 autoplay: true,
                 
-                // 添加 ID 以优化本地存储键值，减少冲突
                 id: 'm3u8-smart-player',
                 
                 setting: true,
@@ -382,29 +385,70 @@
                 pip: true,
                 playbackRate: false, 
                 
+                // --- 1. 定义右键菜单 (解决报错问题) ---
+                // 直接在这里配置，不要在 ready 中去 forEach 修改
+                contextmenu: [
+                    {
+                        html: '统计信息 (实时FPS)',
+                        click: function (contextmenu) {
+                            const layer = document.querySelector('.art-layer-stats');
+                            if (layer) {
+                                const isHidden = layer.style.display === 'none';
+                                layer.style.display = isHidden ? 'block' : 'none';
+                                art.notice.show = isHidden ? '统计面板: 开' : '统计面板: 关';
+                            }
+                            contextmenu.show = false; 
+                        }
+                    }
+                ],
+                
+                // 定义统计信息层
+                layers: [
+                    {
+                        name: 'stats',
+                        html: '',
+                        style: {
+                            display: 'none',
+                            position: 'absolute',
+                            top: '20px',
+                            left: '20px',
+                            padding: '15px',
+                            background: 'rgba(0, 0, 0, 0.8)',
+                            color: '#eee',
+                            borderRadius: '8px',
+                            fontSize: '13px',
+                            lineHeight: '1.8',
+                            zIndex: '50',
+                            pointerEvents: 'none',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            backdropFilter: 'blur(5px)',
+                            fontFamily: 'Consolas, monospace',
+                            minWidth: '220px'
+                        }
+                    }
+                ],
+
                 settings: [
                     {
                         html: '画质模式',
-                        tooltip: '自动',
+                        tooltip: '强制60帧',
                         icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>',
                         selector: [
-                            { html: '默认 (自动)', value: 'auto', default: true },
-                            { html: '🚀 强制60帧 (画质优先)', value: 'high' }
+                            { html: '自动 (Auto)', value: 'auto' },
+                            { html: '🚀 强制60帧 (画质优先)', value: 'high', default: true }
                         ],
                         onSelect: function(item) {
                             if (!hlsInstance) return '不支持';
                             if (item.value === 'high') {
-                                // 策略：锁定到最高 Level (通常包含高帧率/高码率)
                                 const levels = hlsInstance.levels;
                                 if(levels && levels.length > 0) {
-                                    // HLS.js 默认按带宽从小到大排序，最后一个通常是最高画质
                                     hlsInstance.currentLevel = levels.length - 1;
-                                    hlsInstance.capLevelToPlayerSize = false; // 强制忽略屏幕尺寸限制
+                                    hlsInstance.capLevelToPlayerSize = false; 
                                     showStatus('已切换至最高画质 (优先匹配60帧源)', 'success');
                                 }
                                 return '强制60帧';
                             } else {
-                                hlsInstance.currentLevel = -1; // 自动切换
+                                hlsInstance.currentLevel = -1; 
                                 showStatus('已切换至自动画质', 'info');
                                 return '自动';
                             }
@@ -468,6 +512,15 @@
                             hlsInstance.loadSource(url);
                             hlsInstance.attachMedia(video);
                             
+                            hlsInstance.on(Hls.Events.MANIFEST_PARSED, function () {
+                                if(hlsInstance.levels.length > 0) {
+                                    hlsInstance.currentLevel = hlsInstance.levels.length - 1;
+                                    hlsInstance.capLevelToPlayerSize = false;
+                                    console.log('已自动锁定至最高画质');
+                                }
+                                startStatsLoop(art, hlsInstance);
+                            });
+
                             hlsInstance.on(Hls.Events.ERROR, function (event, data) {
                                 if (data.fatal) {
                                     switch(data.type) {
@@ -486,6 +539,7 @@
                             });
                         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                             video.src = url;
+                            startStatsLoop(art, null);
                         } else {
                             art.notice.show = '不支持 HLS 播放';
                         }
@@ -503,6 +557,109 @@
                  console.error('Artplayer Error:', err);
                  showStatus('❌ 播放器错误: ' + (err.message || '资源无法加载'), 'error');
             });
+        }
+        
+        function stopStatsLoop() {
+             statsLoopActive = false;
+             if(statsTimer) clearInterval(statsTimer);
+             statsTimer = null;
+        }
+
+        // --- 统计信息逻辑 (修复版) ---
+        function startStatsLoop(art, hls) {
+            stopStatsLoop();
+            statsLoopActive = true;
+            const video = art.video;
+            
+            // --- FPS 计算 (使用 requestVideoFrameCallback) ---
+            // 现代浏览器标准 API，每当新帧呈现到屏幕时触发
+            frameCount = 0;
+            currentFPS = 0;
+            let lastTime = performance.now();
+
+            const frameCallback = (now, metadata) => {
+                if(!statsLoopActive) return;
+                
+                // 计算帧率
+                frameCount++;
+                const elapsed = now - lastTime;
+                
+                if (elapsed >= 1000) {
+                    currentFPS = frameCount; // 过去一秒的帧数
+                    frameCount = 0;
+                    lastTime = now;
+                }
+                
+                // 继续监听下一帧
+                if(video.requestVideoFrameCallback) {
+                     video.requestVideoFrameCallback(frameCallback);
+                }
+            };
+            
+            // 启动帧率监听
+            if ('requestVideoFrameCallback' in video) {
+                video.requestVideoFrameCallback(frameCallback);
+            }
+
+            // --- UI 更新循环 (每500ms更新一次面板显示) ---
+            const updateStatsUI = () => {
+                const layer = document.querySelector('.art-layer-stats');
+                if(!layer || layer.style.display === 'none') return;
+                
+                // 1. 获取分辨率和码率
+                let resolution = `${video.videoWidth} x ${video.videoHeight}`;
+                let bitrate = 'N/A';
+                
+                if (hls && hls.levels) {
+                    const levelIndex = hls.currentLevel === -1 ? (hls.autoLevelEnabled ? hls.nextAutoLevel : -1) : hls.currentLevel;
+                    const level = hls.levels[levelIndex];
+                    if (level) {
+                        if (level.width && level.height) resolution = `${level.width} x ${level.height}`;
+                        if (level.bitrate) bitrate = (level.bitrate / 1000).toFixed(0) + ' kbps';
+                    }
+                }
+
+                // 2. 缓冲与丢帧
+                const buffer = video.buffered.length ? (video.buffered.end(video.buffered.length-1) - video.currentTime).toFixed(1) : 0;
+                let dropped = 0;
+                
+                // 3. FPS 回退方案 (如果不支持 requestVideoFrameCallback)
+                let displayFPS = currentFPS;
+                if (!('requestVideoFrameCallback' in video)) {
+                    // 回退到 Webkit 计数器或估算
+                    if (video.getVideoPlaybackQuality) {
+                        const q = video.getVideoPlaybackQuality();
+                        dropped = q.droppedVideoFrames;
+                        // 简单的估算：如果 totalVideoFrames 在增加，假定为 30 或 60? 
+                        // 这里我们仅显示 "N/A (API不支持)" 或者尝试计算 delta
+                        // 简单的 delta 计算:
+                        // (在 interval 外部维护 oldTotalFrames)
+                    } else if (video.webkitDecodedFrameCount) {
+                         // Safari 旧版
+                         dropped = video.webkitDroppedFrameCount || 0;
+                    }
+                } else {
+                     if (video.getVideoPlaybackQuality) {
+                        dropped = video.getVideoPlaybackQuality().droppedVideoFrames;
+                     }
+                }
+
+                // 修正：如果视频暂停，FPS 应为 0
+                if (video.paused) displayFPS = 0;
+
+                layer.innerHTML = `
+                    <div style="font-weight:bold; color:#4ade80; border-bottom:1px solid #444; margin-bottom:6px; padding-bottom:2px;">📊 实时监控 (Live)</div>
+                    <div style="display:flex; justify-content:space-between;"><span>分辨率:</span> <span>${resolution}</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span>帧率:</span> <span style="color:${displayFPS >= 50 ? '#4ade80' : '#fff'}">${displayFPS} FPS</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span>码率:</span> <span>${bitrate}</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span>缓冲:</span> <span>${buffer} s</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span>丢帧:</span> <span>${dropped}</span></div>
+                    <div style="margin-top:4px; font-size:11px; color:#888;">Engine: Hls.js v${Hls.version}</div>
+                `;
+            };
+            
+            statsTimer = setInterval(updateStatsUI, 500);
+            updateStatsUI();
         }
 
         // --- 模式 B: Iframe 竞速解析模式 ---
@@ -722,7 +879,7 @@
                 } else {
                     // Google Cast
                     if(!window.cast || !window.cast.framework) {
-                        return showStatus('投屏服务未就绪', 'warning');
+                        return showStatus('投屏服务未就绪 (请确保能访问 Google 服务)', 'warning');
                     }
                     const ctx = cast.framework.CastContext.getInstance();
                     const session = ctx.getCurrentSession();
@@ -749,6 +906,7 @@
         function resetPlayer() {
             if (art) { art.destroy(false); art = null; }
             if (hlsInstance) { hlsInstance.destroy(); hlsInstance = null; }
+            stopStatsLoop();
             document.getElementById('artplayer-container').style.display = 'block';
             document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
             clearStatus();
