@@ -363,6 +363,8 @@
             const response = await fetch(url);
             if (!response.ok) throw new Error(`Fetch error: ${response.status}`);
             
+            // 关键修复：使用 response.url 作为基准 URL，解决重定向导致的路径错误问题
+            const finalUrl = response.url;
             const content = await response.text();
             
             // 1. 检查是否为嵌套列表 (Master Playlist)
@@ -398,16 +400,16 @@
                 }
 
                 if (bestUrl) {
-                    // 解析相对路径
-                    const absoluteSubUrl = new URL(bestUrl, url).href;
+                    // 解析相对路径 (使用 finalUrl)
+                    const absoluteSubUrl = new URL(bestUrl, finalUrl).href;
                     console.log(`[递归] 发现子流，带宽: ${maxBandwidth}, URL: ${absoluteSubUrl}`);
                     // 递归调用
                     return await analyzeAndCleanM3u8(absoluteSubUrl);
                 }
             }
 
-            // 2. 如果是媒体播放列表 (包含切片)，执行去广告逻辑
-            return cleanAdSegments(content, url);
+            // 2. 如果是媒体播放列表 (包含切片)，执行去广告逻辑 (使用 finalUrl)
+            return cleanAdSegments(content, finalUrl);
 
         } catch (e) {
             console.warn('深度解析受限 (通常是CORS跨域问题):', e);
@@ -416,64 +418,94 @@
         }
     }
 
-    // 指纹分析去广告逻辑
+    // --- 双层智能去广告算法 ---
+    // 层级1: 域名过滤 (Hostname Filter) - 杀掉跨域广告
+    // 层级2: 目录权重过滤 (Directory Weight Filter) - 杀掉同域名下的广告目录，但保留分段存储的正片
     function cleanAdSegments(content, baseUrl) {
         const lines = content.split(/\r?\n/);
         const segments = [];
-        const fingerprintCounts = {};
         
         // 辅助：绝对路径转换
         const toAbsolute = (path) => {
             try { return new URL(path, baseUrl).href; } catch (e) { return path; }
         };
 
-        // 第一遍扫描：收集特征
+        // 1. 收集所有分片信息
         lines.forEach((line, idx) => {
             const trimmed = line.trim();
             if (!trimmed || trimmed.startsWith('#')) return;
-            
-            // 尝试提取特征 (域名 + 路径结构 + 扩展名)
             try {
                 const absUrl = toAbsolute(trimmed);
                 const u = new URL(absUrl);
-                const pathParts = u.pathname.split('/');
-                pathParts.pop(); // 去掉文件名
-                // 特征：Host + 目录结构
-                const fp = `${u.hostname}|${pathParts.join('/')}`;
+                // 提取目录指纹 (不含文件名)
+                const pathDir = u.pathname.substring(0, u.pathname.lastIndexOf('/') + 1);
                 
-                if (!fingerprintCounts[fp]) fingerprintCounts[fp] = 0;
-                fingerprintCounts[fp]++;
-                segments.push({ idx, fp, absUrl });
+                segments.push({
+                    idx,
+                    absUrl,
+                    hostname: u.hostname,
+                    directory: pathDir
+                });
             } catch (e) {}
         });
 
-        // 找出主流特征 (数量最多的特征)
-        let dominantFp = '';
-        let maxCount = 0;
-        for (const [fp, count] of Object.entries(fingerprintCounts)) {
-            if (count > maxCount) {
-                maxCount = count;
-                dominantFp = fp;
-            }
-        }
-
         const totalSegments = segments.length;
-        console.log(`[清洗分析] 总分片: ${totalSegments}, 主流特征占比: ${maxCount}/${totalSegments}`);
+        if (totalSegments === 0) return { blobUrl: null, cleaned: false };
 
-        // 如果所有分片特征完全一致，说明没有广告（或者全是广告），不进行操作以节省性能
-        if (totalSegments === 0 || maxCount === totalSegments) {
-            return { blobUrl: null, cleaned: false };
+        // 2. 分析主域名 (Dominant Hostname)
+        const hostCounts = {};
+        segments.forEach(s => { hostCounts[s.hostname] = (hostCounts[s.hostname] || 0) + 1; });
+        
+        let mainHost = '';
+        let maxHostCount = 0;
+        for(const [h, c] of Object.entries(hostCounts)) {
+            if(c > maxHostCount) { maxHostCount = c; mainHost = h; }
         }
 
-        // 只要发现非主流特征的分片，一律视为广告进行清洗
+        // 3. 分析主目录 (Dominant Directory) - 仅在主域名下分析
+        const dirCounts = {};
+        const mainHostSegments = segments.filter(s => s.hostname === mainHost);
+        
+        mainHostSegments.forEach(s => {
+            dirCounts[s.directory] = (dirCounts[s.directory] || 0) + 1;
+        });
+
+        let maxDirCount = 0;
+        // 找出包含分片最多的那个目录的数量
+        for(const c of Object.values(dirCounts)) {
+            if(c > maxDirCount) maxDirCount = c;
+        }
+
+        console.log(`[智能分析] 总分片:${totalSegments}, 主域名:${mainHost}(${maxHostCount}), 主目录最大计数:${maxDirCount}`);
+
+        // 4. 标记需要移除的行
         const linesToRemove = new Set();
         let removedCount = 0;
 
         segments.forEach(seg => {
-            if (seg.fp !== dominantFp) {
+            let shouldRemove = false;
+
+            // 规则 A: 域名不匹配 (跨域广告)
+            if (seg.hostname !== mainHost) {
+                shouldRemove = true;
+            } 
+            // 规则 B: 同域名，但目录看起来像广告
+            else {
+                const myDirCount = dirCounts[seg.directory] || 0;
+                // 判定阈值：如果该目录下的分片数量 < 主目录分片数量的 20%，且数量确实很少(比如小于10个)，视为广告
+                // 这样可以保留那种 分成两个大目录存放的正片 (例如 /part1/ 有300片, /part2/ 有200片，都不会被删)
+                // 但能删除 /ad/ 只有 3片 的情况
+                const ratio = myDirCount / maxDirCount;
+                if (ratio < 0.2 && myDirCount < 15) {
+                    shouldRemove = true;
+                    console.log(`[移除] 疑似同域广告目录: ${seg.directory} (count: ${myDirCount})`);
+                }
+            }
+
+            if (shouldRemove) {
                 removedCount++;
-                linesToRemove.add(seg.idx); // URL 行
-                // 向上回溯删除 EXTINF / BYTERANGE / DISCONTINUITY 等标签
+                linesToRemove.add(seg.idx);
+                // 回溯删除标签
                 let j = seg.idx - 1;
                 while (j >= 0) {
                     const l = lines[j].trim();
@@ -487,7 +519,7 @@
             }
         });
 
-        // 重组内容，并强制将所有路径转为绝对路径 (因为 Blob URL 不支持相对路径)
+        // 5. 重组内容
         const newLines = [];
         lines.forEach((line, idx) => {
             if (linesToRemove.has(idx)) return;
@@ -496,13 +528,12 @@
             if (!l) return;
 
             if (l.startsWith('#')) {
-                // 处理 Key URI 相对路径
+                // 修复 Key URI
                 if (l.startsWith('#EXT-X-KEY') && l.includes('URI="')) {
                     l = l.replace(/URI="([^"]+)"/, (match, p1) => `URI="${toAbsolute(p1)}"`);
                 }
                 newLines.push(l);
             } else {
-                // 处理分片 URL 相对路径
                 newLines.push(toAbsolute(l));
             }
         });
