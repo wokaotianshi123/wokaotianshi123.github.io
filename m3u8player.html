@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>M3U8 智能融合播放器 (手动增强版)</title>
+    <meta name="referrer" content="no-referrer">
+    <title>M3U8 智能融合播放器 (Pro版)</title>
     <!-- 解决 Favicon 404 报错 -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
     <style>
@@ -300,7 +301,7 @@
 <body>
 
 <div id="app-container">
-    <h1>M3U8 智能融合播放器</h1>
+    <h1>M3U8 智能融合播放器 <span style="font-size:0.6em;color:#777;vertical-align:middle;">PRO</span></h1>
     
     <div id="control-panel">
         <input type="url" id="m3u8-input" placeholder="输入 M3U8 直链或视频网站地址" value="YOUR_URL_HERE">
@@ -481,7 +482,7 @@
                 wrapper.classList.add('sniff-success');
                 setTimeout(() => wrapper.classList.remove('sniff-success'), 2000);
             } else {
-                showStatus('正在进行深度清洗与加载...', 'info');
+                showStatus('正在智能分析媒体流...', 'info');
             }
 
             let finalUrl = url;
@@ -493,7 +494,7 @@
                     const blob = new Blob([cleanResult.content], { type: 'application/vnd.apple.mpegurl' });
                     finalUrl = URL.createObjectURL(blob);
                 } else {
-                    if (!isAutoSniffed) showStatus('无需清洗，准备播放...', 'info');
+                    if (!isAutoSniffed) showStatus('未检测到广告或无需清洗，准备播放...', 'info');
                 }
             } catch (e) {
                 console.warn('清洗跳过:', e);
@@ -506,6 +507,160 @@
             }
 
             initDPlayer(finalUrl);
+        }
+
+        // --- 递归广告清洗与 Master Playlist 解析 ---
+        async function fetchAndCleanM3u8(url, depth = 0) {
+            // 防止死循环
+            if (depth > 3) throw new Error("Redirect loop detected in M3U8 playlist");
+
+            const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch(e) { return p; } };
+            
+            if (depth > 0) {
+                showStatus(`🔄 正在解析嵌套列表 (层级 ${depth})...`, 'info');
+            }
+
+            // 设置超时 fetch
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 8000);
+            
+            const response = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const originalContent = await response.text();
+
+            // === 1. 检查是否为 Master Playlist (嵌套列表) ===
+            // 包含 #EXT-X-STREAM-INF 说明是多码率列表，不包含实际切片
+            if (originalContent.includes('#EXT-X-STREAM-INF')) {
+                const lines = originalContent.split(/\r?\n/);
+                let bestUrl = null;
+                let maxBandwidth = -1;
+
+                // 简单的解析逻辑：寻找带宽最高的流
+                for (let i = 0; i < lines.length; i++) {
+                    if (lines[i].includes('#EXT-X-STREAM-INF')) {
+                        const bwMatch = lines[i].match(/BANDWIDTH=(\d+)/);
+                        const bandwidth = bwMatch ? parseInt(bwMatch[1]) : 0;
+                        
+                        // URL 通常在下一行 (忽略空行和注释)
+                        let j = i + 1;
+                        while (j < lines.length) {
+                            const nextLine = lines[j].trim();
+                            if (nextLine && !nextLine.startsWith('#')) {
+                                if (bandwidth > maxBandwidth) {
+                                    maxBandwidth = bandwidth;
+                                    bestUrl = nextLine;
+                                } else if (!bestUrl) {
+                                     bestUrl = nextLine; // 兜底：取第一个
+                                }
+                                break;
+                            }
+                            j++;
+                        }
+                    }
+                }
+
+                if (bestUrl) {
+                    const nextUrl = toAbsolute(bestUrl, url);
+                    console.log(`[Master Playlist] Found best stream: ${nextUrl} (Bandwidth: ${maxBandwidth})`);
+                    // 递归调用，处理子列表
+                    return fetchAndCleanM3u8(nextUrl, depth + 1);
+                }
+            }
+
+            // === 2. 常规 Media Playlist 清洗逻辑 ===
+            const lines = originalContent.split(/\r?\n/);
+            const segments = [];
+            const fingerprintCounts = {};
+            
+            lines.forEach((line, idx) => {
+                const trimmed = line.trim();
+                if(!trimmed || trimmed.startsWith('#')) return;
+                
+                // 转换为绝对路径，确保分析准确
+                const absUrl = toAbsolute(trimmed, url);
+                let u; try { u = new URL(absUrl); } catch(e) { return; }
+                
+                // 指纹特征：域名 + 路径结构 (去掉文件名)
+                const pathParts = u.pathname.split('/'); 
+                pathParts.pop(); 
+                const fp = `${u.hostname}|${pathParts.join('/')}`;
+                
+                if(!fingerprintCounts[fp]) fingerprintCounts[fp] = 0;
+                fingerprintCounts[fp]++;
+                segments.push({ idx, fp });
+            });
+            
+            let dominantFp = '', maxC = 0;
+            for(const [fp, c] of Object.entries(fingerprintCounts)) { 
+                if(c > maxC) { maxC = c; dominantFp = fp; } 
+            }
+            
+            // 安全阈值：如果主内容占比不到 40%，可能误判，不敢乱删
+            if(segments.length === 0 || (maxC / segments.length) < 0.4) {
+                return { content: originalContent, removedCount: 0, log: '未清洗 (特征不明显)' };
+            }
+
+            const linesToRemove = new Set();
+            segments.forEach(seg => {
+                if(seg.fp !== dominantFp) {
+                    // 标记为广告
+                    linesToRemove.add(seg.idx);
+                    // 向上回溯删除相关的 TAG (EXTINF 等)
+                    let j = seg.idx - 1;
+                    while(j >= 0) {
+                        const l = lines[j].trim();
+                        if(l.startsWith('#EXTINF') || l.startsWith('#EXT-X-BYTERANGE') || l.startsWith('#EXT-X-KEY') || l.startsWith('#EXT-X-DISCONTINUITY')) { 
+                            linesToRemove.add(j); j--; 
+                        } else if (!l.startsWith('#EXT') && l.startsWith('#')) {
+                             // 其他未知注释，如果不紧邻 EXTINF，可能不用删，这里简单处理遇到非TAG停止
+                             j--; // 继续向上检查
+                        } else if (l === '') {
+                             j--;
+                        } else {
+                            break; // 遇到其他内容停止
+                        }
+                    }
+                }
+            });
+
+            // 重构列表
+            const newLines = [];
+            lines.forEach((line, idx) => {
+                if(linesToRemove.has(idx)) return;
+                
+                let content = line.trim();
+                if(!content) return;
+                
+                if(content.startsWith('#')) {
+                    // 如果 Key 包含相对路径 URI，需要重写为绝对路径
+                    if(content.startsWith('#EXT-X-KEY') && content.includes('URI="')) {
+                        content = content.replace(/URI="([^"]+)"/, (m, p1) => `URI="${toAbsolute(p1, url)}"`);
+                    }
+                    newLines.push(content);
+                } else {
+                    // 所有分片路径重写为绝对路径 (基于当前子列表 URL)
+                    newLines.push(toAbsolute(content, url));
+                }
+            });
+            
+            const removedCount = segments.length - maxC;
+            const logMsg = depth > 0 
+                ? `已解析嵌套列表 (层级 ${depth})，移除 ${removedCount} 个广告` 
+                : `已移除 ${removedCount} 个广告分片`;
+
+            // 如果是在子列表里，即使 removedCount 为 0，我们也返回 newLines (绝对路径化)，
+            // 因为 Blob 需要绝对路径才能播放，且我们不想回退到 Master Playlist
+            // 为了让调用者知道需要用 Blob，这里 hack 一下 removedCount 或者由调用者判断
+            // 但为了保持接口简单，如果 depth > 0，我们强制视为 "有修改" (因为路径变绝对了)
+            const effectiveRemovedCount = depth > 0 ? (removedCount + 1) : removedCount;
+
+            return { 
+                content: newLines.join('\n'), 
+                removedCount: effectiveRemovedCount, 
+                log: logMsg 
+            };
         }
 
         // --- 初始化 DPlayer ---
@@ -889,14 +1044,6 @@
             });
             iframe.classList.add('iframe-active');
             
-            // 更新选择框显示当前赢家
-            const currentApiIndex = apiArray.findIndex(a => a.name === apiName);
-            if(currentApiIndex !== -1 && lineSelect.value == -1) {
-                // 可选：是否自动更新 UI 选中的线路？
-                // lineSelect.value = currentApiIndex; 
-                // 保持在“自动”更有利于理解当前是自动跑出来的结果
-            }
-
             const manualBtn = document.createElement('span');
             manualBtn.innerHTML = " [我有M3U8地址]";
             manualBtn.style.cursor = 'pointer'; manualBtn.style.color = '#00ccff';
@@ -942,64 +1089,6 @@
                     }
                 } catch(e) {}
             });
-        }
-
-        // --- 广告清洗 ---
-        async function fetchAndCleanM3u8(url) {
-            const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch(e) { return p; } };
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            const originalContent = await response.text();
-            
-            const lines = originalContent.split(/\r?\n/);
-            const segments = [];
-            const fingerprintCounts = {};
-            
-            lines.forEach((line, idx) => {
-                const trimmed = line.trim();
-                if(!trimmed || trimmed.startsWith('#')) return;
-                const absUrl = toAbsolute(trimmed, url);
-                let u; try { u = new URL(absUrl); } catch(e) { return; }
-                const pathParts = u.pathname.split('/'); pathParts.pop();
-                const fp = `${u.hostname}|${pathParts.join('/')}|${u.pathname.split('.').pop()}`;
-                if(!fingerprintCounts[fp]) fingerprintCounts[fp] = 0;
-                fingerprintCounts[fp]++;
-                segments.push({ idx, fp });
-            });
-            
-            let dominantFp = '', maxC = 0;
-            for(const [fp, c] of Object.entries(fingerprintCounts)) { if(c > maxC) { maxC = c; dominantFp = fp; } }
-            
-            if(segments.length === 0 || (maxC / segments.length) < 0.5) return { content: originalContent, removedCount: 0, log: '未清洗' };
-
-            const linesToRemove = new Set();
-            segments.forEach(seg => {
-                if(seg.fp !== dominantFp) {
-                    linesToRemove.add(seg.idx);
-                    let j = seg.idx - 1;
-                    while(j >= 0) {
-                        const l = lines[j].trim();
-                        if(l.startsWith('#EXTINF') || l.startsWith('#EXT-X-BYTERANGE')) { linesToRemove.add(j); j--; } else break;
-                    }
-                }
-            });
-
-            const newLines = [];
-            lines.forEach((line, idx) => {
-                if(linesToRemove.has(idx)) return;
-                let content = line.trim();
-                if(!content) return;
-                if(content.startsWith('#')) {
-                    if(content.startsWith('#EXT-X-KEY') && content.includes('URI="')) {
-                        content = content.replace(/URI="([^"]+)"/, (m, p1) => `URI="${toAbsolute(p1, url)}"`);
-                    }
-                    newLines.push(content);
-                } else {
-                    newLines.push(toAbsolute(content, url));
-                }
-            });
-            
-            return { content: newLines.join('\n'), removedCount: segments.length - maxC, log: `已移除 ${segments.length - maxC} 个广告分片` };
         }
 
         // --- 工具函数 ---
