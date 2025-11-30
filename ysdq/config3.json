@@ -409,7 +409,7 @@
   
   
   "parseUrl": [
-    "https://a.wokaotianshi.eu.org/jx.html?url="
+    "https://a.wokaotianshi.eu.org/m3u8player.html?url="
   ],
   "jsonParse": [
 	"http://110.42.2.247:880/analysis/json/?uid=2334&my=fhloqstzDIKLMORTZ9&url="
