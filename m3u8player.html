@@ -104,6 +104,18 @@
         #cast-button:hover { filter: brightness(1.1); }
         #cast-button:disabled { background-color: #555; color: #888; cursor: not-allowed; }
 
+        /* 代理开关按钮样式 */
+        #proxy-btn {
+            background-color: #10b981; /* 默认开启绿色 */
+            color: #fff;
+            min-width: 60px;
+        }
+        #proxy-btn:hover { filter: brightness(1.1); }
+        #proxy-btn.disabled {
+            background-color: #4b5563; /* 关闭灰色 */
+            color: #9ca3af;
+        }
+
         /* --- 播放器容器 (关键融合部分) --- */
         #video-wrapper {
             flex-grow: 1;
@@ -269,6 +281,7 @@
             #line-select { width: 100%; max-width: none; order: 2; }
             #load-button { flex: 2; order: 3; }
             #cast-button { flex: 1; order: 3; }
+            #proxy-btn { flex: 0.5; order: 3; }
             h1 { font-size: 1.2rem; margin: 5px 0 15px 0; }
             #video-wrapper {
                 flex-grow: 0;
@@ -311,6 +324,8 @@
         </select>
         <button id="load-button" class="btn">⚡️ 播放</button>
         <button id="cast-button" class="btn">📺 投屏</button>
+        <!-- 代理开关按钮 -->
+        <button id="proxy-btn" class="btn">前开</button>
     </div>
 
     <div id="status-message"></div>
@@ -433,6 +448,10 @@
     let statsTimer = null; 
     let raceAborted = false; // 用于中断竞速
     
+    // 代理前缀配置
+    const PROXY_PREFIX = "https://cfkua.wokaotianshi.eu.org/";
+    let isProxyOn = true; // 默认开启
+    
     // FPS 计算变量
     let frameCount = 0;
     let currentFPS = 0;
@@ -445,6 +464,7 @@
         const input = document.getElementById('m3u8-input');
         const loadBtn = document.getElementById('load-button');
         const castBtn = document.getElementById('cast-button');
+        const proxyBtn = document.getElementById('proxy-btn');
         const lineSelect = document.getElementById('line-select');
         const statusDiv = document.getElementById('status-message');
         const wrapper = document.getElementById('video-wrapper');
@@ -465,6 +485,39 @@
             option.textContent = api.name;
             lineSelect.appendChild(option);
         });
+        
+        // --- 代理开关逻辑 ---
+        function updateProxyBtn() {
+            if (isProxyOn) {
+                proxyBtn.classList.remove('disabled');
+                proxyBtn.textContent = '前开';
+            } else {
+                proxyBtn.classList.add('disabled');
+                proxyBtn.textContent = '前关';
+            }
+        }
+        
+        proxyBtn.addEventListener('click', () => {
+            isProxyOn = !isProxyOn;
+            updateProxyBtn();
+            
+            // 同步修改输入框内容
+            const val = input.value.trim();
+            if (val && val !== 'YOUR_URL_HERE') {
+                if (isProxyOn) {
+                    // 开启时：如果没有前缀则添加
+                    if (!val.startsWith(PROXY_PREFIX)) {
+                        input.value = PROXY_PREFIX + val;
+                    }
+                } else {
+                    // 关闭时：如果有前缀则移除
+                    if (val.startsWith(PROXY_PREFIX)) {
+                        input.value = val.replace(PROXY_PREFIX, '');
+                    }
+                }
+            }
+        });
+        updateProxyBtn(); // 初始化状态
 
         // 线路切换事件
         lineSelect.addEventListener('change', () => {
@@ -474,7 +527,18 @@
         });
 
         function startPlay() {
-            const url = input.value.trim();
+            let url = input.value.trim();
+            
+            // --- 代理前缀处理逻辑 ---
+            if (isProxyOn) {
+                if (url && !url.startsWith(PROXY_PREFIX)) {
+                    url = PROXY_PREFIX + url;
+                    input.value = url; // 更新输入框显示
+                } else if (url && url.startsWith(PROXY_PREFIX)) {
+                    showStatus('提示：检测到已包含代理前缀，无需重复添加', 'info');
+                }
+            }
+            
             if (!url) return showStatus('请输入视频地址', 'error');
 
             currentNetworkUrl = url; 
@@ -1166,9 +1230,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
