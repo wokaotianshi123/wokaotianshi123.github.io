@@ -325,7 +325,7 @@
         <button id="load-button" class="btn">⚡️ 播放</button>
         <button id="cast-button" class="btn">📺 投屏</button>
         <!-- 代理开关按钮 -->
-        <button id="proxy-btn" class="btn">前开</button>
+        <button id="proxy-btn" class="btn">套代关</button>
     </div>
 
     <div id="status-message"></div>
@@ -450,7 +450,7 @@
     
     // 代理前缀配置
     const PROXY_PREFIX = "https://cfkua.wokaotianshi.eu.org/";
-    let isProxyOn = true; // 默认开启
+    let isProxyOn = false; // 默认关闭
     
     // FPS 计算变量
     let frameCount = 0;
@@ -476,7 +476,15 @@
         const closeCastBtn = document.getElementById('close-cast-modal');
 
         const urlParam = getUrlParameter('url');
-        input.value = urlParam || (input.value === 'YOUR_URL_HERE' ? '' : input.value);
+        
+        // --- 初始化输入框与前缀逻辑 ---
+        // 获取初始值
+        let initVal = urlParam || (input.value === 'YOUR_URL_HERE' ? '' : input.value);
+        // 若默认状态为关，且存在前缀，则移除前缀
+        if (!isProxyOn && initVal.startsWith(PROXY_PREFIX)) {
+            initVal = initVal.replace(PROXY_PREFIX, '');
+        }
+        input.value = initVal;
 
         // --- 初始化线路选择下拉框 ---
         apiArray.forEach((api, index) => {
@@ -490,10 +498,10 @@
         function updateProxyBtn() {
             if (isProxyOn) {
                 proxyBtn.classList.remove('disabled');
-                proxyBtn.textContent = '前开';
+                proxyBtn.textContent = '套代开';
             } else {
                 proxyBtn.classList.add('disabled');
-                proxyBtn.textContent = '前关';
+                proxyBtn.textContent = '套代关';
             }
         }
         
@@ -804,7 +812,7 @@
                                     if(hlsInstance.levels.length > 0) {
                                         hlsInstance.currentLevel = hlsInstance.levels.length - 1;
                                         hlsInstance.capLevelToPlayerSize = false;
-                                        showStatus('🚀 画质增强：已锁定最高码率/帧率', 'success');
+                                        showStatus('🚀 画质增强：已锁定最高码率/帧率\n💡 若播放卡顿，请点击套代按钮再重新点击播放', 'success');
                                     }
                                     startStatsLoop(video, hlsInstance);
                                     video.play().catch(e => console.warn('Autoplay blocked', e));
@@ -985,7 +993,17 @@
 
         function startStatsLoop(video, hls) {
             if(statsTimer) clearInterval(statsTimer);
-            frameCount = 0; currentFPS = 0; lastFrameTime = performance.now();
+            
+            // FPS Variables
+            frameCount = 0; 
+            currentFPS = 0; 
+            lastFrameTime = performance.now();
+            
+            // Bitrate Calculation Variables (Fallback)
+            let lastByteCount = video.webkitVideoDecodedByteCount || 0;
+            let lastBitrateCalcTime = performance.now();
+            let computedBitrate = 'N/A';
+            
             const frameCallback = (now) => {
                 frameCount++;
                 if (now - lastFrameTime >= 1000) { currentFPS = frameCount; frameCount = 0; lastFrameTime = now; }
@@ -996,15 +1014,73 @@
             const statsEl = document.getElementById('custom-stats');
             const updateStatsUI = () => {
                 if(statsEl.style.display === 'none') return;
+                
+                // 1. Resolution
                 let resolution = `${video.videoWidth} x ${video.videoHeight}`;
+                
+                // 2. Bitrate Strategy
                 let bitrate = 'N/A';
-                if (hls && hls.levels) {
-                    const level = hls.levels[hls.currentLevel === -1 ? hls.nextAutoLevel : hls.currentLevel];
-                    if (level) {
-                        if (level.width) resolution = `${level.width} x ${level.height}`;
-                        if (level.bitrate) bitrate = (level.bitrate / 1000).toFixed(0) + ' kbps';
+                
+                // Strategy A: HLS Metadata
+                if (hls && hls.levels && hls.levels.length > 0) {
+                    let lvlIdx = hls.currentLevel;
+                    if (lvlIdx === -1) lvlIdx = hls.nextAutoLevel;
+                    if (lvlIdx === -1) lvlIdx = hls.loadLevel;
+                    // Fallback to first level if unknown or singular
+                    if (lvlIdx === -1 && hls.levels.length === 1) lvlIdx = 0;
+                    if (lvlIdx === -1) lvlIdx = 0; // Last resort
+
+                    if (lvlIdx >= 0 && lvlIdx < hls.levels.length) {
+                        const level = hls.levels[lvlIdx];
+                        if (level) {
+                            if (level.width && level.height) resolution = `${level.width} x ${level.height}`;
+                            
+                            // Check all possible sources for bitrate
+                            const possibleRates = [
+                                level.bitrate,
+                                level.averageBitrate,
+                                level.realBitrate,
+                                level.attrs ? parseInt(level.attrs.BANDWIDTH || 0) : 0
+                            ];
+                            const validRate = possibleRates.find(r => r > 0);
+                            if (validRate) {
+                                bitrate = (validRate / 1000).toFixed(0) + ' kbps';
+                            }
+                        }
                     }
                 }
+                
+                // Strategy B: Browser Decoded Byte Count (Chrome/Safari/Edge)
+                // This calculates the real-time bitrate processed by the decoder
+                if (bitrate === 'N/A' && typeof video.webkitVideoDecodedByteCount !== 'undefined') {
+                    const now = performance.now();
+                    const timeDiff = now - lastBitrateCalcTime;
+                    
+                    // Update calculation every ~1 second to be stable
+                    if (timeDiff >= 1000) {
+                        const currentBytes = video.webkitVideoDecodedByteCount;
+                        const byteDiff = currentBytes - lastByteCount;
+                        
+                        // Prevent spikes or negative values on seek
+                        if (byteDiff > 0) {
+                            const bps = (byteDiff * 8) / (timeDiff / 1000);
+                            computedBitrate = (bps / 1000).toFixed(0) + ' kbps';
+                        }
+                        
+                        lastByteCount = currentBytes;
+                        lastBitrateCalcTime = now;
+                    }
+                    
+                    if (computedBitrate !== 'N/A') {
+                        bitrate = computedBitrate + ' (Real)';
+                    }
+                }
+
+                // Strategy C: HLS Network Estimate
+                if (bitrate === 'N/A' && hls && hls.bandwidthEstimate && hls.bandwidthEstimate > 0) {
+                    bitrate = (hls.bandwidthEstimate / 1000).toFixed(0) + ' kbps (Est)';
+                }
+
                 const buffer = video.buffered.length ? (video.buffered.end(video.buffered.length-1) - video.currentTime).toFixed(1) : 0;
                 let displayFPS = video.paused ? 0 : currentFPS;
                 statsEl.innerHTML = `
