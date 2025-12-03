@@ -193,6 +193,7 @@
                 flex-direction: column;
                 gap: 4px;
                 box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+                z-index: 200;
                 
                 /* 默认隐藏，通过 JS 控制 active 类显示 */
                 transform: translateY(-120%);
@@ -267,16 +268,19 @@
                 flex-grow: 1;
             }
             
+            /* 所有的提示均放置在顶部 */
             #status-message {
                 position: absolute;
-                top: 50%; left: 50%;
-                transform: translate(-50%, -50%);
+                top: 60px; /* 避开可能显示的菜单栏 */
+                left: 50%;
+                transform: translateX(-50%);
                 z-index: 50;
-                max-width: 80%;
+                max-width: 90%;
                 text-align: center;
                 background-color: rgba(42, 63, 77, 0.9);
                 pointer-events: none;
                 white-space: pre-wrap;
+                margin: 0;
             }
 
             #loading-tip {
@@ -284,6 +288,7 @@
                 background: rgba(0,0,0,0.6);
                 padding: 20px;
                 border-radius: 10px;
+                top: 50% !important; 
             }
         }
     </style>
@@ -461,8 +466,8 @@
         function initMobileGestures() {
             if (window.innerWidth > 768) return;
 
-            // 移动端欢迎提示 (去除了单击说明，因为现在是默认行为)
-            showStatus("双击菜单，三击全屏", 'info', 10000);
+            // 移动端欢迎提示: 增加时长到 10s
+            showStatus("💡 提示：单击显隐控制栏，双击菜单，三击全屏", 'info', 10000);
 
             let isScrolling = false;
             let startX = 0;
@@ -494,19 +499,18 @@
                 if (tapTimer) clearTimeout(tapTimer);
 
                 tapTimer = setTimeout(() => {
-                    if (tapCount === 1) {
-                        // 恢复默认行为：不执行任何操作，让 click 事件穿透给 DPlayer 处理 (通常是显示控制栏或播放暂停)
-                    } else if (tapCount === 2) {
+                    // tapCount === 1: 默认行为，让 DPlayer 处理显隐控制栏
+                    if (tapCount === 2) {
+                        // 双击：调出/隐藏 自定义菜单
                         controlPanel.classList.toggle('active');
                     } else if (tapCount === 3) {
+                        // 三击：全屏
                         if (dp) dp.fullScreen.toggle();
                     }
                     tapCount = 0;
-                }, 300);
+                }, 250);
             });
         }
-
-        // 移除了 showMobileToast 函数，因为不需要自定义的播放提示了
 
         initMobileGestures();
 
@@ -700,7 +704,8 @@
                                     if(hlsInstance.levels.length > 0) {
                                         hlsInstance.currentLevel = hlsInstance.levels.length - 1;
                                         hlsInstance.capLevelToPlayerSize = false;
-                                        showStatus('🚀 画质增强：已锁定最高码率<br>💡 若播放卡顿请点击套代按钮，再点击播放', 'success', 10000);
+                                        // 组合提示：画质增强 + 卡顿提示 (10秒消失)
+                                        showStatus('🚀 画质增强：已锁定最高码率 &nbsp;|&nbsp; 💡 若播放卡顿请点击套代按钮，再点击播放', 'success', 10000);
                                     }
                                     startStatsLoop(video, hlsInstance);
                                     video.play().catch(e => console.warn('Autoplay blocked', e));
@@ -717,7 +722,7 @@
                             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                                 video.src = videoUrl;
                                 startStatsLoop(video, null);
-                                showStatus('🚀 原生播放模式<br>💡 若播放卡顿请点击套代按钮，再点击播放', 'success', 10000);
+                                showStatus('🚀 原生播放模式 &nbsp;|&nbsp; 💡 若播放卡顿请点击套代按钮，再点击播放', 'success', 10000);
                             }
                         }
                     }
@@ -726,12 +731,7 @@
 
             setupCastButtonLogic(dp.video);
             
-            if(window.innerWidth <= 768) {
-                setTimeout(() => {
-                   const dCtrl = document.querySelector('.dplayer-controller');
-                   if(dCtrl) dCtrl.style.opacity = '0';
-                }, 500);
-            }
+            // 移除了这里强制隐藏 dplayer-controller 的逻辑，让它跟随单击自然显隐
             
             dp.on('canplay', () => { setTimeout(() => clearStatus(), 3000); });
         }
