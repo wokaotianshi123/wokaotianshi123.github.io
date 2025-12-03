@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="referrer" content="no-referrer">
     <title>M3U8 智能融合播放器 (Pro版)</title>
-    <!-- 解决 Favicon 404 报错 -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
     <style>
-        /* --- 基础样式 --- */
+        /* --- 基础样式 (PC端保持默认) --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -18,6 +17,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
         #app-container {
@@ -29,23 +29,40 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
-        h1 {
-            color: #00ccff; /* DPlayer 主题色 */
-            text-align: center;
-            margin: 10px 0 20px 0;
-            font-size: 1.5rem;
-        }
-
-        /* --- 控制面板 --- */
+        /* PC端布局结构 */
         #control-panel {
             display: flex;
             gap: 10px;
             margin-bottom: 15px;
             align-items: center;
             flex-wrap: wrap;
+            background: transparent;
+            z-index: 200;
         }
+
+        .cp-group-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        .cp-group-bottom {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 {
+            color: #00ccff;
+            margin: 0;
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+        .pro-tag { font-size: 0.6em; color: #777; vertical-align: middle; }
 
         #m3u8-input {
             flex-grow: 1;
@@ -57,17 +74,7 @@
             font-size: 14px;
             min-width: 150px;
         }
-        #m3u8-input:focus {
-            outline: none;
-            border-color: #00ccff;
-        }
-
-        /* 按钮组容器 (Desktop默认) */
-        #btn-group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
+        #m3u8-input:focus { outline: none; border-color: #00ccff; }
 
         .btn {
             padding: 10px 15px;
@@ -86,44 +93,26 @@
             justify-content: center;
         }
 
-        /* 线路选择器样式 */
         #line-select {
             background-color: #2d2d2d;
             border: 1px solid #444;
             color: #fff;
             max-width: 160px;
-            appearance: none; /* 移除原生箭头 */
+            appearance: none;
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 8px center;
             background-size: 16px;
-            padding-right: 30px; /* 为箭头留出空间 */
+            padding-right: 30px;
         }
-        #line-select:focus {
-            border-color: #00ccff;
-            outline: none;
-        }
+        #line-select:focus { border-color: #00ccff; outline: none; }
 
         #load-button { background-color: #00ccff; color: #000; }
-        #load-button:hover { filter: brightness(1.1); }
-
         #cast-button { background-color: #3b82f6; gap: 6px; }
-        #cast-button:hover { filter: brightness(1.1); }
         #cast-button:disabled { background-color: #555; color: #888; cursor: not-allowed; }
+        #proxy-btn { background-color: #10b981; color: #fff; min-width: 60px; }
+        #proxy-btn.disabled { background-color: #4b5563; color: #9ca3af; }
 
-        /* 代理开关按钮样式 */
-        #proxy-btn {
-            background-color: #10b981; /* 默认开启绿色 */
-            color: #fff;
-            min-width: 60px;
-        }
-        #proxy-btn:hover { filter: brightness(1.1); }
-        #proxy-btn.disabled {
-            background-color: #4b5563; /* 关闭灰色 */
-            color: #9ca3af;
-        }
-
-        /* --- 播放器容器 (关键融合部分) --- */
         #video-wrapper {
             flex-grow: 1;
             width: 100%;
@@ -133,250 +122,168 @@
             overflow: hidden;
             border: 1px solid #333;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            aspect-ratio: 16 / 9;
+            touch-action: manipulation; 
         }
 
-        /* DPlayer 容器 */
-        #dplayer-container {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0; left: 0;
-            z-index: 10;
-        }
-        
-        /* 强制视频元素硬件加速 */
-        #dplayer-container video {
-            transform: translate3d(0, 0, 0);
-            -webkit-transform: translate3d(0, 0, 0);
-            will-change: transform;
-            backface-visibility: hidden;
-        }
+        #dplayer-container { width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10; }
+        #dplayer-container video { will-change: transform; backface-visibility: hidden; }
 
-        /* 自定义统计面板 (覆盖在DPlayer之上) */
         #custom-stats {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.85);
-            color: #eee;
-            border-radius: 8px;
-            font-size: 13px;
-            line-height: 1.6;
-            z-index: 100;
-            pointer-events: none; /* 点击穿透 */
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            font-family: Consolas, monospace;
-            min-width: 200px;
-            display: none;
+            position: absolute; top: 20px; left: 20px; padding: 15px;
+            background: rgba(0, 0, 0, 0.85); color: #eee; border-radius: 8px;
+            font-size: 13px; z-index: 100; pointer-events: none; display: none;
+            backdrop-filter: blur(5px); font-family: Consolas, monospace; min-width: 200px;
         }
 
-        /* Iframe 竞速容器 */
-        .temp-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            position: absolute;
-            top: 0; left: 0;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s;
-            z-index: 5;
-            background: #000;
-        }
-        
-        .iframe-active {
-            z-index: 20;
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .temp-iframe { width: 100%; height: 100%; border: none; position: absolute; top: 0; left: 0; opacity: 0; pointer-events: none; transition: opacity 0.5s; z-index: 5; background: #000; }
+        .iframe-active { z-index: 20; opacity: 1; pointer-events: auto; }
 
-        /* --- 状态提示 --- */
         #status-message {
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 4px;
-            background-color: #2a3f4d;
-            color: #7dd3fc;
-            font-size: 13px;
-            display: none;
-            white-space: pre-line;
-            overflow-wrap: break-word;
+            margin-bottom: 10px; padding: 8px 12px; border-radius: 4px;
+            background-color: #2a3f4d; color: #7dd3fc; font-size: 13px; display: none;
+            white-space: pre-wrap; line-height: 1.6; text-align: center;
         }
 
-        /* 嗅探成功动画 */
         @keyframes pulse-green {
             0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
             70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
             100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
         }
-        .sniff-success {
-            animation: pulse-green 1.5s infinite;
-            border: 1px solid #4ade80 !important;
-        }
+        .sniff-success { animation: pulse-green 1.5s infinite; border: 1px solid #4ade80 !important; }
 
-        /* --- 投屏模态框样式 --- */
+        /* --- 投屏模态框 --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 9999;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-            opacity: 0;
-            transition: opacity 0.3s;
+            background: rgba(0, 0, 0, 0.7); z-index: 9999; display: none;
+            justify-content: center; align-items: center; backdrop-filter: blur(5px);
+            opacity: 0; transition: opacity 0.3s;
         }
         .modal-active { display: flex !important; opacity: 1 !important; }
-        
-        .cast-modal {
-            background: #252525;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            border: 1px solid #444;
-            transform: translateY(20px);
-            transition: transform 0.3s;
-        }
+        .cast-modal { background: #252525; width: 90%; max-width: 400px; border-radius: 12px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transform: translateY(20px); transition: transform 0.3s; }
         .modal-active .cast-modal { transform: translateY(0); }
-
-        .cast-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 10px;
-        }
+        .cast-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 10px; }
         .cast-title { font-size: 18px; font-weight: bold; color: #fff; }
         .cast-close { background: none; border: none; color: #888; font-size: 24px; cursor: pointer; }
-        
-        .cast-group { margin-bottom: 15px; }
-        .cast-group-title { font-size: 12px; color: #888; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .cast-option {
-            display: flex; align-items: center; gap: 12px;
-            padding: 12px;
-            background: #333;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-            text-decoration: none;
-            color: #fff;
-        }
-        .cast-option:hover { background: #444; }
-        .cast-icon { font-size: 20px; width: 24px; text-align: center; }
-        .cast-info { display: flex; flex-direction: column; }
-        .cast-name { font-size: 15px; font-weight: 500; }
-        .cast-desc { font-size: 12px; color: #aaa; }
-        
+        .cast-option { display: flex; align-items: center; gap: 12px; padding: 12px; background: #333; border-radius: 8px; margin-bottom: 8px; cursor: pointer; color: #fff; }
+        .cast-group-title { font-size: 12px; color: #888; margin-bottom: 8px; text-transform: uppercase; }
         .tag-recommend { background: #00ccff; color: #000; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-left: 5px; font-weight: bold; }
 
-        /* --- 移动端优化 (根据图片重新设计) --- */
-        @media (max-width: 600px) {
-            #app-container { 
-                padding: 10px;
+        /* --- 移动端深度优化 (Mobile Optimization) --- */
+        @media (max-width: 768px) {
+            body { background-color: #000; }
+
+            #app-container {
+                padding: 0;
                 margin: 0;
-                width: 100vw;
+                width: 100%;
                 height: 100vh;
                 max-width: none;
+            }
+
+            /* 控制面板：悬浮顶栏 */
+            #control-panel {
+                position: absolute;
+                top: 0; left: 0; width: 100%;
+                background: rgba(0, 0, 0, 0.85); /* Darker background */
+                backdrop-filter: blur(8px);
+                padding: 6px 10px; /* Compact padding */
+                box-sizing: border-box;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.6);
                 
-                /* 使用 Grid 布局重构移动端界面 */
-                display: grid;
-                grid-template-columns: 80px 1fr; /* 左侧按钮栏宽80px，右侧视频自适应 */
-                grid-template-rows: auto auto 1fr auto; /* 标题, 输入框, 内容, 状态栏 */
-                grid-template-areas:
-                    "title title"
-                    "input input"
-                    "btns video"
-                    "status status";
-                gap: 8px;
-                overflow: hidden;
+                /* 默认隐藏，通过 JS 控制 active 类显示 */
+                transform: translateY(-120%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+            }
+
+            #control-panel.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            /* 移动端 Top Group: 标题 + 输入框 (极小模式) */
+            .cp-group-top {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                height: 24px;
             }
 
             h1 {
-                grid-area: title;
-                font-size: 1.1rem;
-                margin: 5px 0;
-                text-align: center;
+                font-size: 10px;
+                color: #888;
+                margin: 0;
+                line-height: 24px;
+                white-space: nowrap;
             }
+            .pro-tag { display: none; }
 
-            /* 解除原 control-panel 的 Flex 布局，让子元素参与 Grid */
-            #control-panel {
-                display: contents;
-            }
-
-            /* 输入框置顶 */
             #m3u8-input {
-                grid-area: input;
-                width: 100%;
-                font-size: 14px;
-                padding: 8px;
-                box-sizing: border-box;
-                margin: 0;
+                height: 22px;
+                font-size: 10px;
+                padding: 0 8px;
+                background-color: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.1);
+                color: #ccc;
+                flex: 1;
+                border-radius: 4px;
             }
 
-            /* 按钮组变为左侧边栏 */
-            #btn-group {
-                grid-area: btns;
+            /* 移动端 Bottom Group: 按钮组 (悬浮风格) */
+            .cp-group-bottom {
+                width: 100%;
                 display: flex;
-                flex-direction: column;
-                gap: 8px;
-                height: 100%;
-                justify-content: flex-start; /* 从顶部开始排列 */
+                align-items: center;
+                gap: 5px;
             }
 
-            /* 统一按钮和下拉框样式为方形块 */
-            #btn-group .btn {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 1.1; /* 接近方形 */
-                padding: 5px;
-                font-size: 12px;
-                flex-direction: column; /* 图标文字垂直排列（如果有图标） */
-                justify-content: center;
-                text-align: center;
-                white-space: normal;
-                line-height: 1.2;
+            .btn {
+                height: 28px;
+                font-size: 11px;
+                padding: 0 4px;
+                flex: 1;
+                border-radius: 4px;
             }
 
-            /* 按照图片顺序重新排列按钮 */
-            /* 1. 套代关 */
-            #proxy-btn { order: 1; }
-            /* 2. 播放 */
-            #load-button { order: 2; }
-            /* 3. 投屏 */
-            #cast-button { order: 3; }
-            /* 4. 自动竞速 (下拉框) */
-            #line-select {
-                order: 4;
-                width: 100%;
-                max-width: none;
-                height: auto;
-                aspect-ratio: 1.1;
-                padding: 5px;
-                text-align: center;
-                font-size: 12px;
-                /* 调整下拉箭头位置以防遮挡文字 */
-                background-position: right 2px bottom 2px;
-                padding-right: 2px;
-            }
+            /* 调整按钮比例 */
+            #line-select { flex: 1.5; min-width: 70px; background-position: right 4px center; padding-right: 18px; font-size: 10px; }
+            #load-button { flex: 1; }
+            #cast-button { flex: 1; }
+            #proxy-btn { flex: 0.8; font-size: 10px; padding: 0 2px; }
 
-            /* 视频区域 */
+            /* 播放器全屏填充 */
             #video-wrapper {
-                grid-area: video;
                 width: 100%;
                 height: 100%;
-                aspect-ratio: unset; /* 取消固定比例，填充剩余空间 */
-                min-height: 0; /* 防止 Grid 溢出 */
-                border-radius: 6px;
-                background-color: #000;
+                border: none;
+                border-radius: 0;
+                flex-grow: 1;
+            }
+            
+            #status-message {
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 50;
+                max-width: 80%;
+                text-align: center;
+                background-color: rgba(42, 63, 77, 0.9);
+                pointer-events: none;
+                white-space: pre-wrap;
             }
 
-            #status-message {
-                grid-area: status;
-                margin: 0;
+            #loading-tip {
+                z-index: 60;
+                background: rgba(0,0,0,0.6);
+                padding: 20px;
+                border-radius: 10px;
             }
         }
     </style>
@@ -401,20 +308,17 @@
 <body>
 
 <div id="app-container">
-    <h1>M3U8 智能融合播放器 <span style="font-size:0.6em;color:#777;vertical-align:middle;">PRO</span></h1>
-    
     <div id="control-panel">
-        <input type="url" id="m3u8-input" placeholder="输入 M3U8 直链或视频网站地址" value="YOUR_URL_HERE">
-        
-        <!-- 新增按钮组容器，用于移动端侧边栏布局 -->
-        <div id="btn-group">
-            <!-- 线路选择器 -->
+        <div class="cp-group-top">
+            <h1>M3U8 <span class="pro-tag">PRO</span></h1>
+            <input type="url" id="m3u8-input" placeholder="输入链接" value="YOUR_URL_HERE">
+        </div>
+        <div class="cp-group-bottom">
             <select id="line-select" class="btn">
                 <option value="-1">🚀 自动竞速</option>
             </select>
             <button id="load-button" class="btn">⚡️ 播放</button>
             <button id="cast-button" class="btn">📺 投屏</button>
-            <!-- 代理开关按钮 -->
             <button id="proxy-btn" class="btn">套代关</button>
         </div>
     </div>
@@ -422,18 +326,13 @@
     <div id="status-message"></div>
 
     <div id="video-wrapper">
-        <!-- 竞速解析模式的 Loading 提示 -->
         <div id="loading-tip" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#888; display:none; z-index:1; text-align:center; width: 100%;">
             <p id="loading-text">正在解析...</p>
             <p style="font-size:12px; color:#555;">后台正在尝试嗅探真实 M3U8 地址</p>
         </div>
         
-        <!-- DPlayer 容器 -->
         <div id="dplayer-container"></div>
-        <!-- 自定义统计面板 -->
         <div id="custom-stats"></div>
-        
-        <!-- Iframe 容器将动态添加到这里 -->
     </div>
 </div>
 
@@ -444,74 +343,30 @@
             <div class="cast-title">选择投屏或播放方式</div>
             <button class="cast-close" id="close-cast-modal">×</button>
         </div>
-        <div id="cast-options-container">
-            <!-- 选项将通过 JS 动态生成 -->
-        </div>
+        <div id="cast-options-container"></div>
     </div>
 </div>
 
-<!-- 库引入: hls.js + DPlayer -->
 <script src="https://s4.zstatic.net/ajax/libs/hls.js/1.5.6/hls.min.js" crossorigin="anonymous"></script>
 <script src="https://s4.zstatic.net/ajax/libs/dplayer/1.26.0/DPlayer.min.js" crossorigin="anonymous"></script>
 
 <script>
-    // --- 配置区域 ---
     const apiArray = [
-	{
-		name: "ikun",
-		url: "https://jx.hls.one/?url="
-	},
-	{
-		name: "77",
-		url: "https://jx.77flv.cc/?url="
-	},
-	{
-		name: "冰豆",
-		url: "https://bd.jx.cn/?url="
-	},
-	{
-		name: "XY",
-		url: "https://jx.xymp4.cc/?url="
-	},
-	{
-		name: "Ckplayer",
-		url: "https://www.ckplayer.vip/jiexi/?url="
-	},
-	{
-		name: "M3u8TV",
-		url: "https://jx.m3u8.tv/jiexi/?url="
-	},
-	{
-		name: "XMFLV",
-		url: "https://jx.xmflv.com/?url="
-	},
-	{
-		name: "YParse",
-		url: "https://yparse.ik9.cc/index.php?url="
-	},
-	{
-		name: "8090g",
-		url: "https://www.8090g.cn/jiexi/?url="
-	},
-	{
-		name: "jy",
-		url: "https://jx.playerjy.com/?url="
-	},
-	{
-		name: "nnxy",
-		url: "https://jx.nnxv.cn/tv.php?url="
-	},
-	{
-		name: "pg",
-		url: "https://www.pangujiexi.com/pangu/?url="
-	},
-	{
-		name: "2s0",
-		url: "https://jx.2s0.cn/player/?url="
-	}
-];
+        { name: "ikun", url: "https://jx.hls.one/?url=" },
+        { name: "77", url: "https://jx.77flv.cc/?url=" },
+        { name: "冰豆", url: "https://bd.jx.cn/?url=" },
+        { name: "XY", url: "https://jx.xymp4.cc/?url=" },
+        { name: "Ckplayer", url: "https://www.ckplayer.vip/jiexi/?url=" },
+        { name: "M3u8TV", url: "https://jx.m3u8.tv/jiexi/?url=" },
+        { name: "XMFLV", url: "https://jx.xmflv.com/?url=" },
+        { name: "YParse", url: "https://yparse.ik9.cc/index.php?url=" },
+        { name: "8090g", url: "https://www.8090g.cn/jiexi/?url=" },
+        { name: "jy", url: "https://jx.playerjy.com/?url=" },
+        { name: "nnxy", url: "https://jx.nnxv.cn/tv.php?url=" },
+        { name: "pg", url: "https://www.pangujiexi.com/pangu/?url=" },
+        { name: "2s0", url: "https://jx.2s0.cn/player/?url=" }
+    ];
 
-    // 高性能 HLS 配置
     const hlsConfig = {
         enableWorker: true,
         lowLatencyMode: false,
@@ -531,25 +386,21 @@
         maxBufferHole: 0.5,
     };
 
-    // --- 全局变量 ---
     let dp = null; 
     let hlsInstance = null;
     let currentMode = 'idle';
     let isSniffed = false;
     let statsTimer = null; 
-    let raceAborted = false; // 用于中断竞速
+    let raceAborted = false;
+    let statusMsgTimer = null;
     
-    // 代理前缀配置
     const PROXY_PREFIX = "https://cfkua.wokaotianshi.eu.org/";
-    let isProxyOn = false; // 默认关闭
-    
-    // FPS 计算变量
-    let frameCount = 0;
-    let currentFPS = 0;
-    let lastFrameTime = 0;
-
-    // 当前播放的真实URL（如果是Blob则此变量存储Blob，如果是原始则存储原始）
+    let isProxyOn = false;
     let currentNetworkUrl = "";
+
+    // 手势控制变量
+    let tapCount = 0;
+    let tapTimer = null;
 
     document.addEventListener('DOMContentLoaded', () => {
         const input = document.getElementById('m3u8-input');
@@ -557,27 +408,21 @@
         const castBtn = document.getElementById('cast-button');
         const proxyBtn = document.getElementById('proxy-btn');
         const lineSelect = document.getElementById('line-select');
-        const statusDiv = document.getElementById('status-message');
-        const wrapper = document.getElementById('video-wrapper');
+        const controlPanel = document.getElementById('control-panel');
+        const videoWrapper = document.getElementById('video-wrapper');
         const loadingTip = document.getElementById('loading-tip');
         const loadingText = document.getElementById('loading-text');
-        
-        // 模态框相关
         const modalOverlay = document.getElementById('cast-modal-overlay');
         const closeCastBtn = document.getElementById('close-cast-modal');
 
         const urlParam = getUrlParameter('url');
         
-        // --- 初始化输入框与前缀逻辑 ---
-        // 获取初始值
         let initVal = urlParam || (input.value === 'YOUR_URL_HERE' ? '' : input.value);
-        // 若默认状态为关，且存在前缀，则移除前缀
         if (!isProxyOn && initVal.startsWith(PROXY_PREFIX)) {
             initVal = initVal.replace(PROXY_PREFIX, '');
         }
         input.value = initVal;
 
-        // --- 初始化线路选择下拉框 ---
         apiArray.forEach((api, index) => {
             const option = document.createElement('option');
             option.value = index;
@@ -585,7 +430,6 @@
             lineSelect.appendChild(option);
         });
         
-        // --- 代理开关逻辑 ---
         function updateProxyBtn() {
             if (isProxyOn) {
                 proxyBtn.classList.remove('disabled');
@@ -599,65 +443,97 @@
         proxyBtn.addEventListener('click', () => {
             isProxyOn = !isProxyOn;
             updateProxyBtn();
-            
-            // 同步修改输入框内容
             const val = input.value.trim();
             if (val && val !== 'YOUR_URL_HERE') {
                 if (isProxyOn) {
-                    // 开启时：如果没有前缀则添加
-                    if (!val.startsWith(PROXY_PREFIX)) {
-                        input.value = PROXY_PREFIX + val;
-                    }
+                    if (!val.startsWith(PROXY_PREFIX)) input.value = PROXY_PREFIX + val;
                 } else {
-                    // 关闭时：如果有前缀则移除
-                    if (val.startsWith(PROXY_PREFIX)) {
-                        input.value = val.replace(PROXY_PREFIX, '');
-                    }
+                    if (val.startsWith(PROXY_PREFIX)) input.value = val.replace(PROXY_PREFIX, '');
                 }
             }
         });
-        updateProxyBtn(); // 初始化状态
+        updateProxyBtn();
 
-        // 线路切换事件
         lineSelect.addEventListener('change', () => {
-            if (input.value && input.value !== 'YOUR_URL_HERE') {
-                startPlay();
-            }
+            if (input.value && input.value !== 'YOUR_URL_HERE') startPlay();
         });
+
+        function initMobileGestures() {
+            if (window.innerWidth > 768) return;
+
+            // 移动端欢迎提示 (去除了单击说明，因为现在是默认行为)
+            showStatus("双击菜单，三击全屏", 'info', 10000);
+
+            let isScrolling = false;
+            let startX = 0;
+            let startY = 0;
+
+            videoWrapper.addEventListener('touchstart', (e) => {
+                isScrolling = false;
+                if(e.touches.length > 0) {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                }
+            }, {passive: true});
+
+            videoWrapper.addEventListener('touchmove', (e) => {
+                if(e.touches.length > 0) {
+                    if (Math.abs(e.touches[0].clientX - startX) > 10 || Math.abs(e.touches[0].clientY - startY) > 10) {
+                        isScrolling = true;
+                    }
+                }
+            }, {passive: true});
+
+            videoWrapper.addEventListener('touchend', (e) => {
+                if (isScrolling) return; 
+                // 防止误触控制栏组件
+                if (e.target.closest('#control-panel') || e.target.closest('.dplayer-controller') || e.target.closest('.dplayer-mobile-play')) return;
+
+                tapCount++;
+
+                if (tapTimer) clearTimeout(tapTimer);
+
+                tapTimer = setTimeout(() => {
+                    if (tapCount === 1) {
+                        // 恢复默认行为：不执行任何操作，让 click 事件穿透给 DPlayer 处理 (通常是显示控制栏或播放暂停)
+                    } else if (tapCount === 2) {
+                        controlPanel.classList.toggle('active');
+                    } else if (tapCount === 3) {
+                        if (dp) dp.fullScreen.toggle();
+                    }
+                    tapCount = 0;
+                }, 300);
+            });
+        }
+
+        // 移除了 showMobileToast 函数，因为不需要自定义的播放提示了
+
+        initMobileGestures();
 
         function startPlay() {
             let url = input.value.trim();
-            
-            // --- 代理前缀处理逻辑 ---
             if (isProxyOn) {
                 if (url && !url.startsWith(PROXY_PREFIX)) {
                     url = PROXY_PREFIX + url;
-                    input.value = url; // 更新输入框显示
-                } else if (url && url.startsWith(PROXY_PREFIX)) {
-                    showStatus('提示：检测到已包含代理前缀，无需重复添加', 'info');
+                    input.value = url;
                 }
             }
-            
             if (!url) return showStatus('请输入视频地址', 'error');
 
             currentNetworkUrl = url; 
             resetPlayer();
             
-            // 判定逻辑：是 M3U8 还是 网页
+            if(window.innerWidth <= 768) controlPanel.classList.remove('active');
+
             if (url.includes('.m3u8') || url.startsWith('blob:') || url.startsWith('http://127.0.0.1')) {
                 loadM3U8Mode(url);
             } else {
                 const selectedLine = parseInt(lineSelect.value);
-                
                 if (selectedLine === -1) {
-                    // 自动竞速模式
                     loadIframeRaceMode(url);
                 } else {
-                    // 手动单线模式
                     loadSingleLineMode(url, selectedLine);
                 }
-                
-                // 无论手动还是自动，都启动全局嗅探作为兜底优化
                 startGlobalSniffing(url);
             }
         }
@@ -665,28 +541,22 @@
         loadBtn.addEventListener('click', startPlay);
         input.addEventListener('keydown', (e) => e.key === 'Enter' && startPlay());
         
-        // 绑定模态框关闭
-        closeCastBtn.onclick = () => {
-            modalOverlay.classList.remove('modal-active');
-        };
-        modalOverlay.onclick = (e) => {
-            if(e.target === modalOverlay) modalOverlay.classList.remove('modal-active');
-        };
+        closeCastBtn.onclick = () => { modalOverlay.classList.remove('modal-active'); };
+        modalOverlay.onclick = (e) => { if(e.target === modalOverlay) modalOverlay.classList.remove('modal-active'); };
 
-        // --- 模式 A: 本地 M3U8 增强模式 ---
         async function loadM3U8Mode(url, isAutoSniffed = false) {
             currentMode = 'm3u8';
             castBtn.disabled = false;
-            isSniffed = true; // 标记已嗅探到
-            raceAborted = true; // 停止其他竞争
-            wrapper.classList.remove('sniff-success');
+            isSniffed = true;
+            raceAborted = true;
+            videoWrapper.classList.remove('sniff-success');
             
             if(isAutoSniffed) currentNetworkUrl = url;
 
             if (isAutoSniffed) {
-                showStatus('✅ 深度嗅探成功！已切换至增强模式 (已去广告/支持投屏)', 'success');
-                wrapper.classList.add('sniff-success');
-                setTimeout(() => wrapper.classList.remove('sniff-success'), 2000);
+                showStatus('✅ 深度嗅探成功！已切换至增强模式', 'success');
+                videoWrapper.classList.add('sniff-success');
+                setTimeout(() => videoWrapper.classList.remove('sniff-success'), 2000);
             } else {
                 showStatus('正在智能分析媒体流...', 'info');
             }
@@ -694,7 +564,6 @@
             let finalUrl = url;
             try {
                 const cleanResult = await fetchAndCleanM3u8(url);
-                
                 if (cleanResult.removedCount > 0) {
                     if (!isAutoSniffed) showStatus(`${cleanResult.log}\n正在生成纯净流...`, 'success');
                     const blob = new Blob([cleanResult.content], { type: 'application/vnd.apple.mpegurl' });
@@ -704,78 +573,46 @@
                 }
             } catch (e) {
                 console.warn('清洗跳过:', e);
-                if (!isAutoSniffed) {
-                    const msg = e.name === 'AbortError' 
-                        ? '⚠️ 广告分析超时，跳过清洗直接播放...' 
-                        : '⚠️ 目标资源禁止跨域访问，无法去广告，将尝试直接播放...';
-                    showStatus(msg, 'warning');
-                }
             }
 
             initDPlayer(finalUrl);
         }
 
-        // --- 递归广告清洗与 Master Playlist 解析 ---
         async function fetchAndCleanM3u8(url, depth = 0) {
-            // 防止死循环
             if (depth > 3) throw new Error("Redirect loop detected in M3U8 playlist");
-
             const toAbsolute = (p, b) => { try { return new URL(p, b).href; } catch(e) { return p; } };
             
-            if (depth > 0) {
-                showStatus(`🔄 正在解析嵌套列表 (层级 ${depth})...`, 'info');
-            }
-
-            // 设置超时 fetch
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 8000);
-            
             const response = await fetch(url, { signal: controller.signal });
             clearTimeout(timeoutId);
             
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const originalContent = await response.text();
 
-            // === 1. 检查是否为 Master Playlist (嵌套列表) ===
-            // 包含 #EXT-X-STREAM-INF 说明是多码率列表，不包含实际切片
             if (originalContent.includes('#EXT-X-STREAM-INF')) {
                 const lines = originalContent.split(/\r?\n/);
                 let bestUrl = null;
                 let maxBandwidth = -1;
-
-                // 简单的解析逻辑：寻找带宽最高的流
                 for (let i = 0; i < lines.length; i++) {
                     if (lines[i].includes('#EXT-X-STREAM-INF')) {
                         const bwMatch = lines[i].match(/BANDWIDTH=(\d+)/);
                         const bandwidth = bwMatch ? parseInt(bwMatch[1]) : 0;
-                        
-                        // URL 通常在下一行 (忽略空行和注释)
                         let j = i + 1;
                         while (j < lines.length) {
                             const nextLine = lines[j].trim();
                             if (nextLine && !nextLine.startsWith('#')) {
-                                if (bandwidth > maxBandwidth) {
-                                    maxBandwidth = bandwidth;
-                                    bestUrl = nextLine;
-                                } else if (!bestUrl) {
-                                     bestUrl = nextLine; // 兜底：取第一个
-                                }
+                                if (bandwidth > maxBandwidth) { maxBandwidth = bandwidth; bestUrl = nextLine; } 
+                                else if (!bestUrl) { bestUrl = nextLine; }
                                 break;
                             }
                             j++;
                         }
                     }
                 }
-
-                if (bestUrl) {
-                    const nextUrl = toAbsolute(bestUrl, url);
-                    console.log(`[Master Playlist] Found best stream: ${nextUrl} (Bandwidth: ${maxBandwidth})`);
-                    // 递归调用，处理子列表
-                    return fetchAndCleanM3u8(nextUrl, depth + 1);
-                }
+                if (bestUrl) return fetchAndCleanM3u8(toAbsolute(bestUrl, url), depth + 1);
             }
 
-            // === 2. 常规 Media Playlist 清洗逻辑 ===
             const lines = originalContent.split(/\r?\n/);
             const segments = [];
             const fingerprintCounts = {};
@@ -783,27 +620,18 @@
             lines.forEach((line, idx) => {
                 const trimmed = line.trim();
                 if(!trimmed || trimmed.startsWith('#')) return;
-                
-                // 转换为绝对路径，确保分析准确
                 const absUrl = toAbsolute(trimmed, url);
                 let u; try { u = new URL(absUrl); } catch(e) { return; }
-                
-                // 指纹特征：域名 + 路径结构 (去掉文件名)
-                const pathParts = u.pathname.split('/'); 
-                pathParts.pop(); 
+                const pathParts = u.pathname.split('/'); pathParts.pop(); 
                 const fp = `${u.hostname}|${pathParts.join('/')}`;
-                
                 if(!fingerprintCounts[fp]) fingerprintCounts[fp] = 0;
                 fingerprintCounts[fp]++;
                 segments.push({ idx, fp });
             });
             
             let dominantFp = '', maxC = 0;
-            for(const [fp, c] of Object.entries(fingerprintCounts)) { 
-                if(c > maxC) { maxC = c; dominantFp = fp; } 
-            }
+            for(const [fp, c] of Object.entries(fingerprintCounts)) { if(c > maxC) { maxC = c; dominantFp = fp; } }
             
-            // 安全阈值：如果主内容占比不到 40%，可能误判，不敢乱删
             if(segments.length === 0 || (maxC / segments.length) < 0.4) {
                 return { content: originalContent, removedCount: 0, log: '未清洗 (特征不明显)' };
             }
@@ -811,70 +639,40 @@
             const linesToRemove = new Set();
             segments.forEach(seg => {
                 if(seg.fp !== dominantFp) {
-                    // 标记为广告
                     linesToRemove.add(seg.idx);
-                    // 向上回溯删除相关的 TAG (EXTINF 等)
                     let j = seg.idx - 1;
                     while(j >= 0) {
                         const l = lines[j].trim();
-                        if(l.startsWith('#EXTINF') || l.startsWith('#EXT-X-BYTERANGE') || l.startsWith('#EXT-X-KEY') || l.startsWith('#EXT-X-DISCONTINUITY')) { 
-                            linesToRemove.add(j); j--; 
-                        } else if (!l.startsWith('#EXT') && l.startsWith('#')) {
-                             // 其他未知注释，如果不紧邻 EXTINF，可能不用删，这里简单处理遇到非TAG停止
-                             j--; // 继续向上检查
-                        } else if (l === '') {
-                             j--;
-                        } else {
-                            break; // 遇到其他内容停止
-                        }
+                        if(l.startsWith('#EXTINF') || l.startsWith('#EXT-X-BYTERANGE') || l.startsWith('#EXT-X-KEY') || l.startsWith('#EXT-X-DISCONTINUITY')) { linesToRemove.add(j); j--; } 
+                        else if (!l.startsWith('#EXT') && l.startsWith('#')) { j--; } 
+                        else if (l === '') { j--; } else { break; }
                     }
                 }
             });
 
-            // 重构列表
             const newLines = [];
             lines.forEach((line, idx) => {
                 if(linesToRemove.has(idx)) return;
-                
                 let content = line.trim();
                 if(!content) return;
-                
                 if(content.startsWith('#')) {
-                    // 如果 Key 包含相对路径 URI，需要重写为绝对路径
                     if(content.startsWith('#EXT-X-KEY') && content.includes('URI="')) {
                         content = content.replace(/URI="([^"]+)"/, (m, p1) => `URI="${toAbsolute(p1, url)}"`);
                     }
                     newLines.push(content);
                 } else {
-                    // 所有分片路径重写为绝对路径 (基于当前子列表 URL)
                     newLines.push(toAbsolute(content, url));
                 }
             });
             
             const removedCount = segments.length - maxC;
-            const logMsg = depth > 0 
-                ? `已解析嵌套列表 (层级 ${depth})，移除 ${removedCount} 个广告` 
-                : `已移除 ${removedCount} 个广告分片`;
-
-            // 如果是在子列表里，即使 removedCount 为 0，我们也返回 newLines (绝对路径化)，
-            // 因为 Blob 需要绝对路径才能播放，且我们不想回退到 Master Playlist
-            // 为了让调用者知道需要用 Blob，这里 hack 一下 removedCount 或者由调用者判断
-            // 但为了保持接口简单，如果 depth > 0，我们强制视为 "有修改" (因为路径变绝对了)
             const effectiveRemovedCount = depth > 0 ? (removedCount + 1) : removedCount;
-
-            return { 
-                content: newLines.join('\n'), 
-                removedCount: effectiveRemovedCount, 
-                log: logMsg 
-            };
+            return { content: newLines.join('\n'), removedCount: effectiveRemovedCount, log: `已移除 ${removedCount} 个广告分片` };
         }
 
-        // --- 初始化 DPlayer ---
         function initDPlayer(videoUrl) {
             if (dp) dp.destroy();
             stopStatsLoop();
-            
-            // 确保显示播放器容器，隐藏Iframe
             document.getElementById('dplayer-container').style.display = 'block';
             document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
 
@@ -898,12 +696,11 @@
                                 hlsInstance = new Hls(hlsConfig);
                                 hlsInstance.loadSource(videoUrl);
                                 hlsInstance.attachMedia(video);
-                                
                                 hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
                                     if(hlsInstance.levels.length > 0) {
                                         hlsInstance.currentLevel = hlsInstance.levels.length - 1;
                                         hlsInstance.capLevelToPlayerSize = false;
-                                        showStatus('🚀 画质增强：已锁定最高码率/帧率\n💡 若播放卡顿，请点击套代按钮再重新点击播放', 'success');
+                                        showStatus('🚀 画质增强：已锁定最高码率<br>💡 若播放卡顿请点击套代按钮，再点击播放', 'success', 10000);
                                     }
                                     startStatsLoop(video, hlsInstance);
                                     video.play().catch(e => console.warn('Autoplay blocked', e));
@@ -920,28 +717,25 @@
                             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                                 video.src = videoUrl;
                                 startStatsLoop(video, null);
+                                showStatus('🚀 原生播放模式<br>💡 若播放卡顿请点击套代按钮，再点击播放', 'success', 10000);
                             }
                         }
                     }
-                },
-                contextmenu: [
-                    {
-                        text: '统计信息开关',
-                        click: (player) => {
-                            const stats = document.getElementById('custom-stats');
-                            stats.style.display = stats.style.display === 'none' ? 'block' : 'none';
-                        }
-                    }
-                ]
+                }
             });
 
             setupCastButtonLogic(dp.video);
-            setupMobileLongPress(dp);
+            
+            if(window.innerWidth <= 768) {
+                setTimeout(() => {
+                   const dCtrl = document.querySelector('.dplayer-controller');
+                   if(dCtrl) dCtrl.style.opacity = '0';
+                }, 500);
+            }
             
             dp.on('canplay', () => { setTimeout(() => clearStatus(), 3000); });
         }
         
-        // --- 核心：新版投屏逻辑 ---
         function setupCastButtonLogic(videoEl) {
             castBtn.onclick = () => {
                 renderCastOptions(videoEl);
@@ -962,118 +756,50 @@
             const createOption = (icon, title, desc, onClick, tag = '') => {
                 const div = document.createElement('div');
                 div.className = 'cast-option';
-                div.innerHTML = `
-                    <div class="cast-icon">${icon}</div>
-                    <div class="cast-info">
-                        <div class="cast-name">${title} ${tag ? `<span class="tag-recommend">${tag}</span>` : ''}</div>
-                        <div class="cast-desc">${desc}</div>
-                    </div>
-                `;
-                div.onclick = () => {
-                    onClick();
-                    if(!title.includes('AirPlay') && !title.includes('Chromecast')) {
-                        // modalOverlay.classList.remove('modal-active');
-                    }
-                };
+                div.innerHTML = `<div class="cast-icon" style="font-size:20px;">${icon}</div><div class="cast-info" style="display:flex;flex-direction:column;"><div class="cast-name" style="font-size:15px;font-weight:500;">${title} ${tag ? `<span class="tag-recommend">${tag}</span>` : ''}</div><div class="cast-desc" style="font-size:12px;color:#aaa;">${desc}</div></div>`;
+                div.onclick = () => { onClick(); };
                 return div;
             };
 
             const addGroup = (title) => {
-                const div = document.createElement('div');
-                div.className = 'cast-group-title';
-                div.innerText = title;
-                container.appendChild(div);
+                const div = document.createElement('div'); div.className = 'cast-group-title'; div.innerText = title; container.appendChild(div);
             };
 
             addGroup('无线投屏');
-            
-            // AirPlay
             if(isIOS || (isMac && /safari/.test(ua) && !/chrome/.test(ua))) {
-                 container.appendChild(createOption('🍏', 'AirPlay', '投射到 Apple TV 或支持 AirPlay 的电视', () => {
-                     if(videoEl.webkitShowPlaybackTargetPicker) {
-                         videoEl.webkitShowPlaybackTargetPicker();
-                     } else {
-                         showStatus('请在播放器控制栏点击 AirPlay 图标', 'info');
-                     }
+                 container.appendChild(createOption('🍏', 'AirPlay', '投射到 Apple TV', () => {
+                     if(videoEl.webkitShowPlaybackTargetPicker) videoEl.webkitShowPlaybackTargetPicker();
+                     else showStatus('请在播放器控制栏点击 AirPlay 图标', 'info');
                  }));
             }
-
-            // Google Cast
             if(window.chrome && !isIOS) {
-                container.appendChild(createOption('📡', 'Google Cast', '投射到 Chromecast 或 Android TV', () => {
+                container.appendChild(createOption('📡', 'Google Cast', '投射到 Chromecast', () => {
                     if(window.cast && window.cast.framework) {
                         const ctx = cast.framework.CastContext.getInstance();
                         const session = ctx.getCurrentSession();
                         const mediaInfo = new chrome.cast.media.MediaInfo(currentNetworkUrl, 'application/x-mpegurl');
                         const request = new chrome.cast.media.LoadRequest(mediaInfo);
-                        if(!session) {
-                            ctx.requestSession().then(() => {
-                                ctx.getCurrentSession().loadMedia(request);
-                            }).catch(e => console.error(e));
-                        } else {
-                            session.loadMedia(request);
-                        }
-                    } else {
-                        showStatus('Chromecast 服务未就绪', 'warning');
-                    }
+                        if(!session) { ctx.requestSession().then(() => { ctx.getCurrentSession().loadMedia(request); }).catch(e => console.error(e)); } 
+                        else { session.loadMedia(request); }
+                    } else { showStatus('Chromecast 服务未就绪', 'warning'); }
                 }));
             }
 
             addGroup('DLNA / 第三方投屏');
-
             if (isAndroid || isIOS) {
-                const wvcUrl = `wvc-x-callback://open?url=${encodeURIComponent(currentNetworkUrl)}&secure_uri=true`;
-                container.appendChild(createOption('🚀', 'Web Video Caster', '推荐！支持 DLNA/投屏到几乎所有电视', () => {
-                    window.location.href = wvcUrl;
-                }, '推荐'));
-
-                container.appendChild(createOption('📺', '通用投屏助手', '尝试唤起手机内安装的投屏软件', () => {
-                    window.location.href = `video-cast://${currentNetworkUrl}`;
-                }));
+                container.appendChild(createOption('🚀', 'Web Video Caster', '推荐！支持 DLNA', () => { window.location.href = `wvc-x-callback://open?url=${encodeURIComponent(currentNetworkUrl)}&secure_uri=true`; }, '推荐'));
+                container.appendChild(createOption('📺', '通用投屏助手', '尝试唤起 App', () => { window.location.href = `video-cast://${currentNetworkUrl}`; }));
             }
 
             addGroup('本地应用播放');
-            
-            container.appendChild(createOption('🟠', 'VLC 播放器', '在 VLC 中打开 (解码强/支持串流)', () => {
-                window.location.href = `vlc://${currentNetworkUrl}`;
-            }));
-
-            if(isMac) {
-                container.appendChild(createOption('🎞️', 'IINA', 'Mac 最佳播放器', () => {
-                    window.location.href = `iina://weblink?url=${currentNetworkUrl}`;
-                }, 'Mac首选'));
-            }
-
-            if(isWin) {
-                container.appendChild(createOption('🟦', 'PotPlayer', 'Windows 全能播放器', () => {
-                    window.location.href = `potplayer://${currentNetworkUrl}`;
-                }, 'Win首选'));
-            }
+            container.appendChild(createOption('🟠', 'VLC 播放器', '强力解码', () => { window.location.href = `vlc://${currentNetworkUrl}`; }));
+            if(isMac) container.appendChild(createOption('🎞️', 'IINA', 'Mac 最佳', () => { window.location.href = `iina://weblink?url=${currentNetworkUrl}`; }, 'Mac首选'));
+            if(isWin) container.appendChild(createOption('🟦', 'PotPlayer', 'Windows 全能', () => { window.location.href = `potplayer://${currentNetworkUrl}`; }, 'Win首选'));
             
             addGroup('其他');
-            container.appendChild(createOption('🔗', '复制视频链接', '手动粘贴到其他播放器或下载工具', () => {
-                navigator.clipboard.writeText(currentNetworkUrl).then(() => {
-                    showStatus('✅ 链接已复制', 'success');
-                    modalOverlay.classList.remove('modal-active');
-                });
+            container.appendChild(createOption('🔗', '复制视频链接', '手动使用', () => {
+                navigator.clipboard.writeText(currentNetworkUrl).then(() => { showStatus('✅ 链接已复制', 'success'); modalOverlay.classList.remove('modal-active'); });
             }));
-        }
-
-        function setupMobileLongPress(player) {
-            const container = player.container;
-            let timer = null;
-            container.addEventListener('touchstart', (e) => {
-                if(e.touches.length > 1) return;
-                timer = setTimeout(() => {
-                    const stats = document.getElementById('custom-stats');
-                    stats.style.display = stats.style.display === 'none' ? 'block' : 'none';
-                    if(navigator.vibrate) navigator.vibrate(50);
-                    showStatus(stats.style.display === 'block' ? '📊 统计面板已开启' : '📊 统计面板已关闭', 'info');
-                }, 600); 
-            }, {passive: true});
-            const clear = () => { if(timer) clearTimeout(timer); };
-            container.addEventListener('touchend', clear);
-            container.addEventListener('touchmove', clear);
         }
 
         function stopStatsLoop() {
@@ -1084,17 +810,7 @@
 
         function startStatsLoop(video, hls) {
             if(statsTimer) clearInterval(statsTimer);
-            
-            // FPS Variables
-            frameCount = 0; 
-            currentFPS = 0; 
-            lastFrameTime = performance.now();
-            
-            // Bitrate Calculation Variables (Fallback)
-            let lastByteCount = video.webkitVideoDecodedByteCount || 0;
-            let lastBitrateCalcTime = performance.now();
-            let computedBitrate = 'N/A';
-            
+            let frameCount = 0; let currentFPS = 0; let lastFrameTime = performance.now();
             const frameCallback = (now) => {
                 frameCount++;
                 if (now - lastFrameTime >= 1000) { currentFPS = frameCount; frameCount = 0; lastFrameTime = now; }
@@ -1105,88 +821,17 @@
             const statsEl = document.getElementById('custom-stats');
             const updateStatsUI = () => {
                 if(statsEl.style.display === 'none') return;
-                
-                // 1. Resolution
                 let resolution = `${video.videoWidth} x ${video.videoHeight}`;
-                
-                // 2. Bitrate Strategy
                 let bitrate = 'N/A';
-                
-                // Strategy A: HLS Metadata
-                if (hls && hls.levels && hls.levels.length > 0) {
-                    let lvlIdx = hls.currentLevel;
-                    if (lvlIdx === -1) lvlIdx = hls.nextAutoLevel;
-                    if (lvlIdx === -1) lvlIdx = hls.loadLevel;
-                    // Fallback to first level if unknown or singular
-                    if (lvlIdx === -1 && hls.levels.length === 1) lvlIdx = 0;
-                    if (lvlIdx === -1) lvlIdx = 0; // Last resort
-
-                    if (lvlIdx >= 0 && lvlIdx < hls.levels.length) {
-                        const level = hls.levels[lvlIdx];
-                        if (level) {
-                            if (level.width && level.height) resolution = `${level.width} x ${level.height}`;
-                            
-                            // Check all possible sources for bitrate
-                            const possibleRates = [
-                                level.bitrate,
-                                level.averageBitrate,
-                                level.realBitrate,
-                                level.attrs ? parseInt(level.attrs.BANDWIDTH || 0) : 0
-                            ];
-                            const validRate = possibleRates.find(r => r > 0);
-                            if (validRate) {
-                                bitrate = (validRate / 1000).toFixed(0) + ' kbps';
-                            }
-                        }
-                    }
-                }
-                
-                // Strategy B: Browser Decoded Byte Count (Chrome/Safari/Edge)
-                // This calculates the real-time bitrate processed by the decoder
-                if (bitrate === 'N/A' && typeof video.webkitVideoDecodedByteCount !== 'undefined') {
-                    const now = performance.now();
-                    const timeDiff = now - lastBitrateCalcTime;
-                    
-                    // Update calculation every ~1 second to be stable
-                    if (timeDiff >= 1000) {
-                        const currentBytes = video.webkitVideoDecodedByteCount;
-                        const byteDiff = currentBytes - lastByteCount;
-                        
-                        // Prevent spikes or negative values on seek
-                        if (byteDiff > 0) {
-                            const bps = (byteDiff * 8) / (timeDiff / 1000);
-                            computedBitrate = (bps / 1000).toFixed(0) + ' kbps';
-                        }
-                        
-                        lastByteCount = currentBytes;
-                        lastBitrateCalcTime = now;
-                    }
-                    
-                    if (computedBitrate !== 'N/A') {
-                        bitrate = computedBitrate + ' (Real)';
-                    }
-                }
-
-                // Strategy C: HLS Network Estimate
-                if (bitrate === 'N/A' && hls && hls.bandwidthEstimate && hls.bandwidthEstimate > 0) {
-                    bitrate = (hls.bandwidthEstimate / 1000).toFixed(0) + ' kbps (Est)';
-                }
-
+                if (hls && hls.bandwidthEstimate > 0) bitrate = (hls.bandwidthEstimate / 1000).toFixed(0) + ' kbps (Est)';
                 const buffer = video.buffered.length ? (video.buffered.end(video.buffered.length-1) - video.currentTime).toFixed(1) : 0;
                 let displayFPS = video.paused ? 0 : currentFPS;
-                statsEl.innerHTML = `
-                    <div style="color:#00ccff;border-bottom:1px solid #555;margin-bottom:5px;">📊 实时监控 (DPlayer)</div>
-                    <div>FPS: <span style="color:${displayFPS >= 50 ? '#00ccff' : '#fff'}">${displayFPS}</span></div>
-                    <div>RES: ${resolution}</div>
-                    <div>BIT: ${bitrate}</div>
-                    <div>BUF: ${buffer} s</div>
-                `;
+                statsEl.innerHTML = `<div style="color:#00ccff;border-bottom:1px solid #555;margin-bottom:5px;">📊 实时监控</div><div>FPS: <span style="color:${displayFPS >= 50 ? '#00ccff' : '#fff'}">${displayFPS}</span></div><div>RES: ${resolution}</div><div>BIT: ${bitrate}</div><div>BUF: ${buffer} s</div>`;
             };
             statsTimer = setInterval(updateStatsUI, 500);
             updateStatsUI();
         }
 
-        // --- 模式 B-1: Iframe 自动竞速解析 ---
         function loadIframeRaceMode(url) {
             currentMode = 'iframe_race';
             castBtn.disabled = true; 
@@ -1195,10 +840,8 @@
             showStatus('自动模式：全线路竞速解析中...', 'info');
             loadingText.innerText = "正在竞速解析...";
             loadingTip.style.display = 'block';
-
             let hasWinner = false; 
             document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
-
             apiArray.forEach(api => {
                 if(raceAborted) return;
                 const iframe = document.createElement('iframe');
@@ -1208,31 +851,24 @@
                 iframe.setAttribute('data-name', api.name);
                 iframe.onload = function() {
                     if (isSniffed || hasWinner || raceAborted) return;
-                    
-                    // 标记找到赢家，但暂不显示，尝试深度嗅探
                     hasWinner = true;
                     handleWinner(this, api, url);
                 };
-                wrapper.appendChild(iframe);
+                videoWrapper.appendChild(iframe);
             });
         }
         
-        // --- 模式 B-2: 手动单线解析 ---
         function loadSingleLineMode(url, index) {
             const api = apiArray[index];
             if(!api) return loadIframeRaceMode(url);
-
             currentMode = 'iframe_manual';
             castBtn.disabled = true;
             isSniffed = false;
-            raceAborted = true; // 停止可能的后台竞速
-            
+            raceAborted = true; 
             showStatus(`手动模式：正在加载 [${api.name}] ...`, 'info');
             loadingText.innerText = `正在连接 ${api.name}...`;
             loadingTip.style.display = 'block';
-            
             document.querySelectorAll('.temp-iframe').forEach(el => el.remove());
-            
             const iframe = document.createElement('iframe');
             iframe.className = 'temp-iframe';
             iframe.allowFullscreen = true;
@@ -1241,102 +877,63 @@
                 if(isSniffed) return;
                 loadingTip.style.display = 'none';
                 iframe.classList.add('iframe-active');
-                showStatus(`已加载线路：${api.name} (投屏不可用)`, 'info');
+                showStatus(`已加载线路：${api.name}`, 'info');
             };
-            wrapper.appendChild(iframe);
+            videoWrapper.appendChild(iframe);
         }
 
-        // 处理竞速赢家：尝试提取M3U8，提取不到则回退
         async function handleWinner(iframe, api, videoUrl) {
             if (isSniffed || raceAborted) return;
-            
             showStatus(`线路 ${api.name} 响应最快，正在尝试深度提取直链...`, 'info');
-            
-            // 设定一个短暂的超时，防止用户等待过久
             let sniffSuccess = false;
             const sniffTimeout = setTimeout(() => {
                 if (!isSniffed && !raceAborted) {
-                    console.log('深度嗅探超时，回退到 Iframe 播放');
                     displayIframe(iframe, api.name);
                 }
-            }, 2500); // 2.5秒内没提取出来就放弃
+            }, 2500); 
 
             try {
-                // 尝试针对这个赢家接口进行深度请求
                 const targetUrl = api.url + videoUrl;
                 const deepUrl = await tryDeepSniff(targetUrl);
-                
                 if (deepUrl && !isSniffed && !raceAborted) {
                     clearTimeout(sniffTimeout);
                     sniffSuccess = true;
                     loadM3U8Mode(deepUrl, true);
                 }
-            } catch (e) {
-                console.warn('深度提取失败:', e);
-            }
+            } catch (e) { console.warn('深度提取失败:', e); }
         }
         
-        // 尝试深度嗅探 (针对特定URL)
         async function tryDeepSniff(targetUrl) {
             try {
                 const controller = new AbortController();
-                setTimeout(() => controller.abort(), 2000); // 请求本身2秒超时
-                
+                setTimeout(() => controller.abort(), 2000); 
                 const response = await fetch(targetUrl, { method: 'GET', signal: controller.signal });
                 if (!response.ok) return null;
-                
                 const text = await response.text();
-                
-                // 1. 尝试 JSON 解析
                 try {
                     const json = JSON.parse(text);
                     if (json.url && json.url.includes('.m3u8')) return json.url;
                 } catch (e) {}
-                
-                // 2. 尝试正则匹配
                 const regex = /["'](https?:\/\/[^"']+\.m3u8[^"']*)["']/;
                 const match = text.match(regex);
                 if (match) return match[1];
-                
                 return null;
-            } catch (e) {
-                return null;
-            }
+            } catch (e) { return null; }
         }
 
         function displayIframe(iframe, apiName) {
             if (isSniffed || raceAborted) return; 
-            
             loadingTip.style.display = 'none';
-            showStatus(`解析成功！当前线路: ${apiName} (暂未提取到直链，不支持投屏)`, 'info');
-            
+            showStatus(`解析成功！当前线路: ${apiName}`, 'info');
             document.getElementById('dplayer-container').style.display = 'none';
-            
-            // 只显示赢家 iframe
             document.querySelectorAll('.temp-iframe').forEach(el => {
                 if (el !== iframe) { el.src = 'about:blank'; el.remove(); }
             });
             iframe.classList.add('iframe-active');
-            
-            const manualBtn = document.createElement('span');
-            manualBtn.innerHTML = " [我有M3U8地址]";
-            manualBtn.style.cursor = 'pointer'; manualBtn.style.color = '#00ccff';
-            manualBtn.onclick = () => {
-                const manualUrl = prompt("请输入 M3U8 地址：");
-                if(manualUrl && manualUrl.includes('.m3u8')) {
-                    input.value = manualUrl;
-                    startPlay();
-                }
-            };
-            statusDiv.appendChild(manualBtn);
         }
 
-        // --- 全局嗅探 (备用) ---
-        // 即使在手动模式，后台也尝试嗅探，因为M3U8体验更好
         function startGlobalSniffing(videoPageUrl) {
-            console.log('启动全局嗅探任务...');
             const regex = /["'](https?:\/\/[^"']+\.m3u8[^"']*)["']/;
-            
             const msgHandler = (e) => {
                 let foundUrl = null;
                 if (e.data && typeof e.data === 'string') {
@@ -1345,27 +942,21 @@
                 } else if (e.data && e.data.type === 'video_url' && e.data.url) {
                     foundUrl = e.data.url;
                 }
-
                 if(foundUrl && !isSniffed) {
                     window.removeEventListener('message', msgHandler);
                     loadM3U8Mode(foundUrl, true);
                 }
             };
             window.addEventListener('message', msgHandler);
-            
-            // 遍历所有接口尝试 Fetch (即使手动选了线路，后台也帮他找更好的直链)
             apiArray.forEach(async (api) => {
                 if(isSniffed) return;
                 try {
                     const found = await tryDeepSniff(api.url + videoPageUrl);
-                    if(found && !isSniffed) {
-                        loadM3U8Mode(found, true);
-                    }
+                    if(found && !isSniffed) loadM3U8Mode(found, true);
                 } catch(e) {}
             });
         }
 
-        // --- 工具函数 ---
         function resetPlayer() {
             if (dp) { dp.destroy(); dp = null; }
             if (hlsInstance) { hlsInstance.destroy(); hlsInstance = null; }
@@ -1376,12 +967,26 @@
             isSniffed = false;
         }
 
-        function showStatus(msg, type = 'info') {
+        function showStatus(msg, type = 'info', duration = null) {
             const el = document.getElementById('status-message');
-            el.textContent = msg;
+            el.innerHTML = msg;
             el.style.display = 'block';
             el.style.color = type === 'error' ? '#fca5a5' : (type === 'success' ? '#86efac' : '#7dd3fc');
             el.style.backgroundColor = type === 'error' ? 'rgba(220,38,38,0.2)' : (type === 'success' ? 'rgba(22,163,74,0.2)' : '#2a3f4d');
+            
+            if (statusMsgTimer) clearTimeout(statusMsgTimer);
+            
+            let autoHideTime = duration;
+            if (autoHideTime === null) {
+                if (window.innerWidth <= 768) autoHideTime = 3000;
+                else autoHideTime = 0; 
+            }
+            
+            if (autoHideTime > 0) {
+                statusMsgTimer = setTimeout(() => {
+                    el.style.display = 'none';
+                }, autoHideTime);
+            }
         }
 
         function clearStatus() { document.getElementById('status-message').style.display = 'none'; }
