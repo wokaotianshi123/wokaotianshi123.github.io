@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 增加 viewport-fit=cover 适配全面屏 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="referrer" content="no-referrer">
     <title>M3U8 智能融合播放器 (Pro版)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
@@ -14,7 +15,9 @@
             padding: 0;
             background-color: #1a1a1a;
             color: #e0e0e0;
+            /* 使用 dvh (Dynamic Viewport Height) 解决移动端浏览器地址栏伸缩问题 */
             height: 100vh;
+            height: 100dvh; 
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -170,23 +173,39 @@
 
         /* --- 移动端深度优化 (Mobile Optimization) --- */
         @media (max-width: 768px) {
-            body { background-color: #000; }
+            body { 
+                background-color: #000; 
+            }
 
             #app-container {
                 padding: 0;
                 margin: 0;
                 width: 100%;
-                height: 100vh;
+                /* 使用 dvh 确保在浏览器工具栏显示/隐藏时都能撑满可视区域 */
+                height: 100dvh; 
                 max-width: none;
+                
+                /* 关键布局：垂直居中 */
+                display: flex;
+                flex-direction: column;
+                justify-content: center; 
+                align-items: center;
+                
+                /* 底部留出安全距离，防止菜单栏遮挡 */
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+                box-sizing: border-box;
             }
 
             /* 控制面板：悬浮顶栏 */
             #control-panel {
                 position: absolute;
                 top: 0; left: 0; width: 100%;
-                background: rgba(0, 0, 0, 0.85); /* Darker background */
+                background: rgba(0, 0, 0, 0.85);
                 backdrop-filter: blur(8px);
-                padding: 6px 10px; /* Compact padding */
+                padding: 6px 10px;
+                padding-top: max(6px, env(safe-area-inset-top)); /* 避开刘海屏 */
                 box-sizing: border-box;
                 margin: 0;
                 display: flex;
@@ -195,7 +214,6 @@
                 box-shadow: 0 4px 20px rgba(0,0,0,0.6);
                 z-index: 200;
                 
-                /* 默认隐藏，通过 JS 控制 active 类显示 */
                 transform: translateY(-120%);
                 opacity: 0;
                 pointer-events: none;
@@ -208,7 +226,6 @@
                 pointer-events: auto;
             }
 
-            /* 移动端 Top Group: 标题 + 输入框 (极小模式) */
             .cp-group-top {
                 width: 100%;
                 display: flex;
@@ -217,13 +234,7 @@
                 height: 24px;
             }
 
-            h1 {
-                font-size: 10px;
-                color: #888;
-                margin: 0;
-                line-height: 24px;
-                white-space: nowrap;
-            }
+            h1 { font-size: 10px; color: #888; margin: 0; line-height: 24px; white-space: nowrap; }
             .pro-tag { display: none; }
 
             #m3u8-input {
@@ -237,7 +248,6 @@
                 border-radius: 4px;
             }
 
-            /* 移动端 Bottom Group: 按钮组 (悬浮风格) */
             .cp-group-bottom {
                 width: 100%;
                 display: flex;
@@ -245,33 +255,38 @@
                 gap: 5px;
             }
 
-            .btn {
-                height: 28px;
-                font-size: 11px;
-                padding: 0 4px;
-                flex: 1;
-                border-radius: 4px;
-            }
-
-            /* 调整按钮比例 */
+            .btn { height: 28px; font-size: 11px; padding: 0 4px; flex: 1; border-radius: 4px; }
             #line-select { flex: 1.5; min-width: 70px; background-position: right 4px center; padding-right: 18px; font-size: 10px; }
-            #load-button { flex: 1; }
-            #cast-button { flex: 1; }
             #proxy-btn { flex: 0.8; font-size: 10px; padding: 0 2px; }
 
-            /* 播放器全屏填充 */
+            /* 播放器容器优化：不再铺满全屏，而是居中显示 */
             #video-wrapper {
                 width: 100%;
-                height: 100%;
+                /* 默认 16:9，JS会根据屏幕动态调整 */
+                aspect-ratio: 16/9; 
+                flex-grow: 0; /* 禁止自动撑满高度 */
                 border: none;
                 border-radius: 0;
-                flex-grow: 1;
+                margin: 0;
+                /* 限制最大高度，防止竖屏下播放器太高导致控制条贴底 */
+                max-height: 80dvh; 
+                background: #000;
+                box-shadow: 0 0 20px rgba(0,0,0,0.5); /* 增加阴影区分边界 */
+            }
+
+            /* 横屏模式下的特殊处理 */
+            @media (orientation: landscape) {
+                #video-wrapper {
+                    height: 100%; /* 横屏时尽量利用高度 */
+                    width: auto;
+                    aspect-ratio: auto;
+                    max-height: 100dvh;
+                }
             }
             
-            /* 所有的提示均放置在顶部 */
             #status-message {
                 position: absolute;
-                top: 60px; /* 避开可能显示的菜单栏 */
+                top: 70px; /* 避开可能显示的菜单栏 */
                 left: 50%;
                 transform: translateX(-50%);
                 z-index: 50;
@@ -463,10 +478,42 @@
             if (input.value && input.value !== 'YOUR_URL_HERE') startPlay();
         });
 
+        // 自动识别移动端长宽并调整布局
+        function adjustLayout() {
+            if (window.innerWidth <= 768) {
+                // 移动端逻辑
+                const isLandscape = window.innerWidth > window.innerHeight;
+                
+                // 强制重置样式以适应 JS 计算
+                videoWrapper.style.width = isLandscape ? 'auto' : '100%';
+                videoWrapper.style.height = isLandscape ? '100%' : 'auto';
+                
+                if (!isLandscape) {
+                    // 竖屏模式：保持 16:9，并确保底部有足够空间
+                    // 如果屏幕特别长（全面屏），16:9 可能会离底部太远，这里稍微优化
+                    // 但主要目的是"防止被遮挡"，所以居中 + 16:9 是最安全的策略
+                    videoWrapper.style.aspectRatio = '16/9';
+                } else {
+                    // 横屏模式：移除 aspect-ratio，让它由 CSS 控制高度
+                    videoWrapper.style.aspectRatio = 'auto';
+                }
+            } else {
+                // PC 端恢复默认
+                videoWrapper.style.width = '100%';
+                videoWrapper.style.height = ''; 
+                videoWrapper.style.aspectRatio = '';
+            }
+        }
+        
+        // 监听窗口调整和屏幕旋转
+        window.addEventListener('resize', adjustLayout);
+        window.addEventListener('orientationchange', () => { setTimeout(adjustLayout, 200); });
+        adjustLayout(); // 初始化执行一次
+
         function initMobileGestures() {
             if (window.innerWidth > 768) return;
 
-            // 移动端欢迎提示: 增加时长到 10s
+            // 移动端欢迎提示
             showStatus("💡 提示：单击显隐控制栏，双击菜单，三击全屏", 'info', 10000);
 
             let isScrolling = false;
@@ -491,7 +538,6 @@
 
             videoWrapper.addEventListener('touchend', (e) => {
                 if (isScrolling) return; 
-                // 防止误触控制栏组件
                 if (e.target.closest('#control-panel') || e.target.closest('.dplayer-controller') || e.target.closest('.dplayer-mobile-play')) return;
 
                 tapCount++;
@@ -499,12 +545,9 @@
                 if (tapTimer) clearTimeout(tapTimer);
 
                 tapTimer = setTimeout(() => {
-                    // tapCount === 1: 默认行为，让 DPlayer 处理显隐控制栏
                     if (tapCount === 2) {
-                        // 双击：调出/隐藏 自定义菜单
                         controlPanel.classList.toggle('active');
                     } else if (tapCount === 3) {
-                        // 三击：全屏
                         if (dp) dp.fullScreen.toggle();
                     }
                     tapCount = 0;
@@ -704,7 +747,6 @@
                                     if(hlsInstance.levels.length > 0) {
                                         hlsInstance.currentLevel = hlsInstance.levels.length - 1;
                                         hlsInstance.capLevelToPlayerSize = false;
-                                        // 组合提示：画质增强 + 卡顿提示 (10秒消失)
                                         showStatus('🚀 画质增强：已锁定最高码率 &nbsp;|&nbsp; 💡 若播放卡顿请点击套代按钮，再点击播放', 'success', 10000);
                                     }
                                     startStatsLoop(video, hlsInstance);
@@ -730,8 +772,6 @@
             });
 
             setupCastButtonLogic(dp.video);
-            
-            // 移除了这里强制隐藏 dplayer-controller 的逻辑，让它跟随单击自然显隐
             
             dp.on('canplay', () => { setTimeout(() => clearStatus(), 3000); });
         }
