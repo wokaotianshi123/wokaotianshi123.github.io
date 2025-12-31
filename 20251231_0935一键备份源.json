@@ -1,0 +1,57 @@
+{
+  "history": [
+    {
+      "id": "65269",
+      "vod_id": "65269",
+      "title": "PLANET C:HOME RACE",
+      "image": "https://ps.ryzypics.com/upload/vod/20251208-1/d8cec396a259b7bc7751c8f9cad863a7.jpg",
+      "genre": "日韩综艺",
+      "year": "2025",
+      "badge": "已完结",
+      "badgeColor": "black",
+      "vod_content": "<p>《BOYS II PLANET》衍生选秀，聚焦未出道C组18名练习生（如陈博文、李梓豪、贾涵予等）</p>",
+      "vod_actor": "李硕薰,KINKY,Kany Diabaté Ahn,金在中,沈小婷,JLLICK,林韩星,孝琳,白久英,JUSTHIS,章昊,成韩彬,柳冈旻,李协,金东玧",
+      "vod_director": "金申英",
+      "vod_play_url": "EP01上$https://svip.ryplay17.com/20251214/9749_d0542e19/index.m3u8#EP01下$https://svip.ryplay17.com/20251214/9746_e9d78f03/index.m3u8#EP02上$https://svip.ryplay17.com/20251214/9747_71553341/index.m3u8#EP02下$https://svip.ryplay17.com/20251214/9750_19044d7e/index.m3u8#E03.251220$https://svip.ryplay17.com/20251223/10187_44e3865e/index.m3u8#EP04$https://svip.ryplay17.com/20251231/10521_81bd81dc/index.m3u8$$$EP01上$https://svip.ryplay17.com/share/ccc58dde99ac1c9f32531179b859bf46#EP01下$https://svip.ryplay17.com/share/250b76af0b9e34cd12acfefaf512af6e#EP02上$https://svip.ryplay17.com/share/48259990138bc03361556fb3f94c5d45#EP02下$https://svip.ryplay17.com/share/e369628fed6bf2eebe51b12efe570e6b#E03.251220$https://svip.ryplay17.com/share/18df51b97ccd68128e994804f3eccc87#EP04$https://svip.ryplay17.com/share/3faf3b08de6c7c130e63c0e38e5553a8",
+      "sourceApi": "https://cj.rycjapi.com/api.php/provide/vod/at/xml",
+      "sourceName": "ru",
+      "currentTime": 402.624223,
+      "currentEpisodeUrl": "https://svip.ryplay17.com/20251214/9749_d0542e19/index.m3u8",
+      "currentEpisodeName": "EP01上"
+    }
+  ],
+  "favorites": [
+    {
+      "id": "65269",
+      "vod_id": "65269",
+      "title": "PLANET C:HOME RACE",
+      "image": "https://ps.ryzypics.com/upload/vod/20251208-1/d8cec396a259b7bc7751c8f9cad863a7.jpg",
+      "genre": "日韩综艺",
+      "year": "2025",
+      "badge": "已完结",
+      "badgeColor": "black",
+      "vod_content": "<p>《BOYS II PLANET》衍生选秀，聚焦未出道C组18名练习生（如陈博文、李梓豪、贾涵予等）</p>",
+      "vod_actor": "李硕薰,KINKY,Kany Diabaté Ahn,金在中,沈小婷,JLLICK,林韩星,孝琳,白久英,JUSTHIS,章昊,成韩彬,柳冈旻,李协,金东玧",
+      "vod_director": "金申英",
+      "vod_play_url": "EP01上$https://svip.ryplay17.com/20251214/9749_d0542e19/index.m3u8#EP01下$https://svip.ryplay17.com/20251214/9746_e9d78f03/index.m3u8#EP02上$https://svip.ryplay17.com/20251214/9747_71553341/index.m3u8#EP02下$https://svip.ryplay17.com/20251214/9750_19044d7e/index.m3u8#E03.251220$https://svip.ryplay17.com/20251223/10187_44e3865e/index.m3u8#EP04$https://svip.ryplay17.com/20251231/10521_81bd81dc/index.m3u8$$$EP01上$https://svip.ryplay17.com/share/ccc58dde99ac1c9f32531179b859bf46#EP01下$https://svip.ryplay17.com/share/250b76af0b9e34cd12acfefaf512af6e#EP02上$https://svip.ryplay17.com/share/48259990138bc03361556fb3f94c5d45#EP02下$https://svip.ryplay17.com/share/e369628fed6bf2eebe51b12efe570e6b#E03.251220$https://svip.ryplay17.com/share/18df51b97ccd68128e994804f3eccc87#EP04$https://svip.ryplay17.com/share/3faf3b08de6c7c130e63c0e38e5553a8",
+      "sourceApi": "https://cj.rycjapi.com/api.php/provide/vod/at/xml",
+      "sourceName": "ru",
+      "currentTime": 402.624223,
+      "currentEpisodeUrl": "https://svip.ryplay17.com/20251214/9749_d0542e19/index.m3u8",
+      "currentEpisodeName": "EP01上"
+    }
+  ],
+  "customSources": [
+    {
+      "name": "ru",
+      "api": "https://cj.rycjapi.com/api.php/provide/vod/at/xml",
+      "isCustom": true
+    }
+  ],
+  "customDoubanTags": {
+    "movie": [],
+    "tv": []
+  },
+  "lastSource": "https://cj.rycjapi.com/api.php/provide/vod/at/xml",
+  "version": "1.0"
+}
