@@ -18,15 +18,6 @@
     "detailUrl": "",
     "parserUrl": ""
   },
-  {
-    "type": "",
-    "sourceName": "影剧资源网采集接口",
-    "baseUrl": "",
-    "apiUrl": "https://cfkua.wokaotianshi.eu.org/https://caiji.maotaizy.cc/api.php/provide/vod/at/xml",
-    "searchUrl": "",
-    "detailUrl": "",
-    "parserUrl": ""
-  },
 
   {
     "type": "",
