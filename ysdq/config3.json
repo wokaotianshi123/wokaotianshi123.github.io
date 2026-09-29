@@ -374,6 +374,15 @@
     "detailUrl": "",
     "parserUrl": ""
   },
+	    {
+    "type": "",
+    "sourceName": "番号采集接口",
+    "baseUrl": "",
+    "apiUrl": "https://cfkua.wokaotianshi.eu.org/http://fhapi9.com/api.php/provide/vod/at/xml/",
+    "searchUrl": "",
+    "detailUrl": "",
+    "parserUrl": ""
+  },
   {
     "type": "",
     "sourceName": "辣椒资源网采集接口",
