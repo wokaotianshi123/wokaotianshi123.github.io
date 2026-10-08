@@ -1,8 +1,4 @@
-{
-  "format": "duanju-custom-sources",
-  "version": 1,
-  "count": 10,
-  "sites": [
+[
     {
       "name": "51shu",
       "url": "https://51shumai.cn"
@@ -94,4 +90,4 @@
       "url": "https://www.huo4.com"
     }
   ]
-}
+
