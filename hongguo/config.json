@@ -1,7 +1,7 @@
 {
   "format": "duanju-custom-sources",
   "version": 1,
-  "count": 15,
+  "count": 16,
   "sites": [
     {
       "name": "51shu",
@@ -47,6 +47,11 @@
       "name": "m.huisanpay.com",
       "url": "https://m.huisanpay.com",
       "rule": "{\n  \"主页url\": \"https://m.huisanpay.com\",\n  \"请求头\": \"User-Agent$Mozilla/5.0 (Linux; Android 11; Redmi Note 8 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Mobile Safari/537.36\",\n  \"分类\": \"动漫$4#电影$1#电视剧$2#综艺$3#短剧$5#预告片$6\",\n  \"分类url\": \"https://m.huisanpay.com/3d/{cateId}-{catePg}.html\",\n  \"搜索url\": \"https://m.huisanpay.com/search/{wd}-------------.html\",\n  \"详情url\": \"https://m.huisanpay.com/anime/{id}.html\",\n  \"数组\": \"\u003cli\u0026\u0026\u003c/li\u003e\",\n  \"标题\": \"title=\\\"\u0026\u0026\\\"\",\n  \"链接\": \"href=\\\"/anime/\u0026\u0026\\\"\",\n  \"列表图片\": \"data-original=\\\"\u0026\u0026\\\"\",\n  \"副标题\": \"pic-text text-right\\\"\u003e\u0026\u0026\u003c/span\u003e\",\n  \"简介\": \"class=\\\"detail-sketch\\\"\u003e\u0026\u0026\u003c/span\u003e\",\n  \"类型\": \"类型：\u0026\u0026\u003c/p\u003e\",\n  \"导演\": \"导演：\u0026\u0026\u003c/p\u003e\",\n  \"主演\": \"主演：\u0026\u0026\u003c/p\u003e\",\n  \"播放二次截取\": \"\u003cdiv class=\\\"tab-content stui-pannel_bd col-pd maxheight clearfix\\\"\u003e\u0026\u0026\u003c/div\u003e\u003c/div\u003e\",\n  \"播放数组\": \"\u003cul class=\\\"stui-content__playlist clearfix sort-list\\\"\u0026\u0026\u003c/ul\u003e\",\n  \"线路数组\": \"\u003cul class=\\\"stui-content__playlist clearfix sort-list\\\"\u0026\u0026\u003c/ul\u003e\",\n  \"线路标题\": \"高清播放\",\n  \"播放列表\": \"\u003c/li\u003e\",\n  \"播放标题\": \"\u003e\u0026\u0026\u003c/a\u003e\",\n  \"播放链接\": \"href=\\\"\u0026\u0026\\\"\",\n  \"搜索图片\": \"data-original=\\\"\u0026\u0026\\\"\"\n}"
+    },
+    {
+      "name": "qikantoukan.com",
+      "url": "https://qikantoukan.com",
+      "rule": "{\n  \"主页url\": \"https://qikantoukan.com\",\n  \"分类\": \"电影$1#电视剧$2#综艺$3#动漫$4#短剧$20#动画片$35\",\n  \"分类url\": \"https://qikantoukan.com/vodshow/{cateId}--------{catePg}---.html\",\n  \"搜索url\": \"/vodsearch/{wd}-------------.html\",\n  \"播放列表\": \"\u003c/li\u003e\"\n}"
     },
     {
       "name": "qqys01.com",
