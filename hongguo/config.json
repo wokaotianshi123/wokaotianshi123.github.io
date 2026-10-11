@@ -1,16 +1,11 @@
 {
   "format": "duanju-custom-sources",
   "version": 1,
-  "count": 10,
+  "count": 15,
   "sites": [
     {
       "name": "51shu",
       "url": "https://51shumai.cn"
-    },
-    {
-      "name": "55ys9.com",
-      "url": "https://www.55ys9.com",
-      "rule": "{\"主页url\":\"https://www.55ys9.com\",\"请求头\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\"分类\":\"电视剧$2#电影$1#综艺$3#动漫$4#短剧$5#国产剧$13#港台剧$14#日韩剧$15\",\"分类url\":\"https://www.55ys9.com/list/{cateId}-{catePg}.html\",\"搜索url\":\"https://www.55ys9.com/search/-------------.html?wd={wd}\",\"详情url\":\"https://www.55ys9.com/vod/{id}.html\",\"数组\":\"\u003cli class=\\\"col-md-6 col-sm-4 col-xs-3\\\"\u0026\u0026\u003c/li\u003e\",\"二次截取\":\"\u003cdiv class=\\\"col-lg-wide-75 col-xs-1 padding-0\\\"\u0026\u0026\u003cdiv class=\\\"col-lg-wide-25 hidden-md hidden-sm hidden-xs\\\"\",\"标题\":\"title=\\\"\u0026\u0026\\\"\",\"链接\":\"href=\\\"\u0026\u0026\\\"\",\"列表图片\":\"data-original=\\\"\u0026\u0026\\\"\",\"副标题\":\"pic-text text-right\\\"\u003e\u0026\u0026\u003c/span\u003e\",\"影片名称\":\"\u003ch1 class=\\\"title\\\"\u003e\u0026\u0026\u003c\",\"类型\":\"\u003cspan class=\\\"text-muted\\\"\u003e类型：\u003c/span\u003e\u0026\u0026\u003c\",\"导演\":\"\u003cspan class=\\\"text-muted\\\"\u003e导演：\u003c/span\u003e\u0026\u0026\u003c\",\"主演\":\"\u003cspan class=\\\"text-muted\\\"\u003e主演：\u003c/span\u003e\u0026\u0026\u003c\",\"简介\":\"\u003cspan class=\\\"left text-muted\\\"\u003e简介：\u003c/span\u003e\u0026\u0026\u003c\",\"播放数组\":\"\u003cul class=\\\"stui-content__playlist clearfix\\\"\u0026\u0026\u003c/ul\u003e\",\"播放列表\":\"\u003cli\",\"播放标题\":\"\u003e\u0026\u0026\u003c/a\u003e\",\"播放链接\":\"href=\\\"\u0026\u0026\\\"\"}"
     },
     {
       "name": "55yss",
@@ -19,35 +14,62 @@
     {
       "name": "6789ysw.com",
       "url": "https://www.6789ysw.com",
-      "rule": "{\"主页url\":\"https://www.6789ysw.com\",\"请求头\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\"分类\":\"电视剧$2#电影$1#综艺$3#动漫$4#短剧$5#国产剧$13#港台剧$14#日韩剧$15\",\"分类url\":\"https://www.6789ysw.com/list/{cateId}-{catePg}.html\",\"搜索url\":\"https://www.6789ysw.com/search/-------------.html?wd={wd}\",\"详情url\":\"https://www.6789ysw.com/vod/{id}.html\",\"数组\":\"\u003cli class=\\\"col-md-6 col-sm-4 col-xs-3\\\"\u0026\u0026\u003c/li\u003e\",\"二次截取\":\"\u003cdiv class=\\\"col-lg-wide-75 col-xs-1 padding-0\\\"\u0026\u0026\u003cdiv class=\\\"stui-pannel stui-pannel-bg hidden-sm hidden-xs clearfix\\\"\u003e\",\"标题\":\"title=\\\"\u0026\u0026\\\"\",\"链接\":\"href=\\\"\u0026\u0026\\\"\",\"列表图片\":\"data-original=\\\"\u0026\u0026\\\"\",\"副标题\":\"pic-text text-right\\\"\u003e\u0026\u0026\u003c/span\u003e\",\"影片名称\":\"\u003ch1 class=\\\"title\\\"\u003e\u0026\u0026\u003c/h1\u003e\",\"简介\":\"\u003cp class=\\\"col-pd\\\"\u003e\u0026\u0026\u003c/p\u003e\",\"封面\":\"data-original=\\\"\u0026\u0026\\\"\",\"类型\":\"类型：\u003c/span\u003e\u0026\u0026\",\"导演\":\"导演：\u003c/span\u003e\u003ca href=\\\"\u0026\u0026\\\"\",\"主演\":\"主演：\u003c/span\u003e\u0026\u0026\",\"播放数组\":\"\u003cul class=\\\"stui-content__playlist clearfix\\\"\u0026\u0026\u003c/ul\u003e\",\"线路数组\":\"\u003cul class=\\\"stui-content__playlist clearfix\\\"\u0026\u0026\u003c/ul\u003e\",\"播放列表\":\"\u003cli\",\"播放标题\":\"\u003e\u0026\u0026\u003c/a\u003e\",\"播放链接\":\"href=\\\"\u0026\u0026\\\"\"}"
+      "rule": "{\"主页url\":\"https://www.6789ysw.com/\",\"请求头\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\"分类\":\"电视剧$2#电影$1#综艺$3#动漫$4#短剧$5\",\"分类url\":\"https://www.6789ysw.com/list/{cateId}-{catePg}.html\",\"搜索url\":\"https://www.6789ysw.com/search/{wd}-------------.html\",\"详情url\":\"https://www.6789ysw.com/vod/{id}.html\",\"数组\":\"\u003cli class=\\\"col-md-6 col-sm-4 col-xs-3\\\"\u0026\u0026\u003c/li\u003e\",\"二次截取\":\"\u003cdiv class=\\\"col-lg-wide-75 col-xs-1 padding-0\\\"\u0026\u0026\",\"标题\":\"title=\\\"\u0026\u0026\\\"\",\"链接\":\"href=\\\"\u0026\u0026\\\"\",\"列表图片\":\"data-original=\\\"\u0026\u0026\\\"\",\"搜索数组\":\"\u003cli class=\\\"active clearfix\\\"\u0026\u0026\u003c/li\u003e\",\"搜索二次截取\":\"\u003cul class=\\\"stui-vodlist__media col-pd clearfix\\\"\u003e\u0026\u0026\u003c/ul\u003e\",\"搜索标题\":\"title=\\\"\u0026\u0026\\\"\",\"搜索链接\":\"href=\\\"\u0026\u0026\\\"\",\"搜索图片\":\"data-original=\\\"\u0026\u0026\\\"\",\"搜索副标题\":\"pic-text text-right\\\"\u003e\u0026\u0026\u003c/span\u003e\",\"副标题\":\"pic-text text-right\\\"\u003e\u0026\u0026\u003c/span\u003e\",\"影片名称\":\"\u003ch1 class=\\\"title\\\"\u003e\u0026\u0026\u003cspan\",\"简介\":\"简介：\u003c/span\u003e\u0026\u0026\u003c/p\u003e\",\"导演\":\"导演：\u003c/span\u003e\u0026\u0026\u003c/p\u003e\",\"主演\":\"主演：\u003c/span\u003e\u0026\u0026\u003c/p\u003e\",\"类型\":\"类型：\u003c/span\u003e\u0026\u0026\u003cspan\",\"播放数组\":\"\u003cul class=\\\"stui-content__playlist clearfix\\\"\u0026\u0026\u003c/ul\u003e\",\"线路数组\":\"\u003cul class=\\\"stui-content__playlist clearfix\\\"\u0026\u0026\u003c/ul\u003e\",\"播放列表\":\"\u003cli\",\"播放标题\":\"\u003e\u0026\u0026\u003c/a\u003e\",\"播放链接\":\"href=\\\"\u0026\u0026\\\"\"}"
+    },
+    {
+      "name": "6789zz",
+      "url": "https://www.6789zz.com",
+      "rule": "{\n  \"分类\": \"电视剧$2#电影$1#综艺$3#动漫$4#短剧$5#国产剧$13\",\n  \"分类url\": \"https://www.6789zz.com/list/{cateId}-{catePg}.html\",\n  \"播放列表\": \"\u003c/li\u003e\",\n  \"线路数组\": \"\u003cul class=\\\"stui-content__playlist clearfix\\\"\u0026\u0026\u003c/ul\u003e\",\n  \"搜索url\": \"/search/{wd}-------------.html\"\n}"
     },
     {
       "name": "feikuai",
       "url": "https://feikuai.in"
     },
     {
-      "name": "lanf",
-      "url": "https://www.lanfengjian.top"
+      "name": "ffv1.com",
+      "url": "https://www.ffv1.com",
+      "rule": "{\n  \"主页url\": \"https://www.ffv1.com\",\n  \"请求头\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36\",\n  \"分类\": \"电视剧$tv#电影$movie#综艺$variety#动漫$cartoon\",\n  \"分类url\": \"/type/{cateId}/{catePg}/\",\n  \"搜索url\": \"/search/?wd={wd}\",\n  \"详情url\": \"/detail/{id}/\",\n  \"数组\": \"\u003cli\u003e\u0026\u0026\u003c/li\u003e\",\n  \"二次截取\": \"\u003cdiv class=\\\"main\\\"\u0026\u0026\",\n  \"标题\": \"title=\\\"\u0026\u0026\\\"\",\n  \"链接\": \"href=\\\"\u0026\u0026\\\"\",\n  \"列表图片\": \"data-original=\\\"\u0026\u0026\\\"\",\n  \"搜索图片\": \"data-original=\\\"\u0026\u0026\\\"\",\n  \"副标题\": \"\u003cp\u003e\u0026\u0026\u003c/p\u003e\",\n  \"影片名称\": \"\u003ch2\u003e\u0026\u0026\u003c/h2\u003e\",\n  \"简介\": \"简介：\u003c/span\u003e\u0026\u0026\u003c/li\u003e\",\n  \"封面\": \"data-original=\\\"\u0026\u0026\\\"\",\n  \"类型\": \"类型：\u003c/span\u003e\u0026\u0026\u003c/li\u003e\",\n  \"主演\": \"主演：\u003c/span\u003e\u0026\u0026\u003c/li\u003e\",\n  \"线路数组\": \"\u003cdiv class=\\\"row\\\"\u0026\u0026\u003c/div\u003e\",\n  \"播放数组\": \"\u003cul class=\\\"list24\\\"\u003e\u0026\u0026\u003c/ul\u003e\",\n  \"播放列表\": \"\u003cli\u003e\",\n  \"播放标题\": \"\u003e\u0026\u0026\u003c\",\n  \"播放链接\": \"href=\\\"\u0026\u0026\\\"\",\n  \"跳转播放链接\": \"url: '\u0026\u0026'\"\n}"
+    },
+    {
+      "name": "hanjuds.com",
+      "url": "https://www.hanjuds.com",
+      "rule": "{\n  \"主页url\": \"https://www.hanjuds.com\",\n  \"请求头\": \"User-Agent$Mozilla/5.0 (Linux; Android 12; V2049A Build/SP1A.210812.003) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36\",\n  \"分类\": \"成全电影$1#成全剧集$2#理论$36\",\n  \"分类url\": \"https://www.hanjuds.com/80s/index-{cateId}-{catePg}.html\",\n  \"搜索url\": \"https://www.hanjuds.com/80s/list--------------.html?wd={wd}\",\n  \"详情url\": \"https://www.hanjuds.com/80s/{id}.html\",\n  \"数组\": \"class=\\\"module-item\\\"\u003e\u003cdiv class=\\\"module-item-cover\\\"\u0026\u0026\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\",\n  \"二次截取\": \"module-items module-items-vod\u0026\u0026module-footer\",\n  \"标题\": \"title=\\\"\u0026\u0026\\\"\",\n  \"链接\": \"href=\\\"\u0026\u0026\\\"\",\n  \"列表图片\": \"data-src=\\\"\u0026\u0026\\\"\",\n  \"副标题\": \"class=\\\"vod_score\\\"\u0026\u0026\u003c/span\u003e\",\n  \"影片名称\": \"\u003ch1 class=\\\"page-title\\\"\u0026\u0026\u003c/h1\u003e\",\n  \"简介\": \"剧情：\u003c/span\u003e\u0026\u0026\u003c/article\u003e\",\n  \"封面\": \"\u003cimg class=\\\"lazyload\\\"\u0026\u0026src=\",\n  \"类型\": \"icon-diy-type-13\\\"\u003e\u003c/i\u003e\u0026\u0026\u003c/span\u003e\",\n  \"导演\": \"导演：\u003c/span\u003e\u0026\u0026\u003c/div\u003e\",\n  \"主演\": \"演员：\u003c/span\u003e\u0026\u0026\u003c/div\u003e\",\n  \"播放数组\": \"class=\\\"module-list module-player-list tab-list sort-list module-vod-list\u0026\u0026\u003c/div\u003e\",\n  \"线路数组\": \"class=\\\"module-list module-player-list tab-list sort-list module-vod-list\u0026\u0026\u003c/div\u003e\",\n  \"线路标题\": \"\u003cspan\u003e\u0026\u0026\u003c/span\u003e\",\n  \"播放列表\": \"\u003c/a\u003e\",\n  \"播放标题\": \"\u003cspan\u003e\u0026\u0026\u003c/span\u003e\",\n  \"播放链接\": \"href=\\\"\u0026\u0026\\\"\"\n}"
+    },
+    {
+      "name": "huox",
+      "url": "https://www.huo4.com"
     },
     {
       "name": "lkakbys",
       "url": "https://www.lkakbys.com"
     },
     {
-      "name": "zjld",
-      "url": "https://zjldpest.com"
+      "name": "m.huisanpay.com",
+      "url": "https://m.huisanpay.com",
+      "rule": "{\n  \"主页url\": \"https://m.huisanpay.com\",\n  \"请求头\": \"User-Agent$Mozilla/5.0 (Linux; Android 11; Redmi Note 8 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Mobile Safari/537.36\",\n  \"分类\": \"动漫$4#电影$1#电视剧$2#综艺$3#短剧$5#预告片$6\",\n  \"分类url\": \"https://m.huisanpay.com/3d/{cateId}-{catePg}.html\",\n  \"搜索url\": \"https://m.huisanpay.com/search/{wd}-------------.html\",\n  \"详情url\": \"https://m.huisanpay.com/anime/{id}.html\",\n  \"数组\": \"\u003cli\u0026\u0026\u003c/li\u003e\",\n  \"标题\": \"title=\\\"\u0026\u0026\\\"\",\n  \"链接\": \"href=\\\"/anime/\u0026\u0026\\\"\",\n  \"列表图片\": \"data-original=\\\"\u0026\u0026\\\"\",\n  \"副标题\": \"pic-text text-right\\\"\u003e\u0026\u0026\u003c/span\u003e\",\n  \"简介\": \"class=\\\"detail-sketch\\\"\u003e\u0026\u0026\u003c/span\u003e\",\n  \"类型\": \"类型：\u0026\u0026\u003c/p\u003e\",\n  \"导演\": \"导演：\u0026\u0026\u003c/p\u003e\",\n  \"主演\": \"主演：\u0026\u0026\u003c/p\u003e\",\n  \"播放二次截取\": \"\u003cdiv class=\\\"tab-content stui-pannel_bd col-pd maxheight clearfix\\\"\u003e\u0026\u0026\u003c/div\u003e\u003c/div\u003e\",\n  \"播放数组\": \"\u003cul class=\\\"stui-content__playlist clearfix sort-list\\\"\u0026\u0026\u003c/ul\u003e\",\n  \"线路数组\": \"\u003cul class=\\\"stui-content__playlist clearfix sort-list\\\"\u0026\u0026\u003c/ul\u003e\",\n  \"线路标题\": \"高清播放\",\n  \"播放列表\": \"\u003c/li\u003e\",\n  \"播放标题\": \"\u003e\u0026\u0026\u003c/a\u003e\",\n  \"播放链接\": \"href=\\\"\u0026\u0026\\\"\",\n  \"搜索图片\": \"data-original=\\\"\u0026\u0026\\\"\"\n}"
     },
-        {
-      "name": "xiangm",
+    {
+      "name": "qqys01.com",
+      "url": "https://www.qqys01.com",
+      "rule": "{\"分类\":\"电影$1#连续剧$2#综艺$3#动漫$4\",\"分类url\":\"https://www.qqys01.com/vodshow/{cateId}--------{catePg}---.html\",\"搜索url\":\"https://www.qqys01.com/vodsearch.html?wd={wd}\",\"数组\":\"\u003ca \u0026\u0026\u003c/a\u003e[包含:module-poster-item module-item]\",\"标题\":\"title=\\\"\u0026\u0026\\\"\",\"链接\":\"href=\\\"\u0026\u0026\\\"\",\"列表图片\":\"data-original=\\\"\u0026\u0026\\\"\",\"副标题\":\"class=\\\"module-item-note\\\"\u003e\u0026\u0026\u003c/div\u003e\"}"
+    },
+    {
+      "name": "xiangmai",
       "url": "https://www.xiangmaile.com"
+    },
+    {
+      "name": "zjld",
+      "url": "https://zjldpest.com",
+      "rule": "{\n  \"站名\": \"六六影视\",\n  \"主页url\": \"https://zjldpest.com\",\n  \"分类\": \"电影$1#电视剧$2#综艺$3#动漫$4#短剧$20#动画片$35\",\n  \"分类url\": \"https://zjldpest.com/vodshow/{cateId}--------{catePg}---.html\",\n  \"搜索url\": \"/vodsearch/-------------.html?wd={wd}\",\n  \"播放列表\": \"\u003c/li\u003e\",\n  \"搜索页数组\": \"\u003cli class=\\\"col-md-6 col-sm-4 col-xs-3\\\"\u0026\u0026\u003c/li\u003e\",\n  \"搜索链接\": \"href=\\\"/voddetail/\u0026\u0026\\\"\",\n  \"搜索标题\": \"title=\\\"\u0026\u0026\\\"\",\n  \"搜索图片\": \"data-original=\\\"\u0026\u0026\\\"\"\n}"
     },
     {
       "name": "zmw",
       "url": "https://zmwgy.net"
     },
     {
-      "name": "火星",
-      "url": "https://www.huo4.com"
+      "name": "电影天堂",
+      "url": "https://www.dytt17.com",
+      "rule": "{\n  \"主页url\": \"https://www.dytt17.com\",\n  \"请求头\": \"User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\n  \"分类\": \"电影天堂$1#理论$36#预告天堂$4#韩剧天堂$15\",\n  \"分类url\": \"https://www.dytt17.com/vod/index-{cateId}-{catePg}.html\",\n  \"搜索url\": \"https://www.dytt17.com/vod/list--------------.html?wd={wd}\",\n  \"详情url\": \"https://www.dytt17.com/vod/id-{id}.html\",\n  \"数组\": \"class=\\\"module-item\\\"\u003e\u003cdiv class=\\\"module-item-cover\\\"\u0026\u0026\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\",\n  \"标题\": \"title=\\\"\u0026\u0026\\\"\",\n  \"链接\": \"href=\\\"\u0026\u0026\\\"\",\n  \"列表图片\": \"data-src=\\\"\u0026\u0026\\\"\",\n  \"副标题\": \"class=\\\"vod_score\\\"\u0026\u0026\u003cspan\",\n  \"简介\": \"剧情：\u0026\u0026\u003c/article\u003e\",\n  \"播放数组\": \"class=\\\"module-blocklist\\\"\u0026\u0026\u003c/div\u003e\",\n  \"播放标题\": \"title=\\\"\u0026\u0026\\\"\",\n  \"播放链接\": \"href=\\\"\u0026\u0026\\\"\",\n  \"播放列表\": \"\u003c/a\u003e\",\n  \"线路标题\": \"\u003cspan\u003e\u0026\u0026\u003c/span\u003e\u003csmall\u003e\"\n}"
     }
   ]
 }
