@@ -7,6 +7,11 @@
       "name": "51shu",
       "url": "https://51shumai.cn"
     },
+        {
+      "name": "qikantoukan.com",
+      "url": "https://qikantoukan.com",
+      "rule": "{\n  \"主页url\": \"https://qikantoukan.com\",\n  \"分类\": \"电影$1#电视剧$2#综艺$3#动漫$4#短剧$20#动画片$35\",\n  \"分类url\": \"https://qikantoukan.com/vodshow/{cateId}--------{catePg}---.html\",\n  \"搜索url\": \"/vodsearch/{wd}-------------.html\",\n  \"播放列表\": \"\u003c/li\u003e\"\n}"
+    },
     {
       "name": "55yss",
       "url": "https://www.55yss.com"
