@@ -1,7 +1,7 @@
 {
   "format": "duanju-custom-sources",
   "version": 1,
-  "count": 17,
+  "count": 19,
   "sites": [
     {
       "name": "51shu",
@@ -20,6 +20,16 @@
       "name": "6789zz",
       "url": "https://www.6789zz.com",
       "rule": "{\n  \"分类\": \"电视剧$2#电影$1#综艺$3#动漫$4#短剧$5#国产剧$13\",\n  \"分类url\": \"https://www.6789zz.com/list/{cateId}-{catePg}.html\",\n  \"播放列表\": \"\u003c/li\u003e\",\n  \"线路数组\": \"\u003cul class=\\\"stui-content__playlist clearfix\\\"\u0026\u0026\u003c/ul\u003e\",\n  \"搜索url\": \"/search/{wd}-------------.html\"\n}"
+    },
+    {
+      "name": "agneschoi.com",
+      "url": "https://www.agneschoi.com",
+      "rule": "{\"规则名称\":\"静好派影视\",\"规则作者\":\"Agnes\",\"请求头\":\"User-Agent$Mozilla/5.0 (Linux; Android 13; V2048A Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36#Referer$https://www.agneschoi.com/\",\"分类\":\"电影$1#电视剧$2#短剧$3#动漫$4#综艺$5\",\"分类url\":\"https://www.agneschoi.com/tv/{cateId}/page/{catePg}.html\",\"搜索url\":\"https://www.agneschoi.com/search.html?wd={wd}\",\"数组\":\"\u003cli class=\\\"col-xs-4 col-md-3 col-lg-2\\\"\u0026\u0026\u003c/li\u003e\",\"链接\":\"href=\\\"\u0026\u0026\\\"\",\"标题\":\"title=\\\"\u0026\u0026\\\"\",\"列表图片\":\"data-original=\\\"https:\u0026\u0026\\\"\",\"副标题\":\"text-overflow\\\"\u003e\u0026\u0026\u003c/p\u003e\",\"播放数组\":\"\u003cul class=\\\"row ewave-tab-content ewave-playlist-content ewave-playlist-sort-content\\\"\u0026\u0026\u003c/ul\u003e\",\"线路数组\":\"\u003cul class=\\\"row ewave-tab-content ewave-playlist-content ewave-playlist-sort-content\\\"\u0026\u0026\u003c/ul\u003e\",\"线路标题\":\"\u003e线路\u0026\u0026\u003c/a\u003e\",\"播放列表\":\"\u003c/li\u003e\",\"播放标题\":\"\u003e\u0026\u0026\u003c/a\u003e\",\"播放链接\":\"href=\\\"\u0026\u0026\\\"\"}"
+    },
+    {
+      "name": "dengtayouqi.com",
+      "url": "https://www.dengtayouqi.com",
+      "rule": "{\"站名\":\"登天影视\",\"分类\":\"电影$1#电视剧$2#综艺$3#动漫$4#短剧$26\",\"分类url\":\"https://www.dengtayouqi.com/vodtype/{cateId}-{catePg}.html\",\"搜索url\":\"https://www.dengtayouqi.com/vodsearch/{wd}----------1---.html\",\"数组\":\"\u003cli class=\\\"col-md-5 col-sm-4 col-xs-3\\\"\u0026\u0026\u003c/li\u003e\",\"链接\":\"href=\\\"\u0026\u0026\\\"\",\"标题\":\"title=\\\"\u0026\u0026\\\"\",\"列表图片\":\"data-original=\\\"\u0026\u0026\\\"\",\"播放列表\":\"\u003c/li\u003e\",\"线路数组\":\"\u003cul class=\\\"stui-content__playlist clearfix\\\"\u0026\u0026\u003c/ul\u003e\",\"线路标题\":\"\u003ch3 class=\\\"title\\\"\u003e\u0026\u0026\u003c/h3\u003e\",\"播放数组\":\"\u003cul class=\\\"stui-content__playlist clearfix\\\"\u0026\u0026\u003c/ul\u003e\",\"播放标题\":\"\u003e\u0026\u0026\u003c/a\u003e\"}"
     },
     {
       "name": "feikuai",
