@@ -72,7 +72,7 @@
     {
       "name": "qqys01.com",
       "url": "https://www.qqys01.com",
-      "rule": "{\"分类\":\"电影$1#连续剧$2#综艺$3#动漫$4\",\"分类url\":\"https://www.qqys01.com/vodshow/{cateId}--------{catePg}---.html\",\"搜索url\":\"https://www.qqys01.com/vodsearch.html?wd={wd}\",\"数组\":\"<a &&</a>[包含:module-poster-item module-item]\",\"标题\":\"title=\\\"&&\\\"\",\"链接\":\"href=\\\"&&\\\"\",\"列表图片\":\"data-original=\\\"&&\\\"\",\"副标题\":\"class=\\\"module-item-note\\\">&&</div>\"}"
+      "rule": "{\"主页url\":\"https://www.qqys01.com\",\"请求头\":\"User-Agent$Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1\",\"分类\":\"电影$1#连续剧$2#综艺$3#动漫$4\",\"分类url\":\"https://www.qqys01.com/vodshow/{cateId}--------{catePg}---.html\",\"搜索url\":\"https://www.qqys01.com/vodsearch.html?wd={wd}\",\"详情url\":\"https://www.qqys01.com/voddetail{id}.html\",\"数组\":\"<a&&</a>[包含:module-poster-item module-item]\",\"标题\":\"title=\\\"&&\\\"\",\"链接\":\"href=\\\"&&\\\"\",\"列表图片\":\"data-original=\\\"&&\\\"\",\"副标题\":\"class=\\\"module-item-note\\\">&&</div>\",\"影片名称\":\"<h1>&&</h1>\",\"简介\":\"class=\\\"module-info-introduction-content\\\">&&</div>\",\"类型\":\"<a title=\\\"2026\\\"&&</a>.html\\\">\\\\K[^<]+\",\"导演\":\"<span class=\\\"module-info-item-title\\\">导演：</span>&&</div>\",\"主演\":\"<span class=\\\"module-info-item-title\\\">主演：</span>&&</div>\",\"播放数组\":\"class=\\\"module-play-list-content&&</div>\",\"线路数组\":\"class=\\\"module-play-list-content&&</div>\",\"线路标题\":\"<span>&&</span>\",\"播放列表\":\"</a>\",\"播放标题\":\"<span>&&</span>\",\"播放链接\":\"href=\\\"&&\\\"\"}"
     },
     {
       "name": "xiangmai",
