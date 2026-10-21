@@ -1,8 +1,13 @@
 {
   "format": "duanju-custom-sources",
   "version": 1,
-  "count": 19,
+  "count": 20,
   "sites": [
+        {
+      "name": "青空次元",
+      "url": "https://api.sorani.cc/sorani-cms",
+      "rule": "{\n  \"主页url\": \"https://api.sorani.cc/sorani-cms\",\n  \"请求头\": \"User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\n  \"分类\": \"TV番剧$1#剧场版$2#特摄剧集$5#国漫$7\",\n  \"分类url\": \"https://api.sorani.cc/sorani-cms/api/video?page={catePg}&size=24&categoryId={cateId}\",\n  \"搜索url\": \"https://api.sorani.cc/sorani-cms/api/video?keyword={wd}&page={catePg}&size=24\",\n  \"数组\": \"j:data.records\",\n  \"标题\": \"j:title\",\n  \"链接\": \"https://api.sorani.cc/sorani-cms/api/video/+j:id\",\n  \"列表图片\": \"j:cover\",\n  \"副标题\": \"j:categoryName\",\n  \"详情url\": \"https://api.sorani.cc/sorani-cms/api/video/{id}\",\n  \"影片名称\": \"j:data.title\",\n  \"简介\": \"j:data.summary\",\n  \"封面\": \"j:data.cover\",\n  \"类型\": \"j:data.categoryName\",\n  \"导演\": \"j:data.director\",\n  \"状态\": \"j:data.statusText\",\n  \"播放数组\": \"j:data.episodes\",\n  \"播放列表\": \"},{\",\n  \"播放标题\": \"\\\"title\\\":\\\"&&\\\"\",\n  \"播放链接\": \"https://api.sorani.cc/sorani-cms/api/video/episode/+\\\"episodeId\\\":&&,+/play\",\n  \"跳转播放链接\": \"j:data.playUrl\"\n}"
+    },
     {
       "name": "51shu",
       "url": "https://51shumai.cn"
