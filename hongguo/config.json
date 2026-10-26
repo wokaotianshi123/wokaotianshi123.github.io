@@ -186,7 +186,27 @@
     {
       "name": "lkakbys",
       "url": "https://www.lkakbys.com",
-      "rule": "",
+      "rule": {
+  "主页url": "https://www.lkakbys.com",
+  "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$5",
+  "分类url": "https://www.lkakbys.com/akbashow/{cateId}--------{catePg}---.html",
+  "搜索url": "https://www.lkakbys.com/akbasearch/-------------.html?wd={wd}",
+  "详情url": "https://www.lkakbys.com/akbadetail/{id}.html",
+  "数组": "stui-vodlist__box\">&&</div></div>",
+  "标题": "title=\"&&\"",
+  "链接": "href=\"&&\"",
+  "列表图片": "data-original=\"&&\"",
+  "副标题": "class=\"pic-text text-right\">&&</span>",
+  "搜索数组": "<li class=\"active top-line-dot clearfix\"&&</li>",
+  "搜索图片": "data-original=\"&&\"",
+  "影片名称": "<h1 class=\"title\">&&<span",
+  "简介": "<span class=\"detail-sketch\">&&</span>",
+  "播放数组": "<ul class=\"stui-content__playlist clearfix\"&&</ul>",
+  "线路数组": "<ul class=\"stui-content__playlist clearfix\"&&</ul>",
+  "播放列表": "</li>",
+  "播放标题": ">&&</a>",
+  "播放链接": "href=\"&&\""
+},
       "type": "web"
     },
     {
