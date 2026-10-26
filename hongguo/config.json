@@ -3,6 +3,38 @@
   "version": 1,
   "count": 24,
   "sites": [
+     {
+      "name": "anet88.com",
+      "url": "https://www.anet88.com",
+      "rule": {
+        "主演": "主演：</span>&&</p>",
+        "主页url": "https://www.anet88.com",
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$30",
+        "分类url": "https://www.anet88.com/anelist/{cateId}-{catePg}.html",
+        "列表图片": "data-original=\"&&\"||style=\"background: url(&&)",
+        "副标题": "pic-text text-right\">&&</span>",
+        "导演": "导演：</span>&&</p>",
+        "封面": "data-original=\"&&\"||style=\"background: url(&&)",
+        "影片名称": "<h1 class=\"bhfr1130 title\">&&</h1>",
+        "搜索url": "https://www.anet88.com/search.php?searchword={wd}",
+        "搜索数组": "<a rel=\"nofollow\" class=\"bhge1130 myui-vodlist__thumb&&</a>",
+        "播放列表": "</li>",
+        "播放数组": "<li&&</li>",
+        "播放标题": "title=\"&&\"",
+        "播放链接": "href=\"&&\"[包含:/aneplayer/]",
+        "数组": "<li class=\"bhfr1130 col-md-6&&</li>",
+        "标题": "title=\"&&\"",
+        "状态": "状态：&&</p>",
+        "简介": "简介：</span>&&<a",
+        "类型": "分类：&&</a>&&html\">&&",
+        "线路数组": "<ul class=\"bsrf1130 myui-content__list scrollbar sort-list clearfix\"&&</ul>",
+        "详情url": "https://www.anet88.com/anevod/{id}.html",
+        "请求头": "User-Agent$Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+        "跳转播放链接": "var now=\"&&\"",
+        "链接": "href=\"&&\""
+      },
+     "type": "web"
+    },
       {
       "name": "nbsjyy.com",
       "url": "https://www.nbsjyy.com",
