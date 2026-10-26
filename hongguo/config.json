@@ -32,9 +32,9 @@
         "跳转播放链接": "var now=\"&&\"",
         "链接": "href=\"&&\""
       },
-          "type": "web"
+      "type": "web"
     },
-              {
+     {
       "name": "anet88.com",
       "url": "https://www.anet88.com",
       "rule": {
