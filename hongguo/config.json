@@ -4,9 +4,27 @@
   "count": 20,
   "sites": [
     {
-      "name": "51shu",
-      "url": "https://51shumai.cn",
-      "rule": "",
+      "name": "51shumai.cn",
+      "url": "https://www.51shumai.cn",
+      "rule": {
+        "主页url": "https://www.51shumai.cn",
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4",
+        "分类url": "https://www.51shumai.cn/vodshow/fenlei{cateId}--------{catePg}---.html",
+        "列表图片": "data-original=\"https:&&\"",
+        "副标题": "class=\"pic-text text-right\">&&</span>",
+        "影片名称": "<h1 class=\"title\">&&<span",
+        "搜索url": "https://www.51shumai.cn/vodsearch/-------------.html?wd={wd}",
+        "搜索数组": "<li class=\"bottom-line-dot\">&&</li>",
+        "播放列表": "</li>",
+        "播放数组": "<ul class=\"stui-content__playlist clearfix\"&&</ul>",
+        "播放标题": ">&&</a>",
+        "播放链接": "href=\"&&\"",
+        "数组": "stui-vodlist__box\">&&</div></div>",
+        "标题": "title=\"&&\"",
+        "简介": "<p class=\"col-pd\">&&</p>",
+        "线路数组": "<ul class=\"stui-content__playlist clearfix\"&&</ul>",
+        "链接": "href=\"&&\""
+      },
       "type": "web"
     },
     {
