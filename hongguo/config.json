@@ -27,6 +27,32 @@
       },
       "type": "web"
     },
+       {
+      "name": "sc123jf.com",
+      "url": "https://www.sc123jf.com",
+      "rule": {
+        "主页url": "https://www.sc123jf.com",
+        "分类": "电影$1#电视剧$2#动漫$3#综艺$4#短剧$27#动作片$5#喜剧片$6#科幻片$7#恐怖片$8#爱情片$9#剧情片$10#战争片$11#记录片$12#悬疑片$13#动画片$14#大陆剧$19#欧美剧$20#香港剧$21#韩国剧$22#台湾剧$23#日本剧$24#海外剧$25#泰国剧$26",
+        "分类url": "https://www.sc123jf.com/sc1type/{cateId}-{catePg}.html",
+        "列表图片": "data-original=\"&&\"",
+        "副标题": "pic-text\">&&</span>||pic-text text-right\">&&</span>",
+        "封面": "og:image\" content=\"&&\"",
+        "影片名称": "<h1 class=\"title\">&&<",
+        "搜索url": "https://www.sc123jf.com/search.html?searchword={wd}",
+        "播放列表": "</li>",
+        "播放数组": "content__playlist playlink&&</ul>",
+        "播放标题": "target=\"_self\">&&</a>",
+        "播放链接": "href=\"&&\" target=\"_self\"",
+        "数组": "vodlist__item&&</li>",
+        "标题": "title=\"&&\"",
+        "简介": "content__desc\">&&</div>",
+        "线路数组": "content__playlist playlink&&</ul>",
+        "详情url": "https://www.sc123jf.com/sc1view/{id}.html",
+        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "链接": "href=\"&&\""
+      },
+      "type": "web"
+    },
     {
       "name": "55yss.com",
       "url": "http://www.55yss.com",
