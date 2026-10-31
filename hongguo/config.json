@@ -83,19 +83,6 @@
       "type": "web"
     },
     {
-      "name": "55yss.com",
-      "url": "http://www.55yss.com",
-      "rule": {
-        "分类": "电视剧$2#电影$1#综艺$3#动漫$4#短剧$5#国产剧$13",
-        "分类url": "http://www.55yss.com/list/{cateId}-{catePg}.html",
-        "搜索url": "http://www.55yss.com/search/-------------.html?wd={wd}",
-        "播放列表": "</li>",
-        "播放数组": "<ul class=\"stui-content__playlist clearfix\"&&</ul>",
-        "线路数组": "<ul class=\"stui-content__playlist clearfix\"&&</ul>"
-      },
-      "type": "web"
-    },
-    {
       "name": "6789ysw.com",
       "url": "https://www.6789ysw.com",
       "rule": {
