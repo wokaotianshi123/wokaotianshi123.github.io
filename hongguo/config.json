@@ -132,7 +132,10 @@
       },
       "type": "web"
     },
-{
+           {
+      "name": "anet88.com",
+      "url": "https://www.anet88.com",
+      "rule": {
   "主页url": "https://www.anet88.com",
   "请求头": "User-Agent$Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
   "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$30#欧美综艺$48",
