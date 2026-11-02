@@ -132,38 +132,7 @@
       },
       "type": "web"
     },
-           {
-      "name": "anet88.com",
-      "url": "https://www.anet88.com",
-      "rule": {
-  "主页url": "https://www.anet88.com",
-  "请求头": "User-Agent$Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
-  "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$30#欧美综艺$48",
-  "分类url": "https://www.anet88.com/search.php?page={catePg}&searchtype=5&order=time&tid={cateId}",
-  "搜索url": "https://www.anet88.com/search.php?searchword={wd}",
-  "详情url": "https://www.anet88.com/anevod/{id}.html",
-  "二次截取": "myui-vodlist clearfix&&</ul>",
-  "搜索二次截取": "myui-vodlist__media clearfix&&</ul>",
-  "数组": "<li&&</li>",
-  "搜索数组": "<li&&</li>",
-  "标题": "title=\"&&\"",
-  "搜索标题": "class=\"searchkey\">&&</a>",
-  "链接": "href=\"&&\"",
-  "列表图片": "data-original=\"https:&&\"",
-  "搜索图片": "data-original=\"https:&&\"",
-  "副标题": "pic-text text-right\">&&</span>",
-  "影片名称": "<h1 class=\"bhfr1130 title\">&&</h1>",
-  "简介": "sketch content\">&&</span>",
-  "封面": "property=\"og:image\" content=\"&&\"",
-  "播放数组": "myui-content__list&&</ul>",
-  "线路数组": "myui-content__list&&</ul>",
-  "播放列表": "</li>",
-  "播放标题": ">&&</a>",
-  "播放链接": "href=\"&&\"[不包含:heji]",
-  "跳转播放链接": "var now=\"&&\""
-},
-      "type": "web"
-    },
+
     {
       "name": "bufole.com",
       "url": "https://www.bufole.com",
