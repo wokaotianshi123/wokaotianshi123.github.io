@@ -1,7 +1,7 @@
 {
   "format": "duanju-custom-sources",
   "version": 1,
-  "count": 30,
+  "count": 31,
   "sites": [
     {
       "name": "080pz.com",
@@ -228,6 +228,36 @@
         "详情url": "https://www.ffv1.com/detail/{id}/",
         "请求头": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
         "跳转播放链接": "url: '&&'",
+        "链接": "href=\"&&\""
+      },
+      "type": "web"
+    },
+    {
+      "name": "fj.tianshidai.com",
+      "url": "https://fj.tianshidai.com",
+      "rule": {
+        "主演": "主演：</span>&&</p >",
+        "主页url": "http://fj.tianshidai.com",
+        "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$5",
+        "分类url": "http://fj.tianshidai.com/type/{cateId}-{catePg}.html",
+        "列表图片": "data-original=\"&&\"",
+        "副标题": "pic-text text-right\">&&</span>",
+        "导演": "导演：</span>&&</p >",
+        "封面": "data-original=\"&&\"",
+        "影片名称": "<h1 class=\"title\">&&</h1>",
+        "搜索url": "http://fj.tianshidai.com/search.html?wd={wd}",
+        "播放列表": "</li>",
+        "播放数组": "<li&&</li>",
+        "播放标题": "\">&&</a >",
+        "播放链接": "href=\"&&\"[包含:/vod/]",
+        "数组": "<li class=\"col-xs-3\">&&</li>",
+        "标题": "title=\"&&\"",
+        "简介": "detail-sketch\">&&</span>",
+        "类型": "类别：</span>&&</p >",
+        "线路数组": "<ul class=\" stui-content__playlist clearfix\"&&</ul>",
+        "详情url": "http://fj.tianshidai.com/vod/{id}.html",
+        "请求头": "User-Agent$Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)",
+        "跳转播放链接": "https://cdn.kankanpu.com/video/+player_ds=&&</script>&&\"url\":\"&&\"+_+player_ds=&&</script>&&\"time\":\"&&\"+_+player_ds=&&</script>&&\"from\":\"&&\"+/index.m3u8",
         "链接": "href=\"&&\""
       },
       "type": "web"
