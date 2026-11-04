@@ -1,7 +1,7 @@
 {
   "format": "duanju-custom-sources",
   "version": 1,
-  "count": 29,
+  "count": 30,
   "sites": [
     {
       "name": "080pz.com",
@@ -30,32 +30,6 @@
         "线路数组": "class=\"sort-item\"&&</div>",
         "详情url": "https://www.080pz.com/product/{id}.html",
         "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "链接": "href=\"&&\""
-      },
-      "type": "web"
-    },
-        {
-      "name": "qinav.com",
-      "url": "https://www.qinav.com",
-      "rule": {
-        "主页url": "https://www.qinav.com",
-        "分类": "亚洲qs$1#国产zb$2#国产zp$3#欧美xa$5#熟女人妻$6#强j乱l$7",
-        "分类url": "https://www.qinav.com/site/5/{cateId}-{catePg}.html",
-        "列表图片": "img=\"https:&&\"",
-        "副标题": "class=\"note\">&&</span>",
-        "封面": "img=\"&&\"",
-        "影片名称": "<title>&&&<",
-        "搜索url": "https://www.qinav.com/?module=tags&action=keyword;post;keyword={wd}",
-        "搜索图片": "img=\"&&\"",
-        "播放列表": "##",
-        "播放数组": "<iframe id=\"video\"&&</iframe>",
-        "播放链接": "src=\"&&\"",
-        "数组": "<a title=\"\"&&</a>",
-        "标题": "<li class=\"title\">&&</li>",
-        "简介": "<div class=\"des\">&&</div>",
-        "详情url": "https://www.qinav.com/video/{id}.html",
-        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36#Referer$https://www.qinav.com/",
-        "跳转播放链接": "url = '&&'",
         "链接": "href=\"&&\""
       },
       "type": "web"
@@ -470,6 +444,31 @@
       "type": "web"
     },
     {
+      "name": "qinav.com",
+      "url": "https://www.qinav.com",
+      "rule": {
+        "主页url": "https://www.qinav.com",
+        "分类": "亚洲情色$1#日本无码$2#国产传媒$3#动漫专区$4#欧美性爱$5#熟女人妻$6#强奸乱伦$7#自拍偷拍$8#中文字幕$9#精品国货$10#女同专区$11#卡通动漫$12#三级电影$13#熟女专区$14#露脸自拍$15#国产传媒$33",
+        "分类url": "https://www.qinav.com/site/5/{cateId}-{catePg}.html",
+        "列表图片": "img=\"&&\"",
+        "副标题": "class=\"note\">&&</span>",
+        "封面": "img=\"&&\"",
+        "影片名称": "<title>&&&<",
+        "搜索url": "https://www.qinav.com/?module=tags&action=keyword;post;keyword={wd}",
+        "播放列表": "##",
+        "播放数组": "<iframe id=\"video\"&&</iframe>",
+        "播放链接": "src=\"&&\"",
+        "数组": "<a &&</a>",
+        "标题": "<li class=\"title\">&&</li>",
+        "简介": "<div class=\"des\">&&</div>",
+        "详情url": "https://www.qinav.com/video/{id}.html",
+        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36#Referer$https://www.qinav.com/",
+        "跳转播放链接": "url = '&&'",
+        "链接": "href=\"&&\""
+      },
+      "type": "web"
+    },
+    {
       "name": "qqys01.com",
       "url": "https://www.qqys01.com",
       "rule": {
@@ -605,6 +604,30 @@
         "链接": "href=\"&&\""
       },
       "type": "web"
+    },
+    {
+      "name": "tasexy.com",
+      "url": "https://www.tasexy.com",
+      "rule": {
+        "主页url": "https://www.tasexy.com",
+        "分类": "亚洲情色$1#日本无码$2#AV解说$3#中文字幕$20#国产传媒$21#国产短视频$22#欧美性爱$23#自拍偷拍$24#网红粉丝$25#极品女神$26#主播直播$27#剧情演绎$28#精品推荐$31#AV解说1$35",
+        "分类url": "https://www.tasexy.com/site/6/{cateId}-{catePg}.html",
+        "列表图片": "img=\"&&\"",
+        "副标题": "class=\"note\">&&</span>",
+        "封面": "img=\"&&\"",
+        "影片名称": "<title>&&&<",
+        "搜索url": "https://www.tasexy.com/?module=tags&action=keyword;post;keyword={wd}",
+        "播放列表": "##",
+        "播放数组": "<iframe id=\"video\"&&</iframe>",
+        "播放链接": "src=\"&&\"",
+        "数组": "<a &&</a>",
+        "标题": "<li class=\"title\">&&</li>",
+        "简介": "<div class=\"des\">&&</div>",
+        "详情url": "https://www.tasexy.com/v/{id}.html",
+        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36#Referer$https://www.tasexy.com/",
+        "跳转播放链接": "url = '&&'",
+        "链接": "href=\"&&\""
+      }
     },
     {
       "name": "xiangmai",
