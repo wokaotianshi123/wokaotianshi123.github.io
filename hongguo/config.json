@@ -1,7 +1,7 @@
 {
   "format": "duanju-custom-sources",
   "version": 1,
-  "count": 32,
+  "count": 34,
   "sites": [
     {
       "name": "080pz.com",
@@ -383,6 +383,36 @@
       "type": "web"
     },
     {
+      "name": "m.yhjp.net",
+      "url": "http://m.yhjp.net",
+      "rule": {
+        "主页url": "http://m.yhjp.net",
+        "分类": "国产剧$guocanju#韩剧$hanguoju#日剧$ribenju#泰剧$taiguoju#欧美剧$oumeiju#港剧$xianggangju#台湾剧$taiwanju#海外剧$haiwaiju#动作片$dongzuopian#爱情片$aiqingpian#喜剧片$xijupian#科幻片$kehuanpian#恐怖片$kongbupian#剧情片$juqingpian#战争片$zhanzhengpian#动画片$donghuapian#动漫$dongman#综艺$zongyi#纪录片$jilupian",
+        "分类url": "http://m.yhjp.net/{cateId}/index-{catePg}.html",
+        "列表图片": "data-original=\"&&\"",
+        "副标题": "note text-bg-r\">&&</span>",
+        "封面": "details-pic&&no-repeat&&url(&&)",
+        "影片名称": "text-overflow\">&&</h1>",
+        "搜索url": "http://m.yhjp.net/search/?wd={wd}",
+        "搜索图片": "data-original=\"&&\"",
+        "搜索数组": "<a&&</a>[包含:video-pic]",
+        "搜索标题": "title=\"&&\"",
+        "搜索链接": "href=\"&&\"",
+        "播放列表": "</li>",
+        "播放数组": "clearfix fade&&</ul>[不包含:/2-,/3-]",
+        "播放标题": ".html\">&&<",
+        "播放链接": "href=\"&&\"",
+        "数组": "<li&&</li>[包含:video-pic]",
+        "标题": "title=\"&&\"",
+        "状态": "状态：</span>&&</li>",
+        "简介": "details-content-default\">&&</span>",
+        "线路数组": "clearfix fade&&</ul>[不包含:/2-,/3-]",
+        "请求头": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
+        "链接": "href=\"&&\""
+      },
+      "type": "web"
+    },
+    {
       "name": "nbsjyy.com",
       "url": "https://www.nbsjyy.com",
       "rule": {
@@ -469,31 +499,6 @@
         "标题": "title=\"&&\"",
         "站名": "快看偷看",
         "详情url": "https://qikantoukan.com/voddetail/{id}.html",
-        "链接": "href=\"&&\""
-      },
-      "type": "web"
-    },
-    {
-      "name": "qinav.com",
-      "url": "https://www.qinav.com",
-      "rule": {
-        "主页url": "https://www.qinav.com",
-        "分类": "亚洲情色$1#日本无码$2#国产传媒$3#动漫专区$4#欧美性爱$5#熟女人妻$6#强奸乱伦$7#自拍偷拍$8#中文字幕$9#精品国货$10#女同专区$11#卡通动漫$12#三级电影$13#熟女专区$14#露脸自拍$15#国产传媒$33",
-        "分类url": "https://www.qinav.com/site/5/{cateId}-{catePg}.html",
-        "列表图片": "img=\"&&\"",
-        "副标题": "class=\"note\">&&</span>",
-        "封面": "img=\"&&\"",
-        "影片名称": "<title>&&&<",
-        "搜索url": "https://www.qinav.com/?module=tags&action=keyword;post;keyword={wd}",
-        "播放列表": "##",
-        "播放数组": "<iframe id=\"video\"&&</iframe>",
-        "播放链接": "src=\"&&\"",
-        "数组": "<a &&</a>",
-        "标题": "<li class=\"title\">&&</li>",
-        "简介": "<div class=\"des\">&&</div>",
-        "详情url": "https://www.qinav.com/video/{id}.html",
-        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36#Referer$https://www.qinav.com/",
-        "跳转播放链接": "url = '&&'",
         "链接": "href=\"&&\""
       },
       "type": "web"
@@ -636,30 +641,6 @@
       "type": "web"
     },
     {
-      "name": "tasexy.com",
-      "url": "https://www.tasexy.com",
-      "rule": {
-        "主页url": "https://www.tasexy.com",
-        "分类": "亚洲情色$1#日本无码$2#AV解说$3#中文字幕$20#国产传媒$21#国产短视频$22#欧美性爱$23#自拍偷拍$24#网红粉丝$25#极品女神$26#主播直播$27#剧情演绎$28#精品推荐$31#AV解说1$35",
-        "分类url": "https://www.tasexy.com/site/6/{cateId}-{catePg}.html",
-        "列表图片": "img=\"&&\"",
-        "副标题": "class=\"note\">&&</span>",
-        "封面": "img=\"&&\"",
-        "影片名称": "<title>&&&<",
-        "搜索url": "https://www.tasexy.com/?module=tags&action=keyword;post;keyword={wd}",
-        "播放列表": "##",
-        "播放数组": "<iframe id=\"video\"&&</iframe>",
-        "播放链接": "src=\"&&\"",
-        "数组": "<a &&</a>",
-        "标题": "<li class=\"title\">&&</li>",
-        "简介": "<div class=\"des\">&&</div>",
-        "详情url": "https://www.tasexy.com/v/{id}.html",
-        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36#Referer$https://www.tasexy.com/",
-        "跳转播放链接": "url = '&&'",
-        "链接": "href=\"&&\""
-      }
-    },
-    {
       "name": "xiangmai",
       "url": "https://www.xiangmaile.com",
       "rule": {
@@ -684,7 +665,7 @@
     },
     {
       "name": "zihuiwg.com",
-      "url": "https://zihuiwg.com",
+      "url": "https://www.zihuiwg.com",
       "rule": {
         "主页url": "https://www.zihuiwg.com",
         "分类": "电影$1#电视剧$2#综艺$3#动漫$4#短剧$5",
@@ -749,6 +730,78 @@
       "type": "web"
     },
     {
+      "name": "{涩}qinav.com",
+      "url": "https://www.qinav.com",
+      "rule": {
+        "主页url": "https://www.qinav.com",
+        "分类": "亚洲情色$1#日本无码$2#国产传媒$3#动漫专区$4#欧美性爱$5#熟女人妻$6#强奸乱伦$7#自拍偷拍$8#中文字幕$9#精品国货$10#女同专区$11#卡通动漫$12#三级电影$13#熟女专区$14#露脸自拍$15#国产传媒$33",
+        "分类url": "https://www.qinav.com/site/5/{cateId}-{catePg}.html",
+        "列表图片": "img=\"&&\"",
+        "副标题": "class=\"note\">&&</span>",
+        "封面": "img=\"&&\"",
+        "影片名称": "<title>&&&<",
+        "搜索url": "https://www.qinav.com/?module=tags&action=keyword;post;keyword={wd}",
+        "播放列表": "##",
+        "播放数组": "<iframe id=\"video\"&&</iframe>",
+        "播放链接": "src=\"&&\"",
+        "数组": "<a &&</a>",
+        "标题": "<li class=\"title\">&&</li>",
+        "简介": "<div class=\"des\">&&</div>",
+        "详情url": "https://www.qinav.com/video/{id}.html",
+        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36#Referer$https://www.qinav.com/",
+        "跳转播放链接": "url = '&&'",
+        "链接": "href=\"&&\""
+      },
+      "type": "web"
+    },
+    {
+      "name": "{涩}tasexy.com",
+      "url": "https://www.tasexy.com",
+      "rule": {
+        "主页url": "https://www.tasexy.com",
+        "分类": "亚洲情色$1#日本无码$2#AV解说$3#中文字幕$20#国产传媒$21#国产短视频$22#欧美性爱$23#自拍偷拍$24#网红粉丝$25#极品女神$26#主播直播$27#剧情演绎$28#精品推荐$31#AV解说1$35",
+        "分类url": "https://www.tasexy.com/site/6/{cateId}-{catePg}.html",
+        "列表图片": "img=\"&&\"",
+        "副标题": "class=\"note\">&&</span>",
+        "封面": "img=\"&&\"",
+        "影片名称": "<title>&&&<",
+        "搜索url": "https://www.tasexy.com/?module=tags&action=keyword;post;keyword={wd}",
+        "播放列表": "##",
+        "播放数组": "<iframe id=\"video\"&&</iframe>",
+        "播放链接": "src=\"&&\"",
+        "数组": "<a &&</a>",
+        "标题": "<li class=\"title\">&&</li>",
+        "简介": "<div class=\"des\">&&</div>",
+        "详情url": "https://www.tasexy.com/v/{id}.html",
+        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36#Referer$https://www.tasexy.com/",
+        "跳转播放链接": "url = '&&'",
+        "链接": "href=\"&&\""
+      }
+    },
+    {
+      "name": "{涩}中国x站",
+      "url": "https://chinaxmovie.com",
+      "rule": {
+        "主页url": "https://chinaxmovie.com",
+        "分类": "国产传媒$domestic-media#日本AV$japanese-av#无码视频$uncensored-video#中文字幕$chinese-subtitles",
+        "分类url": "https://chinaxmovie.com/vodtype/{cateId}-{catePg}/",
+        "列表图片": "data-loaded=\"true\" data-src=\"&&\"",
+        "影片名称": "text-nord6\">&& 高清在线播放</h1>",
+        "搜索url": "https://chinaxmovie.com/vodsearch/page/1/wd/{wd}/",
+        "搜索图片": "data-loaded=\"true\" data-src=\"&&\"",
+        "搜索数组": "<div class=\"thumbnail group\">&&<div class=\"thumbnail group\">",
+        "播放数组": "<link rel=\"canonical\"&&>",
+        "播放标题": "正片",
+        "播放链接": "href=\"&&\"",
+        "数组": "<div class=\"thumbnail group\">&&<div class=\"thumbnail group\">",
+        "标题": "<div class=\"my-2 text-sm text-nord4 truncate\">&&</div>&&>&&</a>",
+        "简介": "<p>&&</p>",
+        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "链接": "group-hover:text-primary\" href=\"&&\""
+      },
+      "type": "web"
+    },
+    {
       "name": "电影天堂",
       "url": "https://www.dytt17.com",
       "rule": {
@@ -804,30 +857,6 @@
         "链接": "https://api.sorani.cc/sorani-cms/api/video/+j:id"
       },
       "type": "web"
-    },
-       {
-      "name": "青空次元",
-      "url": "https://api.sorani.cc/sorani-cms",
-      "rule":{
-  "主页url": "https://chinaxmovie.com",
-  "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-  "分类": "国产传媒$domestic-media#日本AV$japanese-av#无码视频$uncensored-video#中文字幕$chinese-subtitles",
-  "分类url": "https://chinaxmovie.com/vodtype/{cateId}-{catePg}/",
-  "搜索url": "https://chinaxmovie.com/vodsearch/page/1/wd/{wd}/",
-  "数组": "<div class=\"thumbnail group\">&&<div class=\"thumbnail group\">",
-  "标题": "<div class=\"my-2 text-sm text-nord4 truncate\">&&</div>&&>&&</a>",
-  "链接": "group-hover:text-primary\" href=\"&&\"",
-  "列表图片": "data-loaded=\"true\" data-src=\"&&\"",
-  "搜索数组": "<div class=\"thumbnail group\">&&<div class=\"thumbnail group\">",
-  "搜索图片": "data-loaded=\"true\" data-src=\"&&\"",
-  "影片名称": "text-nord6\">&& 高清在线播放</h1>",
-  "简介": "<p>&&</p>",
-  "播放数组": "<link rel=\"canonical\"&&>",
-  "播放标题": "正片",
-  "播放链接": "href=\"&&\""
-},
-      "type": "web"
     }
-
   ]
 }
