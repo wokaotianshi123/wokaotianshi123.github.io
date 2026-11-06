@@ -804,6 +804,30 @@
         "链接": "https://api.sorani.cc/sorani-cms/api/video/+j:id"
       },
       "type": "web"
+    },
+       {
+      "name": "青空次元",
+      "url": "https://api.sorani.cc/sorani-cms",
+      "rule":{
+  "主页url": "https://chinaxmovie.com",
+  "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  "分类": "国产传媒$domestic-media#日本AV$japanese-av#无码视频$uncensored-video#中文字幕$chinese-subtitles",
+  "分类url": "https://chinaxmovie.com/vodtype/{cateId}-{catePg}/",
+  "搜索url": "https://chinaxmovie.com/vodsearch/page/1/wd/{wd}/",
+  "数组": "<div class=\"thumbnail group\">&&<div class=\"thumbnail group\">",
+  "标题": "<div class=\"my-2 text-sm text-nord4 truncate\">&&</div>&&>&&</a>",
+  "链接": "group-hover:text-primary\" href=\"&&\"",
+  "列表图片": "data-loaded=\"true\" data-src=\"&&\"",
+  "搜索数组": "<div class=\"thumbnail group\">&&<div class=\"thumbnail group\">",
+  "搜索图片": "data-loaded=\"true\" data-src=\"&&\"",
+  "影片名称": "text-nord6\">&& 高清在线播放</h1>",
+  "简介": "<p>&&</p>",
+  "播放数组": "<link rel=\"canonical\"&&>",
+  "播放标题": "正片",
+  "播放链接": "href=\"&&\""
+},
+      "type": "web"
     }
+
   ]
 }
