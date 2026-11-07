@@ -754,6 +754,31 @@
       },
       "type": "web"
     },
+        {
+      "name": "{涩}mtav.art",
+      "url": "https://mtav.art",
+      "rule": {
+        "主页url": "https://mtav.art",
+        "分类": "视频一区$1#视频二区$2#视频三区$3",
+        "分类url": "https://mtav.art/vod/show/id/{cateId}/page/{catePg}/",
+        "列表图片": "src=\"&&\"",
+        "封面": "property=\"og:image\" content=\"&&\"",
+        "影片名称": "<h1>&&</h1>",
+        "搜索url": "https://mtav.art/vod/search.html?wd={wd}",
+        "搜索图片": "src=\"&&\"",
+        "搜索数组": "<div class=\"item\">&&<div class=\"item\">",
+        "播放数组": "id=\"share_link\"&&readonly>",
+        "播放标题": "正片",
+        "播放链接": "value=\"&&\"",
+        "数组": "<div class=\"item\">&&<div class=\"item\">",
+        "标题": "alt=\"&&\"||class=\"title\">&&</strong>",
+        "简介": "name=\"description\" content=\"&&\"",
+        "请求头": "User-Agent$Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "跳转播放链接": "var uul =  '&&'",
+        "链接": "href=\"&&\""
+      },
+      "type": "web"
+    },
     {
       "name": "{涩}tasexy.com",
       "url": "https://www.tasexy.com",
